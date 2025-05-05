@@ -210,7 +210,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1051730671}
   SFXSource: {fileID: 2079865526}
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 73953b9bf225e4a5cb126ee06c1b36a4, type: 3}
   buttonClick: {fileID: 8300000, guid: 48bac739a789a47d3b18b16a56ec4c51, type: 3}
   mixer: {fileID: 24100000, guid: 9683fc10df16640ad8a3fbb85353dc45, type: 2}
 --- !u!1 &1279189369

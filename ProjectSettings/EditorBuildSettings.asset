@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3cebb549abec3b746b646fb83c8cbaf3
+  - enabled: 1
+    path: Assets/Scenes/Apartment.unity
+    guid: cb0f3b8c7b44dee4a8a2a33d12cd71ed
+  - enabled: 1
+    path: Assets/Scenes/Office_BreakRoom.unity
+    guid: 8745438f464213a41859e382dc7096cd
+  - enabled: 1
+    path: Assets/Scenes/Office_Desk.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

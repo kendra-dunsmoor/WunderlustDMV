@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2777432815326399289}
   - component: {fileID: 7742664965659900120}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Option A Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2777432815326399289}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 530363540952408881}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &530363540952408881
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +144,7 @@ GameObject:
   - component: {fileID: 986266340482616162}
   - component: {fileID: 4037478032029498427}
   - component: {fileID: 2103904729648309739}
+  - component: {fileID: 7481280256060637304}
   m_Layer: 5
   m_Name: Panel_ShiftComplete
   m_TagString: Untagged
@@ -199,6 +212,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7481280256060637304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530363540952408881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a3d1235710b4bfcaa271ea38a04350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionA: {fileID: 0}
+  optionB: {fileID: 0}
 --- !u!1 &3415492426974712619
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Shift
+  m_text: Event
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -348,7 +375,7 @@ GameObject:
   - component: {fileID: 2239303314197959727}
   - component: {fileID: 8877494131507983325}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Option B Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,7 +482,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2239303314197959727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7481280256060637304}
+        m_TargetAssemblyTypeName: ShiftCompleteController, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4551868076959389139
 GameObject:
   m_ObjectHideFlags: 0

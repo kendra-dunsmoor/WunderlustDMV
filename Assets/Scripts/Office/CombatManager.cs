@@ -15,8 +15,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Customer[] queue;
     [SerializeField] private GameObject paperwork;
     private int currCustomer = 0;
-    
-    
+    private AudioManager audioManager;
+
     // Temporary, just sticking meter management here for now
     [SerializeField] private Slider efficiencyMeter;
     [SerializeField] private Slider willMeter;

@@ -8,6 +8,7 @@ public class ApartmentManager : MonoBehaviour
     {
         audioManager = 	FindFirstObjectByType<AudioManager>();
         // TODO: system to check which dialogue to trigger
+        Debug.Log(gameObject.GetComponent<DialogueTrigger>());
         gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 

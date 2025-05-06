@@ -1,3 +1,4 @@
+using UnityEditor.Search;
 using UnityEngine;
 
 
@@ -36,5 +37,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void FetchCurrentCalendar() {
+        // Return current run
+    }
+
+    public string FetchNextShiftChoice() {
+        // TODO: randomly select shift choice for run
+        return "Event";
     }
 }

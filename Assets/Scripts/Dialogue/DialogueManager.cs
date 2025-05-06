@@ -20,10 +20,14 @@ public class DialogueManager : MonoBehaviour
 
 	private Queue sentences;
 
+	private bool firstSentence;
+
 	// Use this for initialization
 	void Start () {
+		Debug.Log("Initialize dialogue manager");
 		sentences = new Queue();
 		audioManager = 	FindFirstObjectByType<AudioManager>();
+		firstSentence = true;
 	}
 
 	public void StartDialogue (Dialogue dialogue)
@@ -42,7 +46,9 @@ public class DialogueManager : MonoBehaviour
 
 	public void DisplayNextSentence ()
 	{
-		audioManager.PlaySFX(audioManager.buttonClick);
+		if (firstSentence) firstSentence = false;
+		else audioManager.PlaySFX(audioManager.buttonClick);
+
 		if (sentences.Count == 1)
 		{
 			EndDialogue(); // TODO: add animation to remove box

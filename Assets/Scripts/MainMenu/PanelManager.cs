@@ -19,6 +19,7 @@ public class PanelManager : MonoBehaviour
 
     public void NewGameButton()
     {
+        Debug.Log("New game");
         audioManager.PlaySFX(audioManager.buttonClick);
         SceneManager.LoadSceneAsync(1);
     }

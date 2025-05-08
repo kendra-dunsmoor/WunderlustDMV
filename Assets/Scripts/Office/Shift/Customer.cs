@@ -9,15 +9,11 @@ public class Customer : MonoBehaviour
     [SerializeField] private GameObject frustrationMeter;
     [SerializeField] private Sprite acceptedSprite;
     [SerializeField] private Sprite rejectedSprite;
-    private bool movingToPoint;
+    [SerializeField] private Sprite iconSprite;
+    private bool movingToFront;
+    private bool movingAway;
     private Transform goalPoint;
     [SerializeField] private float moveSpeed;
-    
-    // Temporary solution:
-    [SerializeField] private Transform front;
-    [SerializeField] private Transform next;
-    [SerializeField] private Transform offScreen;
-    [SerializeField] private Camera mainCamera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,38 +25,38 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movingToPoint)
+        if (movingToFront)
         {
             transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
                 moveSpeed * Time.deltaTime);
             if (transform.position.x >= goalPoint.position.x)
             {
-                movingToPoint = false;
-                if (goalPoint == front)
-                {
-                    GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>().SpawnPaperwork();
-                }
-            }
-            // Transform slider to be above
+                movingToFront = false;
+                GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>().SpawnPaperwork();
+            } 
+        }
+        if (movingAway)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
+                moveSpeed * Time.deltaTime);
+            if (transform.position.x >= goalPoint.position.x)
+            {
+                movingAway = false;
+                Destroy(gameObject);
+            } 
         }
     }
 
-    public void SendToFront()
+    public void SendToFront(Transform point)
     {
-        movingToPoint = true;
-        goalPoint = front;
+        movingToFront = true;
+        goalPoint = point;
     }
 
-    public void SendToNext()
+    public void SendAway(bool accepted, Transform point)
     {
-        movingToPoint = true;
-        goalPoint = next;
-    }
-
-    public void SendAway(bool accepted)
-    {
-        movingToPoint = true;
-        goalPoint = offScreen;
+        movingAway = true;
+        goalPoint = point;
         // toogle paperwork visibility false
         GameObject.FindGameObjectWithTag("Paperwork").SetActive(false);
         if (accepted)

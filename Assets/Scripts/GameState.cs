@@ -8,7 +8,6 @@ using UnityEngine;
 public class GameState
 {
     private int currentWeek = 0;
-
     private int currentWeekday = 0;
     private string[] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
@@ -21,8 +20,8 @@ public class GameState
 
     private Location currentLocation = Location.APARTMENT;
     
-    public string GetDay() {
-        return weekdays[currentWeekday];
+    public int GetDay() {
+        return currentWeekday;
     }
 
 // Called when combat for day is completed

@@ -2,24 +2,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+* Calendar Controller
+* ~~~~~~~~~~~~~~~~~~~~
+* Transition screen between shifts/events/shop. Populate with current run
+* state and present two choices to player after morning shift.
+*/
 public class CalendarController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI optionA;
-    [SerializeField] TextMeshProUGUI optionB;
+    [SerializeField] CalendarDay[] calendarDays;
     private GameManager gameManager;
+    private int currDay;
 
     void Start()
     {
         Debug.Log("Called at Instantiate");
         gameManager = FindFirstObjectByType<GameManager>();
-        GetShiftOptions();
+        currDay = gameManager.FetchCurrentCalendarDay();
+        FillCalendar();
     }
-
-    private void GetShiftOptions() {
+    private void FillCalendar() {
         // Fetch past run choices and fill calendar
+        for (int i = 0; i < currDay; i++) {
+            calendarDays[i].shiftCompleteMarker.enabled = true;
+        }
         // Fetch options for current shift
-        optionA.text = gameManager.FetchNextShiftChoice();
-        optionB.text = gameManager.FetchNextShiftChoice();
+        calendarDays[currDay].optionA.text = gameManager.FetchNextShiftChoice();
+        calendarDays[currDay].optionB.text = gameManager.FetchNextShiftChoice();
     }
 
     public void SelectChoice(TextMeshProUGUI choice) {

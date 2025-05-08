@@ -39,8 +39,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void FetchCurrentCalendar() {
-        // Return current run
+    public int FetchCurrentCalendarDay() {
+        // temp just return current day
+        return gameStatus.GetDay();
     }
 
     public string FetchNextShiftChoice() {

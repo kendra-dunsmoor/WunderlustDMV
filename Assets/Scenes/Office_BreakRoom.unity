@@ -359,17 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2434d7d17ea4dc1926ac6242c2538f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Verrine
-    sentences:
-    - "Hiya, Boss! If you\u2019re looking for the line, you\u2019ve gone straight
-      past it. "
-    - "Oh! Then you\u2019ve come to the right place. The DMV is always understaffed,
-      and we just had a guy leave for elysium, so we could really use the help!"
-    - "Sounds good. Oh! Before we get you started, you should have this. (He hands
-      the player their starting artifact.) There\u2019s usually one of these lying
-      around the breakroom, so you should always check here before you start your
-      shift."
+  character: Verrine
+  dialogue: {fileID: 11400000, guid: 910dc7d9faa2a4ff3963282ed0002ef8, type: 2}
 --- !u!1 &476458212
 GameObject:
   m_ObjectHideFlags: 0

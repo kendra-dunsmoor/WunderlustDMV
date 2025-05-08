@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: BreakRoom_Verrine_1
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "Hiya, Boss! If you\u2019re looking for the line, you\u2019ve gone
+      straight past it."
+    responses:
+    - responseText: 'Actually, I need a job. '
+      nextNode:
+        dialogueText: "Oh! Then you\u2019ve come to the right place. The DMV is always
+          understaffed, and we just had a guy leave for Elysium, so we could really
+          use the help!"
+        responses:
+        - responseText: "Alright, I\u2019m ready to start."
+          nextNode:
+            dialogueText: "Sounds good. Oh! Before we get you started, you should
+              have this. *He hands you an item* There\u2019s usually one of these
+              lying around the breakroom, so you should always check here before
+              you start your shift.\n"
+            responses:
+            - responseText: Okay, thanks
+              nextNode:
+                dialogueText: 
+                responses: []

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: Apartment_Landlord_1
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "Hey. Get up. Rent\u2019s due at the end of the week."
+    responses:
+    - responseText: Huh?
+      nextNode:
+        dialogueText: "What? Did you think you\u2019d get out of paying just because
+          you died? Come on, kid. Your soul\u2019s gotta rest somewhere, and the
+          un-furnished pre-furnished apartment won\u2019t furnish itself."
+        responses:
+        - responseText: "How can I pay rent? I don\u2019t have a job."
+          nextNode:
+            dialogueText: "The Department of Metaphysical Verification is always
+              looking for lost-err.. new souls to fill up space. Head down there.
+              I\u2019m sure they\u2019ll have something for you."
+            responses:
+            - responseText: Okay...
+              nextNode:
+                dialogueText: 
+                responses: []
+            - responseText: Alright then
+              nextNode:
+                dialogueText: 
+                responses: []

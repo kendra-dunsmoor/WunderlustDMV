@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 3898007141478181396}
   - component: {fileID: 4371696108269281998}
   - component: {fileID: 5563374675332787954}
-  - component: {fileID: 7836884580441990405}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -216,23 +215,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7836884580441990405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5573425339600068239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e481ac9e8ed94dedb325c08327c45fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 1193400413068162345}
-  dialogueText: {fileID: 7090363600701209737}
-  continueButton: {fileID: 6732503733817474530, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
-  continueText: {fileID: 0}
-  characterImage: {fileID: 8539653579745344756}
 --- !u!1 &6705364450176390121
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219258271251546907}
+  - component: {fileID: 7330576512353760621}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -480,6 +463,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7330576512353760621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195100723526208071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da6998a34a7f424f99d8fb4c2636609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueParent: {fileID: 5573425339600068239}
+  DialogueTitleText: {fileID: 1193400413068162345}
+  DialogueBodyText: {fileID: 7090363600701209737}
+  responseButtonPrefab: {fileID: 6732503733817474530, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
+  responseButtonContainer: {fileID: 4541646443996229694}
+  characterImage: {fileID: 8539653579745344756}
 --- !u!1 &7829005684034592408
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,29 +490,60 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4541646443996229694}
+  - component: {fileID: 442141866707520162}
   m_Layer: 0
-  m_Name: ResponseButtonsContinater
+  m_Name: ResponseButtonsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4541646443996229694
-Transform:
+--- !u!224 &4541646443996229694
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7829005684034592408}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31, y: -19, z: 1.473679}
+  m_LocalPosition: {x: 0, y: 0, z: 1.473679}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5329612337067372548}
   m_Father: {fileID: 3898007141478181396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 271.8945, y: -9}
+  m_SizeDelta: {x: 131.7889, y: 101.58}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &442141866707520162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829005684034592408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1001 &903448368288830836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -530,19 +562,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_SizeDelta.x
@@ -582,11 +614,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 301
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -604,10 +636,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Response Button
       objectReference: {fileID: 0}
-    - target: {fileID: 8040101849379478904, guid: 7bee19c915ee54795bba4efe5c981170, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7836884580441990405}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -881,7 +881,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8407381555138564812, guid: 96f213503926b4f7f8e295bee3ec02d3, type: 3}
+  m_Sprite: {fileID: -7792237589546512633, guid: a482c563e42e449838ce32d9419a1f59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -910,6 +910,22 @@ PrefabInstance:
     - target: {fileID: 1193400413068162345, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
       propertyPath: m_text
       value: Verrine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329612337067372548, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329612337067372548, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329612337067372548, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329612337067372548, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7195100723526208071, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
       propertyPath: m_Name
@@ -995,10 +1011,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8082362768224507708, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082362768224507708, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 124.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082362768224507708, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -282.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082362768224507708, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.7088
+      objectReference: {fileID: 0}
     - target: {fileID: 8539653579745344756, guid: 930b9b442d7ba4025bef3e297b28f5cf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6578320169517234905, guid: 2abecfc5bb61543e28801aba03cd91ed, type: 3}
+      objectReference: {fileID: 1703068279841176408, guid: 0fbb129d66b0c42a283b954caf8c46ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

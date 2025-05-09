@@ -40,12 +40,17 @@ public class GameManager : MonoBehaviour
     }
 
     public int FetchCurrentCalendarDay() {
-        // temp just return current day
+        // temp just return current day for calendar
         return gameStatus.GetDay();
     }
 
     public string FetchNextShiftChoice() {
         // TODO: randomly select shift choice for run
         return "Event";
+    }
+
+    public void ShiftCompleted() {
+        // TODO: update rewards for player inventory and game state
+        gameStatus.CompleteDay();
     }
 }

@@ -13,5 +13,5 @@ public class CalendarDay
     public TextMeshProUGUI optionA;
     public TextMeshProUGUI optionB;
     public TextMeshProUGUI orText;
-    public Image shiftCompleteMarker;
+    public GameObject shiftCompleteMarker;
 }

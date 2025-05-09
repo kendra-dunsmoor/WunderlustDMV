@@ -15,7 +15,9 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
- 
+	private AudioManager audioManager;
+
+
     // UI references
     [SerializeField] private GameObject DialogueParent; // Main container for dialogue UI
     [SerializeField] private TextMeshProUGUI DialogueTitleText, DialogueBodyText; // Text components for title and body
@@ -38,11 +40,16 @@ public class DialogueManager : MonoBehaviour
         // Initially hide the dialogue UI
         HideDialogue();
     }
- 
+
+    private void Start()
+    {
+        audioManager = 	FindFirstObjectByType<AudioManager>();
+    }
+
     // Starts the dialogue with given title and dialogue node
     public void StartDialogue(string title, DialogueNode node)
     {
-		Debug.Log("Title: " + title);
+		Debug.Log("Starting Dialogue");
         // Display the dialogue UI
         ShowDialogue();
  
@@ -70,6 +77,9 @@ public class DialogueManager : MonoBehaviour
     // Handles response selection and triggers next dialogue node
     public void SelectResponse(DialogueResponse response, string title)
     {
+		// Button click audio
+        audioManager.PlaySFX(audioManager.buttonClick);
+
         // Check if there's a follow-up node
         if (!response.nextNode.IsLastNode())
         {

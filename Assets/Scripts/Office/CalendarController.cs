@@ -12,23 +12,24 @@ public class CalendarController : MonoBehaviour
 {
     [SerializeField] CalendarDay[] calendarDays;
     private GameManager gameManager;
-    private int currDay;
+    private int currDay = 0;
 
     void Start()
     {
-        Debug.Log("Called at Instantiate");
         gameManager = FindFirstObjectByType<GameManager>();
         currDay = gameManager.FetchCurrentCalendarDay();
         FillCalendar();
     }
     private void FillCalendar() {
+        Debug.Log("Fill Calendar for day: " + currDay);
         // Fetch past run choices and fill calendar
+        // TODO: needs clarity on specific things active
         for (int i = 0; i < currDay; i++) {
-            calendarDays[i].shiftCompleteMarker.enabled = true;
+            calendarDays[i].shiftCompleteMarker.SetActive(true);
         }
         // Fetch options for current shift
-        calendarDays[currDay].optionA.text = gameManager.FetchNextShiftChoice();
-        calendarDays[currDay].optionB.text = gameManager.FetchNextShiftChoice();
+        calendarDays[currDay - 1].optionA.text = gameManager.FetchNextShiftChoice();
+        calendarDays[currDay - 1].optionB.text = gameManager.FetchNextShiftChoice();
     }
 
     public void SelectChoice(TextMeshProUGUI choice) {

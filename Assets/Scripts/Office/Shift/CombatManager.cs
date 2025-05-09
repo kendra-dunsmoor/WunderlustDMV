@@ -12,6 +12,7 @@ using UnityEngine.UI;
 public class CombatManager : MonoBehaviour
 {
     private AudioManager audioManager;
+    private GameManager gameManager;
 
     // Prefabs
     [SerializeField] private GameObject shiftOverMenu;
@@ -41,6 +42,7 @@ public class CombatManager : MonoBehaviour
         efficiencyMeter.value = 0.5f;
         willMeter.value = 1f;
         InitializeCustomerQueue();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     void Update()
@@ -53,36 +55,47 @@ public class CombatManager : MonoBehaviour
     {
         efficiencyMeter.value += 0.2f;
         willMeter.value -= 0.2f;
-        NextCustomer(true);
+        customersInLine[currCustomer].SendAway(true, offScreenPoint);
+        NextCustomer();
     }
     
     public void Reject()
     {
         efficiencyMeter.value -= 0.2f;
         willMeter.value -= 0.2f;
-        NextCustomer(false);
+        customersInLine[currCustomer].SendToBack(spawnPoint);
+        NextCustomer();
     }
     
     public void Escalate()
     {
         efficiencyMeter.value -= 0.2f;
         willMeter.value -= 0.2f;
-        NextCustomer(false);
+        customersInLine[currCustomer].SendAway(false, offScreenPoint);
+        NextCustomer();
+    }
+
+    public void Delay()
+    {
+        efficiencyMeter.value -= 0.2f;
+        willMeter.value -= 0.2f;
+        customersInLine[currCustomer].SendAway(false, offScreenPoint);
+        NextCustomer();
     }
 
     private void EndShift()
     {
         // Pop up end screen
+        gameManager.ShiftCompleted();
         Instantiate(shiftOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
-    private void NextCustomer(bool accepted)
+    private void NextCustomer()
     {
         Debug.Log("Next Customer");
         customersRemaining -= 1;
         Debug.Log("Customers remaining: " + customersRemaining);
         customerGoalText.text = "Customers remaining: " + customersRemaining;
-        customersInLine[currCustomer].SendAway(accepted, offScreenPoint);
         currCustomer++;
         if (customersRemaining == 0) EndShift();
         else {
@@ -100,11 +113,14 @@ public class CombatManager : MonoBehaviour
     // TODO: add logic to randomize/select queue of customers for the shift
     private void InitializeCustomerQueue() {
         // Temp: Spawn all customers off screen and add to in game and icon queues
+        Debug.Log("initialize queue");
         for (int i = 0; i < CUSTOMER_GOAL; i++) {
+            Debug.Log("spawning");
             customersInLine.Add(Instantiate(customer, spawnPoint).GetComponent<Customer>());
             customerIconQueue[i].SetActive(true);
         }
         customerIconQueue[CUSTOMER_GOAL - 1].SetActive(false);
+        Debug.Log("Sending to front+ " + frontOfLinePoint);
         customersInLine[0].SendToFront(frontOfLinePoint);
     }
 }

@@ -10,8 +10,10 @@ public class Customer : MonoBehaviour
     [SerializeField] private Sprite acceptedSprite;
     [SerializeField] private Sprite rejectedSprite;
     [SerializeField] private Sprite iconSprite;
+    // temp:
     private bool movingToFront;
     private bool movingAway;
+    private bool movingBack;
     private Transform goalPoint;
     [SerializeField] private float moveSpeed;
 
@@ -32,11 +34,13 @@ public class Customer : MonoBehaviour
             if (transform.position.x >= goalPoint.position.x)
             {
                 movingToFront = false;
+                Debug.Log("Made it to front!");
                 GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>().SpawnPaperwork();
             } 
         }
         if (movingAway)
         {
+            Debug.Log("Why we here");
             transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
                 moveSpeed * Time.deltaTime);
             if (transform.position.x >= goalPoint.position.x)
@@ -45,12 +49,23 @@ public class Customer : MonoBehaviour
                 Destroy(gameObject);
             } 
         }
+        if (movingBack)
+        {
+            Debug.Log("Why we here");
+            transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
+                moveSpeed * Time.deltaTime);
+            if (transform.position.x <= goalPoint.position.x)
+            {
+                movingBack = false;
+            } 
+        }
     }
 
     public void SendToFront(Transform point)
     {
         movingToFront = true;
         goalPoint = point;
+        Debug.Log("With customer");
     }
 
     public void SendAway(bool accepted, Transform point)
@@ -67,5 +82,13 @@ public class Customer : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = rejectedSprite;
         }
+    }
+
+        public void SendToBack(Transform point)
+    {
+        movingBack = true;
+        goalPoint = point;
+        // toogle paperwork visibility false
+        GameObject.FindGameObjectWithTag("Paperwork").SetActive(false);
     }
 }

@@ -24,8 +24,8 @@ public class GameState
         return currentWeekday;
     }
 
-// Called when combat for day is completed
-    public string CompleteDay() {
-        return weekdays[currentWeekday];
+    // Called when combat for day is completed
+    public void CompleteDay() {
+        currentWeekday++;
     }
 }

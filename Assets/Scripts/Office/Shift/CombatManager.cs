@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,8 +20,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject customer; // temp will need to have data for diff enemy types
     [SerializeField] private GameObject paperwork; // temp object placeholder
 
-    // Temporary, just sticking meter management here for now
-    [SerializeField] private Slider efficiencyMeter;
+    // UI objects/meters
+    [SerializeField] private Slider performanceMeter;
     [SerializeField] private Slider willMeter;
     [SerializeField] private TextMeshProUGUI customerGoalText;
     [SerializeField] private GameObject[] customerIconQueue;
@@ -31,56 +32,23 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Transform frontOfLinePoint;
 
     // Combat trackers
-    private List<Customer> customersInLine = new List<Customer>();
+    private Queue<Customer> customersInLine = new Queue<Customer>();
+    private Customer currCustomer;
     private int CUSTOMER_GOAL = 3;
-    private int customersRemaining = 3;
-    private int currCustomer = 0;
+    private float performanceLevel = 25; // temp range 0 to 50
+    private float willLevel = 50; // temp value
 
     void Start()
     {
-        currCustomer = 0;
-        efficiencyMeter.value = 0.5f;
-        willMeter.value = 1f;
-        InitializeCustomerQueue();
+        performanceMeter.value = 25f;
+        willMeter.value = 50f;
         gameManager = FindFirstObjectByType<GameManager>();
+        InitializeCustomerQueue();
     }
 
     void Update()
     {
         
-    }
-    
-    // Button Interaction Functions
-    public void Accept()
-    {
-        efficiencyMeter.value += 0.2f;
-        willMeter.value -= 0.2f;
-        customersInLine[currCustomer].SendAway(true, offScreenPoint);
-        NextCustomer();
-    }
-    
-    public void Reject()
-    {
-        efficiencyMeter.value -= 0.2f;
-        willMeter.value -= 0.2f;
-        customersInLine[currCustomer].SendToBack(spawnPoint);
-        NextCustomer();
-    }
-    
-    public void Escalate()
-    {
-        efficiencyMeter.value -= 0.2f;
-        willMeter.value -= 0.2f;
-        customersInLine[currCustomer].SendAway(false, offScreenPoint);
-        NextCustomer();
-    }
-
-    public void Delay()
-    {
-        efficiencyMeter.value -= 0.2f;
-        willMeter.value -= 0.2f;
-        customersInLine[currCustomer].SendAway(false, offScreenPoint);
-        NextCustomer();
     }
 
     private void EndShift()
@@ -93,14 +61,13 @@ public class CombatManager : MonoBehaviour
     private void NextCustomer()
     {
         Debug.Log("Next Customer");
-        customersRemaining -= 1;
-        Debug.Log("Customers remaining: " + customersRemaining);
-        customerGoalText.text = "Customers remaining: " + customersRemaining;
-        currCustomer++;
-        if (customersRemaining == 0) EndShift();
+        Debug.Log("Customers remaining: " + customersInLine.Count);
+        customerGoalText.text = "Customers remaining: " + customersInLine.Count;
+        if (customersInLine.Count == 0) EndShift();
         else {
-            customersInLine[currCustomer].SendToFront(frontOfLinePoint);
-            customerIconQueue[customersRemaining - 1].SetActive(false); // this won't work if more customers than queue spots
+            currCustomer = customersInLine.Dequeue();
+            currCustomer.SendToFront(frontOfLinePoint);
+            customerIconQueue[customersInLine.Count].SetActive(false); // this won't work if more customers than queue spots
         }
     }
     
@@ -113,14 +80,60 @@ public class CombatManager : MonoBehaviour
     // TODO: add logic to randomize/select queue of customers for the shift
     private void InitializeCustomerQueue() {
         // Temp: Spawn all customers off screen and add to in game and icon queues
-        Debug.Log("initialize queue");
+        Debug.Log("Initialize customer queue: " + CUSTOMER_GOAL);
         for (int i = 0; i < CUSTOMER_GOAL; i++) {
-            Debug.Log("spawning");
-            customersInLine.Add(Instantiate(customer, spawnPoint).GetComponent<Customer>());
+            customersInLine.Enqueue(Instantiate(customer, spawnPoint).GetComponent<Customer>());
             customerIconQueue[i].SetActive(true);
         }
+        currCustomer = customersInLine.Dequeue();
         customerIconQueue[CUSTOMER_GOAL - 1].SetActive(false);
-        Debug.Log("Sending to front+ " + frontOfLinePoint);
-        customersInLine[0].SendToFront(frontOfLinePoint);
+        currCustomer.SendToFront(frontOfLinePoint);
+    }
+
+    private void UpdatePerformance(float diff) {
+        Debug.Log("Change performance by " + diff);
+        performanceLevel += diff;
+        // TODO: check if in range for meter
+        performanceMeter.value = performanceLevel;
+        Debug.Log("Remaining performance" + performanceLevel);
+    }
+    private void UpdateWill(float diff) {
+        Debug.Log("Change will by -" + diff);
+        willLevel -= diff;
+        // TODO: check if in range for meter
+        willMeter.value = willLevel;
+    }
+
+    public void TakeAction (Action action) {
+        // Check if sufficient will available for action:
+        if (willLevel - action.WILL_MODIFIER < 0) {
+            Debug.Log("Insufficient will left for action: " + action.actionName);
+            return;
+        }
+
+        // Update meters:
+        Debug.Log("Taking action: " + action.actionName);
+        UpdatePerformance(action.PERFORMANCE_MODIFIER);
+        UpdateWill(action.WILL_MODIFIER);
+        currCustomer.updateFrustration(action.FRUSTRATION_MODIFIER);
+
+        // Move current customer if needed:
+        switch (action.movement) {
+            case Action.ActionMovement.FRONT:
+                Debug.Log("Customer remains in front");
+                 break;
+            case Action.ActionMovement.AWAY:
+                Debug.Log("Customer is removed from queue");
+                currCustomer.SendAway(true, offScreenPoint); // TODO: remove green accepted true thing
+                NextCustomer();
+                break;
+            case Action.ActionMovement.BACK:     
+                Debug.Log("Customer is moved to back of line"); 
+                currCustomer.SendToBack(spawnPoint);
+                // TODO: Need like a delay here if it is the only customer left in line if we want them to move back first?
+                customersInLine.Enqueue(currCustomer);
+                NextCustomer();
+                break;
+        } 
     }
 }

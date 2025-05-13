@@ -20,7 +20,8 @@ public class PlayerState : MonoBehaviour
 	Rewarded by Reviews and Rare Events.
 	Spent in Apartment
 	Small amount is lost when Fired or Reincarnated.
-    */    private int soulCredits;
+    */
+    private int soulCredits;
 
     private Artifact[] artifacts;
 
@@ -33,5 +34,5 @@ public class PlayerState : MonoBehaviour
 	Spent in NPC interactions
     All unspent is lost when Fired or Reincarnated.
     */
-
+    private Action[] actionLoadout;
 }

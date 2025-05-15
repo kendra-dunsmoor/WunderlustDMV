@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -9,7 +10,8 @@ public class GameState
 {
     private int currentWeek = 0;
     private int currentWeekday = 0;
-    private string[] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+    private List<string> runPath = new List<string>();
+
 
     private enum Location {
         APARTMENT,
@@ -27,5 +29,13 @@ public class GameState
     // Called when combat for day is completed
     public void CompleteDay() {
         currentWeekday++;
+    }
+
+    public void AddRunChoice(string choice) {
+        Debug.Log("Adding");
+        runPath.Add(choice);
+    }
+    public List<string> FetchRunPath() {
+        return runPath;
     }
 }

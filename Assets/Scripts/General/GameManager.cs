@@ -1,5 +1,5 @@
-using UnityEditor.Search;
 using UnityEngine;
+using System.Collections.Generic;
 
 
 /*
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         // TODO: logic to fetch for saved game vs new game
         gameStatus = new GameState();
+        playerStatus = new PlayerState();
     }
 
     // Update is called once per frame
@@ -52,5 +53,17 @@ public class GameManager : MonoBehaviour
     public void ShiftCompleted() {
         // TODO: update rewards for player inventory and game state
         gameStatus.CompleteDay();
+    }
+
+    public void StoreRunChoice(string choice) {
+        Debug.Log("Storing");
+        gameStatus.AddRunChoice(choice);
+    }
+    public List<string> FetchRunPath() {
+        return gameStatus.FetchRunPath();
+    }
+
+    public void RestartRun() {
+        //TODO
     }
 }

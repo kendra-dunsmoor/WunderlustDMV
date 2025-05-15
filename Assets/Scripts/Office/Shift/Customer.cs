@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
 {
-    // Manage Frustration Bar and movement/reactions
-
     private float frustrationLevel;
     [SerializeField] private GameObject frustrationMeter;
     [SerializeField] private Sprite acceptedSprite;
@@ -16,6 +15,8 @@ public class Customer : MonoBehaviour
     private bool movingBack;
     private Transform goalPoint;
     [SerializeField] private float moveSpeed;
+
+    // TODO: add active effects tracking
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

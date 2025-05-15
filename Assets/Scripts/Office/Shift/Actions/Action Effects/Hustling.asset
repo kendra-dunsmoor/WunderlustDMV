@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Hustling
   m_EditorClassIdentifier: 
   type: 2
-  effectSprite: {fileID: 0}
+  effectSprite: {fileID: -1303584338656955783, guid: 722cde0e6403544479f1d180d08f8e71, type: 3}
+  effectDescription: Performance gains also remove 1 "Attention"

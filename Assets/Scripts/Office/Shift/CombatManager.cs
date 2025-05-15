@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static ActionEffect;
 
 /*
 * Combat Manager
@@ -16,15 +15,19 @@ public class CombatManager : MonoBehaviour
     private GameManager gameManager;
 
     // Prefabs
-    [SerializeField] private GameObject shiftOverMenu;
+    [SerializeField] private GameObject nextShiftCalendar;
+    [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject customer; // temp will need to have data for diff enemy types
     [SerializeField] private GameObject paperwork; // temp object placeholder
+    [SerializeField] private GameObject currentEffectPrefab;
 
     // UI objects/meters
     [SerializeField] private Slider performanceMeter;
     [SerializeField] private Slider willMeter;
     [SerializeField] private TextMeshProUGUI customerGoalText;
+    [SerializeField] private TextMeshProUGUI remainingTurnsText;
     [SerializeField] private GameObject[] customerIconQueue;
+    [SerializeField] private Transform currentEffectsPanel;
 
     // Spawn Points
     [SerializeField] private Transform spawnPoint;
@@ -37,6 +40,8 @@ public class CombatManager : MonoBehaviour
     private int CUSTOMER_GOAL = 3;
     private float performanceLevel = 25; // temp range 0 to 50
     private float willLevel = 50; // temp value
+    private int remainingTurns = 10; // temp value
+    private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
 
     void Start()
     {
@@ -55,7 +60,13 @@ public class CombatManager : MonoBehaviour
     {
         // Pop up end screen
         gameManager.ShiftCompleted();
-        Instantiate(shiftOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Instantiate(nextShiftCalendar, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+    }
+
+    private void GameOver()
+    {
+        // Pop up end screen
+        Instantiate(gameOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     private void NextCustomer()
@@ -95,7 +106,9 @@ public class CombatManager : MonoBehaviour
         performanceLevel += diff;
         // TODO: check if in range for meter
         performanceMeter.value = performanceLevel;
-        Debug.Log("Remaining performance" + performanceLevel);
+        Debug.Log("Performance" + performanceLevel);
+        if (performanceLevel <= 0) GameOver(); // Fired
+        if (performanceLevel >= 50) GameOver(); // Reincarnated
     }
     private void UpdateWill(float diff) {
         Debug.Log("Change will by -" + diff);
@@ -113,12 +126,90 @@ public class CombatManager : MonoBehaviour
 
         // Update meters:
         Debug.Log("Taking action: " + action.actionName);
-        UpdatePerformance(action.PERFORMANCE_MODIFIER);
-        UpdateWill(action.WILL_MODIFIER);
-        currCustomer.updateFrustration(action.FRUSTRATION_MODIFIER);
+        UpdateMetersWithEffects(action);
+
+        // Decrease remaining turn count and increment active effects
+        remainingTurns--;
+        Debug.Log("Turns remaining: " + remainingTurns);
+        remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        AddNewEffects(action.effect, action.turnsOfEffect);
 
         // Move current customer if needed:
-        switch (action.movement) {
+        MoveCustomer(action.movement);
+
+        // Check end shift state for turns:
+        if (remainingTurns == 0) EndShift();
+    }
+
+    // Add any new effects from current action and increment tracked effects
+    private void AddNewEffects(ActionEffect effect, int turns) {
+        // check if current action has no effect
+        if (effect == null) return;
+        // Check for effects that aren't displayed:
+        if (effect.type == EffectType.ADD_TURNS) {
+            remainingTurns += turns;
+        }
+        // add to active/displayed buffs/debuffs
+        if (activeEffects.ContainsKey(effect.type)) {
+            Debug.Log("Effect already active, add to stack");
+            UIEffectController currUIEffect = activeEffects[effect.type].GetComponent<UIEffectController>();
+            currUIEffect.UpdateTurns(turns);
+            activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + currUIEffect.FetchTurns());
+        } else {
+            // TODO: clean up this system this is ugly
+            Debug.Log("Add new effect");
+            GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
+            activeEffects.Add(effect.type, effectMarker);
+            effectMarker.GetComponent<UIEffectController>().AddEffect(effect, turns);
+            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + turns);
+        }
+    }
+
+    private void UpdateMetersWithEffects(Action action) {
+        // TODO: these will need editing for ones that stack, don't decay, etc
+        // TODO: add all other effect types
+        // TODO: add customer specific effects checks
+        float performaceModifier = action.PERFORMANCE_MODIFIER;
+        float frustrationModifier = action.FRUSTRATION_MODIFIER;
+        float willModifier = action.WILL_MODIFIER;
+
+        List<EffectType> effectsToRemove = new List<EffectType>();
+        foreach(var (type, effect) in activeEffects) {
+            switch (type) {
+                case EffectType.ATTENTION:
+                    Debug.Log("Multiplying performance change by 20% due to attention");
+                    performaceModifier *= 1.2f;
+                    break;
+                case EffectType.HUSTLING:
+                    // performance gains remove attention
+                    if (performaceModifier > 0) {
+                        if (activeEffects.ContainsKey(EffectType.ATTENTION)) {
+                            Debug.Log("Removing attention due to hustling");
+                            activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>().UpdateTurns(-1);
+                        }
+                    }
+                    break;
+            }
+            // Reduce stacked turns, TODO: check if effect decays with turns
+            effect.GetComponent<UIEffectController>().UpdateTurns(-1);
+            if (effect.GetComponent<UIEffectController>().FetchTurns() == 0) {
+                effectsToRemove.Add(type);
+            }
+        }
+        foreach (var e in effectsToRemove) {
+            Destroy(activeEffects[e]);
+            activeEffects.Remove(e);
+        }
+        // Update meters with after effects values
+        UpdatePerformance(performaceModifier);
+        UpdateWill(willModifier);
+        currCustomer.updateFrustration(frustrationModifier);
+    }
+
+
+    // Update front customer location in line if needed
+    private void MoveCustomer(Action.ActionMovement movement) {
+        switch (movement) {
             case Action.ActionMovement.FRONT:
                 Debug.Log("Customer remains in front");
                  break;

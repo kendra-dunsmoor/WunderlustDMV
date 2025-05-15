@@ -29,4 +29,14 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
         Debug.Log("In mouse exit");
         spawnedPopUp.SetActive(false);
     }
+
+    public void UpdateDescription(string description)
+    {
+        this.description = description;
+
+        // TODO: weird runtime bug where this is running before start and pop up doesn't exist
+        if (spawnedPopUp == null) spawnedPopUp = Instantiate(popUpBox, gameObject.transform);
+        spawnedPopUp.GetComponentInChildren<TextMeshProUGUI>().text = description;
+        spawnedPopUp.SetActive(false);
+    }
 }

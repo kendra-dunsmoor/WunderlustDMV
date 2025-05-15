@@ -10,8 +10,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public class CalendarDay
 {
-    public TextMeshProUGUI optionA;
-    public TextMeshProUGUI optionB;
-    public TextMeshProUGUI orText;
+    public GameObject optionA;
+    public GameObject optionB;
+    public GameObject orText;
     public GameObject shiftCompleteMarker;
 }

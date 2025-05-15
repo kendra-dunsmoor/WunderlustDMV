@@ -5,7 +5,7 @@ using UnityEngine;
 * ~~~~~~~~~~~~~
 * Information for player status/inventory/abilities
 */
-public class PlayerState : MonoBehaviour
+public class PlayerState
 {
     /* Office Bucks:
     Only valid within DMV. Purchase Consumables and Supplies

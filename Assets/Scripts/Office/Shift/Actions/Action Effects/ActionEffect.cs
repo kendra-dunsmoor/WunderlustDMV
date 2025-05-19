@@ -8,10 +8,14 @@ public class ActionEffect : ScriptableObject
         ATTENTION,
         CONFUSION,
         HUSTLING,
-        ADD_TURNS
+        ADD_TURNS,
+        DRAINED,
+        CAFFIENATED
     };
     public EffectType type;
     public Sprite effectSprite;
     [TextArea(3,10)]
     public string effectDescription;
+    public bool shouldStack;
+    public bool shouldDecay;
 }

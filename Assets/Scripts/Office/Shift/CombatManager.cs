@@ -20,14 +20,15 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject customer; // temp will need to have data for diff enemy types
     [SerializeField] private GameObject paperwork; // temp object placeholder
     [SerializeField] private GameObject currentEffectPrefab;
+    [SerializeField] private GameObject customerIconPrefab;
 
     // UI objects/meters
     [SerializeField] private Slider performanceMeter;
     [SerializeField] private Slider willMeter;
     [SerializeField] private TextMeshProUGUI customerGoalText;
     [SerializeField] private TextMeshProUGUI remainingTurnsText;
-    [SerializeField] private GameObject[] customerIconQueue;
     [SerializeField] private Transform currentEffectsPanel;
+    [SerializeField] private Transform customerQueuePanel;
 
     // Spawn Points
     [SerializeField] private Transform spawnPoint;
@@ -36,18 +37,21 @@ public class CombatManager : MonoBehaviour
 
     // Combat trackers
     private Queue<Customer> customersInLine = new Queue<Customer>();
+    private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
     private Customer currCustomer;
-    private int CUSTOMER_GOAL = 3;
-    private float performanceLevel = 25; // temp range 0 to 50
+    private int CUSTOMER_GOAL = 5;
+    private float performanceLevel = 50; // temp range 0 to 50
     private float willLevel = 50; // temp value
     private int remainingTurns = 10; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
 
     void Start()
     {
-        performanceMeter.value = 25f;
+        performanceMeter.value = 50f;
         willMeter.value = 50f;
         gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager != null) remainingTurns = 9 + gameManager.FetchCurrentCalendarDay(); // temp
+        remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         InitializeCustomerQueue();
     }
 
@@ -77,8 +81,10 @@ public class CombatManager : MonoBehaviour
         if (customersInLine.Count == 0) EndShift();
         else {
             currCustomer = customersInLine.Dequeue();
+            Debug.Log("Customer dequeued");
             currCustomer.SendToFront(frontOfLinePoint);
-            customerIconQueue[customersInLine.Count].SetActive(false); // this won't work if more customers than queue spots
+            Destroy(customerIconQueue.Dequeue());
+            Debug.Log("Destroy queue icon");
         }
     }
     
@@ -94,11 +100,12 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Initialize customer queue: " + CUSTOMER_GOAL);
         for (int i = 0; i < CUSTOMER_GOAL; i++) {
             customersInLine.Enqueue(Instantiate(customer, spawnPoint).GetComponent<Customer>());
-            customerIconQueue[i].SetActive(true);
+            customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
         }
         currCustomer = customersInLine.Dequeue();
-        customerIconQueue[CUSTOMER_GOAL - 1].SetActive(false);
+        Destroy(customerIconQueue.Dequeue());
         currCustomer.SendToFront(frontOfLinePoint);
+        customerGoalText.text = "Customers remaining: " + customersInLine.Count;
     }
 
     private void UpdatePerformance(float diff) {
@@ -107,8 +114,14 @@ public class CombatManager : MonoBehaviour
         // TODO: check if in range for meter
         performanceMeter.value = performanceLevel;
         Debug.Log("Performance" + performanceLevel);
-        if (performanceLevel <= 0) GameOver(); // Fired
-        if (performanceLevel >= 50) GameOver(); // Reincarnated
+        if (performanceLevel <= 0) {
+            GameOver(); // Fired
+            Debug.Log("Game Over: Fired for bad performance!");
+        }
+        if (performanceLevel >= 100) {
+            GameOver(); // Reincarnated
+            Debug.Log("Game Over: Reincarnated for good performance!");
+        }
     }
     private void UpdateWill(float diff) {
         Debug.Log("Change will by -" + diff);
@@ -151,10 +164,14 @@ public class CombatManager : MonoBehaviour
         }
         // add to active/displayed buffs/debuffs
         if (activeEffects.ContainsKey(effect.type)) {
-            Debug.Log("Effect already active, add to stack");
             UIEffectController currUIEffect = activeEffects[effect.type].GetComponent<UIEffectController>();
-            currUIEffect.UpdateTurns(turns);
-            activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + currUIEffect.FetchTurns());
+            if (effect.shouldStack) {
+                Debug.Log("Effect already active, add to stack");
+                currUIEffect.UpdateTurns(turns);
+                activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + currUIEffect.FetchTurns());
+            } else {
+                Debug.Log("Effect does not stack and is already active, ignoring");
+            }
         } else {
             // TODO: clean up this system this is ugly
             Debug.Log("Add new effect");
@@ -173,6 +190,7 @@ public class CombatManager : MonoBehaviour
         float frustrationModifier = action.FRUSTRATION_MODIFIER;
         float willModifier = action.WILL_MODIFIER;
 
+        // Check active effects:
         List<EffectType> effectsToRemove = new List<EffectType>();
         foreach(var (type, effect) in activeEffects) {
             switch (type) {
@@ -183,24 +201,42 @@ public class CombatManager : MonoBehaviour
                 case EffectType.HUSTLING:
                     // performance gains remove attention
                     if (performaceModifier > 0) {
+                        Debug.Log("Positive performance modifier while hustling effect active");
                         if (activeEffects.ContainsKey(EffectType.ATTENTION)) {
                             Debug.Log("Removing attention due to hustling");
-                            activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>().UpdateTurns(-1);
+                            UIEffectController attentionEffect = activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>();
+                            attentionEffect.UpdateTurns(-1);
+                            activeEffects[EffectType.ATTENTION].GetComponent<MouseOverDescription>().UpdateDescription(
+                                attentionEffect.effect.effectDescription + "Turns: " + attentionEffect.FetchTurns());
+                            if (attentionEffect.FetchTurns() == 0) {
+                                effectsToRemove.Add(EffectType.ATTENTION);
+                            }
                         }
                     }
                     break;
+                case EffectType.DRAINED:
+                    // lose 1 will
+                    willModifier -= 1;
+                    break;
+                case EffectType.CAFFIENATED:
+                    // gain 2 will
+                    willModifier += 2;
+                    break;
             }
             // Reduce stacked turns, TODO: check if effect decays with turns
-            effect.GetComponent<UIEffectController>().UpdateTurns(-1);
-            if (effect.GetComponent<UIEffectController>().FetchTurns() == 0) {
+            UIEffectController effectController = effect.GetComponent<UIEffectController>();
+            if (effectController.effect.shouldDecay) effectController.UpdateTurns(-1);
+            if (effectController.FetchTurns() == 0) {
                 effectsToRemove.Add(type);
             }
         }
         foreach (var e in effectsToRemove) {
+            Debug.Log("Remove effect");
             Destroy(activeEffects[e]);
             activeEffects.Remove(e);
         }
-        // Update meters with after effects values
+        
+        // Update meters with after effects and artifacts values
         UpdatePerformance(performaceModifier);
         UpdateWill(willModifier);
         currCustomer.updateFrustration(frustrationModifier);
@@ -212,7 +248,7 @@ public class CombatManager : MonoBehaviour
         switch (movement) {
             case Action.ActionMovement.FRONT:
                 Debug.Log("Customer remains in front");
-                 break;
+                break;
             case Action.ActionMovement.AWAY:
                 Debug.Log("Customer is removed from queue");
                 currCustomer.SendAway(true, offScreenPoint); // TODO: remove green accepted true thing
@@ -223,6 +259,7 @@ public class CombatManager : MonoBehaviour
                 currCustomer.SendToBack(spawnPoint);
                 // TODO: Need like a delay here if it is the only customer left in line if we want them to move back first?
                 customersInLine.Enqueue(currCustomer);
+                customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
                 NextCustomer();
                 break;
         } 

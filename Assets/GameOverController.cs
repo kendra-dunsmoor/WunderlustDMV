@@ -13,6 +13,6 @@ public class GameOverController : MonoBehaviour
     public void Restart()
     {
         if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(1); // just go to apartment for now
     }
 }

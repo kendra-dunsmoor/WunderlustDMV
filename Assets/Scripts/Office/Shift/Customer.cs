@@ -4,8 +4,10 @@ using UnityEngine.UI;
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float maxFrustration;
     private float frustrationLevel;
-    [SerializeField] private GameObject frustrationMeter;
+    [SerializeField] private FloatingHealthBar frustrationMeter;
     [SerializeField] private Sprite acceptedSprite;
     [SerializeField] private Sprite rejectedSprite;
     [SerializeField] private Sprite iconSprite;
@@ -14,7 +16,7 @@ public class Customer : MonoBehaviour
     private bool movingAway;
     private bool movingBack;
     private Transform goalPoint;
-    [SerializeField] private float moveSpeed;
+
 
     // TODO: add active effects tracking
 
@@ -22,7 +24,6 @@ public class Customer : MonoBehaviour
     void Start()
     {
         frustrationLevel = 0;
-        moveSpeed = 5;
     }
 
     // Update is called once per frame
@@ -61,12 +62,14 @@ public class Customer : MonoBehaviour
 
     public void SendToFront(Transform point)
     {
+        Debug.Log("Sending customer to front");
         movingToFront = true;
         goalPoint = point;
     }
 
     public void SendAway(bool accepted, Transform point)
     {
+        Debug.Log("Sending customer away");
         movingAway = true;
         goalPoint = point;
         // toogle paperwork visibility false
@@ -83,6 +86,7 @@ public class Customer : MonoBehaviour
 
     public void SendToBack(Transform point)
     {
+        Debug.Log("Sending customer to back");
         movingBack = true;
         goalPoint = point;
         // toogle paperwork visibility false
@@ -92,5 +96,6 @@ public class Customer : MonoBehaviour
     public void updateFrustration(float change) {
         frustrationLevel += change;
         Debug.Log("Customer frustration level updated to: " + frustrationLevel);
+        frustrationMeter.UpdateBar(frustrationLevel, maxFrustration);
     }
 }

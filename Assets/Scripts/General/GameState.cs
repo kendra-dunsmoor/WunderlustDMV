@@ -8,7 +8,8 @@ using UnityEngine;
 */
 public class GameState
 {
-    private int currentWeek = 0;
+    private float performance = 50f;
+    private float will = 50f;
     private int currentWeekday = 0;
     private List<string> runPath = new List<string>();
 
@@ -27,8 +28,10 @@ public class GameState
     }
 
     // Called when combat for day is completed
-    public void CompleteDay() {
+    public void CompleteDay(float performance, float will) {
         currentWeekday++;
+        this.performance = performance;
+        this.will = will;
     }
 
     public void AddRunChoice(string choice) {
@@ -37,5 +40,13 @@ public class GameState
     }
     public List<string> FetchRunPath() {
         return runPath;
+    }
+
+    public float GetPerformance() {
+        return performance;
+    }
+
+    public float GetWill() {
+        return will;
     }
 }

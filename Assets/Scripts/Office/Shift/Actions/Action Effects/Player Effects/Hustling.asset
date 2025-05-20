@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
-  m_Name: Hustle
+  m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
+  m_Name: Hustling
   m_EditorClassIdentifier: 
-  actionName: Hustle
-  FRUSTRATION_MODIFIER: -10
-  WILL_MODIFIER: 10
-  PERFORMANCE_MODIFIER: 5
   type: 1
-  movement: 0
-  effect: {fileID: 11400000, guid: 4460588d827a64ea8be435880ec67bf2, type: 2}
-  turnsOfEffect: 3
+  target: 0
+  effectSprite: {fileID: -1303584338656955783, guid: 722cde0e6403544479f1d180d08f8e71, type: 3}
+  effectDescription: Performance gains also remove 1 "Attention"
+  shouldStack: 1
+  shouldDecay: 1

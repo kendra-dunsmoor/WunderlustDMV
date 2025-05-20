@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using static ActionEffect;
+using System.ComponentModel.Design;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
@@ -11,14 +14,17 @@ public class Customer : MonoBehaviour
     [SerializeField] private Sprite acceptedSprite;
     [SerializeField] private Sprite rejectedSprite;
     [SerializeField] private Sprite iconSprite;
+    // Effects
+    [SerializeField] private GameObject currentEffectPrefab;
+    [SerializeField] private Transform currentEffectsPanel;
+    // Serialized because some enemy types could start with effects:
+    [SerializeField] private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
+    [SerializeField] private ActionEffect irateEffect;
     // temp:
     private bool movingToFront;
     private bool movingAway;
     private bool movingBack;
     private Transform goalPoint;
-
-
-    // TODO: add active effects tracking
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -93,9 +99,26 @@ public class Customer : MonoBehaviour
         GameObject.FindGameObjectWithTag("Paperwork").SetActive(false);
     }
 
-    public void updateFrustration(float change) {
+    public void UpdateFrustration(float change) {
         frustrationLevel += change;
         Debug.Log("Customer frustration level updated to: " + frustrationLevel);
         frustrationMeter.UpdateBar(frustrationLevel, maxFrustration);
+        if (frustrationLevel >= maxFrustration) {
+            // Check if customer is already irate:
+            if (activeEffects.ContainsKey(EffectType.IRATE)) return;
+            // else add effect: 
+            GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
+            effectMarker.GetComponent<UIEffectController>().AddEffect(irateEffect, 1);
+            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(irateEffect.effectDescription);
+            activeEffects.Add(EffectType.IRATE, effectMarker);
+        }
+    }
+
+    public void AddCondition(EffectType effect) {
+        // TODO: add effect
+    }
+
+    public Dictionary<EffectType, GameObject> GetActiveEffects() {
+        return activeEffects;
     }
 }

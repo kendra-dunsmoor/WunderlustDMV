@@ -15,7 +15,7 @@ public class CombatManager : MonoBehaviour
     private GameManager gameManager;
 
     // Prefabs
-    [SerializeField] private GameObject nextShiftCalendar;
+    [SerializeField] private GameObject combatRewardsScreen;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject customer; // temp will need to have data for diff enemy types
     [SerializeField] private GameObject paperwork; // temp object placeholder
@@ -40,17 +40,25 @@ public class CombatManager : MonoBehaviour
     private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
     private Customer currCustomer;
     private int CUSTOMER_GOAL = 5;
-    private float performanceLevel = 50; // temp range 0 to 50
-    private float willLevel = 50; // temp value
+    private float performanceLevel; // temp range 0 to 50
+    private float willLevel; // temp value
     private int remainingTurns = 10; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
+    [SerializeField] private ActionEffect attentionEffect;
 
     void Start()
     {
-        performanceMeter.value = 50f;
-        willMeter.value = 50f;
+        // temp initialization for quick testing when game manager is null:
+        performanceLevel = 50f;
+        willLevel = 50f;
         gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager != null) remainingTurns = 9 + gameManager.FetchCurrentCalendarDay(); // temp
+        if (gameManager != null) {
+            remainingTurns = 9 + gameManager.FetchCurrentCalendarDay(); // temp
+            performanceLevel = gameManager.FetchPerformance();
+            willLevel = gameManager.FetchWill();
+        }
+        performanceMeter.value = performanceLevel;
+        willMeter.value = willLevel;
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         InitializeCustomerQueue();
     }
@@ -63,8 +71,9 @@ public class CombatManager : MonoBehaviour
     private void EndShift()
     {
         // Pop up end screen
-        gameManager.ShiftCompleted();
-        Instantiate(nextShiftCalendar, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        gameManager.ShiftCompleted(performanceLevel, willLevel);
+        // Get combat rewards
+        Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     private void GameOver()
@@ -142,6 +151,7 @@ public class CombatManager : MonoBehaviour
         UpdateMetersWithEffects(action);
 
         // Decrease remaining turn count and increment active effects
+        Debug.Log("Decrement turns");
         remainingTurns--;
         Debug.Log("Turns remaining: " + remainingTurns);
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
@@ -157,9 +167,15 @@ public class CombatManager : MonoBehaviour
     // Add any new effects from current action and increment tracked effects
     private void AddNewEffects(ActionEffect effect, int turns) {
         // check if current action has no effect
-        if (effect == null) return;
+        if (effect == null) {
+            Debug.Log("Effect is null");
+            return;
+        }
         // Check for effects that aren't displayed:
         if (effect.type == EffectType.ADD_TURNS) {
+            Debug.Log("Effect type: " + effect.type);
+            Debug.Log("Effect: " + effect);
+            Debug.Log("Effect type: " + effect.type);
             remainingTurns += turns;
         }
         // add to active/displayed buffs/debuffs
@@ -182,16 +198,15 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    // TODO: this is a nasty large function that will be cleaned up
     private void UpdateMetersWithEffects(Action action) {
-        // TODO: these will need editing for ones that stack, don't decay, etc
-        // TODO: add all other effect types
-        // TODO: add customer specific effects checks
         float performaceModifier = action.PERFORMANCE_MODIFIER;
         float frustrationModifier = action.FRUSTRATION_MODIFIER;
-        float willModifier = action.WILL_MODIFIER;
+        float willModifier = action.WILL_MODIFIER;        
 
         // Check active effects:
         List<EffectType> effectsToRemove = new List<EffectType>();
+        // Check player effects:
         foreach(var (type, effect) in activeEffects) {
             switch (type) {
                 case EffectType.ATTENTION:
@@ -202,16 +217,7 @@ public class CombatManager : MonoBehaviour
                     // performance gains remove attention
                     if (performaceModifier > 0) {
                         Debug.Log("Positive performance modifier while hustling effect active");
-                        if (activeEffects.ContainsKey(EffectType.ATTENTION)) {
-                            Debug.Log("Removing attention due to hustling");
-                            UIEffectController attentionEffect = activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>();
-                            attentionEffect.UpdateTurns(-1);
-                            activeEffects[EffectType.ATTENTION].GetComponent<MouseOverDescription>().UpdateDescription(
-                                attentionEffect.effect.effectDescription + "Turns: " + attentionEffect.FetchTurns());
-                            if (attentionEffect.FetchTurns() == 0) {
-                                effectsToRemove.Add(EffectType.ATTENTION);
-                            }
-                        }
+                        RemoveAttention(1);
                     }
                     break;
                 case EffectType.DRAINED:
@@ -230,6 +236,42 @@ public class CombatManager : MonoBehaviour
                 effectsToRemove.Add(type);
             }
         }
+        // Check curr customer effects:
+        Dictionary<EffectType, GameObject> customerEffects = currCustomer.GetActiveEffects();
+        foreach(var (type, effect) in customerEffects) {
+            switch (type) {
+                case EffectType.CALMED:
+                    frustrationModifier -= 5;
+                    break;
+                case EffectType.CONFUSED:
+                    frustrationModifier += 5;
+                    break;
+                case EffectType.IRATE:
+                    AddNewEffects(attentionEffect, 2);
+                    break;
+                case EffectType.INCOHERENT:
+                    // Removes 5 "Attention" when Escalated
+                    if (action.actionName == "Escalate") {
+                        RemoveAttention(5);
+                    }
+                    break;
+                case EffectType.SHORTFUSE:
+                    frustrationModifier *= 2;
+                    break;
+                case EffectType.MELLOW:
+                    frustrationModifier /= 2;
+                    break;
+                case EffectType.ELATED:
+                    performaceModifier += 5;
+                    break;
+            }
+                    // Reduce stacked turns, TODO: check if effect decays with turns
+            UIEffectController effectController = effect.GetComponent<UIEffectController>();
+            if (effectController.effect.shouldDecay) effectController.UpdateTurns(-1);
+            if (effectController.FetchTurns() == 0) {
+                effectsToRemove.Add(type);
+            }
+        }
         foreach (var e in effectsToRemove) {
             Debug.Log("Remove effect");
             Destroy(activeEffects[e]);
@@ -239,7 +281,7 @@ public class CombatManager : MonoBehaviour
         // Update meters with after effects and artifacts values
         UpdatePerformance(performaceModifier);
         UpdateWill(willModifier);
-        currCustomer.updateFrustration(frustrationModifier);
+        currCustomer.UpdateFrustration(frustrationModifier);
     }
 
 
@@ -263,5 +305,20 @@ public class CombatManager : MonoBehaviour
                 NextCustomer();
                 break;
         } 
+    }
+
+    private void RemoveAttention(int amount) {
+        if (activeEffects.ContainsKey(EffectType.ATTENTION)) {
+            Debug.Log("Removing attention");
+            UIEffectController attentionEffect = activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>();
+            attentionEffect.UpdateTurns(-amount);
+            activeEffects[EffectType.ATTENTION].GetComponent<MouseOverDescription>().UpdateDescription(
+            attentionEffect.effect.effectDescription + "Turns: " + attentionEffect.FetchTurns());
+            if (attentionEffect.FetchTurns() == 0) {
+                Debug.Log("Remove effect");
+                Destroy(activeEffects[EffectType.ATTENTION]);
+                activeEffects.Remove(EffectType.ATTENTION);
+            }
+        }
     }
 }

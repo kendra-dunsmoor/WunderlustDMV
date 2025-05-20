@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
-  m_Name: Hustling
+  m_Name: Incoherent
   m_EditorClassIdentifier: 
-  type: 2
+  type: 8
+  target: 1
   effectSprite: {fileID: -1303584338656955783, guid: 722cde0e6403544479f1d180d08f8e71, type: 3}
-  effectDescription: Performance gains also remove 1 "Attention"
-  shouldStack: 1
-  shouldDecay: 1
+  effectDescription: Removes 5 "Attention" when Escalated
+  shouldStack: 0
+  shouldDecay: 0

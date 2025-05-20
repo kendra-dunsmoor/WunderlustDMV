@@ -14,7 +14,7 @@ public class PlayerState
 	Spent at Shop.
     tems and Unspent are lost when Fired or Reincarnated.
     */
-    private int officeBucks;
+    private int officeBucks = 0;
     /* Soul Credits:
     Real Money. Rent / Certifications / Personal Life
 	Rewarded by Reviews and Rare Events.
@@ -35,4 +35,12 @@ public class PlayerState
     All unspent is lost when Fired or Reincarnated.
     */
     private Action[] actionLoadout;
+
+    public void UpdateOfficeBucks(int amount) {
+        officeBucks += amount;
+    }
+
+    public int GetOfficeBucks() {
+        return officeBucks;
+    }
 }

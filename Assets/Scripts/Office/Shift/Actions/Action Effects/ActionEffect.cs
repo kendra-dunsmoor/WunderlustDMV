@@ -6,13 +6,24 @@ public class ActionEffect : ScriptableObject
 {
     public enum EffectType {
         ATTENTION,
-        CONFUSION,
         HUSTLING,
         ADD_TURNS,
         DRAINED,
-        CAFFIENATED
+        CAFFIENATED,
+        IRATE,
+        CONFUSED,
+        CALMED,
+        INCOHERENT,
+        SHORTFUSE,
+        MELLOW,
+        ELATED
     };
     public EffectType type;
+    public enum TargetType {
+        PLAYER,
+        ENEMY
+    };
+    public TargetType target; 
     public Sprite effectSprite;
     [TextArea(3,10)]
     public string effectDescription;

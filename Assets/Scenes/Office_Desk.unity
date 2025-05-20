@@ -4984,7 +4984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7594fe7447137468982028a0035c55db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextShiftCalendar: {fileID: 530363540952408881, guid: 983ceb4219df94b53929f78470eed70b, type: 3}
+  combatRewardsScreen: {fileID: 530363540952408881, guid: 49fe5abc5059849f1b36a8d0aefd7228, type: 3}
   gameOverMenu: {fileID: 530363540952408881, guid: 6a77c769a4fa744868f25b963131ae5f, type: 3}
   customer: {fileID: 5122412275413886723, guid: 8e42d207b7c06414885e0052f7e9d650, type: 3}
   paperwork: {fileID: 114301451}
@@ -4999,6 +4999,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 409806353}
   offScreenPoint: {fileID: 1821154105}
   frontOfLinePoint: {fileID: 780199051}
+  attentionEffect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
 --- !u!4 &1958720741
 Transform:
   m_ObjectHideFlags: 0

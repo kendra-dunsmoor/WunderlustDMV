@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
         return "Event";
     }
 
-    public void ShiftCompleted() {
+    public void ShiftCompleted(float performance, float will) {
         // TODO: update rewards for player inventory and game state
-        gameStatus.CompleteDay();
+        gameStatus.CompleteDay(performance, will);
     }
 
     public void StoreRunChoice(string choice) {
@@ -65,5 +65,18 @@ public class GameManager : MonoBehaviour
 
     public void RestartRun() {
         //TODO
+    }
+
+    public void UpdateOfficeBucks(int amount) {
+        Debug.Log("Adding office bucks + " + amount);
+        playerStatus.UpdateOfficeBucks(amount);
+    }
+
+    public float FetchWill() {
+        return gameStatus.GetWill();
+    }
+
+    public float FetchPerformance() {
+        return gameStatus.GetPerformance();
     }
 }

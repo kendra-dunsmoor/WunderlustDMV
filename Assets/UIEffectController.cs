@@ -10,7 +10,7 @@ public class UIEffectController : MonoBehaviour
     public void AddEffect(ActionEffect effect, int turns) {
         this.effect = effect;
         this.turns = turns;
-        displayedSprite.sprite = effect.effectSprite;
+        if (effect.effectSprite != null) displayedSprite.sprite = effect.effectSprite;
     }
     public void UpdateTurns(int diff) {
         turns += diff;

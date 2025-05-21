@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -36,11 +37,29 @@ public class PlayerState
     */
     private Action[] actionLoadout;
 
+    private List<Certificate> activeCertificates = new List<Certificate>();
+
     public void UpdateOfficeBucks(int amount) {
         officeBucks += amount;
     }
 
     public int GetOfficeBucks() {
         return officeBucks;
+    }
+
+    public void UpdateSoulCredits(int amount) {
+        soulCredits += amount;
+    }
+
+    public int GetSoulCredits() {
+        return soulCredits;
+    }
+
+    public void AddCertificate(Certificate cert) {
+        activeCertificates.Add(cert);
+    }
+
+    public List<Certificate> GetCertificates() {
+            return activeCertificates;
     }
 }

@@ -79,4 +79,20 @@ public class GameManager : MonoBehaviour
     public float FetchPerformance() {
         return gameStatus.GetPerformance();
     }
+
+    public int FetchSoulCredits() {
+        return playerStatus.GetSoulCredits();
+    }
+
+    public void UpdateSoulCredits(int change) {
+        playerStatus.UpdateSoulCredits(change);
+    }
+
+    public List<Certificate> FetchCertificates() {
+        return playerStatus.GetCertificates();
+    }
+
+    public void AddCertificate(Certificate cert) {
+        playerStatus.AddCertificate(cert);
+    }
 }

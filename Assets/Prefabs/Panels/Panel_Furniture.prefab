@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2103904729648309739}
   - component: {fileID: -2617061936898695040}
   m_Layer: 5
-  m_Name: Panel_Computer
+  m_Name: Panel_Furniture
   m_TagString: Panel_Computer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c0cb34ea8ee4342b5e27d032ce0489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureScreen: {fileID: 530363540952408881, guid: 1ea6a8b392dab4b86a30ff37aecfb32a, type: 3}
-  certificationsScreen: {fileID: 530363540952408881, guid: 1f35f97efb13b497793c233e395ed3da, type: 3}
+  furnitureScreen: {fileID: 0}
+  certificationsScreen: {fileID: 0}
+  upgradesScreen: {fileID: 0}
 --- !u!1 &1522326334683785372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,9 +1090,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 530363540952408881}
+      - m_Target: {fileID: -2617061936898695040}
         m_TargetAssemblyTypeName: ComputerController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: CloseComputer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

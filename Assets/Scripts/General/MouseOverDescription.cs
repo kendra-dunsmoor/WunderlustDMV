@@ -20,13 +20,11 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("In mouse over");
         spawnedPopUp.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("In mouse exit");
         spawnedPopUp.SetActive(false);
     }
 

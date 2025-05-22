@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static ActionEffect;
@@ -14,6 +15,7 @@ public class CombatManager : MonoBehaviour
     private AudioManager audioManager;
     private GameManager gameManager;
 
+    [Header("------------- Prefabs -------------")]
     // Prefabs
     [SerializeField] private GameObject combatRewardsScreen;
     [SerializeField] private GameObject gameOverMenu;
@@ -21,8 +23,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject paperwork; // temp object placeholder
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private GameObject customerIconPrefab;
+    [SerializeField] private ActionEffect attentionEffect;
 
-    // UI objects/meters
+    [Header("------------- UI Meters -------------")]
     [SerializeField] private Slider performanceMeter;
     [SerializeField] private Slider willMeter;
     [SerializeField] private TextMeshProUGUI customerGoalText;
@@ -30,30 +33,31 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Transform currentEffectsPanel;
     [SerializeField] private Transform customerQueuePanel;
 
-    // Spawn Points
+    [Header("------------- Spawn Points -------------")]
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform offScreenPoint;
     [SerializeField] private Transform frontOfLinePoint;
 
-    // Combat trackers
+    [Header("------------- Spawn Points -------------")]
     private Queue<Customer> customersInLine = new Queue<Customer>();
     private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
     private Customer currCustomer;
-    private int CUSTOMER_GOAL = 5;
-    private float performanceLevel; // temp range 0 to 50
-    private float willLevel; // temp value
-    private int remainingTurns = 10; // temp value
+    [Header("------------- Combat Values -------------")]
+    [SerializeField, Tooltip("Customer goal set at beginning of combat scene")] private int CUSTOMER_GOAL;
+    [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
+    [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
+    [SerializeField, Tooltip("Remaining turns in combat, UI might not update if this is changed until action taken")] private int remainingTurns; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
-    [SerializeField] private ActionEffect attentionEffect;
 
     void Start()
     {
         // temp initialization for quick testing when game manager is null:
-        performanceLevel = 50f;
-        willLevel = 50f;
+        if (performanceLevel == 0) performanceLevel = 50f;
+        if (willLevel == 0) willLevel = 50f;
+        if (CUSTOMER_GOAL == 0) CUSTOMER_GOAL = 10;
         gameManager = FindFirstObjectByType<GameManager>();
         if (gameManager != null) {
-            remainingTurns = 9 + gameManager.FetchCurrentCalendarDay(); // temp
+            if (remainingTurns == 0) remainingTurns = CUSTOMER_GOAL + gameManager.FetchCurrentCalendarDay() - 1; // temp
             performanceLevel = gameManager.FetchPerformance();
             willLevel = gameManager.FetchWill();
         }
@@ -61,11 +65,6 @@ public class CombatManager : MonoBehaviour
         willMeter.value = willLevel;
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         InitializeCustomerQueue();
-    }
-
-    void Update()
-    {
-        
     }
 
     private void EndShift()

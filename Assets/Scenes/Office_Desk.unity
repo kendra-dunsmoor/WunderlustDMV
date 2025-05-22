@@ -4990,6 +4990,7 @@ MonoBehaviour:
   paperwork: {fileID: 114301451}
   currentEffectPrefab: {fileID: 8950778992821901451, guid: c8e27bef23a2a4a80a5b0aba48a3dfab, type: 3}
   customerIconPrefab: {fileID: 1217931479451259783, guid: 847439a6485eb405389d9209cdecec1b, type: 3}
+  attentionEffect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
   performanceMeter: {fileID: 286162194}
   willMeter: {fileID: 1158089938}
   customerGoalText: {fileID: 1246495424}
@@ -4999,7 +5000,10 @@ MonoBehaviour:
   spawnPoint: {fileID: 409806353}
   offScreenPoint: {fileID: 1821154105}
   frontOfLinePoint: {fileID: 780199051}
-  attentionEffect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
+  CUSTOMER_GOAL: 5
+  performanceLevel: 50
+  willLevel: 50
+  remainingTurns: 10
 --- !u!4 &1958720741
 Transform:
   m_ObjectHideFlags: 0

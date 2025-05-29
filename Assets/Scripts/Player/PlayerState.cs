@@ -24,10 +24,6 @@ public class PlayerState
     */
     private int soulCredits;
 
-    private Artifact[] artifacts;
-
-    // TODO: consumables
-    // TODO: certifications
     // TODO: specializations
 
     /* TODO: Social Currency with Coworkers
@@ -39,6 +35,7 @@ public class PlayerState
 
     private List<Certificate> activeCertificates = new List<Certificate>();
     private List<string> itemInventory = new List<string>();
+    private List<string> artifacts = new List<string>();
 
     public void UpdateOfficeBucks(int amount) {
         officeBucks += amount;
@@ -73,5 +70,13 @@ public class PlayerState
 
     public List<string> GetInventory() {
             return itemInventory;
+    }
+
+    public List<string> GetArtifacts() {
+            return artifacts;
+    }
+
+    public void AddArtifact(string itemId) {
+        artifacts.Add(itemId);
     }
 }

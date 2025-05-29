@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemInventory : MonoBehaviour
 {
-    [SerializeField] List<Item> items;
+    [SerializeField] public List<Item> items;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
     public event Action<Item> OnItemClickedEvent;

@@ -25,7 +25,7 @@ public class VendingMachineController : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
 
         // Fill machine with items
-        List<Item> itemsForSale = gameManager.FetchRandomItems(3);
+        List<Item> itemsForSale = gameManager.FetchRandomItems(4);
         foreach (Item item in itemsForSale) {
             GameObject itemUI = Instantiate(itemPrefab, itemsGridParent);
             itemUI.GetComponent<ItemUIController>().AddItem(item);
@@ -36,7 +36,10 @@ public class VendingMachineController : MonoBehaviour
     {
         Item item = itemUI.item;
         if (gameManager.FetchOfficeBucks() >= item.price) {
-            gameManager.AddToInventory(item.ID);
+            if (item is UsableItem)
+                gameManager.AddToInventory(item.ID);
+            else
+                gameManager.AddArtifact(item.ID);
             gameManager.UpdateOfficeBucks(-item.price);
             // itemUI.MarkAsPurchased();
             // TODO: need to get reference to the original UI, not the popup image

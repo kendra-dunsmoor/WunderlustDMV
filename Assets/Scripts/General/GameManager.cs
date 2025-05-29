@@ -124,6 +124,14 @@ public class GameManager : MonoBehaviour
         playerStatus.RemoveItem(id);
     }
 
+    public List<string> FetchArtifacts() {
+        return playerStatus.GetArtifacts();
+    }
+
+    public void AddArtifact(string id) {
+        playerStatus.AddArtifact(id);
+    }
+
     public Item GetItemFromDB(string id) {
         return itemDatabase.GetItemCopy(id);
     }

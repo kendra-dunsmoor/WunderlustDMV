@@ -14,6 +14,7 @@ public class CombatManager : MonoBehaviour
 {
     private AudioManager audioManager;
     private GameManager gameManager;
+    private InventoryManager inventoryManager;
 
     [Header("------------- Prefabs -------------")]
     // Prefabs
@@ -56,6 +57,7 @@ public class CombatManager : MonoBehaviour
         if (willLevel == 0) willLevel = 50f;
         if (CUSTOMER_GOAL == 0) CUSTOMER_GOAL = 10;
         gameManager = FindFirstObjectByType<GameManager>();
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
         if (gameManager != null) {
             if (remainingTurns == 0) remainingTurns = CUSTOMER_GOAL + gameManager.FetchCurrentCalendarDay() - 1; // temp
             performanceLevel = gameManager.FetchPerformance();
@@ -69,6 +71,8 @@ public class CombatManager : MonoBehaviour
 
     private void EndShift()
     {
+        // End of shift artifact effects
+        inventoryManager.EndShiftArtifacts();
         // Pop up end screen
         gameManager.ShiftCompleted(performanceLevel, willLevel);
         // Get combat rewards
@@ -116,7 +120,7 @@ public class CombatManager : MonoBehaviour
         customerGoalText.text = "Customers remaining: " + customersInLine.Count;
     }
 
-    private void UpdatePerformance(float diff) {
+    public void UpdatePerformance(float diff) {
         Debug.Log("Change performance by " + diff);
         performanceLevel += diff;
         // TODO: check if in range for meter
@@ -138,6 +142,11 @@ public class CombatManager : MonoBehaviour
         willMeter.value = willLevel;
     }
 
+    public void UpdateFrustration(float diff) {
+        Debug.Log("Change curr customer frustration by " + diff);
+        currCustomer.UpdateFrustration(diff);
+    }
+
     public void TakeAction (Action action) {
         // Check if sufficient will available for action:
         if (willLevel - action.WILL_MODIFIER < 0) {
@@ -154,6 +163,7 @@ public class CombatManager : MonoBehaviour
         remainingTurns--;
         Debug.Log("Turns remaining: " + remainingTurns);
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        inventoryManager.IncrementArtifacts();
         AddNewEffects(action.effect, action.turnsOfEffect);
 
         // Move current customer if needed:
@@ -238,6 +248,10 @@ public class CombatManager : MonoBehaviour
         // Check curr customer effects:
         Dictionary<EffectType, GameObject> customerEffects = currCustomer.GetActiveEffects();
         foreach(var (type, effect) in customerEffects) {
+            // General modifiers:
+            // TODO: generalize modiferes/effects list for these like items are, can add "isPercent" check too
+
+            // Any special cases that need to be hard coded for now:
             switch (type) {
                 case EffectType.CALMED:
                     frustrationModifier -= 5;
@@ -280,7 +294,7 @@ public class CombatManager : MonoBehaviour
         // Update meters with after effects and artifacts values
         UpdatePerformance(performaceModifier);
         UpdateWill(willModifier);
-        currCustomer.UpdateFrustration(frustrationModifier);
+        UpdateFrustration(frustrationModifier);
     }
 
 
@@ -306,7 +320,7 @@ public class CombatManager : MonoBehaviour
         } 
     }
 
-    private void RemoveAttention(int amount) {
+    public void RemoveAttention(int amount) {
         if (activeEffects.ContainsKey(EffectType.ATTENTION)) {
             Debug.Log("Removing attention");
             UIEffectController attentionEffect = activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>();
@@ -319,5 +333,13 @@ public class CombatManager : MonoBehaviour
                 activeEffects.Remove(EffectType.ATTENTION);
             }
         }
+    }
+
+    // Called by certain items
+    public void ClearPlayerConditions() {
+        foreach(var (type, effect) in activeEffects) {
+            Destroy(activeEffects[type]);
+        }
+        activeEffects = new Dictionary<EffectType, GameObject>();
     }
 }

@@ -20,6 +20,9 @@ public class Item : ScriptableObject
     public string flavorText;
     public string description;
     public List<ActionEffect> effects;
+    public int willModifier;
+    public int performanceModifier;
+    public int frustrationModifier;
     public virtual Item GetCopy()
 	{
 		return this;

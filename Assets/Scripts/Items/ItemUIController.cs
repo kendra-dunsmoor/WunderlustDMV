@@ -9,13 +9,13 @@ public class ItemUIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI price;
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject purchasedTag;
-    [SerializeField] public GameObject itemImage;
+    [SerializeField] private GameObject itemImage;
 
     public Item item;
 
     public void AddItem(Item item)
     {
-        Debug.Log("Adding item for vending machine UI");
+        Debug.Log("Adding item for vending UI");
         this.item = item;
         purchasedTag.SetActive(false);
         price.text = item.price.ToString();

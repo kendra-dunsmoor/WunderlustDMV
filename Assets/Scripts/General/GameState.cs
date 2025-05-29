@@ -12,16 +12,6 @@ public class GameState
     private float will = 50f;
     private int currentWeekday = 0;
     private List<string> runPath = new List<string>();
-
-
-    private enum Location {
-        APARTMENT,
-        DESK,
-        BREAK_ROOM,
-        EVENT
-    }
-
-    private Location currentLocation = Location.APARTMENT;
     
     public int GetDay() {
         return currentWeekday;

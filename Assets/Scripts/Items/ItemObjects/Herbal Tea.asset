@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b09a67f6b7442a8866ef536567b18c, type: 3}
+  m_Name: Herbal Tea
+  m_EditorClassIdentifier: 
+  itemName: Herbal Tea
+  Icon: {fileID: 4149061501996657794, guid: 530f7ed4cd9cd43ef801ec073bc5ca98, type: 3}
+  ID: C_004
+  price: 50
+  itemRarity: 2
+  flavorText: No actual tea was used in the creation of this product
+  description: Restore 10 Will & remove all conditions on player

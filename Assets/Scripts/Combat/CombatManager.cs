@@ -131,7 +131,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Game Over: Reincarnated for good performance!");
         }
     }
-    private void UpdateWill(float diff) {
+    public void UpdateWill(float diff) {
         Debug.Log("Change will by -" + diff);
         willLevel -= diff;
         // TODO: check if in range for meter
@@ -164,7 +164,7 @@ public class CombatManager : MonoBehaviour
     }
 
     // Add any new effects from current action and increment tracked effects
-    private void AddNewEffects(ActionEffect effect, int turns) {
+    public void AddNewEffects(ActionEffect effect, int turns) {
         // check if current action has no effect
         if (effect == null) {
             Debug.Log("Effect is null");

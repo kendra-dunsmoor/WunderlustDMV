@@ -38,7 +38,7 @@ public class CertificationsPageController : MonoBehaviour
         Certificate cert = certUI.certificate;
         if (gameManager.FetchSoulCredits() >= cert.price) {
             gameManager.AddCertificate(cert);
-            gameManager.UpdateSoulCredits(cert.price);
+            gameManager.UpdateSoulCredits(-cert.price);
             certUI.MarkAsPurchased();
         }
     }

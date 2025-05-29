@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private GameState gameStatus;
     private PlayerState playerStatus;
+    [SerializeField] private ItemDB itemDatabase;
+
+    // temporary for events:
+    private List<string> eventChoices = new List<string>();
 
     // ~~~~~~ Functions ~~~~~~
     private void Awake()
@@ -32,6 +36,10 @@ public class GameManager : MonoBehaviour
         // TODO: logic to fetch for saved game vs new game
         gameStatus = new GameState();
         playerStatus = new PlayerState();
+
+        eventChoices.Add("Vending Machine");
+        eventChoices.Add("Event");
+        eventChoices.Add("Break Room");
     }
 
     // Update is called once per frame
@@ -46,8 +54,11 @@ public class GameManager : MonoBehaviour
     }
 
     public string FetchNextShiftChoice() {
-        // TODO: randomly select shift choice for run
-        return "Event";
+        // TODO: improve this for select shift choice for run
+        int choice = Random.Range(0, 3);
+        Debug.Log("Choice: " + choice);
+        // temp just testing vending machine:
+        return eventChoices[0];
     }
 
     public void ShiftCompleted(float performance, float will) {
@@ -67,6 +78,9 @@ public class GameManager : MonoBehaviour
         //TODO
     }
 
+    public int FetchOfficeBucks() {
+        return playerStatus.GetOfficeBucks();
+    }
     public void UpdateOfficeBucks(int amount) {
         Debug.Log("Adding office bucks + " + amount);
         playerStatus.UpdateOfficeBucks(amount);
@@ -95,4 +109,55 @@ public class GameManager : MonoBehaviour
     public void AddCertificate(Certificate cert) {
         playerStatus.AddCertificate(cert);
     }
+
+    public List<string> FetchInventory() {
+        return playerStatus.GetInventory();
+    }
+
+    public void AddToInventory(string id) {
+        Debug.Log("Adding item with id: " + id + " to player inventory");
+        playerStatus.AddItem(id);
+    }
+
+    public void RemoveFromInventory(string id) {
+        Debug.Log("Removing item with id: " + id + " from player inventory");
+        playerStatus.RemoveItem(id);
+    }
+
+    public Item GetItemFromDB(string id) {
+        return itemDatabase.GetItemCopy(id);
+    }
+
+    public List<Item> FetchRandomItems(int numItems) {
+        List<Item> itemsToReturn = new List<Item>();
+        for (int i = 0; i < numItems; i++) {
+            // hard coded rn just for testing
+            // Do we want to ensure there are no duplicates?
+            itemsToReturn.Add(itemDatabase.GetItemFromIndex(Random.Range(0, 4)));
+        }
+        return itemsToReturn;
+    }
+
+    // TODO: improve random selection with rarity values:
+
+    // private int GetRandomItem() {
+    //     float totalChance = 0f;
+    //     int maxCharacter = Characters.Count < Manager.GetLevel() + 1 ? Characters.Count : Manager.GetLevel() + 1;
+    //     for (int i = 0; i < maxCharacter; i++)
+    //     {
+    //         totalChance += Characters[i].GetComponent<Character>().getSpawnRate();
+    //     }
+    //     float rand = Random.Range(0f, totalChance);
+    //     float cumulativeChance = 0f;
+    //     for (int i = 0; i < maxCharacter; i++)
+    //     {
+    //         cumulativeChance += Characters[i].GetComponent<Character>().getSpawnRate();
+    //         if (rand <= cumulativeChance)
+    //         {
+    //             Debug.Log("Spawn: " + i);
+    //             return i;
+    //         }
+    //     }
+    //     return 0;
+    // }
 }

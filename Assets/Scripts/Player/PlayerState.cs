@@ -38,6 +38,7 @@ public class PlayerState
     private Action[] actionLoadout;
 
     private List<Certificate> activeCertificates = new List<Certificate>();
+    private List<string> itemInventory = new List<string>();
 
     public void UpdateOfficeBucks(int amount) {
         officeBucks += amount;
@@ -61,5 +62,16 @@ public class PlayerState
 
     public List<Certificate> GetCertificates() {
             return activeCertificates;
+    }
+
+    public void AddItem(string itemId) {
+        itemInventory.Add(itemId);
+    }
+    public void RemoveItem(string itemId) {
+        itemInventory.Remove(itemId);
+    }
+
+    public List<string> GetInventory() {
+            return itemInventory;
     }
 }

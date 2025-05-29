@@ -62,7 +62,13 @@ public class CalendarController : MonoBehaviour
             case "Event":
                 TriggerEvent();
                 break;
+            case "Vending Machine":
+                GoToVendingMachine();
+                break;
         }
+    }
+    private void GoToVendingMachine() {
+        SceneManager.LoadSceneAsync(6);
     }
 
     private void BreakRoom() {

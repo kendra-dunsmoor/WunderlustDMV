@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         int choice = Random.Range(0, 3);
         Debug.Log("Choice: " + choice);
         // temp just testing vending machine:
-        return eventChoices[0];
+        return eventChoices[choice];
     }
 
     public void ShiftCompleted(float performance, float will) {

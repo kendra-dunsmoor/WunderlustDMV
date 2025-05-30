@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Threat Lvl Midnight Script
   m_EditorClassIdentifier: 
   itemName: Threat Lvl Midnight Script
-  Icon: {fileID: -2205863333093305225, guid: 68fa903ffaeda43fa9f9b8b99ffa7b02, type: 3}
+  Icon: {fileID: 8701103799478461667, guid: 820925ceff21d4264806125813a56057, type: 3}
   ID: A_004
   price: 150
   itemRarity: 3

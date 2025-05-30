@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flair Buttons
   m_EditorClassIdentifier: 
   itemName: Flair Buttons
-  Icon: {fileID: -2205863333093305225, guid: 68fa903ffaeda43fa9f9b8b99ffa7b02, type: 3}
+  Icon: {fileID: -4215433246526138198, guid: 2edc2e1e9bbe94ea88dfdda37d087b8b, type: 3}
   ID: A_002
   price: 50
   itemRarity: 1
@@ -25,4 +25,4 @@ MonoBehaviour:
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 3
-  currentTurnCounter: 0
+  currentTurnCounter: 16

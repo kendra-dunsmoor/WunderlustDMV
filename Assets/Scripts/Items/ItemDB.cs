@@ -1,5 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [CreateAssetMenu]
 public class ItemDB: ScriptableObject
@@ -30,6 +32,7 @@ public class ItemDB: ScriptableObject
 		return item != null ? item.GetCopy() : null;
 	}
 
+	#if UNITY_EDITOR
     private void OnValidate()
 	{
 		LoadItems();
@@ -59,4 +62,5 @@ public class ItemDB: ScriptableObject
 		}
 		return assets;
 	}
+	#endif
 }

@@ -89,7 +89,7 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Next Customer");
         Debug.Log("Customers remaining: " + customersInLine.Count);
-        customerGoalText.text = "Customers remaining: " + customersInLine.Count;
+        customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
         if (customersInLine.Count == 0) EndShift();
         else {
             currCustomer = customersInLine.Dequeue();
@@ -117,7 +117,7 @@ public class CombatManager : MonoBehaviour
         currCustomer = customersInLine.Dequeue();
         Destroy(customerIconQueue.Dequeue());
         currCustomer.SendToFront(frontOfLinePoint);
-        customerGoalText.text = "Customers remaining: " + customersInLine.Count;
+        customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
     }
 
     public void UpdatePerformance(float diff) {

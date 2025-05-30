@@ -1,0 +1,1455 @@
+fileFormatVersion: 2
+guid: 933a01ed5871c4f6f9a40acf1e9501ba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2673734651403034969
+    second: Grunge - Blue_0
+  - first:
+      213: 2750810923200817773
+    second: Grunge - Blue_1
+  - first:
+      213: -215959792136720563
+    second: Grunge - Blue_2
+  - first:
+      213: -2715723891106038825
+    second: Grunge - Blue_3
+  - first:
+      213: 7273706712502262434
+    second: Grunge - Blue_4
+  - first:
+      213: -4470116285928162312
+    second: Grunge - Blue_5
+  - first:
+      213: -1526750865231023301
+    second: Grunge - Blue_6
+  - first:
+      213: 5236851097708724907
+    second: Grunge - Blue_7
+  - first:
+      213: 5449238285940497434
+    second: Grunge - Blue_8
+  - first:
+      213: 8274850804227726804
+    second: Grunge - Blue_9
+  - first:
+      213: 1636945045481802920
+    second: Grunge - Blue_10
+  - first:
+      213: -3523323712639929804
+    second: Grunge - Blue_11
+  - first:
+      213: -3690140602976874720
+    second: Grunge - Blue_12
+  - first:
+      213: 5337424823812087115
+    second: Grunge - Blue_13
+  - first:
+      213: 7546052958565129449
+    second: Grunge - Blue_14
+  - first:
+      213: 8663613656523926700
+    second: Grunge - Blue_15
+  - first:
+      213: 1828218702179536914
+    second: Grunge - Blue_16
+  - first:
+      213: 1414069527241680016
+    second: Grunge - Blue_17
+  - first:
+      213: -7555642906213746428
+    second: Grunge - Blue_18
+  - first:
+      213: -9191117036442879117
+    second: Grunge - Blue_19
+  - first:
+      213: 6332916595570276493
+    second: Grunge - Blue_20
+  - first:
+      213: -6062165602845955487
+    second: Grunge - Blue_21
+  - first:
+      213: -793681731151008481
+    second: Grunge - Blue_22
+  - first:
+      213: -6634082547332293570
+    second: Grunge - Blue_23
+  - first:
+      213: -7347459383118963678
+    second: Grunge - Blue_24
+  - first:
+      213: -246878599560977353
+    second: Grunge - Blue_25
+  - first:
+      213: -8592569495607775097
+    second: Grunge - Blue_26
+  - first:
+      213: -1169894369247731106
+    second: Grunge - Blue_27
+  - first:
+      213: -4999477241504980663
+    second: Grunge - Blue_28
+  - first:
+      213: -3504133125663179871
+    second: Grunge - Blue_29
+  - first:
+      213: 8791929081709384317
+    second: Grunge - Blue_30
+  - first:
+      213: -3360612654711475154
+    second: Grunge - Blue_31
+  - first:
+      213: 8580265046897999776
+    second: Grunge - Blue_32
+  - first:
+      213: -4958424048702815449
+    second: Grunge - Blue_33
+  - first:
+      213: 8170876832019134432
+    second: Grunge - Blue_34
+  - first:
+      213: 577896655623779074
+    second: Grunge - Blue_35
+  - first:
+      213: 1227837617570491725
+    second: Grunge - Blue_36
+  - first:
+      213: 6629489540657239317
+    second: Grunge - Blue_37
+  - first:
+      213: -8318238668816155124
+    second: Grunge - Blue_38
+  - first:
+      213: -4805572742016936848
+    second: Grunge - Blue_39
+  - first:
+      213: 4511573790142518388
+    second: Grunge - Blue_40
+  - first:
+      213: 5271613836155995036
+    second: Grunge - Blue_41
+  - first:
+      213: 9210570211691214874
+    second: Grunge - Blue_42
+  - first:
+      213: -6760065918478905461
+    second: Grunge - Blue_43
+  - first:
+      213: -4204191701778421902
+    second: Grunge - Blue_44
+  - first:
+      213: 4184671706795877324
+    second: Grunge - Blue_45
+  - first:
+      213: 5599032261180942838
+    second: Grunge - Blue_46
+  - first:
+      213: -1268582960004530225
+    second: Grunge - Blue_47
+  - first:
+      213: -5964954533598391785
+    second: Grunge - Blue_48
+  - first:
+      213: -7874802449211496564
+    second: Grunge - Blue_49
+  - first:
+      213: 7612782992122095114
+    second: Grunge - Blue_50
+  - first:
+      213: 4994947791617287641
+    second: Grunge - Blue_51
+  - first:
+      213: -1297905866491540681
+    second: Grunge - Blue_52
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grunge - Blue_0
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 720
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 951e788df730b1520800000000000000
+      internalID: 2673734651403034969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_1
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 747
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6a26a1d5f7dc2620800000000000000
+      internalID: 2750810923200817773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_2
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 750
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f6ce796b1c00df0800000000000000
+      internalID: -215959792136720563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_3
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 752
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db3592728fcf4ad0800000000000000
+      internalID: -2715723891106038825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_4
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 730
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa521f97b561f460800000000000000
+      internalID: 7273706712502262434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_5
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 725
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fb3090fbe4f6f1c0800000000000000
+      internalID: -4470116285928162312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_6
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 730
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3372695d24efcae0800000000000000
+      internalID: -1526750865231023301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_7
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 728
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba20b8cc3580da840800000000000000
+      internalID: 5236851097708724907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_8
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 736
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c11f989559f9b40800000000000000
+      internalID: 5449238285940497434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_9
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 716
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd5953e6fc26d270800000000000000
+      internalID: 8274850804227726804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_10
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 697
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac47c098d897b610800000000000000
+      internalID: 1636945045481802920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_11
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 723
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 432f26f20c3aa1fc0800000000000000
+      internalID: -3523323712639929804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_12
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 688
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f415c3cacf9ccc0800000000000000
+      internalID: -3690140602976874720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 83
+        width: 1095
+        height: 590
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4ddbae2997521a40800000000000000
+      internalID: 5337424823812087115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_14
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 661
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ec5f836f27f8b860800000000000000
+      internalID: 7546052958565129449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_15
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 654
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cace45408b65b3870800000000000000
+      internalID: 8663613656523926700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_16
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 648
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 210132b29332f5910800000000000000
+      internalID: 1828218702179536914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_17
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 635
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094e1f23eb8cf9310800000000000000
+      internalID: 1414069527241680016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_18
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 133
+        width: 51
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 409fd6deec6f42790800000000000000
+      internalID: -7555642906213746428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_19
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 135
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37bf7c180c7927080800000000000000
+      internalID: -9191117036442879117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_20
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 141
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d887427271a03e750800000000000000
+      internalID: 6332916595570276493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_21
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 138
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a66c0c08cdedba0800000000000000
+      internalID: -6062165602845955487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_22
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 129
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1de60eaba64cf4f0800000000000000
+      internalID: -793681731151008481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_23
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 141
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3cd3a372110fe3a0800000000000000
+      internalID: -6634082547332293570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 139
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c559b9e94980a90800000000000000
+      internalID: -7347459383118963678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_25
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 115
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734a582c839e29cf0800000000000000
+      internalID: -246878599560977353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_26
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 110
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780f072b19f01c880800000000000000
+      internalID: -8592569495607775097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_27
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 128
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5262400543b3cfe0800000000000000
+      internalID: -1169894369247731106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_28
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 130
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941227defe94e9ab0800000000000000
+      internalID: -4999477241504980663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_29
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 111
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1abba27ec71de5fc0800000000000000
+      internalID: -3504133125663179871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_30
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 63
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72d6bd0be4330a70800000000000000
+      internalID: 8791929081709384317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_31
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 113
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e247d388894bc51d0800000000000000
+      internalID: -3360612654711475154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_32
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 110
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af3e079999331770800000000000000
+      internalID: 8580265046897999776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_33
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 97
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 723805b3993203bb0800000000000000
+      internalID: -4958424048702815449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_34
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 89
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e738f30039c46170800000000000000
+      internalID: 8170876832019134432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_35
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 105
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 203775b42f9150800800000000000000
+      internalID: 577896655623779074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_36
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 96
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4da62dcec72a0110800000000000000
+      internalID: 1227837617570491725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_37
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 97
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 515da09dc9da00c50800000000000000
+      internalID: 6629489540657239317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_38
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 75
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e7b4ca00eaf8c80800000000000000
+      internalID: -8318238668816155124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_39
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074d7c95d0d2f4db0800000000000000
+      internalID: -4805572742016936848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_40
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 80
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 474586375745c9e30800000000000000
+      internalID: 4511573790142518388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_41
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 27
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93cc119ad8882940800000000000000
+      internalID: 5271613836155995036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_42
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 74
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1836aecec482df70800000000000000
+      internalID: 9210570211691214874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_43
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 70
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8f07de0ddb6f22a0800000000000000
+      internalID: -6760065918478905461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_44
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 66
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2772ad70ce5b7a5c0800000000000000
+      internalID: -4204191701778421902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_45
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 51
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc32239feb0f21a30800000000000000
+      internalID: 4184671706795877324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_46
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 12
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f964a53d22c3bd40800000000000000
+      internalID: 5599032261180942838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_47
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 6
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcff0d4e486156ee0800000000000000
+      internalID: -1268582960004530225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_48
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 44
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71213839479383da0800000000000000
+      internalID: -5964954533598391785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_49
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 32
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c876f5a15e417b290800000000000000
+      internalID: -7874802449211496564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_50
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 28
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a06a29d0cc906a960800000000000000
+      internalID: 7612782992122095114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_51
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 51
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d568f65d8e915540800000000000000
+      internalID: 4994947791617287641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Blue_52
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 0
+        width: 49
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73b40e3bd79ecfde0800000000000000
+      internalID: -1297905866491540681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

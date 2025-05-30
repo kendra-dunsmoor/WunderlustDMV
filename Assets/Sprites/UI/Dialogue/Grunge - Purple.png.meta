@@ -1,0 +1,1455 @@
+fileFormatVersion: 2
+guid: 22b701330f8274651921b9638de03147
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -914285716232359023
+    second: Grunge - Purple_0
+  - first:
+      213: 3649966732804981615
+    second: Grunge - Purple_1
+  - first:
+      213: -2124967999674493649
+    second: Grunge - Purple_2
+  - first:
+      213: -8750458796075360458
+    second: Grunge - Purple_3
+  - first:
+      213: 4487144747007810633
+    second: Grunge - Purple_4
+  - first:
+      213: 3503028230940410661
+    second: Grunge - Purple_5
+  - first:
+      213: -3117144825251281098
+    second: Grunge - Purple_6
+  - first:
+      213: -6075826851718237519
+    second: Grunge - Purple_7
+  - first:
+      213: -1359813284195861491
+    second: Grunge - Purple_8
+  - first:
+      213: 2904914062340229774
+    second: Grunge - Purple_9
+  - first:
+      213: 8361435008887114721
+    second: Grunge - Purple_10
+  - first:
+      213: 6111676036529934351
+    second: Grunge - Purple_11
+  - first:
+      213: -1441288585077969575
+    second: Grunge - Purple_12
+  - first:
+      213: 3700664549455114195
+    second: Grunge - Purple_13
+  - first:
+      213: -6782042457190873712
+    second: Grunge - Purple_14
+  - first:
+      213: 4100645934801529829
+    second: Grunge - Purple_15
+  - first:
+      213: -1379508724446037979
+    second: Grunge - Purple_16
+  - first:
+      213: 4079648662756985819
+    second: Grunge - Purple_17
+  - first:
+      213: -2296809155029635630
+    second: Grunge - Purple_18
+  - first:
+      213: 8011801666610145478
+    second: Grunge - Purple_19
+  - first:
+      213: 5579402450399795836
+    second: Grunge - Purple_20
+  - first:
+      213: -3989588323963203000
+    second: Grunge - Purple_21
+  - first:
+      213: -8015401167604008738
+    second: Grunge - Purple_22
+  - first:
+      213: -5689761370892468406
+    second: Grunge - Purple_23
+  - first:
+      213: -2449816554006915316
+    second: Grunge - Purple_24
+  - first:
+      213: 8820375351673288277
+    second: Grunge - Purple_25
+  - first:
+      213: -885416963341073504
+    second: Grunge - Purple_26
+  - first:
+      213: -6493204587516315833
+    second: Grunge - Purple_27
+  - first:
+      213: 2077836184967417299
+    second: Grunge - Purple_28
+  - first:
+      213: -2617018731160260404
+    second: Grunge - Purple_29
+  - first:
+      213: -8375485734864395084
+    second: Grunge - Purple_30
+  - first:
+      213: 5015844589936813892
+    second: Grunge - Purple_31
+  - first:
+      213: 4054403414446441216
+    second: Grunge - Purple_32
+  - first:
+      213: -5408759921524705766
+    second: Grunge - Purple_33
+  - first:
+      213: 3769088059344479648
+    second: Grunge - Purple_34
+  - first:
+      213: 4692918731628121222
+    second: Grunge - Purple_35
+  - first:
+      213: -5088315179581998341
+    second: Grunge - Purple_36
+  - first:
+      213: 5373074824951653250
+    second: Grunge - Purple_37
+  - first:
+      213: -6337953186893153212
+    second: Grunge - Purple_38
+  - first:
+      213: 4710194927074981873
+    second: Grunge - Purple_39
+  - first:
+      213: 8335058498338578723
+    second: Grunge - Purple_40
+  - first:
+      213: -3343242102177264314
+    second: Grunge - Purple_41
+  - first:
+      213: -6586881937699905589
+    second: Grunge - Purple_42
+  - first:
+      213: 4297299972798182670
+    second: Grunge - Purple_43
+  - first:
+      213: -782784495628029828
+    second: Grunge - Purple_44
+  - first:
+      213: 8723216414655159071
+    second: Grunge - Purple_45
+  - first:
+      213: -6152420070647239576
+    second: Grunge - Purple_46
+  - first:
+      213: 8843860893181943751
+    second: Grunge - Purple_47
+  - first:
+      213: -6851236161139487444
+    second: Grunge - Purple_48
+  - first:
+      213: -2192625088978580547
+    second: Grunge - Purple_49
+  - first:
+      213: -6282836868259022836
+    second: Grunge - Purple_50
+  - first:
+      213: -2274753965370518536
+    second: Grunge - Purple_51
+  - first:
+      213: 1347051567271862639
+    second: Grunge - Purple_52
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grunge - Purple_0
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 720
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193b1c43cfdcf43f0800000000000000
+      internalID: -914285716232359023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_1
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 747
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6385d6b76947a230800000000000000
+      internalID: 3649966732804981615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_2
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 750
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f255454ecd89282e0800000000000000
+      internalID: -2124967999674493649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_3
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 752
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63f5c3e3610209680800000000000000
+      internalID: -8750458796075360458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_4
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 730
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94c192d9f5a854e30800000000000000
+      internalID: 4487144747007810633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_5
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 725
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5234e5fbd914d9030800000000000000
+      internalID: 3503028230940410661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_6
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 730
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6374379fb4dadb4d0800000000000000
+      internalID: -3117144825251281098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_7
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 728
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b2fd826ba35eaba0800000000000000
+      internalID: -6075826851718237519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_8
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 736
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0cf5aac509f02de0800000000000000
+      internalID: -1359813284195861491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_9
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 716
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a83d4e2f3505820800000000000000
+      internalID: 2904914062340229774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_10
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 697
+        width: 12
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb4b3df6d8c90470800000000000000
+      internalID: 8361435008887114721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_11
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 723
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0052a369f801d450800000000000000
+      internalID: 6111676036529934351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_12
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 688
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d2a9b0ba38ffbe0800000000000000
+      internalID: -1441288585077969575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 83
+        width: 1095
+        height: 590
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3df272ffcc66b5330800000000000000
+      internalID: 3700664549455114195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_14
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 661
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0954587615851e1a0800000000000000
+      internalID: -6782042457190873712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_15
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 654
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebae7560cb68e830800000000000000
+      internalID: 4100645934801529829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_16
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 648
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52877d2cf100bdce0800000000000000
+      internalID: -1379508724446037979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_17
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 635
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb070808d2dd9830800000000000000
+      internalID: 4079648662756985819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_18
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 133
+        width: 51
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dde7951e381020e0800000000000000
+      internalID: -2296809155029635630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_19
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 135
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c82e2dda23af2f60800000000000000
+      internalID: 8011801666610145478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_20
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 141
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a160bb7f40e6d40800000000000000
+      internalID: 5579402450399795836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_21
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 138
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842902e9e8222a8c0800000000000000
+      internalID: -3989588323963203000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_22
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 129
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed836b00b1393c090800000000000000
+      internalID: -8015401167604008738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_23
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 141
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4ff637cd28e901b0800000000000000
+      internalID: -5689761370892468406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_24
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 139
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07db85e2d0800ed0800000000000000
+      internalID: -2449816554006915316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_25
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 115
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 556f81666a4486a70800000000000000
+      internalID: 8820375351673288277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_26
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 110
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a343f586fd56b3f0800000000000000
+      internalID: -885416963341073504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_27
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 128
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 747372384d083e5a0800000000000000
+      internalID: -6493204587516315833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_28
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 130
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dd8f6a5005f5dc10800000000000000
+      internalID: 2077836184967417299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_29
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 111
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc036ae545b7eabd0800000000000000
+      internalID: -2617018731160260404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_30
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 63
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b46e00791c44cb80800000000000000
+      internalID: -8375485734864395084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_31
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 113
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447afb7541cdb9540800000000000000
+      internalID: 5015844589936813892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_32
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 110
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 003063e9c62244830800000000000000
+      internalID: 4054403414446441216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_33
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 97
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16762a128930f4b0800000000000000
+      internalID: -5408759921524705766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_34
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 89
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a5e468de9d7e4430800000000000000
+      internalID: 3769088059344479648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_35
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 105
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c8876e8b8902140800000000000000
+      internalID: 4692918731628121222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_36
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 96
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfa79cf9d4ca269b0800000000000000
+      internalID: -5088315179581998341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_37
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 97
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28366d4e51ff09a40800000000000000
+      internalID: 5373074824951653250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_38
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 75
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44cbd2c08211b08a0800000000000000
+      internalID: -6337953186893153212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_39
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7b62b9459fd5140800000000000000
+      internalID: 4710194927074981873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_40
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 80
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321629f0b831ca370800000000000000
+      internalID: 8335058498338578723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_41
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 27
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d0895750b6a91d0800000000000000
+      internalID: -3343242102177264314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_42
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 74
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcfd5f5c6c1b694a0800000000000000
+      internalID: -6586881937699905589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_43
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 70
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e057ee3ae8313ab30800000000000000
+      internalID: 4297299972798182670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_44
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 66
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70786a06adf225f0800000000000000
+      internalID: -782784495628029828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_45
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 51
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b906e8c171f0970800000000000000
+      internalID: 8723216414655159071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_46
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 12
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c661cea863e9aa0800000000000000
+      internalID: -6152420070647239576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_47
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 6
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf141520a4bbba70800000000000000
+      internalID: 8843860893181943751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_48
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 44
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d48f6c2058be0a0800000000000000
+      internalID: -6851236161139487444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_49
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 32
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb82dd391b3291e0800000000000000
+      internalID: -2192625088978580547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_50
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 28
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0871bdf721eec8a0800000000000000
+      internalID: -6282836868259022836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_51
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 51
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f3dda612537e60e0800000000000000
+      internalID: -2274753965370518536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grunge - Purple_52
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 0
+        width: 49
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f616f517340b1b210800000000000000
+      internalID: 1347051567271862639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

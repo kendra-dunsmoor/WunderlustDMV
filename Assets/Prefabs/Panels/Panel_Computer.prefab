@@ -1089,9 +1089,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 530363540952408881}
+      - m_Target: {fileID: -2617061936898695040}
         m_TargetAssemblyTypeName: ComputerController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: CloseComputer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

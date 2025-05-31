@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vending_blue_0: 4912131872358539905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

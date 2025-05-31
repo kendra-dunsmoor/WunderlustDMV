@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Frustration_indicator_blue_0: 7865236202758947301
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

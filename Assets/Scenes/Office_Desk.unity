@@ -1203,9 +1203,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1836163354}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5144,9 +5144,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1211605859}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 50
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 25.6
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6694,8 +6694,8 @@ MonoBehaviour:
   offScreenPoint: {fileID: 1821154105}
   frontOfLinePoint: {fileID: 780199051}
   CUSTOMER_GOAL: 5
-  performanceLevel: 50
-  willLevel: 50
+  performanceLevel: 100
+  willLevel: 100
   remainingTurns: 10
 --- !u!4 &1958720741
 Transform:

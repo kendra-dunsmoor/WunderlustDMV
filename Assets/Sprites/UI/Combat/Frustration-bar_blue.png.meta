@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Frustration-bar_blue_0: -4071857485600117959
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

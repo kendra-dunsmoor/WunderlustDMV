@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Performace_indicator_blue_0: 7172731158049956080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

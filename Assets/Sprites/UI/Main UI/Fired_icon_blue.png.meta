@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fired_icon_blue_0: 2524919036997600271
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

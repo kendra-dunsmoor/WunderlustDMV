@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_erase_hover_0: -270451870714119327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

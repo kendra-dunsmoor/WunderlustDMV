@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Free-will_purple_glow_0: 2339169177644685039
+      Free-will_purple_glow_1: -6352338138410960001
+      Free-will_purple_glow_2: -33837792967944101
+      Free-will_purple_glow_3: 6061304342492111492
+      Free-will_purple_glow_4: 2786808846358359816
+      Free-will_purple_glow_5: -2398002109411257426
+      Free-will_purple_glow_6: -4022019628503606445
+      Free-will_purple_glow_7: -1372132746657309018
+      Free-will_purple_glow_8: 211310941651382059
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

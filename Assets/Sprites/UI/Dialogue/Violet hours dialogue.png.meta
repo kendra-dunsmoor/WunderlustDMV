@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Violet hours dialogue_0: -670038017758231442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

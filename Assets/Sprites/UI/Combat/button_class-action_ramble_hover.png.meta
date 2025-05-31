@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_class-action_ramble_hover_0: -6425759165565570288
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

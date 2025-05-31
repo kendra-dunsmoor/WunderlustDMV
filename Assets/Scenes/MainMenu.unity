@@ -355,8 +355,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec6bf85d280d4bf88740bc52d953186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakRoomDialogues: []
-  apartmentDialogues: []
+  breakRoomDialogues:
+  - {fileID: 11400000, guid: 4c2a251ecc62e48899c2abdcde0b0017, type: 2}
+  - {fileID: 11400000, guid: caf90a7dba7db4fe1b22372ff7cc0d81, type: 2}
+  apartmentDialogues:
+  - {fileID: 11400000, guid: 9bfae17122b644341a8b623e5a0e7395, type: 2}
+  officeEventDialogues:
+  - {fileID: 11400000, guid: 3693d1a46e98c4e9a8f37311aa9651e2, type: 2}
+  - {fileID: 11400000, guid: ca1819f5769b74192ba367834a4ba279, type: 2}
   introAptDialogue: {fileID: 11400000, guid: 2ec853fe231294a448995fd9d1e6ab8a, type: 2}
   introBreakRoomDialogue: {fileID: 11400000, guid: 910dc7d9faa2a4ff3963282ed0002ef8, type: 2}
   gameManager: {fileID: 575042071}

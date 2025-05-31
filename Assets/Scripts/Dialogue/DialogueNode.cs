@@ -4,13 +4,15 @@ using System.Collections.Generic;
 [System.Serializable]
 public class DialogueNode
 {
-    // Just adding this so it is hopefully a little easier to visualize in editort
-    [SerializeField] private int index;
+    // Just adding this so it is hopefully a little easier to visualize in editor
+    [SerializeField] private string tag;
 
     [TextArea(3,10)]
     public string dialogueText;
     public List<DialogueResponse> responses;
     public bool containsReward;
+    public int officeBucks;
+    public int soulCredits;
     public List<Item> itemsRewards;
     public List<ActionEffect> effectRewards;
 

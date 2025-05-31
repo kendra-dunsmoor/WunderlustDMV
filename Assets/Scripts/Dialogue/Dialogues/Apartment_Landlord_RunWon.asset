@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: Apartment_Landlord_RunWon
+  m_EditorClassIdentifier: 
+  RootNode:
+    tag: Start
+    dialogueText: "So, you\u2019re at the DMV one day and you\u2019re already killing
+      the reviews so much that you\u2019re getting big bonuses! If you keep on at
+      this rate, I\u2019ll have a fantastic apartment in no time!"
+    responses:
+    - responseText: "How\u2019d you know I did well? "
+      nextNodeIndex: 0
+    - responseText: What do you mean YOU will have a fantastic apartment?
+      nextNodeIndex: 1
+    - responseText: 'I have the money. How much do I owe for rent? '
+      nextNodeIndex: 2
+    containsReward: 0
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  nodes:
+  - tag: 0 - Choice A
+    dialogueText: "Word travels fast, especially when money\u2019s involved."
+    responses: []
+    containsReward: 0
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 1 - Choice B
+    dialogueText: "This is an unfurnished pre-furnished apartment. It\u2019s in your
+      contract. Anything you buy for this place is owned by me, maintained by you,
+      and inherited by whoever gets the place after you. It\u2019s a good deal when
+      you really think about it."
+    responses: []
+    containsReward: 0
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 2 - Choice C
+    dialogueText: "Well\u2026how much do you have?"
+    responses:
+    - responseText: "I\u2019ve got a little left "
+      nextNodeIndex: 0
+    - responseText: 
+      nextNodeIndex: 0
+    containsReward: 0
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  character: {fileID: 0}
+  typingSpeed: 0

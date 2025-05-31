@@ -59,7 +59,7 @@ public class CalendarController : MonoBehaviour
             case "Break Room":
                 BreakRoom();
                 break;
-            case "Event":
+            case "Office Event":
                 TriggerEvent();
                 break;
             case "Vending Machine":

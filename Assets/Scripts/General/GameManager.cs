@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
         eventChoices.Add("Vending Machine");
         eventChoices.Add("Break Room");
+        eventChoices.Add("Office Event");
 
         // temp:
         inTutorial = true;

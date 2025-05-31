@@ -13,39 +13,76 @@ MonoBehaviour:
   m_Name: BreakRoom_Verrine_1
   m_EditorClassIdentifier: 
   RootNode:
-    index: 0
-    dialogueText: "Hiya, Boss! If you\u2019re looking for the line, you\u2019ve gone
-      straight past it."
+    tag: Start
+    dialogueText: "Hiya boss! I see you\u2019ve been getting through those lines
+      pretty quickly lately. How\u2019s the shift been going? "
     responses:
-    - responseText: 'Actually, I need a job. '
+    - responseText: "\u201CThings are rough out there! Can you help me out?\u201D"
       nextNodeIndex: 0
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
-  nodes:
-  - index: 0
-    dialogueText: "Oh! Then you\u2019ve come to the right place. The DMV is always
-      understaffed, and we just had a guy leave for Elysium, so we could really use
-      the help!"
-    responses:
-    - responseText: "Alright, I\u2019m ready to start."
+    - responseText: "\u201CIt\u2019s been an easy day! Are they always this smooth?\u201D"
       nextNodeIndex: 1
     containsReward: 0
     itemsRewards: []
     effectRewards: []
-  - index: 1
-    dialogueText: "Sounds good. Oh! Before we get you started, you should have this.
-      There\u2019s usually one of these lying around the breakroom, so you should
-      always check here before you start your shift."
+  nodes:
+  - tag: 0 - Branch A
+    dialogueText: Well, you know what they say! When the dead get low, you gotta
+      go lower, you know what I mean? Whattya say to a little break?
     responses:
-    - responseText: Okay, thanks
+    - responseText: "I\u2019m okay for now, I just need the masses to be a little
+        slower when I get back out there."
       nextNodeIndex: 2
-    containsReward: 1
-    itemsRewards:
-    - {fileID: 11400000, guid: dfd57cb20e9074421b030338446e9d0b, type: 2}
+    - responseText: "A break sounds nice. Let\u2019s hope things are a bit easier
+        next time."
+      nextNodeIndex: 3
+    containsReward: 0
+    itemsRewards: []
     effectRewards: []
-  - index: 2
-    dialogueText: 
+  - tag: 1 - Branch B
+    dialogueText: "That\u2019s a rare one. Usually the hordes of recently deceased
+      are pretty upset. You know\u2026being lost and dead and all that. But your
+      go-get-em attitude must really put a pep in their step! So if you don\u2019t
+      need a break\u2026why are you here?"
+    responses:
+    - responseText: " I was getting too distracted by how much I\u2019ll owe in rent,
+        and I just wanted to stop thinking about it before my shift."
+      nextNodeIndex: 4
+    - responseText: The worst part of my day is running out of energy. How do you
+        get coffee to work so well for you?
+      nextNodeIndex: 5
+    containsReward: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 2 - Branch A1
+    dialogueText: "That\u2019s what I love to hear! Quitters never get far in life
+      or death. Now get back out there, boss!"
+    responses: []
+    containsReward: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 3 - Branch A2
+    dialogueText: "Great! I\u2019m sure you\u2019ll work twice as hard after a little
+      rest."
+    responses: []
+    containsReward: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 4 - Branch B1
+    dialogueText: "Well why didn\u2019t you say so? If you fill out a DED132 form
+      for transitions and acquisitions, all your money can be converted from hypothetical
+      variable company currency directly into liquid cash flow. But your KAPUTs have
+      to be filled out first, and you have to have not left any cash in your account
+      unless you know about the Zombie loopholes. You look lost. You know what, I\u2019ll
+      do it for you today!"
+    responses: []
+    containsReward: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 5 - Branch B2
+    dialogueText: "Well that\u2019s my secret. I don\u2019t! I\u2019m working on
+      a solid stream of coffee ground mush mixed with a little dirt to keep me awake.
+      \n\nIf you bring me some grounds I can make your next few cups stronger. But
+      be careful, you might like it too much and never go back."
     responses: []
     containsReward: 0
     itemsRewards: []

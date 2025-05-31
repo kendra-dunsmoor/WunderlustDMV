@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: OfficeEvent_Printer
+  m_EditorClassIdentifier: 
+  RootNode:
+    tag: Start
+    dialogueText: 'You approach the coin operated printer and can see several ways
+      of sabotaging it.
+
+'
+    responses:
+    - responseText: Steal the ream of paper
+      nextNodeIndex: 0
+    - responseText: Photocopy your butt and set it to infinite print
+      nextNodeIndex: 1
+    - responseText: 'Break into the coin slot and take the coins from the printer '
+      nextNodeIndex: 2
+    containsReward: 0
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  nodes:
+  - tag: 0 - Choice A
+    dialogueText: You successfully stole the printer paper
+    responses: []
+    containsReward: 1
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards:
+    - {fileID: 11400000, guid: 6f26cf3e41e3647efbbee2f95baf230d, type: 2}
+    effectRewards: []
+  - tag: 1 - Choice B
+    dialogueText: veryone seems to be dragging a little more today
+    responses: []
+    containsReward: 0
+    officeBucks: 0
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  - tag: 2 - Choice C
+    dialogueText: Verrine will drink anything
+    responses: []
+    containsReward: 1
+    officeBucks: 25
+    soulCredits: 0
+    itemsRewards: []
+    effectRewards: []
+  character: {fileID: 0}
+  typingSpeed: 0

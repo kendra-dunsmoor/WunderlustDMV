@@ -89,21 +89,6 @@ public class DialogueManager : MonoBehaviour
 
         if (currNode.containsReward) AddRewards(currNode);
     }
-
-    private void AddRewards(DialogueNode currNode) {
-        // Add any items/effects connected to node
-        foreach (Item item in currNode.itemsRewards) {
-            if (item is ArtifactItem)
-                gameManager.AddArtifact(item.ID);
-            else 
-                gameManager.AddToInventory(item.ID);
-            // Add pop-up
-            // For now just add individual screens per item, could combine multipl into one later if need be
-            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName);
-        }
-        // TODO: add effects
-    }
  
     // Handles response selection and triggers next dialogue node
     public void SelectResponse(DialogueResponse response)
@@ -156,5 +141,27 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(currDialogue.typingSpeed);
         }
         isTyping = false; 
+    }
+    private void AddRewards(DialogueNode currNode) {
+        // Add any items/effects connected to node
+        foreach (Item item in currNode.itemsRewards) {
+            if (item is ArtifactItem)
+                gameManager.AddArtifact(item.ID);
+            else 
+                gameManager.AddToInventory(item.ID);
+            // Add pop-up
+            // For now just add individual screens per item, could combine multipl into one later if need be
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName);
+        }
+        if (currNode.officeBucks > 0) {
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks");            
+        }
+        if (currNode.soulCredits > 0) {
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits");            
+        }
+        // TODO: add effects and special cases
     }
 }

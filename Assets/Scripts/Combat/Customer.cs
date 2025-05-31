@@ -29,7 +29,7 @@ public class Customer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        frustrationLevel = maxFrustration;
+        frustrationLevel = 0;
     }
 
     // Update is called once per frame
@@ -100,10 +100,10 @@ public class Customer : MonoBehaviour
     }
 
     public void UpdateFrustration(float change) {
-        frustrationLevel -= change;
+        frustrationLevel += change;
         Debug.Log("Customer frustration level updated to: " + frustrationLevel);
         frustrationMeter.UpdateBar(frustrationLevel, maxFrustration);
-        if (frustrationLevel <= 0) {
+        if (frustrationLevel >= maxFrustration) {
             // Check if customer is already irate:
             if (activeEffects.ContainsKey(EffectType.IRATE)) return;
             // else add effect: 
@@ -112,10 +112,6 @@ public class Customer : MonoBehaviour
             effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(irateEffect.effectDescription);
             activeEffects.Add(EffectType.IRATE, effectMarker);
         }
-    }
-
-    public void AddCondition(EffectType effect) {
-        // TODO: add effect
     }
 
     public Dictionary<EffectType, GameObject> GetActiveEffects() {

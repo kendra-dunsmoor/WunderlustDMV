@@ -13,7 +13,7 @@ public class PopUpRewardController : MonoBehaviour
 
     public void AddRewardInfo(Sprite image, string text) {
         // Might need to add some more complicated logic here if there are multiple rewards?
-        itemImage.sprite = image;
+        if (image != null) itemImage.sprite = image;
         description.text = "Gained: " + text;
     }
 }

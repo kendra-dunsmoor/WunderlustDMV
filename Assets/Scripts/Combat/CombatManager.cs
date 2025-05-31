@@ -220,7 +220,9 @@ public class CombatManager : MonoBehaviour
             switch (type) {
                 case EffectType.ATTENTION:
                     Debug.Log("Multiplying performance change by 20% due to attention");
-                    performaceModifier *= 1.2f;
+                    for (int i = 0; i < effect.GetComponent<UIEffectController>().FetchTurns(); i++) {
+                        performaceModifier *= 1.2f;
+                    }
                     break;
                 case EffectType.HUSTLING:
                     // performance gains remove attention

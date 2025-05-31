@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
   m_Name: Talk Slowly
   m_EditorClassIdentifier: 
-  actionName: Talk_Slowly
+  actionName: Ramble
   FRUSTRATION_MODIFIER: 20
-  WILL_MODIFIER: 5
+  WILL_MODIFIER: 3
   PERFORMANCE_MODIFIER: -10
   type: 1
   movement: 1

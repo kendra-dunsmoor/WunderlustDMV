@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Correction_Form
   FRUSTRATION_MODIFIER: 10
-  WILL_MODIFIER: 5
+  WILL_MODIFIER: 2
   PERFORMANCE_MODIFIER: -5
   type: 1
   movement: 1
-  effect: {fileID: 11400000, guid: 087784194600c4584bcf982f03e292dd, type: 2}
+  effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
   turnsOfEffect: 3

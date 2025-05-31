@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Delay
   m_EditorClassIdentifier: 
   actionName: Delay
-  FRUSTRATION_MODIFIER: 15
-  WILL_MODIFIER: 5
+  FRUSTRATION_MODIFIER: 20
+  WILL_MODIFIER: 2
   PERFORMANCE_MODIFIER: -10
   type: 1
   movement: 0

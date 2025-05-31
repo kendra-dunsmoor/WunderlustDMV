@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Hustle
   FRUSTRATION_MODIFIER: -10
-  WILL_MODIFIER: 10
+  WILL_MODIFIER: 5
   PERFORMANCE_MODIFIER: 5
   type: 1
   movement: 0

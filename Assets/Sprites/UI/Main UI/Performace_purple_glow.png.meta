@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Performace_purple_glow_0: 8900813943418290782
+      Performace_purple_glow_1: -7030911885101327525
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

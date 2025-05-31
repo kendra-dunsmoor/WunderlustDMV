@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_class-action_ruin-paperwork_0: -8462003773015267342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

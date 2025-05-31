@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Accept
   m_EditorClassIdentifier: 
   actionName: Accept
-  FRUSTRATION_MODIFIER: -25
+  FRUSTRATION_MODIFIER: -20
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 10
   type: 0

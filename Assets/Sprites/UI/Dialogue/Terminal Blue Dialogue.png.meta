@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Terminal Blue Dialogue_0: 6576249919301862006
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

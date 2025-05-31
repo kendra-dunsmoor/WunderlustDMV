@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_class-action_ruin-paperwork_hover_0: 6230480106742259015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

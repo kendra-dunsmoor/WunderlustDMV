@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Promotion_icon_blue_0: 7469153030796579172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

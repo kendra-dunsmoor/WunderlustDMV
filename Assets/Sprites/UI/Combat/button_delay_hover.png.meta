@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_delay_hover_0: 4437820018830493574
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,8 +8,8 @@ using UnityEngine;
 */
 public class GameState
 {
-    private float performance = 50f;
-    private float will = 50f;
+    private float performance = 100f;
+    private float will = 100f;
     private int currentWeekday = 0;
     private List<string> runPath = new List<string>();
     

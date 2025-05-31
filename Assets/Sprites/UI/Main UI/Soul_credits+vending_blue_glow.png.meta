@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Soul_credits+vending_blue_glow_0: 8282343983078174670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Soul_credits_purple_glow_0: 2367004417843474928
+      Soul_credits_purple_glow_1: -5438371442100796561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

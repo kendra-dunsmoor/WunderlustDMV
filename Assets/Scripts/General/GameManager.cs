@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private PlayerState playerStatus;
     [SerializeField] private ItemDB itemDatabase;
 
+    // temp solution until events are expanded:
+    public bool inTutorial;
+
     // temporary for events:
     private List<string> eventChoices = new List<string>();
 
@@ -38,8 +41,10 @@ public class GameManager : MonoBehaviour
         playerStatus = new PlayerState();
 
         eventChoices.Add("Vending Machine");
-        eventChoices.Add("Event");
         eventChoices.Add("Break Room");
+
+        // temp:
+        inTutorial = true;
     }
 
     // Update is called once per frame
@@ -168,4 +173,8 @@ public class GameManager : MonoBehaviour
     //     }
     //     return 0;
     // }
+
+    public bool ContainsItem(string itemId) {
+        return playerStatus.ContainsItem(itemId);
+    }
 }

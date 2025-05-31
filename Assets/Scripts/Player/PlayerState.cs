@@ -79,4 +79,8 @@ public class PlayerState
     public void AddArtifact(string itemId) {
         artifacts.Add(itemId);
     }
+
+    public bool ContainsItem(string itemId) {
+        return artifacts.Contains(itemId) || itemInventory.Contains(itemId);
+    }
 }

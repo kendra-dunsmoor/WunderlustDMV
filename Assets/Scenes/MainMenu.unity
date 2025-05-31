@@ -306,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 575042072}
   - component: {fileID: 575042071}
+  - component: {fileID: 575042073}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -326,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 63b6c3ea3ebe14566b312750f75a31ee, type: 2}
+  inTutorial: 0
 --- !u!4 &575042072
 Transform:
   m_ObjectHideFlags: 0
@@ -341,6 +343,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575042073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575042070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec6bf85d280d4bf88740bc52d953186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakRoomDialogues: []
+  apartmentDialogues: []
+  introAptDialogue: {fileID: 11400000, guid: 2ec853fe231294a448995fd9d1e6ab8a, type: 2}
+  introBreakRoomDialogue: {fileID: 11400000, guid: 910dc7d9faa2a4ff3963282ed0002ef8, type: 2}
+  gameManager: {fileID: 575042071}
 --- !u!1 &1051730669
 GameObject:
   m_ObjectHideFlags: 0

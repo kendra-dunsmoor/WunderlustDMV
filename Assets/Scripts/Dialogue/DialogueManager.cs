@@ -1,7 +1,7 @@
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
  
 /*
 * Dialogue Manager
@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
 	private AudioManager audioManager;
+    private GameManager gameManager;
 
 
     // UI references
@@ -24,6 +25,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject responseButtonPrefab; // Prefab for generating response buttons
     [SerializeField] private Transform responseButtonContainer; // Container to hold response buttons
  	[SerializeField] private Image characterImage;
+    [SerializeField] private GameObject RewardScreen;
+
+    private bool isTyping;
+    private Dialogue currDialogue;
 
     private void Awake()
     {
@@ -44,18 +49,27 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         audioManager = 	FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     // Starts the dialogue with given title and dialogue node
-    public void StartDialogue(string title, DialogueNode node)
+    public void StartDialogue(Dialogue dialogue)
     {
-		Debug.Log("Starting Dialogue");
+		Debug.Log("Starting Dialogue: " + dialogue);
         // Display the dialogue UI
         ShowDialogue();
  
-        // Set dialogue title and body text
-        DialogueTitleText.text = title;
-        DialogueBodyText.text = node.dialogueText;
+        // Set character name/iamge
+        Debug.Log("Setting Character: " + dialogue.character.characterName);
+        DialogueTitleText.text = dialogue.character.characterName;
+        characterImage.sprite = dialogue.character.characterImage;
+        
+        currDialogue = dialogue;
+        StartLine(dialogue.RootNode);
+    }
+
+    private void StartLine(DialogueNode currNode) {
+        StartCoroutine(TypeLine(currNode.dialogueText));
  
         // Remove any existing response buttons
         foreach (Transform child in responseButtonContainer)
@@ -64,26 +78,50 @@ public class DialogueManager : MonoBehaviour
         }
  
         // Create and setup response buttons based on current dialogue node
-        foreach (DialogueResponse response in node.responses)
+        foreach (DialogueResponse response in currNode.responses)
         {
             GameObject buttonObj = Instantiate(responseButtonPrefab, responseButtonContainer);
             buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = response.responseText;
  
             // Setup button to trigger SelectResponse when clicked
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => SelectResponse(response, title));
+            buttonObj.GetComponent<Button>().onClick.AddListener(() => SelectResponse(response));
         }
+
+        if (currNode.containsReward) AddRewards(currNode);
+    }
+
+    private void AddRewards(DialogueNode currNode) {
+        // Add any items/effects connected to node
+        foreach (Item item in currNode.itemsRewards) {
+            if (item is ArtifactItem)
+                gameManager.AddArtifact(item.ID);
+            else 
+                gameManager.AddToInventory(item.ID);
+            // Add pop-up
+            // For now just add individual screens per item, could combine multipl into one later if need be
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName);
+        }
+        // TODO: add effects
     }
  
     // Handles response selection and triggers next dialogue node
-    public void SelectResponse(DialogueResponse response, string title)
+    public void SelectResponse(DialogueResponse response)
     {
+        if (isTyping) {
+            StopAllCoroutines();
+            isTyping = false;
+        }
 		// Button click audio
         audioManager.PlaySFX(audioManager.buttonClick);
 
+        // Fetch nextNode
+        DialogueNode nextLine = currDialogue.nodes[response.nextNodeIndex];
+
         // Check if there's a follow-up node
-        if (!response.nextNode.IsLastNode())
+        if (!nextLine.IsLastNode())
         {
-            StartDialogue(title, response.nextNode); // Start next dialogue
+            StartLine(nextLine); // Start next dialogue line
         }
         else
         {
@@ -108,5 +146,15 @@ public class DialogueManager : MonoBehaviour
     public bool IsDialogueActive()
     {
         return DialogueParent.activeSelf;
+    }
+
+    IEnumerator TypeLine(string text) {
+        isTyping = true; 
+        DialogueBodyText.text = "";
+        foreach (char letter in text) {
+            DialogueBodyText.text += letter;
+            yield return new WaitForSeconds(currDialogue.typingSpeed);
+        }
+        isTyping = false; 
     }
 }

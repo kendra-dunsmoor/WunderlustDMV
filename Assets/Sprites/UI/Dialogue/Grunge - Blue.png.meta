@@ -202,7 +202,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -1438,7 +1438,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -1447,7 +1447,60 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grunge - Blue_0: 2673734651403034969
+      Grunge - Blue_1: 2750810923200817773
+      Grunge - Blue_10: 1636945045481802920
+      Grunge - Blue_11: -3523323712639929804
+      Grunge - Blue_12: -3690140602976874720
+      Grunge - Blue_13: 5337424823812087115
+      Grunge - Blue_14: 7546052958565129449
+      Grunge - Blue_15: 8663613656523926700
+      Grunge - Blue_16: 1828218702179536914
+      Grunge - Blue_17: 1414069527241680016
+      Grunge - Blue_18: -7555642906213746428
+      Grunge - Blue_19: -9191117036442879117
+      Grunge - Blue_2: -215959792136720563
+      Grunge - Blue_20: 6332916595570276493
+      Grunge - Blue_21: -6062165602845955487
+      Grunge - Blue_22: -793681731151008481
+      Grunge - Blue_23: -6634082547332293570
+      Grunge - Blue_24: -7347459383118963678
+      Grunge - Blue_25: -246878599560977353
+      Grunge - Blue_26: -8592569495607775097
+      Grunge - Blue_27: -1169894369247731106
+      Grunge - Blue_28: -4999477241504980663
+      Grunge - Blue_29: -3504133125663179871
+      Grunge - Blue_3: -2715723891106038825
+      Grunge - Blue_30: 8791929081709384317
+      Grunge - Blue_31: -3360612654711475154
+      Grunge - Blue_32: 8580265046897999776
+      Grunge - Blue_33: -4958424048702815449
+      Grunge - Blue_34: 8170876832019134432
+      Grunge - Blue_35: 577896655623779074
+      Grunge - Blue_36: 1227837617570491725
+      Grunge - Blue_37: 6629489540657239317
+      Grunge - Blue_38: -8318238668816155124
+      Grunge - Blue_39: -4805572742016936848
+      Grunge - Blue_4: 7273706712502262434
+      Grunge - Blue_40: 4511573790142518388
+      Grunge - Blue_41: 5271613836155995036
+      Grunge - Blue_42: 9210570211691214874
+      Grunge - Blue_43: -6760065918478905461
+      Grunge - Blue_44: -4204191701778421902
+      Grunge - Blue_45: 4184671706795877324
+      Grunge - Blue_46: 5599032261180942838
+      Grunge - Blue_47: -1268582960004530225
+      Grunge - Blue_48: -5964954533598391785
+      Grunge - Blue_49: -7874802449211496564
+      Grunge - Blue_5: -4470116285928162312
+      Grunge - Blue_50: 7612782992122095114
+      Grunge - Blue_51: 4994947791617287641
+      Grunge - Blue_52: -1297905866491540681
+      Grunge - Blue_6: -1526750865231023301
+      Grunge - Blue_7: 5236851097708724907
+      Grunge - Blue_8: 5449238285940497434
+      Grunge - Blue_9: 8274850804227726804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

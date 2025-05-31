@@ -342,7 +342,7 @@ RectTransform:
   m_GameObject: {fileID: 2878296406844527490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5639538398668741026}
@@ -641,7 +641,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.57922935, y: -0.06873491, z: 0.048720617}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4036706337730239898}
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  maxFrustration: 30
+  maxFrustration: 50
   frustrationMeter: {fileID: 3258849979349409404}
   acceptedSprite: {fileID: 6408797999967510028, guid: ba21e96c02777459b8086b3334b7de72, type: 3}
   rejectedSprite: {fileID: -2129212043851828337, guid: 67bf37e2f35bc490ea6ecaad44a868ad, type: 3}
@@ -919,9 +919,9 @@ RectTransform:
   - {fileID: 314497688320463587}
   - {fileID: 5565103958000142754}
   - {fileID: 5639538398668741026}
-  - {fileID: 3997492464375772655}
   - {fileID: 4663579575160778516}
   - {fileID: 4814594444867395047}
+  - {fileID: 3997492464375772655}
   m_Father: {fileID: 4036706337730239898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -954,7 +954,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -968,15 +968,15 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7607214875808878392}
   m_FillRect: {fileID: 5395976583173224954}
   m_HandleRect: {fileID: 6557998842233744824}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

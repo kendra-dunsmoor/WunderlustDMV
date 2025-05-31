@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -10,4 +11,9 @@ public class Dialogue : ScriptableObject
 {
     //First node of the conversation
     public DialogueNode RootNode;
+
+    // contains all other nodes that dialogue choices can point to
+    public List<DialogueNode> nodes;
+    public Character character;
+    public float typingSpeed;
 }

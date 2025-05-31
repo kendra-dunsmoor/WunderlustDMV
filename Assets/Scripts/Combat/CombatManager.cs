@@ -234,6 +234,9 @@ public class CombatManager : MonoBehaviour
                     willModifier -= 1;
                     break;
                 case EffectType.CAFFIENATED:
+                    // Check if player has thermos artifact to double this value
+                    if (gameManager.ContainsItem("A_006"))
+                        willModifier += 2;
                     // gain 2 will
                     willModifier += 2;
                     break;

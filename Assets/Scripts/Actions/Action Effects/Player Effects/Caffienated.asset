@@ -18,3 +18,7 @@ MonoBehaviour:
   effectDescription: Gain 2 will each turn
   shouldStack: 1
   shouldDecay: 1
+  isPercent: 0
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 2
+  PERFORMANCE_MODIFIER: 0

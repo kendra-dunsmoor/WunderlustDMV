@@ -20,3 +20,6 @@ MonoBehaviour:
   movement: 1
   effect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
   turnsOfEffect: 2
+  baseButtonImage: {fileID: -8462003773015267342, guid: aaa9a4561b4d346c8b747c7f14c8eeb2, type: 3}
+  hoverButtonImage: {fileID: 6230480106742259015, guid: 999cf245509a146fdab67f10757ed156, type: 3}
+  generalDescription: 

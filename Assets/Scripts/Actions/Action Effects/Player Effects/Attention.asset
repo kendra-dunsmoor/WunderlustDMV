@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Attention
   m_EditorClassIdentifier: 
   type: 0
+  target: 0
   effectSprite: {fileID: 3468904722275644496, guid: 6f816a6bce91b44ca80d919758dbabaf, type: 3}
   effectDescription: Each stack increases Performance changes by 20%
   shouldStack: 1
   shouldDecay: 0
+  isPercent: 1
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 1.2

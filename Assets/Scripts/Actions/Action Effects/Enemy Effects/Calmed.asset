@@ -18,3 +18,7 @@ MonoBehaviour:
   effectDescription: Lose 5 Frustration each turn
   shouldStack: 1
   shouldDecay: 1
+  isPercent: 0
+  FRUSTRATION_MODIFIER: -5
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0

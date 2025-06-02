@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
-  m_Name: Talk Slowly
+  m_Name: Ramble
   m_EditorClassIdentifier: 
   actionName: Ramble
   FRUSTRATION_MODIFIER: 20
@@ -20,3 +20,6 @@ MonoBehaviour:
   movement: 1
   effect: {fileID: 11400000, guid: b2934fd83412147bc917d80008c94497, type: 2}
   turnsOfEffect: 1
+  baseButtonImage: {fileID: -43995161948500204, guid: e24bdbe7673a84c6eb3917238e674060, type: 3}
+  hoverButtonImage: {fileID: -6425759165565570288, guid: efe97687008d34fe58d2024ea2b72743, type: 3}
+  generalDescription: Add an extra turn to combat.

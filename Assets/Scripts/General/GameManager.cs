@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
 /*
 * Game Manager
 * ~~~~~~~~~~~~~
@@ -19,7 +18,7 @@ public class GameManager : MonoBehaviour
     public bool inTutorial;
 
     // temporary for events:
-    private List<string> eventChoices = new List<string>();
+    private List<string> eventChoices = new List<string> {"Vending Machine", "Break Room", "Office Event"};
 
     // ~~~~~~ Functions ~~~~~~
     private void Awake()
@@ -40,18 +39,8 @@ public class GameManager : MonoBehaviour
         gameStatus = new GameState();
         playerStatus = new PlayerState();
 
-        eventChoices.Add("Vending Machine");
-        eventChoices.Add("Break Room");
-        eventChoices.Add("Office Event");
-
         // temp:
         inTutorial = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public int FetchCurrentCalendarDay() {
@@ -73,7 +62,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void StoreRunChoice(string choice) {
-        Debug.Log("Storing");
         gameStatus.AddRunChoice(choice);
     }
     public List<string> FetchRunPath() {
@@ -177,5 +165,9 @@ public class GameManager : MonoBehaviour
 
     public bool ContainsItem(string itemId) {
         return playerStatus.ContainsItem(itemId);
+    }
+
+    public List<Action> FetchActions() {
+        return playerStatus.GetActionLoadout();
     }
 }

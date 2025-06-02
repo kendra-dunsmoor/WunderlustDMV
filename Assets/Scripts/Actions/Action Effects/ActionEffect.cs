@@ -29,4 +29,10 @@ public class ActionEffect : ScriptableObject
     public string effectDescription;
     public bool shouldStack;
     public bool shouldDecay;
+
+    // Generalize effects:
+    public bool isPercent; // Determine if multiplier or addition
+    public float FRUSTRATION_MODIFIER;
+    public float WILL_MODIFIER;
+    public float PERFORMANCE_MODIFIER; // TODO: will depend on correct answer?
 }

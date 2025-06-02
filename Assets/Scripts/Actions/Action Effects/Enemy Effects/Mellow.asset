@@ -18,3 +18,7 @@ MonoBehaviour:
   effectDescription: Halve Frustration Changes
   shouldStack: 0
   shouldDecay: 0
+  isPercent: 1
+  FRUSTRATION_MODIFIER: 0.5
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0

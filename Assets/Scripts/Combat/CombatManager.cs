@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static ActionEffect;
 
@@ -22,6 +22,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject customer; // temp will need to have data for diff enemy types
     [SerializeField] private GameObject paperwork; // temp object placeholder
+    [SerializeField] private GameObject actionButtonPrefab;
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private GameObject customerIconPrefab;
     [SerializeField] private ActionEffect attentionEffect;
@@ -31,15 +32,16 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Slider willMeter;
     [SerializeField] private TextMeshProUGUI customerGoalText;
     [SerializeField] private TextMeshProUGUI remainingTurnsText;
-    [SerializeField] private Transform currentEffectsPanel;
-    [SerializeField] private Transform customerQueuePanel;
 
     [Header("------------- Spawn Points -------------")]
+    [SerializeField] private Transform currentEffectsPanel;
+    [SerializeField] private Transform customerQueuePanel;
+    [SerializeField] private Transform actionButtonGrid;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform offScreenPoint;
     [SerializeField] private Transform frontOfLinePoint;
 
-    [Header("------------- Spawn Points -------------")]
+    [Header("------------- Customer Queues -------------")]
     private Queue<Customer> customersInLine = new Queue<Customer>();
     private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
     private Customer currCustomer;
@@ -49,9 +51,22 @@ public class CombatManager : MonoBehaviour
     [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
     [SerializeField, Tooltip("Remaining turns in combat, UI might not update if this is changed until action taken")] private int remainingTurns; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
+    private List<Action> actionLoadout;
+    [SerializeField, Tooltip("If loadout not customized from apartment use base")] private List<Action> STARTER_LOADOUT;
+    public class EffectResult
+    {
+        public float FrustrationModifier { get; set; }
+        public float PerformanceModifier { get; set; }
+        public float WillModifier { get; set; }
+        public bool shouldRemoveEffect { get; set; }
+    }
+
 
     void Start()
     {
+        audioManager = 	FindFirstObjectByType<AudioManager>();
+        if (audioManager != null) audioManager.PlayMusic(audioManager.combatMusic);
+
         // temp initialization for quick testing when game manager is null:
         if (performanceLevel == 0) performanceLevel = 50f;
         if (willLevel == 0) willLevel = 50f;
@@ -66,9 +81,30 @@ public class CombatManager : MonoBehaviour
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        AddActionLoadout();
         InitializeCustomerQueue();
     }
 
+    /* Add Action Loadout: 
+    * ~~~~~~~~~~~~~~~
+    * Fetch player action loadout to customize class actions
+    */
+    private void AddActionLoadout() {
+        if (gameManager != null) actionLoadout = gameManager.FetchActions();
+        if (actionLoadout == null || actionLoadout.Count == 0) actionLoadout = STARTER_LOADOUT;
+        foreach (Action action in actionLoadout) {
+            GameObject button = Instantiate(actionButtonPrefab, actionButtonGrid);
+            button.GetComponent<Button>().onClick.AddListener(() => TakeAction(action));
+            button.GetComponent<OnHoverChangeImage>().UpdateImages(action.baseButtonImage, action.hoverButtonImage);
+            button.GetComponent<MouseOverDescription>().UpdateDescription(action.GetDescription());
+        }
+    }
+
+    /* End Shift: 
+    * ~~~~~~~~~~~~~~~
+    * Shift completed by either running out of turns or customers
+    * Add any end of shift effects and add combat rewards
+    */
     private void EndShift()
     {
         // End of shift artifact effects
@@ -79,16 +115,23 @@ public class CombatManager : MonoBehaviour
         Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
+    /* Game Over: 
+    * ~~~~~~~~~~~~~~~
+    * Player reincarnated or fired due to performance
+    * Instantiates game over screen
+    */
     private void GameOver()
     {
         // Pop up end screen
         Instantiate(gameOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
+    /* Next Customer: 
+    * ~~~~~~~~~~~~~~~
+    * Customer removed, update customer counters, current customer, and move new customer to front
+    */
     private void NextCustomer()
     {
-        Debug.Log("Next Customer");
-        Debug.Log("Customers remaining: " + customersInLine.Count);
         customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
         if (customersInLine.Count == 0) EndShift();
         else {
@@ -96,17 +139,25 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Customer dequeued");
             currCustomer.SendToFront(frontOfLinePoint);
             Destroy(customerIconQueue.Dequeue());
-            Debug.Log("Destroy queue icon");
         }
     }
     
+    /* Spawn Paperwork: 
+    * ~~~~~~~~~~~~~~~
+    * Customer reaches front of queue and their paperwork should be instantiated in
+    * This determines whether customer should be accepted or rejected
+    */
     public void SpawnPaperwork()
     {
         // TODO: Paperwork will be unique/randomized and instantiated in, just for looks rn
         paperwork.SetActive(true);
     }
 
-    // TODO: add logic to randomize/select queue of customers for the shift
+    /* Initialize Customer Queue: 
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Instantiate all customers off screen at start of combat
+    * Add correct images to customer queue and move first customer to front of line
+    */
     private void InitializeCustomerQueue() {
         // Temp: Spawn all customers off screen and add to in game and icon queues
         Debug.Log("Initialize customer queue: " + CUSTOMER_GOAL);
@@ -120,12 +171,16 @@ public class CombatManager : MonoBehaviour
         customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
     }
 
+    /* Update Performance: 
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Update performance meter after player action
+    * Check for game over state
+    */
     public void UpdatePerformance(float diff) {
-        Debug.Log("Change performance by " + diff);
         performanceLevel += diff;
-        // TODO: check if in range for meter
         performanceMeter.value = performanceLevel;
-        Debug.Log("Performance" + performanceLevel);
+        Debug.Log("Performance level updated to: " + performanceLevel);
+        performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue);
         if (performanceLevel <= 0) {
             GameOver(); // Fired
             Debug.Log("Game Over: Fired for bad performance!");
@@ -135,18 +190,34 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Game Over: Reincarnated for good performance!");
         }
     }
+    
+    /* Update Will: 
+    * ~~~~~~~~~~~~~
+    * Update will meter after player action
+    */
     public void UpdateWill(float diff) {
-        Debug.Log("Change will by -" + diff);
         willLevel -= diff;
-        // TODO: check if in range for meter
         willMeter.value = willLevel;
+        Debug.Log("Will updated to: " + willLevel);
+        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue);
     }
 
+    /* Update Frustration: 
+    * ~~~~~~~~~~~~~~~~~~~~
+    * Update current customer frustration meter after player action
+    */
     public void UpdateFrustration(float diff) {
         Debug.Log("Change curr customer frustration by " + diff);
         currCustomer.UpdateFrustration(diff);
     }
 
+    /* Take Action:
+    * ~~~~~~~~~~~~~~
+    * Player selects action button
+    * Check action effects and cost
+    * Update performance, will, frustration, and effects based on action
+    * Iterate turn counter and any active effects
+    */
     public void TakeAction (Action action) {
         // Check if sufficient will available for action:
         if (willLevel - action.WILL_MODIFIER < 0) {
@@ -173,7 +244,12 @@ public class CombatManager : MonoBehaviour
         if (remainingTurns == 0) EndShift();
     }
 
-    // Add any new effects from current action and increment tracked effects
+
+    /* Add New Effects:
+    * ~~~~~~~~~~~~~~
+    * Add any new effects from current action to UI
+    * If already active in UI increase turns
+    */
     public void AddNewEffects(ActionEffect effect, int turns) {
         // check if current action has no effect
         if (effect == null) {
@@ -182,10 +258,8 @@ public class CombatManager : MonoBehaviour
         }
         // Check for effects that aren't displayed:
         if (effect.type == EffectType.ADD_TURNS) {
-            Debug.Log("Effect type: " + effect.type);
-            Debug.Log("Effect: " + effect);
-            Debug.Log("Effect type: " + effect.type);
             remainingTurns += turns;
+            return;
         }
         // add to active/displayed buffs/debuffs
         if (activeEffects.ContainsKey(effect.type)) {
@@ -198,7 +272,6 @@ public class CombatManager : MonoBehaviour
                 Debug.Log("Effect does not stack and is already active, ignoring");
             }
         } else {
-            // TODO: clean up this system this is ugly
             Debug.Log("Add new effect");
             GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
             activeEffects.Add(effect.type, effectMarker);
@@ -207,89 +280,33 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    // TODO: this is a nasty large function that will be cleaned up
+    /* Add New Effects:
+    * ~~~~~~~~~~~~~~
+    * Check active player and customer effects
+    * Add any modifiers from effects
+    */
     private void UpdateMetersWithEffects(Action action) {
         float performaceModifier = action.PERFORMANCE_MODIFIER;
         float frustrationModifier = action.FRUSTRATION_MODIFIER;
         float willModifier = action.WILL_MODIFIER;        
 
-        // Check active effects:
         List<EffectType> effectsToRemove = new List<EffectType>();
         // Check player effects:
-        foreach(var (type, effect) in activeEffects) {
-            switch (type) {
-                case EffectType.ATTENTION:
-                    Debug.Log("Multiplying performance change by 20% due to attention");
-                    for (int i = 0; i < effect.GetComponent<UIEffectController>().FetchTurns(); i++) {
-                        performaceModifier *= 1.2f;
-                    }
-                    break;
-                case EffectType.HUSTLING:
-                    // performance gains remove attention
-                    if (performaceModifier > 0) {
-                        Debug.Log("Positive performance modifier while hustling effect active");
-                        RemoveAttention(1);
-                    }
-                    break;
-                case EffectType.DRAINED:
-                    // lose 1 will
-                    willModifier -= 1;
-                    break;
-                case EffectType.CAFFIENATED:
-                    // Check if player has thermos artifact to double this value
-                    if (gameManager.ContainsItem("A_006"))
-                        willModifier += 2;
-                    // gain 2 will
-                    willModifier += 2;
-                    break;
-            }
-            // Reduce stacked turns, TODO: check if effect decays with turns
-            UIEffectController effectController = effect.GetComponent<UIEffectController>();
-            if (effectController.effect.shouldDecay) effectController.UpdateTurns(-1);
-            if (effectController.FetchTurns() == 0) {
-                effectsToRemove.Add(type);
-            }
+        foreach(var (type, effectUI) in activeEffects) {
+            ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
         }
         // Check curr customer effects:
-        Dictionary<EffectType, GameObject> customerEffects = currCustomer.GetActiveEffects();
-        foreach(var (type, effect) in customerEffects) {
-            // General modifiers:
-            // TODO: generalize modiferes/effects list for these like items are, can add "isPercent" check too
-
-            // Any special cases that need to be hard coded for now:
-            switch (type) {
-                case EffectType.CALMED:
-                    frustrationModifier -= 5;
-                    break;
-                case EffectType.CONFUSED:
-                    frustrationModifier += 5;
-                    break;
-                case EffectType.IRATE:
-                    AddNewEffects(attentionEffect, 2);
-                    break;
-                case EffectType.INCOHERENT:
-                    // Removes 5 "Attention" when Escalated
-                    if (action.actionName == "Escalate") {
-                        RemoveAttention(5);
-                    }
-                    break;
-                case EffectType.SHORTFUSE:
-                    frustrationModifier *= 2;
-                    break;
-                case EffectType.MELLOW:
-                    frustrationModifier /= 2;
-                    break;
-                case EffectType.ELATED:
-                    performaceModifier += 5;
-                    break;
-            }
-                    // Reduce stacked turns, TODO: check if effect decays with turns
-            UIEffectController effectController = effect.GetComponent<UIEffectController>();
-            if (effectController.effect.shouldDecay) effectController.UpdateTurns(-1);
-            if (effectController.FetchTurns() == 0) {
-                effectsToRemove.Add(type);
+        foreach(var (type, effectUI) in currCustomer.GetActiveEffects()) {
+            ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+            // Temp: Annoying special case
+            if (type == EffectType.INCOHERENT) {
+                // Removes 5 "Attention" when Escalated
+                if (action.actionName == "Escalate") {
+                    RemoveEffectStacks(5, EffectType.ATTENTION);
+                }
             }
         }
+        // Clean up any expired effects from UI:
         foreach (var e in effectsToRemove) {
             Debug.Log("Remove effect");
             Destroy(activeEffects[e]);
@@ -303,7 +320,66 @@ public class CombatManager : MonoBehaviour
     }
 
 
-    // Update front customer location in line if needed
+    /* Apply Effect Modifiers:
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~
+    * For each individual effect, update modifiers
+    */
+    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController,
+        float performaceModifier, float willModifier, float frustrationModifier) {
+
+        ActionEffect effect = effectController.effect;
+
+        // General modifiers:
+        if (effect.isPercent) {
+            frustrationModifier *= effect.FRUSTRATION_MODIFIER;
+            performaceModifier *= effect.PERFORMANCE_MODIFIER;
+            willModifier *= effect.WILL_MODIFIER;
+        } else {
+            frustrationModifier += effect.FRUSTRATION_MODIFIER;
+            performaceModifier += effect.PERFORMANCE_MODIFIER;
+            willModifier += effect.WILL_MODIFIER;               
+        }
+
+        // Any special cases that need to be hard coded for now:
+        switch (effectType) {
+            case EffectType.IRATE:
+                AddNewEffects(attentionEffect, 2);
+                break;
+            case EffectType.ATTENTION:
+                Debug.Log("Multiplying performance change due to attention");
+                for (int i = 0; i < effectController.FetchTurns(); i++) {
+                    performaceModifier *= effect.PERFORMANCE_MODIFIER;
+                }
+                break;
+            case EffectType.HUSTLING:
+                // performance gains remove attention
+                if (performaceModifier > 0) {
+                    Debug.Log("Positive performance modifier while hustling effect active");
+                    RemoveEffectStacks(1, EffectType.ATTENTION);
+                }
+                break;
+            case EffectType.CAFFIENATED:
+                // Check if player has thermos artifact which doubles caffienated modifier
+                if (gameManager.ContainsItem("A_006"))
+                    willModifier += effect.WILL_MODIFIER;
+                break;
+        }
+        EffectResult effectResult = new EffectResult { 
+            FrustrationModifier = frustrationModifier, 
+            PerformanceModifier = performaceModifier, 
+            WillModifier = willModifier, 
+            shouldRemoveEffect = false 
+        };
+        if (effect.shouldDecay) effectController.UpdateTurns(-1);
+        if (effectController.FetchTurns() == 0) effectResult.shouldRemoveEffect = true;
+        return effectResult;
+    }
+
+
+    /* Move Customer:
+    * ~~~~~~~~~~~~~~~~
+    * Update location of customer sprite
+    */
     private void MoveCustomer(Action.ActionMovement movement) {
         switch (movement) {
             case Action.ActionMovement.FRONT:
@@ -325,25 +401,31 @@ public class CombatManager : MonoBehaviour
         } 
     }
 
-    public void RemoveAttention(int amount) {
-        if (activeEffects.ContainsKey(EffectType.ATTENTION)) {
+    /* Remove Effect Stacks:
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Remove stacks from effect if active
+    */
+    public void RemoveEffectStacks(int amount, EffectType effectType) {
+        if (activeEffects.ContainsKey(effectType)) {
             Debug.Log("Removing attention");
-            UIEffectController attentionEffect = activeEffects[EffectType.ATTENTION].GetComponent<UIEffectController>();
-            attentionEffect.UpdateTurns(-amount);
-            activeEffects[EffectType.ATTENTION].GetComponent<MouseOverDescription>().UpdateDescription(
-            attentionEffect.effect.effectDescription + "Turns: " + attentionEffect.FetchTurns());
-            if (attentionEffect.FetchTurns() == 0) {
+            UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
+            effectUI.UpdateTurns(-amount);
+            activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
+            effectUI.effect.effectDescription + "Turns: " + effectUI.FetchTurns());
+            if (effectUI.FetchTurns() == 0) {
                 Debug.Log("Remove effect");
-                Destroy(activeEffects[EffectType.ATTENTION]);
-                activeEffects.Remove(EffectType.ATTENTION);
+                Destroy(activeEffects[effectType]);
+                activeEffects.Remove(effectType);
             }
         }
     }
 
-    // Called by certain items
-    public void ClearPlayerConditions() {
+    /* Clear Player Conditions:
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Clear all active player conditions
+    */    public void ClearPlayerConditions() {
         foreach(var (type, effect) in activeEffects) {
-            Destroy(activeEffects[type]);
+            Destroy(effect);
         }
         activeEffects = new Dictionary<EffectType, GameObject>();
     }

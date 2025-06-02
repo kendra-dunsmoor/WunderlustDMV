@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 /*
 * Player State
@@ -22,7 +21,7 @@ public class PlayerState
 	Spent in Apartment
 	Small amount is lost when Fired or Reincarnated.
     */
-    private int soulCredits;
+    private int soulCredits = 0;
 
     // TODO: specializations
 
@@ -31,11 +30,18 @@ public class PlayerState
 	Spent in NPC interactions
     All unspent is lost when Fired or Reincarnated.
     */
-    private Action[] actionLoadout;
-
+    private List<Action> actionLoadout;
     private List<Certificate> activeCertificates = new List<Certificate>();
     private List<string> itemInventory = new List<string>();
     private List<string> artifacts = new List<string>();
+
+    public List<Action> GetActionLoadout() {
+        return actionLoadout;
+    }
+
+    public void AddActionToLoadout() {
+        // TODO: verify only 4
+    }
 
     public void UpdateOfficeBucks(int amount) {
         officeBucks += amount;

@@ -16,7 +16,10 @@ public class AudioManager : MonoBehaviour
     
     
     [Header("-------------Audio Clip-------------")]
-    public AudioClip backgroundMusic;
+    public AudioClip breakRoomMusic;
+    public AudioClip combatMusic;
+    public AudioClip apartmentMusic;
+
     public AudioClip buttonClick;
 
     public static AudioManager instance;
@@ -37,8 +40,8 @@ public class AudioManager : MonoBehaviour
     
     void Start()
     {
-        if (backgroundMusic != null) {
-            musicSource.clip = backgroundMusic;
+        if (breakRoomMusic != null) {
+            musicSource.clip = breakRoomMusic;
             musicSource.Play();
         }
     }
@@ -50,6 +53,14 @@ public class AudioManager : MonoBehaviour
         }
     }
     
+    public void PlayMusic(AudioClip clip)
+    {
+        if (clip != null) {
+            musicSource.clip = clip;
+            musicSource.Play();
+        }
+    }
+
     public void StopSFX()
     {
         SFXSource.Stop();

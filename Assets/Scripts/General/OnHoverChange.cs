@@ -8,6 +8,11 @@ public class OnHoverChangeImage : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private Sprite hoverImage;
     [SerializeField] private Sprite baseImage;
 
+    public void UpdateImages(Sprite baseImage, Sprite hoverImage) {
+        this.baseImage = baseImage;
+        this.hoverImage = hoverImage;
+        image.sprite = baseImage;
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = hoverImage;

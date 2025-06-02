@@ -20,8 +20,10 @@ public class InventoryManager : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
         combatManager = FindFirstObjectByType<CombatManager>();
 		// Get curr inventory of player to update UI
-        LoadInventory();
-        LoadArtifacts();
+        if (gameManager != null) {
+            LoadInventory();
+            LoadArtifacts();
+        }
 	}
 
     private void LoadInventory() {
@@ -80,10 +82,10 @@ public class InventoryManager : MonoBehaviour
         // Any special cases outside of general effects/modifiers will need to be added by name here
         switch (item.itemName){
             case "TPS Report":
-                combatManager.RemoveAttention(1);
+                combatManager.RemoveEffectStacks(1, ActionEffect.EffectType.ATTENTION);
                 break;
             case "Flair Buttons":
-                combatManager.RemoveAttention(1);
+                combatManager.RemoveEffectStacks(1, ActionEffect.EffectType.ATTENTION);
                 break;
         // Note: a couple artifacts are not turn based and are hard coded in combat manager end of shift effects for now
         }

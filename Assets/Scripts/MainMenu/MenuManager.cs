@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 {
     [Header("-------------Menu Panels-------------")]
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject creditsMenu;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject instructionsMenu;
     
@@ -29,13 +30,19 @@ public class MenuManager : MonoBehaviour
     
     public void OptionsMenu()
     {
-        Destroy(GameObject.FindGameObjectWithTag("MenuPanel"));
+        Destroy(GameObject.FindGameObjectWithTag("Panel_MainMenu"));
         GameObject menu = Instantiate(optionsMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+    }
+
+    public void CreditsMenu()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Panel_MainMenu"));
+        GameObject menu = Instantiate(creditsMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
     
     public void InstructionsMenu()
     {
-        Destroy(GameObject.FindGameObjectWithTag("MenuPanel"));
+        Destroy(GameObject.FindGameObjectWithTag("Panel_MainMenu"));
         GameObject menu = Instantiate(instructionsMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 }

@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3898007141478181396}
   - component: {fileID: 4371696108269281998}
   - component: {fileID: 5563374675332787954}
+  - component: {fileID: 141031319791629209}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -215,6 +216,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &141031319791629209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573425339600068239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c715b6e3e0b1a473d84900eb26f81a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageToChange: {fileID: 5563374675332787954}
+  imageUpdate: {fileID: -670038017758231442, guid: 598af86eec9654bd8b2a98311239fa9f, type: 3}
+  sceneName: Apartment
 --- !u!1 &6705364450176390121
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,8 +265,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.938, y: -2.4342}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -19.5812, y: -1.7699}
+  m_SizeDelta: {x: 386.7135, y: 101.3286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8643247851253968300
 CanvasRenderer:
@@ -282,8 +298,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Test
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 78e738676d51449d69297101faad6c40, type: 2}
-  m_sharedMaterial: {fileID: 470837998282176843, guid: 78e738676d51449d69297101faad6c40, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+  m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -307,8 +323,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -437,7 +453,7 @@ GameObject:
   - component: {fileID: 7219258271251546907}
   - component: {fileID: 7330576512353760621}
   m_Layer: 5
-  m_Name: Dialogue_Blue
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 215}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7330576512353760621
@@ -493,6 +509,7 @@ GameObject:
   - component: {fileID: 7367924919201662663}
   - component: {fileID: 1578169050287111165}
   - component: {fileID: 2504826734847701381}
+  - component: {fileID: 570519655120563820}
   m_Layer: 5
   m_Name: Background Blur
   m_TagString: Untagged
@@ -517,7 +534,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -154.38794, y: 23.33014}
-  m_SizeDelta: {x: 825, y: 350}
+  m_SizeDelta: {x: 825, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1578169050287111165
 CanvasRenderer:
@@ -557,6 +574,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &570519655120563820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450290912596905925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c715b6e3e0b1a473d84900eb26f81a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageToChange: {fileID: 2504826734847701381}
+  imageUpdate: {fileID: 21300000, guid: 22b701330f8274651921b9638de03147, type: 3}
+  sceneName: Apartment
 --- !u!1 &7829005684034592408
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,13 +618,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7411396531771359931}
+  - {fileID: 7326396391905755786}
   m_Father: {fileID: 3898007141478181396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 272.5343, y: -0.3}
-  m_SizeDelta: {x: 131.2796, y: 117.4}
+  m_AnchoredPosition: {x: 262.43976, y: 3.4976}
+  m_SizeDelta: {x: 154.8392, y: 128.4077}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442141866707520162
 MonoBehaviour:
@@ -609,8 +641,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Top: 10
+    m_Bottom: 10
   m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -653,7 +685,7 @@ Transform:
   - {fileID: 3898007141478181396}
   m_Father: {fileID: 7219258271251546907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2568659613313984459
+--- !u!1001 &2365428964501792762
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -711,7 +743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
       propertyPath: m_SizeDelta.y
@@ -747,11 +779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 65.6398
+      value: 77.4196
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -117.4
+      value: -104.3127
       objectReference: {fileID: 0}
     - target: {fileID: 5007764946548925808, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -767,15 +799,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732503733817474530, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
       propertyPath: m_Name
-      value: Response Button Blue
+      value: Response Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
---- !u!224 &7411396531771359931 stripped
+--- !u!224 &7326396391905755786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5007764946548925808, guid: 125e21f1aa1644b309ba6c05d56ccbab, type: 3}
-  m_PrefabInstance: {fileID: 2568659613313984459}
+  m_PrefabInstance: {fileID: 2365428964501792762}
   m_PrefabAsset: {fileID: 0}

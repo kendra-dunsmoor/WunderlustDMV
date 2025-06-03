@@ -23,6 +23,12 @@ public class PanelManager : MonoBehaviour
         audioManager.PlaySFX(audioManager.buttonClick);
         SceneManager.LoadSceneAsync(1);
     }
+    public void CreditsButton()
+    {
+        audioManager.PlaySFX(audioManager.buttonClick);
+        MenuManager manager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<MenuManager>();
+        manager.CreditsMenu();
+    }
 
     public void OptionsButton()
     {

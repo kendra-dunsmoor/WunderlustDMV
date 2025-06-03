@@ -14,6 +14,7 @@ public class VendingMachineController : MonoBehaviour
     [SerializeField] private GameObject opaqueScreen;
     [SerializeField] private GameObject purchasePopUp;
     [SerializeField] private TextMeshProUGUI purchaseDescription;
+    [SerializeField] private TextMeshProUGUI purchaseFlavorText;
 
     void Start()
     {
@@ -60,6 +61,7 @@ public class VendingMachineController : MonoBehaviour
         purchasePopUp.SetActive(true);
         purchasePopUp.GetComponentInChildren<ItemUIController>().AddItemUIForPurchase(item);
         purchaseDescription.text = "Buy " + item.itemName + " for " + item.price + " office bucks?";
+        purchaseFlavorText.text = item.flavorText;
     }
 
     public void CancelPurchase() {

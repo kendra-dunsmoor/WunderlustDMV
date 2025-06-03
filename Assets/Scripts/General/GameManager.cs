@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 /*
 * Game Manager
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
     public void UpdateOfficeBucks(int amount) {
         Debug.Log("Adding office bucks + " + amount);
         playerStatus.UpdateOfficeBucks(amount);
+        GameObject counter = GameObject.FindGameObjectWithTag("Counter_OfficeBucks");
+        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetOfficeBucks().ToString();
     }
 
     public float FetchWill() {
@@ -94,6 +97,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateSoulCredits(int change) {
         playerStatus.UpdateSoulCredits(change);
+        GameObject counter = GameObject.FindGameObjectWithTag("Counter_SoulCredits");
+        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetOfficeBucks().ToString();
     }
 
     public List<Certificate> FetchCertificates() {

@@ -61,6 +61,7 @@ public class CombatManager : MonoBehaviour
         public bool shouldRemoveEffect { get; set; }
     }
 
+    private float MAX_PERFORMANCE;
 
     void Start()
     {
@@ -71,6 +72,8 @@ public class CombatManager : MonoBehaviour
         if (performanceLevel == 0) performanceLevel = 50f;
         if (willLevel == 0) willLevel = 50f;
         if (CUSTOMER_GOAL == 0) CUSTOMER_GOAL = 10;
+        MAX_PERFORMANCE = performanceMeter.maxValue;
+
         gameManager = FindFirstObjectByType<GameManager>();
         inventoryManager = FindFirstObjectByType<InventoryManager>();
         if (gameManager != null) {
@@ -80,6 +83,8 @@ public class CombatManager : MonoBehaviour
         }
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
+        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue);
+        performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue);
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         AddActionLoadout();
         InitializeCustomerQueue();
@@ -185,7 +190,7 @@ public class CombatManager : MonoBehaviour
             GameOver(); // Fired
             Debug.Log("Game Over: Fired for bad performance!");
         }
-        if (performanceLevel >= 100) {
+        if (performanceLevel >= MAX_PERFORMANCE) {
             GameOver(); // Reincarnated
             Debug.Log("Game Over: Reincarnated for good performance!");
         }
@@ -219,6 +224,8 @@ public class CombatManager : MonoBehaviour
     * Iterate turn counter and any active effects
     */
     public void TakeAction (Action action) {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
+
         // Check if sufficient will available for action:
         if (willLevel - action.WILL_MODIFIER < 0) {
             Debug.Log("Insufficient will left for action: " + action.actionName);

@@ -672,7 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 530363540952408881, guid: 4d65a9d75922c415c9d3781bd349c7fd, type: 3}
-  optionsMenu: {fileID: 530363540952408881, guid: 135965d2077494ff7a62d7182e8e2628, type: 3}
+  creditsMenu: {fileID: 530363540952408881, guid: e68a89f4a7eea41e599b6b954f34529d, type: 3}
+  optionsMenu: {fileID: 530363540952408881, guid: 5c77c130928804281870cd29eea9cb2d, type: 3}
   instructionsMenu: {fileID: 530363540952408881, guid: ab2f1a1a0eb0047b0baac06c7df43308, type: 3}
   audioManager: {fileID: 1064868537}
 --- !u!1 &1985953967

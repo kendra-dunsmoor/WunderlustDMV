@@ -61,5 +61,5 @@ MonoBehaviour:
     soulCredits: 0
     itemsRewards: []
     effectRewards: []
-  character: {fileID: 0}
-  typingSpeed: 0
+  character: {fileID: 11400000, guid: 2fa7b00d940f74b7eb4973fb96bd574d, type: 2}
+  typingSpeed: 0.01

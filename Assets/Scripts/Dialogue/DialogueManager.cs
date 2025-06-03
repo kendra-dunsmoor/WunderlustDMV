@@ -152,15 +152,15 @@ public class DialogueManager : MonoBehaviour
             // Add pop-up
             // For now just add individual screens per item, could combine multipl into one later if need be
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName, item.flavorText);
         }
         if (currNode.officeBucks > 0) {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");            
         }
         if (currNode.soulCredits > 0) {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits", "Use to pay rent & purchase apartment upgrades!");            
         }
         // TODO: add effects and special cases
     }

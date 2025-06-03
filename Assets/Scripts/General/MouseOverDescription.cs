@@ -12,29 +12,36 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void Start()
     {
-        //Fetch the text component from the GameObject
-        spawnedPopUp = Instantiate(popUpBox, gameObject.transform);
-        spawnedPopUp.GetComponentInChildren<TextMeshProUGUI>().text = description;
-        spawnedPopUp.SetActive(false);
+        if (popUpBox != null) {
+            spawnedPopUp = Instantiate(popUpBox, transform);
+
+            // TODO: how??????? to fix????? Need Canvas to be parent but moved to button's position so it doesn't slip behind other canvas elements
+            // I'm going absolutely crazy trying to fix this messing w canvas though can't do this yet
+            
+            // spawnedPopUp = Instantiate(popUpBox, GameObject.FindGameObjectWithTag("Canvas").transform);
+            // spawnedPopUp.GetComponent<RectTransform>().position = gameObject.GetComponent<RectTransform>().position;
+
+            // spawnedPopUp.transform.position = transform.position + new Vector3(0, 0.5f, 0); // Position the popup
+            spawnedPopUp.SetActive(false);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        spawnedPopUp.SetActive(true);
+        if (spawnedPopUp != null)
+        {
+            spawnedPopUp.SetActive(true);
+            spawnedPopUp.GetComponentInChildren<TextMeshProUGUI>().text = description;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        spawnedPopUp.SetActive(false);
+        if (spawnedPopUp != null) spawnedPopUp.SetActive(false);
     }
 
     public void UpdateDescription(string description)
     {
         this.description = description;
-
-        // TODO: weird runtime bug where this is running before start and pop up doesn't exist
-        if (spawnedPopUp == null) spawnedPopUp = Instantiate(popUpBox, gameObject.transform);
-        spawnedPopUp.GetComponentInChildren<TextMeshProUGUI>().text = description;
-        spawnedPopUp.SetActive(false);
     }
 }

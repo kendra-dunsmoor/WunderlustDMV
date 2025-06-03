@@ -9,5 +9,8 @@ public class FloatingHealthBar : MonoBehaviour
     {
         Debug.Log("Set slider to: " + currentVal / maxVal);
         slider.value = currentVal / maxVal;
+
+        MouseOverDescription description = gameObject.GetComponent<MouseOverDescription>();
+        if (description != null) description.UpdateDescription(currentVal + "/" + maxVal);
     }
 }

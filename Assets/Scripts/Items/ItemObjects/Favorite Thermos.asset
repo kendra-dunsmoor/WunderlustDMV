@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Favorite Thermos
   m_EditorClassIdentifier: 
   itemName: Favorite Thermos
-  Icon: {fileID: 4173308112316339483, guid: 5f04d63d3d2be44d584536b868cf6a7f, type: 3}
+  Icon: {fileID: 3363596350446250999, guid: ba8bc2b71cbe24062bba0a959666ee81, type: 3}
   ID: A_006
   price: 0
   itemRarity: 0

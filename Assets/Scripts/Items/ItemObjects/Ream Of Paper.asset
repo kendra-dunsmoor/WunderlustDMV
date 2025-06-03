@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ream Of Paper
   m_EditorClassIdentifier: 
   itemName: Ream of Paper
-  Icon: {fileID: 0}
+  Icon: {fileID: 968014889301369407, guid: ba1e4a5ea92c94411b253e59effcb4aa, type: 3}
   ID: A_007
   price: 0
   itemRarity: 0

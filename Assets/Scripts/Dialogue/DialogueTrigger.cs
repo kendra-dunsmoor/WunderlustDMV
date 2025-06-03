@@ -11,7 +11,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void Start()
     {
-        eventSelector = 	FindFirstObjectByType<EventSelector>();
+        eventSelector = FindFirstObjectByType<EventSelector>();
         Dialogue dialogue = eventSelector.FetchRandomEvent();
 		FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue);
     }

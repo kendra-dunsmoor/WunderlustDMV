@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ public class Action: ScriptableObject
     public ActionEffect effect;
     public int turnsOfEffect;
 
+    public List<ActionUpgrade> actionUpgrades;
+
     public Sprite baseButtonImage;
     public Sprite hoverButtonImage;
     public string generalDescription;
@@ -43,9 +46,7 @@ public class Action: ScriptableObject
                 description += " Customer leaves queue.";
                 break;
         }
+        // TODO: Add actionUpgrades
         return description;
     }
-
-
-    // TODO: action upgrades;
 }

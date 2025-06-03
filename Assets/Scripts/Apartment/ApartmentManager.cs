@@ -9,7 +9,7 @@ public class ApartmentManager : MonoBehaviour
     void Start()
     {
         audioManager = 	FindFirstObjectByType<AudioManager>();
-        audioManager.PlayMusic(audioManager.apartmentMusic);
+        if (audioManager != null) audioManager.PlayMusic(audioManager.apartmentMusic);
     }
 
     public void StartRun() {

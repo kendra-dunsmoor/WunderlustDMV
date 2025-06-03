@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flair Buttons
   m_EditorClassIdentifier: 
   itemName: Flair Buttons
-  Icon: {fileID: -4215433246526138198, guid: 2edc2e1e9bbe94ea88dfdda37d087b8b, type: 3}
+  Icon: {fileID: -7583246083636116873, guid: 647dc5aa309b44beca97c1da5412a901, type: 3}
   ID: A_002
   price: 50
   itemRarity: 1

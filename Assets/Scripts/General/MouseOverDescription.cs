@@ -9,19 +9,18 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
     [TextArea(3,10)]
     [SerializeField] private string description;
     private GameObject spawnedPopUp;
+    private Transform originalTransform;
 
     void Start()
     {
+        this.originalTransform = this.transform;
         if (popUpBox != null) {
-            spawnedPopUp = Instantiate(popUpBox, transform);
+            //spawnedPopUp = Instantiate(popUpBox, transform);
 
             // TODO: how??????? to fix????? Need Canvas to be parent but moved to button's position so it doesn't slip behind other canvas elements
             // I'm going absolutely crazy trying to fix this messing w canvas though can't do this yet
             
-            // spawnedPopUp = Instantiate(popUpBox, GameObject.FindGameObjectWithTag("Canvas").transform);
-            // spawnedPopUp.GetComponent<RectTransform>().position = gameObject.GetComponent<RectTransform>().position;
-
-            // spawnedPopUp.transform.position = transform.position + new Vector3(0, 0.5f, 0); // Position the popup
+            spawnedPopUp = Instantiate(popUpBox, GameObject.FindGameObjectWithTag("Canvas").transform);
             spawnedPopUp.SetActive(false);
         }
     }
@@ -30,8 +29,13 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         if (spawnedPopUp != null)
         {
+            spawnedPopUp.transform.SetAsLastSibling();
+            spawnedPopUp.transform.position = this.originalTransform.position;
             spawnedPopUp.SetActive(true);
+
+           
             spawnedPopUp.GetComponentInChildren<TextMeshProUGUI>().text = description;
+          
         }
     }
 

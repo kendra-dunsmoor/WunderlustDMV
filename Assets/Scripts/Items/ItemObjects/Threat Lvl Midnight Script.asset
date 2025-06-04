@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Threat Lvl Midnight Script
   m_EditorClassIdentifier: 
   itemName: Threat Lvl Midnight Script
-  Icon: {fileID: 8701103799478461667, guid: 820925ceff21d4264806125813a56057, type: 3}
+  Icon: {fileID: 7316835574637898454, guid: b7bff215d023f453bab7cedccd1f6035, type: 3}
   ID: A_004
   price: 150
   itemRarity: 3
@@ -22,9 +22,11 @@ MonoBehaviour:
     of form or precedent." - Sothoth'
   description: The current Customer becomes "Incoherant"
   effects:
-  - {fileID: 11400000, guid: 9e239537503434dfcb8aaea6e26fecbc, type: 2}
+  - effect: {fileID: 11400000, guid: 9e239537503434dfcb8aaea6e26fecbc, type: 2}
+    stacks: 1
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 3
   currentTurnCounter: 0
+  isEndOfShiftEffect: 0

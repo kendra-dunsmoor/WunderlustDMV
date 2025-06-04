@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     // temporary for events:
     private List<string> eventChoices = new List<string> {"Vending Machine", "Break Room", "Office Event"};
 
+    // temporary until can configure loadout in apartment
+    [SerializeField, Tooltip("If loadout not customized from apartment use base")] private List<Action> STARTER_LOADOUT;
+
     // ~~~~~~ Functions ~~~~~~
     private void Awake()
     {
@@ -42,6 +45,11 @@ public class GameManager : MonoBehaviour
 
         // temp:
         inTutorial = true;
+
+        // temp:
+        foreach ( Action action in STARTER_LOADOUT) {
+            playerStatus.AddActionToLoadout(action);
+        }
     }
 
     public int FetchCurrentCalendarDay() {
@@ -174,5 +182,9 @@ public class GameManager : MonoBehaviour
 
     public List<Action> FetchActions() {
         return playerStatus.GetActionLoadout();
+    }
+
+    public void ApplyActionUpgrade(ActionUpgrade upgrade, int actionAppliedTo) {
+        playerStatus.ApplyActionUpgrade(upgrade, actionAppliedTo);
     }
 }

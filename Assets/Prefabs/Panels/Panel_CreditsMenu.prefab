@@ -362,12 +362,12 @@ MonoBehaviour:
     Encounter
     design: Joe Young
 
-    Systems & Mechanics design: Josh
+    Systems & Mechanics design: Joshua Ahlborn
 
-    Producer: Z
+    Producer:
+    Ryan Gordon (Z)
 
-    Narrative
-    & Audio: Solomon Richards'
+    Narrative & Audio: Solomon Richards'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}

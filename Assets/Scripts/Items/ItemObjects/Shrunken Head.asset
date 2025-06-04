@@ -20,7 +20,8 @@ MonoBehaviour:
   flavorText: 
   description: The current Customer becomes "Confused"
   effects:
-  - {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
+  - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
+    stacks: 1
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0

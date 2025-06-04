@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -78,17 +79,8 @@ public class InventoryManager : MonoBehaviour
     private void UseArtifact(ArtifactItem item) {
         // Add item effects
         AddEffectsAndModifiers(item);
-
-        // Any special cases outside of general effects/modifiers will need to be added by name here
-        switch (item.itemName){
-            case "TPS Report":
-                combatManager.RemoveEffectStacks(1, ActionEffect.EffectType.ATTENTION);
-                break;
-            case "Flair Buttons":
-                combatManager.RemoveEffectStacks(1, ActionEffect.EffectType.ATTENTION);
-                break;
         // Note: a couple artifacts are not turn based and are hard coded in combat manager end of shift effects for now
-        }
+        
     }
 
     // Check for specific end of shift incremented artifacts:
@@ -100,8 +92,9 @@ public class InventoryManager : MonoBehaviour
     }
 
     private void AddEffectsAndModifiers(Item item) {
-        foreach (ActionEffect effect in item.effects) {
-            combatManager.AddNewEffects(effect, 1); // TODO: fix to store turns for each effect
+        foreach (ActionEffectStacks effectStack in item.effects) {
+            if (effectStack.stacks < 0) combatManager.RemoveEffectStacks(effectStack.stacks, effectStack.effect.type);
+            else combatManager.AddNewEffect(effectStack.effect, effectStack.stacks);
         }
 
         // Add item modifiers:

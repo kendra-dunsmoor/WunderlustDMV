@@ -21,8 +21,9 @@ MonoBehaviour:
     my car...bringing me to work. Clearly they''re not working." - Astaroth'
   description: Gain 5 will at the end of each shift
   effects: []
-  willModifier: -5
+  willModifier: 5
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 0
   currentTurnCounter: 0
+  isEndOfShiftEffect: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Ream of Paper
   Icon: {fileID: 968014889301369407, guid: ba1e4a5ea92c94411b253e59effcb4aa, type: 3}
-  ID: A_007
+  ID: A_010
   price: 0
   itemRarity: 0
   flavorText: 
@@ -25,3 +25,4 @@ MonoBehaviour:
   frustrationModifier: 0
   turnClock: 0
   currentTurnCounter: 0
+  isEndOfShiftEffect: 0

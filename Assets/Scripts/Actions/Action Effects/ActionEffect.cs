@@ -16,7 +16,8 @@ public class ActionEffect : ScriptableObject
         INCOHERENT,
         SHORTFUSE,
         MELLOW,
-        ELATED
+        ELATED,
+        CHEERFUL
     };
     public EffectType type;
     public enum TargetType {

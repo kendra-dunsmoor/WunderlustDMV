@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
   m_Name: Ruin Paperwork
   m_EditorClassIdentifier: 
-  actionName: Ruin_Paperwork
+  actionName: Ruin Paperwork
   FRUSTRATION_MODIFIER: 20
-  WILL_MODIFIER: 3
+  WILL_MODIFIER: -3
   PERFORMANCE_MODIFIER: -5
   type: 1
   movement: 1
-  effect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
-  turnsOfEffect: 2
+  effects:
+  - effect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
+    stacks: 2
+  actionUpgrades: []
   baseButtonImage: {fileID: -8462003773015267342, guid: aaa9a4561b4d346c8b747c7f14c8eeb2, type: 3}
   hoverButtonImage: {fileID: 6230480106742259015, guid: 999cf245509a146fdab67f10757ed156, type: 3}
   generalDescription: 

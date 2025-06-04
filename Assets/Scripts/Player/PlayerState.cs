@@ -30,7 +30,7 @@ public class PlayerState
 	Spent in NPC interactions
     All unspent is lost when Fired or Reincarnated.
     */
-    private List<Action> actionLoadout;
+    private List<Action> actionLoadout = new List<Action>();
     private List<Certificate> activeCertificates = new List<Certificate>();
     private List<string> itemInventory = new List<string>();
     private List<string> artifacts = new List<string>();
@@ -39,8 +39,20 @@ public class PlayerState
         return actionLoadout;
     }
 
-    public void AddActionToLoadout() {
-        // TODO: verify only 4
+    public void ApplyActionUpgrade(ActionUpgrade upgrade, int actionAppliedTo) {
+        Action action = actionLoadout[actionAppliedTo];
+        action.FRUSTRATION_MODIFIER += upgrade.FRUSTRATION_MODIFIER;
+        action.PERFORMANCE_MODIFIER += upgrade.PERFORMANCE_MODIFIER;
+        action.WILL_MODIFIER += upgrade.WILL_MODIFIER;
+        foreach(ActionEffectStacks effectStack in upgrade.effects) {
+            // TODO: fix this to actually check if there is already a stack of the same effect type
+            action.effects.Add(effectStack);
+        }
+        if (upgrade.updateMovement) action.movement = upgrade.movement;
+    }
+
+    public void AddActionToLoadout(Action action) {
+        actionLoadout.Add(action);
     }
 
     public void UpdateOfficeBucks(int amount) {

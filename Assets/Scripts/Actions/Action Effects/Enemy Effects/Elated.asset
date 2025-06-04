@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   target: 1
-  effectSprite: {fileID: -1303584338656955783, guid: 722cde0e6403544479f1d180d08f8e71, type: 3}
+  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
   effectDescription: Increases Performance by 5 per Turn
   shouldStack: 0
   shouldDecay: 0
+  isPercent: 0
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0

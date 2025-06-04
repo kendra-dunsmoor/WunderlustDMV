@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -201,7 +202,7 @@ public class CombatManager : MonoBehaviour
     * Update will meter after player action
     */
     public void UpdateWill(float diff) {
-        willLevel -= diff;
+        willLevel += diff;
         willMeter.value = willLevel;
         Debug.Log("Will updated to: " + willLevel);
         willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue);
@@ -242,7 +243,10 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Turns remaining: " + remainingTurns);
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         inventoryManager.IncrementArtifacts();
-        AddNewEffects(action.effect, action.turnsOfEffect);
+        foreach (ActionEffectStacks effectStacks in action.effects) {
+            if (effectStacks.stacks < 0) RemoveEffectStacks(effectStacks.stacks, effectStacks.effect.type);
+            else AddNewEffect(effectStacks.effect, effectStacks.stacks);
+        }
 
         // Move current customer if needed:
         MoveCustomer(action.movement);
@@ -257,7 +261,7 @@ public class CombatManager : MonoBehaviour
     * Add any new effects from current action to UI
     * If already active in UI increase turns
     */
-    public void AddNewEffects(ActionEffect effect, int turns) {
+    public void AddNewEffect(ActionEffect effect, int stacks) {
         // check if current action has no effect
         if (effect == null) {
             Debug.Log("Effect is null");
@@ -265,7 +269,7 @@ public class CombatManager : MonoBehaviour
         }
         // Check for effects that aren't displayed:
         if (effect.type == EffectType.ADD_TURNS) {
-            remainingTurns += turns;
+            remainingTurns += stacks;
             return;
         }
         // add to active/displayed buffs/debuffs
@@ -273,7 +277,7 @@ public class CombatManager : MonoBehaviour
             UIEffectController currUIEffect = activeEffects[effect.type].GetComponent<UIEffectController>();
             if (effect.shouldStack) {
                 Debug.Log("Effect already active, add to stack");
-                currUIEffect.UpdateTurns(turns);
+                currUIEffect.UpdateTurns(stacks);
                 activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + currUIEffect.FetchTurns());
             } else {
                 Debug.Log("Effect does not stack and is already active, ignoring");
@@ -282,8 +286,8 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Add new effect");
             GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
             activeEffects.Add(effect.type, effectMarker);
-            effectMarker.GetComponent<UIEffectController>().AddEffect(effect, turns);
-            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + turns);
+            effectMarker.GetComponent<UIEffectController>().AddEffect(effect, stacks);
+            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + stacks);
         }
     }
 
@@ -350,7 +354,7 @@ public class CombatManager : MonoBehaviour
         // Any special cases that need to be hard coded for now:
         switch (effectType) {
             case EffectType.IRATE:
-                AddNewEffects(attentionEffect, 2);
+                AddNewEffect(attentionEffect, 2);
                 break;
             case EffectType.ATTENTION:
                 Debug.Log("Multiplying performance change due to attention");

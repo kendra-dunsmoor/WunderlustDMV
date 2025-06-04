@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Action", menuName = "Action/Action Asset")]
@@ -20,9 +20,7 @@ public class Action: ScriptableObject
         AWAY
     };
     public ActionMovement movement;
-    public ActionEffect effect;
-    public int turnsOfEffect;
-
+    public List<ActionEffectStacks> effects;
     public List<ActionUpgrade> actionUpgrades;
 
     public Sprite baseButtonImage;
@@ -34,7 +32,9 @@ public class Action: ScriptableObject
         if (WILL_MODIFIER != 0) description += "Will cost: " + WILL_MODIFIER;
         if (FRUSTRATION_MODIFIER != 0) description += " Frustration modifier: " + FRUSTRATION_MODIFIER;
         if (PERFORMANCE_MODIFIER != 0) description += " Performance modifier: " + PERFORMANCE_MODIFIER;
-        if (effect != null) description += " Adds effect " + effect.type + " for " + turnsOfEffect + " turns.";
+        foreach (ActionEffectStacks effectStacks in effects ) {
+            if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
+        }
         switch (movement) {
             case ActionMovement.FRONT:
                 description += " Customer does not move.";
@@ -46,7 +46,7 @@ public class Action: ScriptableObject
                 description += " Customer leaves queue.";
                 break;
         }
-        // TODO: Add actionUpgrades
+        // TODO: Add actionUpgrades descriptions
         return description;
     }
 }

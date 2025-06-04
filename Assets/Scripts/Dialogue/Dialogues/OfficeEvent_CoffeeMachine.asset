@@ -22,9 +22,8 @@ MonoBehaviour:
     - responseText: 'Pour out all the coffee and hide the grounds so no one can have
         any. '
       nextNodeIndex: 1
-    - responseText: 'Take the BuckStar cup out of the trash and fill it with ice
-        from the freezer. Pour in the coffee and sell it to Verrine as though you
-        bought it for him. '
+    - responseText: Take the BuckStar cup out of the trash to fill and sell it to
+        Verrine.
       nextNodeIndex: 2
     containsReward: 0
     officeBucks: 0

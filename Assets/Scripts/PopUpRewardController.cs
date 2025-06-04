@@ -6,7 +6,7 @@ public class PopUpRewardController : MonoBehaviour
 {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI description;
-    [SerializeField] TextMeshProUGUI flavorText;
+    [SerializeField] TextMeshProUGUI flavorTextDescription;
     public void Close()
     {
         Destroy(gameObject);
@@ -15,7 +15,7 @@ public class PopUpRewardController : MonoBehaviour
     public void AddRewardInfo(Sprite image, string rewardName, string flavorText) {
         // Might need to add some more complicated logic here if there are multiple rewards?
         if (image != null) itemImage.sprite = image;
-        if (flavorText != null) this.flavorText.text = flavorText;
+        if (flavorText != null || flavorText != "") flavorTextDescription.text = flavorText;
         description.text = "Gained: " + rewardName;
     }
 }

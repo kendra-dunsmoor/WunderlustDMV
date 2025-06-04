@@ -20,3 +20,6 @@ MonoBehaviour:
   flavorText: Definitly no relation to a drug whatsoever...
   description: Restores 10 will
   effects: []
+  willModifier: 10
+  performanceModifier: 0
+  frustrationModifier: 0

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Delay
   FRUSTRATION_MODIFIER: 20
-  WILL_MODIFIER: 2
+  WILL_MODIFIER: -2
   PERFORMANCE_MODIFIER: -10
   type: 1
   movement: 0
-  effect: {fileID: 0}
-  turnsOfEffect: 0
+  effects: []
+  actionUpgrades: []
   baseButtonImage: {fileID: 1695850689617446438, guid: 1fcdb938a3d2e468a81c1fe72ea1a36f, type: 3}
   hoverButtonImage: {fileID: 4437820018830493574, guid: 8297d69beb45e4bf5aa3e41f6acf430a, type: 3}
   generalDescription: 

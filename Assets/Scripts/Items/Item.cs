@@ -19,7 +19,7 @@ public class Item : ScriptableObject
     public Rarity itemRarity;
     public string flavorText;
     public string description;
-    public List<ActionEffect> effects;
+    public List<ActionEffectStacks> effects;
     public int willModifier;
     public int performanceModifier;
     public int frustrationModifier;

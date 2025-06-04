@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 5
   target: 1
-  effectSprite: {fileID: -2365659144287247064, guid: e7f402fbd1e4047bb8a48cd0b680a3a9, type: 3}
+  effectSprite: {fileID: 2338019365221269074, guid: a73c885879ec2484f8242a329d1c4af0, type: 3}
   effectDescription: Applies +2 Attention to Player at start of turn
   shouldStack: 0
   shouldDecay: 0
+  isPercent: 0
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0

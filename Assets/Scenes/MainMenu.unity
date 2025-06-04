@@ -328,6 +328,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 63b6c3ea3ebe14566b312750f75a31ee, type: 2}
   inTutorial: 0
+  STARTER_LOADOUT:
+  - {fileID: 11400000, guid: c16afa8938ebf4fa1b7c679f649bb32d, type: 2}
+  - {fileID: 11400000, guid: af7d50cf0bd6c4015b7a6d62c66e005a, type: 2}
+  - {fileID: 11400000, guid: c64f0519786b64fafa8ff34233c4e664, type: 2}
+  - {fileID: 11400000, guid: c579fc11071c540cb956c5c7e8056f82, type: 2}
 --- !u!4 &575042072
 Transform:
   m_ObjectHideFlags: 0

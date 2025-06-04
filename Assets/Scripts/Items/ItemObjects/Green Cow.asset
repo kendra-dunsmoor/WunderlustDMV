@@ -21,4 +21,8 @@ MonoBehaviour:
     wings.
   description: Restore 10 Will & Gain 3 "Caffienated"
   effects:
-  - {fileID: 11400000, guid: 356d5becc06ea4fcea00faf40db0397a, type: 2}
+  - effect: {fileID: 11400000, guid: 356d5becc06ea4fcea00faf40db0397a, type: 2}
+    stacks: 3
+  willModifier: 10
+  performanceModifier: 0
+  frustrationModifier: 0

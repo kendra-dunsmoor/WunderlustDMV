@@ -68,6 +68,7 @@ public class Customer : MonoBehaviour
 
     public void SendToFront(Transform point)
     {
+        if (gameObject == null) return;
         Debug.Log("Sending customer to front");
         movingToFront = true;
         goalPoint = point;
@@ -75,11 +76,14 @@ public class Customer : MonoBehaviour
 
     public void SendAway(bool accepted, Transform point)
     {
+        if (gameObject == null) return;
+
         Debug.Log("Sending customer away");
         movingAway = true;
         goalPoint = point;
         // toogle paperwork visibility false
-        GameObject.FindGameObjectWithTag("Paperwork").SetActive(false);
+        GameObject paperwork = GameObject.FindGameObjectWithTag("Paperwork");
+        if (paperwork != null) paperwork.SetActive(false);
         if (accepted)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = acceptedSprite;
@@ -92,6 +96,8 @@ public class Customer : MonoBehaviour
 
     public void SendToBack(Transform point)
     {
+        if (gameObject == null) return;
+
         Debug.Log("Sending customer to back");
         movingBack = true;
         goalPoint = point;
@@ -100,9 +106,11 @@ public class Customer : MonoBehaviour
     }
 
     public void UpdateFrustration(float change) {
+        if (gameObject == null) return;
+
         frustrationLevel += change;
         Debug.Log("Customer frustration level updated to: " + frustrationLevel);
-        frustrationMeter.UpdateBar(frustrationLevel, maxFrustration);
+        if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, maxFrustration);
         if (frustrationLevel >= maxFrustration) {
             // Check if customer is already irate:
             if (activeEffects.ContainsKey(EffectType.IRATE)) return;

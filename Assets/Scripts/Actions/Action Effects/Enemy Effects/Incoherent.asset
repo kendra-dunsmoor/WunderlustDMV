@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   target: 1
-  effectSprite: {fileID: -1303584338656955783, guid: 722cde0e6403544479f1d180d08f8e71, type: 3}
+  effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
   effectDescription: Removes 5 "Attention" when Escalated
   shouldStack: 0
   shouldDecay: 0
+  isPercent: 0
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0

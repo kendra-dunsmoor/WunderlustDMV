@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
   m_Name: Correction Form
   m_EditorClassIdentifier: 
-  actionName: Correction_Form
+  actionName: Correction Form
   FRUSTRATION_MODIFIER: 10
-  WILL_MODIFIER: 2
+  WILL_MODIFIER: -2
   PERFORMANCE_MODIFIER: -5
   type: 1
   movement: 1
-  effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
-  turnsOfEffect: 3
+  effects:
+  - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
+    stacks: 3
+  actionUpgrades: []
   baseButtonImage: {fileID: 8850015752087431975, guid: 091f0871f3fcc47bcbe0f104148cfe73, type: 3}
   hoverButtonImage: {fileID: 167115320233886826, guid: 56bce52ca292a4d088494a78a07cb123, type: 3}
   generalDescription: 

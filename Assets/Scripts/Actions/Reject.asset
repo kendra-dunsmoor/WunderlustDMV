@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Reject
   FRUSTRATION_MODIFIER: 30
-  WILL_MODIFIER: 2
+  WILL_MODIFIER: -2
   PERFORMANCE_MODIFIER: -10
   type: 1
   movement: 1
-  effect: {fileID: 0}
-  turnsOfEffect: 0
+  effects: []
+  actionUpgrades: []
+  baseButtonImage: {fileID: 0}
+  hoverButtonImage: {fileID: 0}
+  generalDescription: 

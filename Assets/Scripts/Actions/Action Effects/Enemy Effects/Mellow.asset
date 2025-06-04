@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 10
   target: 1
-  effectSprite: {fileID: -1303584338656955783, guid: 722cde0e6403544479f1d180d08f8e71, type: 3}
+  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
   effectDescription: Halve Frustration Changes
   shouldStack: 0
   shouldDecay: 0

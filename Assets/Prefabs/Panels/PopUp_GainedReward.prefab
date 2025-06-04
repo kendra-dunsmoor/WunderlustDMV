@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 1585547724129139077}
   description: {fileID: 5447016612042786821}
+  flavorTextDescription: {fileID: 3681661114505423687}
 --- !u!1 &913052575171919975
 GameObject:
   m_ObjectHideFlags: 0

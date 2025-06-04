@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Mr. Dreggs
   characterImage: {fileID: -2065005977901854571, guid: d1ec7419c03cf4dc4ba21ca767b18cd3, type: 3}
+  typingSpeed: 0.03

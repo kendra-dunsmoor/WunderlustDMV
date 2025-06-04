@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] ItemInventory artifacts;
     private GameManager gameManager;
     private CombatManager combatManager;
+    private AudioManager audioManager;
 
     // TODO: maybe add artifacts panel here too? Idk if it should be separate
 
@@ -19,6 +20,7 @@ public class InventoryManager : MonoBehaviour
 	{
         // Get Game Manager for updating inventory
         gameManager = FindFirstObjectByType<GameManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         combatManager = FindFirstObjectByType<CombatManager>();
 		// Get curr inventory of player to update UI
         if (gameManager != null) {
@@ -50,7 +52,9 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void InventoryClick(Item item) {
+        if (combatManager.actionsDisabled) return;
         if (item is UsableItem) {
+            if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
             UsableItem usableItem = (UsableItem) item;
 
             AddEffectsAndModifiers(item);
@@ -77,6 +81,8 @@ public class InventoryManager : MonoBehaviour
     }
 
     private void UseArtifact(ArtifactItem item) {
+        // TODO: should there be a sound here? Maybe not
+        if (audioManager != null) audioManager.PlaySFX(audioManager.specialActionButton);
         // Add item effects
         AddEffectsAndModifiers(item);
         // Note: a couple artifacts are not turn based and are hard coded in combat manager end of shift effects for now

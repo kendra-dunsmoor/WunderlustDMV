@@ -86,8 +86,6 @@ public class DialogueManager : MonoBehaviour
             // Setup button to trigger SelectResponse when clicked
             buttonObj.GetComponent<Button>().onClick.AddListener(() => SelectResponse(response));
         }
-
-        if (currNode.containsReward) AddRewards(currNode);
     }
  
     // Handles response selection and triggers next dialogue node
@@ -99,6 +97,8 @@ public class DialogueManager : MonoBehaviour
         }
 		// Button click audio
         audioManager.PlaySFX(audioManager.buttonClick);
+
+        if (response.containsReward) AddRewards(response);
 
         // Fetch nextNode
         DialogueNode nextLine = currDialogue.nodes[response.nextNodeIndex];
@@ -138,11 +138,11 @@ public class DialogueManager : MonoBehaviour
         DialogueBodyText.text = "";
         foreach (char letter in text) {
             DialogueBodyText.text += letter;
-            yield return new WaitForSeconds(currDialogue.typingSpeed);
+            yield return new WaitForSeconds(currDialogue.character.typingSpeed);
         }
         isTyping = false; 
     }
-    private void AddRewards(DialogueNode currNode) {
+    private void AddRewards(DialogueResponse currNode) {
         // Add any items/effects connected to node
         foreach (Item item in currNode.itemsRewards) {
             if (item is ArtifactItem)
@@ -154,13 +154,21 @@ public class DialogueManager : MonoBehaviour
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName, item.flavorText);
         }
-        if (currNode.officeBucks > 0) {
+        if (currNode.officeBucks != 0) {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");            
         }
-        if (currNode.soulCredits > 0) {
+        if (currNode.soulCredits != 0) {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits", "Use to pay rent & purchase apartment upgrades!");            
+        }
+        if (currNode.performanceBoost != 0) {
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.performanceBoost + " performance", "");            
+        }
+        if (currNode.willBoost != 0) {
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.willBoost + " will", "");            
         }
         // TODO: add effects and special cases
     }

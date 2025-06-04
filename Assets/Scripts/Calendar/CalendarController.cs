@@ -15,8 +15,10 @@ public class CalendarController : MonoBehaviour
     private GameManager gameManager;
     private int currDay = 0;
 
+    private AudioManager audioManager;
     void Start()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
         // gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gameManager != null) {
@@ -53,6 +55,7 @@ public class CalendarController : MonoBehaviour
     }
 
     public void SelectChoice(TextMeshProUGUI choice) {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         Debug.Log("Selecting choice: " + choice.text);
         gameManager.StoreRunChoice(choice.text);
         switch (choice.text) {

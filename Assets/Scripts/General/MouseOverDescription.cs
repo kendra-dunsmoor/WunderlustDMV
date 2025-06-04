@@ -16,9 +16,6 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
         this.originalTransform = this.transform;
         if (popUpBox != null) {
             //spawnedPopUp = Instantiate(popUpBox, transform);
-
-            // TODO: how??????? to fix????? Need Canvas to be parent but moved to button's position so it doesn't slip behind other canvas elements
-            // I'm going absolutely crazy trying to fix this messing w canvas though can't do this yet
             
             spawnedPopUp = Instantiate(popUpBox, GameObject.FindGameObjectWithTag("Canvas").transform);
             spawnedPopUp.SetActive(false);

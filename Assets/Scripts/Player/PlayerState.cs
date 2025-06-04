@@ -101,4 +101,10 @@ public class PlayerState
     public bool ContainsItem(string itemId) {
         return artifacts.Contains(itemId) || itemInventory.Contains(itemId);
     }
+
+    public void ResetRun() {
+        artifacts = new List<string>();
+        itemInventory = new List<string>();
+        officeBucks = 0;
+    }
 }

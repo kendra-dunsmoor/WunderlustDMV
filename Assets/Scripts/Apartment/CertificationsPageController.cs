@@ -8,6 +8,7 @@ public class CertificationsPageController : MonoBehaviour
     [SerializeField] private Transform certsParent;
     [SerializeField] private GameObject upgradesScreen;
     [SerializeField] private Certificate[] certificatesAvailable;
+    private AudioManager audioManager;
     private GameManager gameManager;
 
     // Purchase screen:
@@ -17,6 +18,7 @@ public class CertificationsPageController : MonoBehaviour
 
     void Start()
     {
+        audioManager = 	FindFirstObjectByType<AudioManager>();
         // These should probably get moved to prefab script but leaving all pop up logic in here for now:
         opaqueScreen.SetActive(false);
         purchasePopUp.SetActive(false);
@@ -35,6 +37,7 @@ public class CertificationsPageController : MonoBehaviour
 
     public void BuyCert(CertificateUIController certUI)
     {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
         Certificate cert = certUI.certificate;
         if (gameManager.FetchSoulCredits() >= cert.price) {
             gameManager.AddCertificate(cert);
@@ -45,6 +48,7 @@ public class CertificationsPageController : MonoBehaviour
 
     public void ReturnToUpgrades()
     {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         Instantiate(upgradesScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
         // Clear current screen
         Destroy(gameObject);
@@ -52,11 +56,13 @@ public class CertificationsPageController : MonoBehaviour
 
     public void CloseComputer()
     {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         Destroy(gameObject);
     }
 
     public void PurchasePopUp(Certificate cert)
     {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         // Add opaque background
         opaqueScreen.SetActive(true);
         // Add purchase popup
@@ -68,6 +74,7 @@ public class CertificationsPageController : MonoBehaviour
     }
 
     public void Cancel() {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         purchasePopUp.SetActive(false);
         opaqueScreen.SetActive(false);
     }

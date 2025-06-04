@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Coffee Machine
   characterImage: {fileID: 0}
+  typingSpeed: 0.01

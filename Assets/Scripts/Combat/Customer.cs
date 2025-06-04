@@ -42,7 +42,9 @@ public class Customer : MonoBehaviour
             if (transform.position.x >= goalPoint.position.x)
             {
                 movingToFront = false;
-                GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>().SpawnPaperwork();
+                CombatManager combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
+                combatManager.EnableActions();
+                combatManager.SpawnPaperwork();                
             } 
         }
         if (movingAway)

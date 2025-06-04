@@ -18,71 +18,132 @@ MonoBehaviour:
     responses:
     - responseText: ...
       nextNodeIndex: 0
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   nodes:
   - tag: 0 - Start
     dialogueText: "You\u2019re still here. Why?"
     responses:
     - responseText: "I\u2019m your coworker."
       nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
     - responseText: "I\u2026I\u2019m not sure. I should go home soon."
       nextNodeIndex: 2
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 1 - Branch A
     dialogueText: The newbie? I thought you left. Are you avoiding work too?
     responses:
     - responseText: Yeah, as often as I can.
       nextNodeIndex: 3
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: -15
+      willBoost: 0
     - responseText: No, I just need to catch my breath.
       nextNodeIndex: 4
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards:
+      - effect: {fileID: 11400000, guid: 70c0a72e12eb9494ab04d843dcc2bb7b, type: 2}
+        stacks: 1
+      performanceBoost: 0
+      willBoost: 0
   - tag: 2 - Branch B
     dialogueText: Me too. Avoiding work gets exhausting.
     responses:
     - responseText: "Yeah, but I have to buy furniture or else I\u2019ll have to
         sleep on the floor again. "
       nextNodeIndex: 5
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 40
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
     - responseText: "It\u2019s too hard, honestly. How do you do it?"
       nextNodeIndex: 6
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 3 - Branch A1
     dialogueText: Sweet. Want a beer? I always keep an extra around here somewhere.
-    responses: []
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 8
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 4 - Branch A2
     dialogueText: "That means you\u2019re working too hard. Let me show you how to
       get the peons to stop paying attention to you."
-    responses: []
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 8
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 5 - Branch B1
     dialogueText: "You need soul credits? I\u2019ve got some. Don\u2019t waste your
       time working. You can\u2019t waste eternity worrying about everything."
-    responses: []
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 8
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 6 - Branch B2
     dialogueText: "I\u2019ve been waiting for someone to ask me that for a millenium!
       I\u2019ve got so many tips and tricks, and nobody wants to hear about them. "
     responses:
     - responseText: ...
       nextNodeIndex: 7
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
-  - tag: 5 - Branch B1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 7 - Branch B2 Continued
     dialogueText: "The key is to ignore the customers, but if they insist on your
       attention, I keep a photocopy of the boss\u2019s butt, and I\u2019ll give it
       to the stubborn ones. *Laughs to herself* It\u2019s getting a bit stale, though.
@@ -90,9 +151,15 @@ MonoBehaviour:
       the future.  "
     responses:
     - responseText: ...
-      nextNodeIndex: 7
-    containsReward: 0
-    itemsRewards: []
-    effectRewards: []
+      nextNodeIndex: 8
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 8 - Exit Convo
+    dialogueText: 
+    responses: []
   character: {fileID: 11400000, guid: 702073cb1a38a455d88e55ffdb2c6127, type: 2}
-  typingSpeed: 0.02

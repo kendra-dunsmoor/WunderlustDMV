@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: Apartment_Landlord_Reincarnated
+  m_EditorClassIdentifier: 
+  RootNode:
+    tag: Start
+    dialogueText: "Wow! You were already reincarnated? Well, that\u2019s nice and
+      all, but the tenants during your life really wrecked the place. They didn\u2019t
+      even get you anything new\u2026but keep up at that rate, and you\u2019ll be
+      able to afford new stuff in no time!"
+    responses:
+    - responseText: How long have I been gone?
+      nextNodeIndex: 0
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: 'What do you mean about the other tenants? '
+      nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: So I have to start paying rent again? How much do I owe you?
+      nextNodeIndex: 2
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  nodes:
+  - tag: 0 - Choice A
+    dialogueText: "I don\u2019t know. A few decades?"
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 1 - Choice B
+    dialogueText: "What? You want me to just leave the place empty while you\u2019re
+      up there, living another life? A spirit\u2019s gotta make profit!"
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 2 - Choice C
+    dialogueText: "Well\u2026how much do you have?"
+    responses:
+    - responseText: I must have some left over.
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: None! I just died.
+      nextNodeIndex: 4
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 3 - C1
+    dialogueText: Good! Then you can get this place looking new again.
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 4 - C2
+    dialogueText: Ah. Well, I suppose I could loan you some.
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 5 - Payment
+    dialogueText: You can pay me on your way out.
+    responses:
+    - responseText: Exit
+      nextNodeIndex: 6
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 6 - End
+    dialogueText: 
+    responses: []
+  character: {fileID: 11400000, guid: 2fa7b00d940f74b7eb4973fb96bd574d, type: 2}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 
 /*
@@ -12,6 +13,15 @@ public class GameState
     private float will = 100f;
     private int currentWeekday = 0;
     private List<string> runPath = new List<string>();
+
+    public enum RunStatus {
+        ACTIVE,
+        FIRED,
+        REINCARNATED,
+        WON
+    }
+
+    private RunStatus runStatus = RunStatus.ACTIVE;
     
     public int GetDay() {
         return currentWeekday;
@@ -22,6 +32,15 @@ public class GameState
         currentWeekday++;
         this.performance = performance;
         this.will = will;
+    }
+
+    public RunStatus GetRunStatus() {
+        return runStatus;
+    }
+
+    // Called when combat for day is completed
+    public void UpdateRunStatus(RunStatus result) {
+        runStatus = result;
     }
 
     public void AddRunChoice(string choice) {
@@ -38,5 +57,12 @@ public class GameState
 
     public float GetWill() {
         return will;
+    }
+
+    public void ResetRun() {
+        will = 100f;
+        performance = 100f;
+        runPath = new List<string>();
+        currentWeekday = 0;
     }
 }

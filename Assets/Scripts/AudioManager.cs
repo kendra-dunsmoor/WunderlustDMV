@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -15,12 +14,22 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
     
     
-    [Header("-------------Audio Clip-------------")]
+    [Header("-------------Music Audio Clips-------------")]
     public AudioClip breakRoomMusic;
     public AudioClip combatMusic;
     public AudioClip apartmentMusic;
 
+    [Header("-------------SFX Audio Clips-------------")]
     public AudioClip buttonClick;
+    public AudioClip acceptButton;
+    public AudioClip rejectButton;
+    public AudioClip specialActionButton;
+    public AudioClip noEnergy;
+    public AudioClip buyUpgrade;
+    public AudioClip shiftOver_Success;
+    public AudioClip shiftOver_Fired;
+    public AudioClip shiftOver_Reincarnated;
+    public AudioClip computerBootUp;
 
     public static AudioManager instance;
     [SerializeField] private AudioMixer mixer;

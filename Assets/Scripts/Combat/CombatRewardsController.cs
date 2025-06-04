@@ -11,10 +11,12 @@ public class CombatRewardsController : MonoBehaviour
     [SerializeField] private Transform actionUpgradeGrid;
     [SerializeField] private GameObject actionUpgradePrefab;
     [SerializeField] private ActionUpgradeDB actionUpgradeDB;
+    private AudioManager audioManager;
     private GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
         rewardsDescription.text = currency + " OfficeBucks";
 
@@ -35,11 +37,13 @@ public class CombatRewardsController : MonoBehaviour
     }
 
     public void UpgradeAction(ActionUpgrade upgrade, int actionIndex) {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
         gameManager.ApplyActionUpgrade(upgrade, actionIndex);
         CheckCalendar();
     }
 
     public void CheckCalendar() {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         gameManager.UpdateOfficeBucks(currency);
         Instantiate(nextShiftCalendar, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
         // Clear current screen

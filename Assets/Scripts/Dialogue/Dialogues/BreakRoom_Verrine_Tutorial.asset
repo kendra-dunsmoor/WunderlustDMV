@@ -19,11 +19,13 @@ MonoBehaviour:
     responses:
     - responseText: 'Actually, I need a job. '
       nextNodeIndex: 0
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   nodes:
   - tag: 0 - No branching
     dialogueText: "Oh! Then you\u2019ve come to the right place. The DMV is always
@@ -32,11 +34,14 @@ MonoBehaviour:
     responses:
     - responseText: "Alright, I\u2019m ready to start."
       nextNodeIndex: 1
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards:
+      - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 1 - No branching
     dialogueText: "Sounds good. Oh! Before we get you started, you should have this.
       There\u2019s usually one of these lying around the breakroom, so you should
@@ -44,19 +49,14 @@ MonoBehaviour:
     responses:
     - responseText: Okay, thanks
       nextNodeIndex: 2
-    containsReward: 1
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards:
-    - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
-    effectRewards: []
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 2 - End
     dialogueText: 
     responses: []
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
   character: {fileID: 11400000, guid: e7c920c6a0807440d881d6db3c4539fc, type: 2}
-  typingSpeed: 0.005

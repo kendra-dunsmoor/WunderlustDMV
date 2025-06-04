@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: BreakRoom_Sothoth_1
+  m_EditorClassIdentifier: 
+  RootNode:
+    tag: Start
+    dialogueText: "Ah, the initiate. I\u2019ve been waiting for you. "
+    responses:
+    - responseText: ...
+      nextNodeIndex: 0
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  nodes:
+  - tag: 0 - Start Continued
+    dialogueText: What brings you to delay your daily deliverances? Do you really
+      need a respite before the obligations have begun?
+    responses:
+    - responseText: The days tend to be hard, so I like the time to myself.
+      nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: I like to prepare for each day, and sometimes the days after
+        those, too.
+      nextNodeIndex: 2
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 1 - Branch A
+    dialogueText: "So in endless sleep you have found new suffering. I can ameliorate
+      your woes\u2026or their source. The choice is yours, the recipient is my own.
+      But this place has become tiresome in its banality, so you must choose something."
+    responses:
+    - responseText: I need the boss to not pay so much attention to me.
+      nextNodeIndex: 3
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 20
+      willBoost: 0
+    - responseText: I need the souls to cut me a little slack today.
+      nextNodeIndex: 4
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards:
+      - effect: {fileID: 11400000, guid: 7d83930bb58e14f43b5abe53f5c7b16d, type: 2}
+        stacks: 2
+      - effect: {fileID: 11400000, guid: dc93f4b07e5054ce28535c5b0e4da1e6, type: 2}
+        stacks: 1
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 2 - Branch A1
+    dialogueText: "Your insubordination would be infuriating if it weren\u2019t so
+      titillating! To meet your chaos I\u2019ll offer my share of our mutual portfolio
+      in turn. \n\nSomething will change in your boss\u2019s eyes, and only I\u2019ll
+      know what. But what I offer is greater than what the simple souls around you
+      could comprehend, much less extend to you. "
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 7
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 3 - Branch A2
+    dialogueText: "It seems sloth has been added to your long list of sins and shortcomings.
+      Very well. It\u2019s a common shortcoming.\n\nSomeone or someones in this DMV
+      will be changed; only I will know whether fastidious or fallacious intents
+      will guide their will, and to whom my gifts will be given."
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 7
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 4 - Branch B
+    dialogueText: "So you\u2019re a practitioner of clairvoyant estimation and subsequent
+      manifestation? How practical. Well my munificence extends beyond these ephemeral
+      hours into those times you\u2019ve yet to see, should you wish to partake. "
+    responses:
+    - responseText: "Yeah, I like planning, and I\u2019d love to have some help this
+        week."
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: "You\u2019ve helped me out a lot in the lost and found. Any chance
+        we could make a deal to I could keep a bigger cut."
+      nextNodeIndex: 6
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 5 - Branch B1
+    dialogueText: "How practical. Consider it done. When, in the future, wandering
+      souls you greet, they shall offer you commiserate rewards to the destination
+      they\u2019ll meet.\n"
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 7
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 6 - Branch B2
+    dialogueText: "You consider your bounty insufficient? I\u2019d expect that from
+      a nascent soul, but I\u2019d hoped for better from you. \n\nNo matter. This
+      tawdry currency means nothing to me or any other denizens of the dark. But
+      I desire some of your Chthonic coins in return."
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 7
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: -10
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 7 - End
+    dialogueText: 
+    responses: []
+  character: {fileID: 11400000, guid: e758d177cd2454b068c8dc44f32b3051, type: 2}

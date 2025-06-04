@@ -10,11 +10,6 @@ public class DialogueNode
     [TextArea(3,10)]
     public string dialogueText;
     public List<DialogueResponse> responses;
-    public bool containsReward;
-    public int officeBucks;
-    public int soulCredits;
-    public List<Item> itemsRewards;
-    public List<ActionEffect> effectRewards;
 
     internal bool IsLastNode()
     {

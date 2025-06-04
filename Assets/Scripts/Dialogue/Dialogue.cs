@@ -15,5 +15,4 @@ public class Dialogue : ScriptableObject
     // contains all other nodes that dialogue choices can point to
     public List<DialogueNode> nodes;
     public Character character;
-    public float typingSpeed;
 }

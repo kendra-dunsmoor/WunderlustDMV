@@ -5,4 +5,5 @@ public class Character : ScriptableObject
 {
     public string characterName;
     public Sprite characterImage;
+    public float typingSpeed;
 }

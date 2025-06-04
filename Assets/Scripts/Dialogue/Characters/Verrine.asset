@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Verrine
   characterImage: {fileID: 1703068279841176408, guid: 0fbb129d66b0c42a283b954caf8c46ef, type: 3}
+  typingSpeed: 0.01

@@ -6,9 +6,12 @@ public class EventSelector : MonoBehaviour
 {
     // Scene Groupings to fetch random event from
     [SerializeField] Dialogue[] breakRoomDialogues;
-    [SerializeField] Dialogue[] apartmentDialogues;
     [SerializeField] Dialogue[] officeEventDialogues;
     [SerializeField] Dialogue introAptDialogue;
+    [SerializeField] Dialogue firedAptDialogue;
+    [SerializeField] Dialogue reincarnatedAptDialogue;
+    [SerializeField] Dialogue winnerAptDialogue;
+
     [SerializeField] Dialogue introBreakRoomDialogue;
     [SerializeField] GameManager gameManager;
 
@@ -27,8 +30,17 @@ public class EventSelector : MonoBehaviour
             case "Apartment":
                 if (gameManager.inTutorial) {
                     return introAptDialogue;
-                } else
-                    return apartmentDialogues[Random.Range(0, apartmentDialogues.Length)];
+                } else {
+                    // Check result of last run
+                    GameState.RunStatus lastRunResult = gameManager.FetchRunState();
+                    switch (lastRunResult) {
+                        case GameState.RunStatus.FIRED:
+                            return firedAptDialogue;
+                        case GameState.RunStatus.REINCARNATED:
+                            return reincarnatedAptDialogue;                        
+                    }
+                    return winnerAptDialogue;
+                }
             case "Office_Event":
                 return officeEventDialogues[Random.Range(0, officeEventDialogues.Length)];
         }

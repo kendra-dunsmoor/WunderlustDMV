@@ -8,6 +8,7 @@ public class VendingMachineController : MonoBehaviour
     [SerializeField] private Transform itemsGridParent;
     [SerializeField] private GameObject itemPrefab;
 
+    private AudioManager audioManager;
     private GameManager gameManager;
 
     // Purchase screen:
@@ -21,6 +22,8 @@ public class VendingMachineController : MonoBehaviour
         // These should probably get moved to prefab script but leaving all pop up logic in here for now:
         opaqueScreen.SetActive(false);
         purchasePopUp.SetActive(false);
+
+        audioManager = FindFirstObjectByType<AudioManager>();
 
         // Get Game Manager for updating inventory
         gameManager = FindFirstObjectByType<GameManager>();
@@ -37,6 +40,7 @@ public class VendingMachineController : MonoBehaviour
     {
         Item item = itemUI.item;
         if (gameManager.FetchOfficeBucks() >= item.price) {
+            if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
             if (item is UsableItem)
                 gameManager.AddToInventory(item.ID);
             else
@@ -55,6 +59,7 @@ public class VendingMachineController : MonoBehaviour
 
     public void PurchasePopUp(Item item)
     {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         // Add opaque background
         opaqueScreen.SetActive(true);
         // Add purchase popup
@@ -65,6 +70,7 @@ public class VendingMachineController : MonoBehaviour
     }
 
     public void CancelPurchase() {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         purchasePopUp.SetActive(false);
         opaqueScreen.SetActive(false);
     }

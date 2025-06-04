@@ -796,7 +796,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6317249288977212510, guid: 80a12848eea21441ca9c3cfcafa4229f, type: 3}
+  m_Sprite: {fileID: 7316835574637898454, guid: b7bff215d023f453bab7cedccd1f6035, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5613,6 +5613,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c64f0519786b64fafa8ff34233c4e664, type: 2}
   - {fileID: 11400000, guid: af7d50cf0bd6c4015b7a6d62c66e005a, type: 2}
   - {fileID: 11400000, guid: c579fc11071c540cb956c5c7e8056f82, type: 2}
+  buttonsParent: {fileID: 1656352164}
 --- !u!4 &1958720741
 Transform:
   m_ObjectHideFlags: 0

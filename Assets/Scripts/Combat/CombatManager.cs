@@ -63,6 +63,8 @@ public class CombatManager : MonoBehaviour
     }
 
     private float MAX_PERFORMANCE;
+    public bool actionsDisabled;
+    [SerializeField] private GameObject buttonsParent;
 
     void Start()
     {
@@ -113,11 +115,15 @@ public class CombatManager : MonoBehaviour
     */
     private void EndShift()
     {
+        DisableActions();
+        // Check for game over state first:
+        if (performanceLevel <=0 || performanceLevel >= performanceMeter.maxValue) return;
         // End of shift artifact effects
         inventoryManager.EndShiftArtifacts();
         // Pop up end screen
         gameManager.ShiftCompleted(performanceLevel, willLevel);
         // Get combat rewards
+        if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
         Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
@@ -128,6 +134,7 @@ public class CombatManager : MonoBehaviour
     */
     private void GameOver()
     {
+        DisableActions();
         // Pop up end screen
         Instantiate(gameOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
@@ -188,10 +195,12 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Performance level updated to: " + performanceLevel);
         performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue);
         if (performanceLevel <= 0) {
+            gameManager.UpdateRunStatus(GameState.RunStatus.FIRED);
             GameOver(); // Fired
             Debug.Log("Game Over: Fired for bad performance!");
         }
         if (performanceLevel >= MAX_PERFORMANCE) {
+            gameManager.UpdateRunStatus(GameState.RunStatus.REINCARNATED);
             GameOver(); // Reincarnated
             Debug.Log("Game Over: Reincarnated for good performance!");
         }
@@ -225,11 +234,12 @@ public class CombatManager : MonoBehaviour
     * Iterate turn counter and any active effects
     */
     public void TakeAction (Action action) {
-        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
+        PlayActionSound(action);
 
         // Check if sufficient will available for action:
         if (willLevel - action.WILL_MODIFIER < 0) {
             Debug.Log("Insufficient will left for action: " + action.actionName);
+            if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
             return;
         }
 
@@ -399,12 +409,15 @@ public class CombatManager : MonoBehaviour
             case Action.ActionMovement.AWAY:
                 Debug.Log("Customer is removed from queue");
                 currCustomer.SendAway(true, offScreenPoint); // TODO: remove green accepted true thing
+                // Disable actions while customer transitions
+                DisableActions();
                 NextCustomer();
                 break;
             case Action.ActionMovement.BACK:     
                 Debug.Log("Customer is moved to back of line"); 
                 currCustomer.SendToBack(spawnPoint);
-                // TODO: Need like a delay here if it is the only customer left in line if we want them to move back first?
+                // Disable actions while customer transitions
+                DisableActions();
                 customersInLine.Enqueue(currCustomer);
                 customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
                 NextCustomer();
@@ -434,10 +447,35 @@ public class CombatManager : MonoBehaviour
     /* Clear Player Conditions:
     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     * Clear all active player conditions
-    */    public void ClearPlayerConditions() {
+    */    
+    public void ClearPlayerConditions() {
         foreach(var (type, effect) in activeEffects) {
             Destroy(effect);
         }
         activeEffects = new Dictionary<EffectType, GameObject>();
+    }
+
+    public void DisableActions() {
+        actionsDisabled = true;
+        Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
+        foreach (Button button in buttons) {
+            button.interactable = false;
+        }
+    }
+
+    public void EnableActions() {
+        actionsDisabled = false;
+        Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
+        foreach (Button button in buttons) {
+            button.interactable = true;
+        }
+    }
+
+    private void PlayActionSound(Action action) {
+        if (audioManager != null) {
+            if (action.actionName == "Accept") audioManager.PlaySFX(audioManager.acceptButton);
+            else if (action.actionName == "Reject") audioManager.PlaySFX(audioManager.rejectButton);
+            else audioManager.PlaySFX(audioManager.specialActionButton);
+        }
     }
 }

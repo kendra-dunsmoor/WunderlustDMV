@@ -19,42 +19,38 @@ MonoBehaviour:
     responses:
     - responseText: 'Make an extra cup of coffee '
       nextNodeIndex: 0
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards:
+      - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
     - responseText: 'Pour out all the coffee and hide the grounds so no one can have
         any. '
-      nextNodeIndex: 1
+      nextNodeIndex: 0
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards:
+      - effect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}
+        stacks: 1
+      performanceBoost: 0
+      willBoost: 0
     - responseText: Take the BuckStar cup out of the trash to fill and sell it to
         Verrine.
-      nextNodeIndex: 2
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+      nextNodeIndex: 0
+      containsReward: 1
+      officeBucks: 30
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   nodes:
-  - tag: 0 - Choice A
-    dialogueText: Tastes like dirt but it'll do the job
-    responses: []
-    containsReward: 1
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards:
-    - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
-    effectRewards: []
-  - tag: 1 - Choice B
+  - tag: 0 - End
     dialogueText: 
     responses: []
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
-  - tag: 2 - Choice C
-    dialogueText: You successfully stole some office bucks
-    responses: []
-    containsReward: 1
-    officeBucks: 25
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
   character: {fileID: 11400000, guid: d7f99d469cc014097b09db9737c5ae2a, type: 2}
-  typingSpeed: 0.01

@@ -78,7 +78,17 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartRun() {
-        //TODO
+        // Back to apartment, reset certain run only trackers
+        playerStatus.ResetRun();
+        gameStatus.ResetRun();
+    }
+
+    public GameState.RunStatus FetchRunState() {
+        return gameStatus.GetRunStatus();
+    }
+
+    public void UpdateRunStatus(GameState.RunStatus state) {
+        gameStatus.UpdateRunStatus(state);
     }
 
     public int FetchOfficeBucks() {

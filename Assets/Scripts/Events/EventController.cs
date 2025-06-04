@@ -11,6 +11,7 @@ public class EventController : MonoBehaviour
     }
 
     public void NextShift() {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         SceneManager.LoadSceneAsync(3);
     }
 }

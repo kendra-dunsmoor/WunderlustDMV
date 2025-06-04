@@ -20,46 +20,118 @@ MonoBehaviour:
     responses:
     - responseText: "How\u2019d you know I did well? "
       nextNodeIndex: 0
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
     - responseText: What do you mean YOU will have a fantastic apartment?
       nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
     - responseText: 'I have the money. How much do I owe for rent? '
       nextNodeIndex: 2
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   nodes:
   - tag: 0 - Choice A
     dialogueText: "Word travels fast, especially when money\u2019s involved."
-    responses: []
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 1 - Choice B
     dialogueText: "This is an unfurnished pre-furnished apartment. It\u2019s in your
       contract. Anything you buy for this place is owned by me, maintained by you,
       and inherited by whoever gets the place after you. It\u2019s a good deal when
       you really think about it."
-    responses: []
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   - tag: 2 - Choice C
     dialogueText: "Well\u2026how much do you have?"
     responses:
     - responseText: "I\u2019ve got a little left "
-      nextNodeIndex: 0
-    - responseText: 
-      nextNodeIndex: 0
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: I just got back!
+      nextNodeIndex: 4
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 4 - Choice C2
+    dialogueText: "Ah good! Let\u2019s see\u2026carry the two\u2026and, it looks
+      like it\u2019ll cost all you\u2019ve got. After furnishing fees, of course."
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 3 - Choice C1
+    dialogueText: "Well, debt\u2019s always an option."
+    responses:
+    - responseText: Continue
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 5 - End
+    dialogueText: You can pay me on your way out.
+    responses:
+    - responseText: Exit
+      nextNodeIndex: 6
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: End
+    dialogueText: 
+    responses: []
   character: {fileID: 11400000, guid: 2fa7b00d940f74b7eb4973fb96bd574d, type: 2}
-  typingSpeed: 0.01

@@ -363,12 +363,14 @@ MonoBehaviour:
   breakRoomDialogues:
   - {fileID: 11400000, guid: 4c2a251ecc62e48899c2abdcde0b0017, type: 2}
   - {fileID: 11400000, guid: caf90a7dba7db4fe1b22372ff7cc0d81, type: 2}
-  apartmentDialogues:
-  - {fileID: 11400000, guid: 9bfae17122b644341a8b623e5a0e7395, type: 2}
   officeEventDialogues:
   - {fileID: 11400000, guid: 3693d1a46e98c4e9a8f37311aa9651e2, type: 2}
   - {fileID: 11400000, guid: ca1819f5769b74192ba367834a4ba279, type: 2}
+  - {fileID: 11400000, guid: dfbb008483a5e4d78af091ba7d08cfae, type: 2}
   introAptDialogue: {fileID: 11400000, guid: 2ec853fe231294a448995fd9d1e6ab8a, type: 2}
+  firedAptDialogue: {fileID: 11400000, guid: 1fc20eb5a7d9140b895ef6ea64c84656, type: 2}
+  reincarnatedAptDialogue: {fileID: 11400000, guid: 94bd786daa0fb4ee48cb85e97613a9c2, type: 2}
+  winnerAptDialogue: {fileID: 11400000, guid: 9bfae17122b644341a8b623e5a0e7395, type: 2}
   introBreakRoomDialogue: {fileID: 11400000, guid: 910dc7d9faa2a4ff3963282ed0002ef8, type: 2}
   gameManager: {fileID: 575042071}
 --- !u!1 &1051730669
@@ -552,6 +554,15 @@ MonoBehaviour:
   combatMusic: {fileID: 8300000, guid: cd377db06f258451fa3e9d8b2722131c, type: 3}
   apartmentMusic: {fileID: 8300000, guid: 9b171d0f46f8e4ec7a96b9ebc211f0dc, type: 3}
   buttonClick: {fileID: 8300000, guid: 48bac739a789a47d3b18b16a56ec4c51, type: 3}
+  acceptButton: {fileID: 8300000, guid: 9a85f277d745e4e84a25a4a462fee297, type: 3}
+  rejectButton: {fileID: 8300000, guid: b2500a74d34d74a21911472c15942de8, type: 3}
+  specialActionButton: {fileID: 8300000, guid: f12de37ad9d0d46b29182f04ad342cd6, type: 3}
+  noEnergy: {fileID: 8300000, guid: e141fd9bd02de4e19a1e5f842067e0c6, type: 3}
+  buyUpgrade: {fileID: 8300000, guid: 952ca22f2dc4146d6b2c644a7f4b3df2, type: 3}
+  shiftOver_Success: {fileID: 8300000, guid: e373329fca0ec4700af795310e7751e5, type: 3}
+  shiftOver_Fired: {fileID: 8300000, guid: 72b5ba1d5fcdc4a72a5300db8653b155, type: 3}
+  shiftOver_Reincarnated: {fileID: 8300000, guid: eb55d91c71e004a309166d1fc12c75a8, type: 3}
+  computerBootUp: {fileID: 8300000, guid: ba26dd1851cbc4f738a44a543b0cdadc, type: 3}
   mixer: {fileID: 24100000, guid: 9683fc10df16640ad8a3fbb85353dc45, type: 2}
 --- !u!1 &1279189369
 GameObject:

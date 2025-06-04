@@ -14,47 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     tag: Start
-    dialogueText: 'You approach the coin operated printer and can see several ways
-      of sabotaging it.
+    dialogueText: 'You come to the Lost and Found of the afterlife and see the manifold
+      possessions of the dead flooding the under-sized room.
 
 '
     responses:
-    - responseText: Steal the ream of paper
+    - responseText: "Take the Ruby Red Slippers item from Lost and Found, no one
+        will notice\u2026 right?"
       nextNodeIndex: 0
-    - responseText: Photocopy your butt and set it to infinite print
-      nextNodeIndex: 1
-    - responseText: 'Break into the coin slot and take the coins from the printer '
-      nextNodeIndex: 2
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards:
+      - {fileID: 11400000, guid: 0074ee6d094b24a24bfcfef843d7e5ad, type: 2}
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: 'Light the Lost and Found on Fire '
+      nextNodeIndex: 0
+      containsReward: 1
+      officeBucks: 0
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards:
+      - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
+        stacks: 1
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: Take everything from Lost and Found and sell it all to Sothoth.
+        No one can blame you if you don't have anything on you.
+      nextNodeIndex: 0
+      containsReward: 1
+      officeBucks: 50
+      soulCredits: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
   nodes:
-  - tag: 0 - Choice A
-    dialogueText: You successfully stole the printer paper
+  - tag: 0 - End
+    dialogueText: 
     responses: []
-    containsReward: 1
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards:
-    - {fileID: 11400000, guid: 6f26cf3e41e3647efbbee2f95baf230d, type: 2}
-    effectRewards: []
-  - tag: 1 - Choice B
-    dialogueText: veryone seems to be dragging a little more today
-    responses: []
-    containsReward: 0
-    officeBucks: 0
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
-  - tag: 2 - Choice C
-    dialogueText: Verrine will drink anything
-    responses: []
-    containsReward: 1
-    officeBucks: 25
-    soulCredits: 0
-    itemsRewards: []
-    effectRewards: []
   character: {fileID: 11400000, guid: ee4cdb37daa82461da299aa9fdad7924, type: 2}
-  typingSpeed: 0.01

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      medodica_preview_01_0: -2556106422659806124
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

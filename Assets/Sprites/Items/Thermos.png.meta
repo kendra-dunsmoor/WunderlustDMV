@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Thermos_0: 3363596350446250999
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

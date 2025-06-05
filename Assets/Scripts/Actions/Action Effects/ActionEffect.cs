@@ -4,7 +4,9 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "ActionEffect", menuName = "Action/ActionEffect")]
 public class ActionEffect : ScriptableObject
 {
-    public enum EffectType {
+    public string effectName;
+    public enum EffectType
+    {
         ATTENTION,
         HUSTLING,
         ADD_TURNS,

@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
   m_Name: AddTurns
   m_EditorClassIdentifier: 
+  effectName: Add turns
   type: 2
   target: 0
   effectSprite: {fileID: 0}
   effectDescription: 
   shouldStack: 1
   shouldDecay: 0
+  isPercent: 0
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0

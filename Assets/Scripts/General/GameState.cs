@@ -28,10 +28,8 @@ public class GameState
     }
 
     // Called when combat for day is completed
-    public void CompleteDay(float performance, float will) {
+    public void CompleteDay() {
         currentWeekday++;
-        this.performance = performance;
-        this.will = will;
     }
 
     public RunStatus GetRunStatus() {
@@ -54,9 +52,19 @@ public class GameState
     public float GetPerformance() {
         return performance;
     }
-
+    
     public float GetWill() {
         return will;
+    }
+    
+    public void UpdatePerformance(float performance)
+    {
+        this.performance = performance;
+    }
+
+    public void UpdateWill(float will)
+    {
+        this.will = will;
     }
 
     public void ResetRun() {

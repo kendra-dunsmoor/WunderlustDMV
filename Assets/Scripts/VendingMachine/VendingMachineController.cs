@@ -57,7 +57,11 @@ public class VendingMachineController : MonoBehaviour
                 gameManager.AddToInventory(item.ID);
             else
                 gameManager.AddArtifact(item.ID);
+
             gameManager.UpdateOfficeBucks(-item.price);
+            GameObject.FindGameObjectWithTag("Counter_OfficeBucks")
+                .GetComponent<CurrencyCounter>()
+                .RefreshCounter();
             MarkActiveItemAsPurchased();
             CancelPurchase();
         }

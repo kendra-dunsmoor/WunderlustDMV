@@ -43,6 +43,9 @@ public class CertificationsPageController : MonoBehaviour
             if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
             gameManager.AddCertificate(cert);
             gameManager.UpdateSoulCredits(-cert.price);
+            GameObject.FindGameObjectWithTag("Counter_SoulCredits")
+                .GetComponent<CurrencyCounter>()
+                .RefreshCounter();
             certUI.MarkAsPurchased();
         }
         else

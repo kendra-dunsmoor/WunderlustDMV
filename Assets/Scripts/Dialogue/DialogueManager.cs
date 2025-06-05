@@ -160,23 +160,41 @@ public class DialogueManager : MonoBehaviour
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");
+            gameManager.UpdateOfficeBucks(currNode.officeBucks);
+            GameObject.FindGameObjectWithTag("Counter_OfficeBucks")
+                .GetComponent<CurrencyCounter>()
+                .RefreshCounter();
         }
         if (currNode.soulCredits != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits", "Use to pay rent & purchase apartment upgrades!");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.soulCredits + " soulCredits", "Use to pay rent & purchase apartment upgrades!");
+            gameManager.UpdateSoulCredits(currNode.soulCredits);
+            GameObject.FindGameObjectWithTag("Counter_SoulCredits")
+                .GetComponent<CurrencyCounter>()
+                .RefreshCounter();
         }
         if (currNode.performanceBoost != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.performanceBoost + " performance", "");
+            float newPerformance = gameManager.FetchPerformance() + currNode.performanceBoost;
+            gameManager.UpdatePerformance(newPerformance);
+            GameObject.FindGameObjectWithTag("PerformanceMeter")
+                .GetComponent<SliderCounter>()
+                .UpdateBar(newPerformance);
         }
         if (currNode.willBoost != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.willBoost + " will", "");
+            float newWill = gameManager.FetchWill() + currNode.willBoost;
+            gameManager.UpdateWill(newWill);
+            GameObject.FindGameObjectWithTag("WillMeter")
+                .GetComponent<SliderCounter>()
+                .UpdateBar(newWill);
         }
-        if (currNode.willBoost != 0) {
+        if (currNode.chaos != 0) {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.chaos + " chaos", "");            
         }

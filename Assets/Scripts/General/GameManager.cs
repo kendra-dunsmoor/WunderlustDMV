@@ -66,9 +66,11 @@ public class GameManager : MonoBehaviour
         return eventChoices[choice];
     }
 
-    public void ShiftCompleted(float performance, float will) {
-        // TODO: update rewards for player inventory and game state
-        gameStatus.CompleteDay(performance, will);
+    public void ShiftCompleted(float performance, float will)
+    {
+        gameStatus.CompleteDay();
+        gameStatus.UpdatePerformance(performance);
+        gameStatus.UpdateWill(will);
     }
 
     public void StoreRunChoice(string choice) {
@@ -98,7 +100,9 @@ public class GameManager : MonoBehaviour
     public int FetchOfficeBucks() {
         return playerStatus.GetOfficeBucks();
     }
-    public void UpdateOfficeBucks(int amount) {
+    
+    public void UpdateOfficeBucks(int amount)
+    {
         Debug.Log("Adding office bucks + " + amount);
         playerStatus.UpdateOfficeBucks(amount);
         GameObject counter = GameObject.FindGameObjectWithTag("Counter_OfficeBucks");
@@ -108,12 +112,22 @@ public class GameManager : MonoBehaviour
     public float FetchWill() {
         return gameStatus.GetWill();
     }
-
-    public float FetchPerformance() {
-        return gameStatus.GetPerformance();
+    public void UpdateWill(float will)
+    {
+        gameStatus.UpdateWill(will);
     }
 
-    public int FetchSoulCredits() {
+    public float FetchPerformance()
+    {
+        return gameStatus.GetPerformance();
+    }
+    public void UpdatePerformance(float performance)
+    {
+        gameStatus.UpdatePerformance(performance);
+    }
+
+    public int FetchSoulCredits()
+    {
         return playerStatus.GetSoulCredits();
     }
 

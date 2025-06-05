@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
   m_Name: Irate
   m_EditorClassIdentifier: 
+  effectName: Irate
   type: 5
   target: 1
   effectSprite: {fileID: 2338019365221269074, guid: a73c885879ec2484f8242a329d1c4af0, type: 3}

@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98ac5a69325d44b1a45c96f371029ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpBox: {fileID: 553031448974983727, guid: 634645f92532142eebbada5ee43a3171, type: 3}
+  popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
   description: Active Effect
 --- !u!114 &-4441418367951119240
 MonoBehaviour:

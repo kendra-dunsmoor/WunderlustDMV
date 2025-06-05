@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CombatRewardsController : MonoBehaviour
 {
     [SerializeField] private GameObject nextShiftCalendar;
-    [SerializeField] private TextMeshProUGUI earlyFinishText;
+    [SerializeField] private GameObject earlyFinishText;
     [SerializeField] private TextMeshProUGUI rewardsDescription;
     [SerializeField] private Transform actionUpgradeGrid;
     [SerializeField] private GameObject actionUpgradePrefab;
@@ -22,7 +22,11 @@ public class CombatRewardsController : MonoBehaviour
         int currency = GetCurrencyRewards();
         rewardsDescription.text = currency + " OfficeBucks based on performance";
         gameManager.UpdateOfficeBucks(currency);
+        SpawnActionUpgrades();
+    }
 
+    private void SpawnActionUpgrades()
+    {
         // TODO: just add first action to test, make random later
         List<Action> playerActions = gameManager.FetchActions();
         Debug.Log("Fetched player actions: " + playerActions);
@@ -37,6 +41,11 @@ public class CombatRewardsController : MonoBehaviour
             upgradeUI.upgradeDescription.text = upgrade.GetDescription();
             button.GetComponent<Button>().onClick.AddListener(() => UpgradeAction(upgrade, actionIndex));
         }
+    }
+
+    public void markEarlyFinish(bool finishedEarly)
+    {
+        earlyFinishText.SetActive(finishedEarly);
     }
 
     public void UpgradeAction(ActionUpgrade upgrade, int actionIndex)

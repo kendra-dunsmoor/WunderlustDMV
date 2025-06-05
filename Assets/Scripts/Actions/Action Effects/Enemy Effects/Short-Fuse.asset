@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
   m_Name: Short-Fuse
   m_EditorClassIdentifier: 
+  effectName: Short-fuse
   type: 9
   target: 1
   effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}

@@ -129,6 +129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Office Bucks Counter
       objectReference: {fileID: 0}
+    - target: {fileID: 6128540964117907155, guid: a16575989d543429f96cd0733d3653e2, type: 3}
+      propertyPath: popUpBox
+      value: 
+      objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
     - target: {fileID: 8820527771495448290, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_fontSize
       value: 18
@@ -271,6 +275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soul Credits Counter
       objectReference: {fileID: 0}
+    - target: {fileID: 6128540964117907155, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
+      propertyPath: popUpBox
+      value: 
+      objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
     - target: {fileID: 8820527771495448290, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_fontSize
       value: 18

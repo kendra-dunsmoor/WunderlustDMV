@@ -18,7 +18,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             } else {
                 Image.sprite = _item.Icon;
                 Image.enabled = true;
-                gameObject.GetComponent<MouseOverDescription>().UpdateDescription(_item.description);
+                gameObject.GetComponent<MouseOverDescription>().UpdateDescription(_item.description, _item.itemName);
             }
         }
     }

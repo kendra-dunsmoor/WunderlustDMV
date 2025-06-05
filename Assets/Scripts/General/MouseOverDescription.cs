@@ -41,8 +41,9 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
         if (spawnedPopUp != null) spawnedPopUp.SetActive(false);
     }
 
-    public void UpdateDescription(string description)
+    public void UpdateDescription(string description, string title = "")
     {
-        this.description = description;
+        if (title != "") this.description = "<u>" + title + "</u>\n" + description;
+        else this.description = description;
     }
 }

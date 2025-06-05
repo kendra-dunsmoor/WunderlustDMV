@@ -47,6 +47,10 @@ public class CombatManager : MonoBehaviour
     private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
     private Customer currCustomer;
     [Header("------------- Combat Values -------------")]
+    [SerializeField] Action acceptAction;
+    [SerializeField] Action rejectAction;
+    [SerializeField] Action escalateAction;
+    [SerializeField, Tooltip("Modifier for going through all customers before shift end")] private int EARLY_FINISH_PENALTY;
     [SerializeField, Tooltip("Customer goal set at beginning of combat scene")] private int CUSTOMER_GOAL;
     [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
     [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
@@ -86,8 +90,8 @@ public class CombatManager : MonoBehaviour
         }
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
-        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue);
-        performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue);
+        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
+        performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         AddActionLoadout();
         InitializeCustomerQueue();
@@ -97,14 +101,22 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~
     * Fetch player action loadout to customize class actions
     */
-    private void AddActionLoadout() {
+    private void AddActionLoadout()
+    {
         if (gameManager != null) actionLoadout = gameManager.FetchActions();
-        foreach (Action action in actionLoadout) {
+        foreach (Action action in actionLoadout)
+        {
             GameObject button = Instantiate(actionButtonPrefab, actionButtonGrid);
             button.GetComponent<Button>().onClick.AddListener(() => TakeAction(action));
             button.GetComponent<OnHoverChangeImage>().UpdateImages(action.baseButtonImage, action.hoverButtonImage);
-            button.GetComponent<MouseOverDescription>().UpdateDescription(action.GetDescription());
+            button.GetComponent<MouseOverDescription>().UpdateDescription(action.GetDescription(), action.actionName);
         }
+        GameObject.FindGameObjectWithTag("AcceptButton").GetComponent<MouseOverDescription>()
+            .UpdateDescription(acceptAction.GetDescription(), acceptAction.actionName);
+        GameObject.FindGameObjectWithTag("RejectButton").GetComponent<MouseOverDescription>()
+            .UpdateDescription(rejectAction.GetDescription(), rejectAction.actionName);
+        GameObject.FindGameObjectWithTag("EscalateButton").GetComponent<MouseOverDescription>()
+            .UpdateDescription(escalateAction.GetDescription(), escalateAction.actionName);
     }
 
     /* End Shift: 
@@ -112,18 +124,21 @@ public class CombatManager : MonoBehaviour
     * Shift completed by either running out of turns or customers
     * Add any end of shift effects and add combat rewards
     */
-    private void EndShift()
+    private void EndShift(bool completedQueue)
     {
         DisableActions();
+        // Check if customers ran out
+        if (completedQueue) UpdatePerformance(EARLY_FINISH_PENALTY);
         // Check for game over state first:
-        if (performanceLevel <=0 || performanceLevel >= performanceMeter.maxValue) return;
+        if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
         // End of shift artifact effects
         inventoryManager.EndShiftArtifacts();
         // Pop up end screen
         gameManager.ShiftCompleted(performanceLevel, willLevel);
         // Get combat rewards
         if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
-        Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        screen.GetComponent<CombatRewardsController>().markEarlyFinish(completedQueue);
     }
 
     /* Game Over: 
@@ -145,7 +160,7 @@ public class CombatManager : MonoBehaviour
     private void NextCustomer()
     {
         customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
-        if (customersInLine.Count == 0) EndShift();
+        if (customersInLine.Count == 0) EndShift(true);
         else {
             currCustomer = customersInLine.Dequeue();
             Debug.Log("Customer dequeued");
@@ -190,9 +205,8 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdatePerformance(float diff) {
         performanceLevel += diff;
-        performanceMeter.value = performanceLevel;
+        performanceMeter.GetComponent<SliderCounter>().UpdateBar(performanceLevel);
         Debug.Log("Performance level updated to: " + performanceLevel);
-        performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue);
         if (performanceLevel <= 0) {
             gameManager.UpdateRunStatus(GameState.RunStatus.FIRED);
             GameOver(); // Fired
@@ -211,9 +225,8 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdateWill(float diff) {
         willLevel += diff;
-        willMeter.value = willLevel;
+        willMeter.GetComponent<SliderCounter>().UpdateBar(willLevel);
         Debug.Log("Will updated to: " + willLevel);
-        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue);
     }
 
     /* Update Frustration: 
@@ -261,7 +274,7 @@ public class CombatManager : MonoBehaviour
         MoveCustomer(action.movement);
 
         // Check end shift state for turns:
-        if (remainingTurns == 0) EndShift();
+        if (remainingTurns == 0) EndShift(false);
     }
 
 
@@ -287,7 +300,7 @@ public class CombatManager : MonoBehaviour
             if (effect.shouldStack) {
                 Debug.Log("Effect already active, add to stack");
                 currUIEffect.UpdateTurns(stacks);
-                activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + currUIEffect.FetchTurns());
+                activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + currUIEffect.FetchTurns(), effect.effectName);
             } else {
                 Debug.Log("Effect does not stack and is already active, ignoring");
             }
@@ -296,7 +309,7 @@ public class CombatManager : MonoBehaviour
             GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
             activeEffects.Add(effect.type, effectMarker);
             effectMarker.GetComponent<UIEffectController>().AddEffect(effect, stacks);
-            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "Turns: " + stacks);
+            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + stacks, effect.effectName);
         }
     }
 
@@ -434,7 +447,7 @@ public class CombatManager : MonoBehaviour
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
             activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
-            effectUI.effect.effectDescription + "Turns: " + effectUI.FetchTurns());
+            effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
             if (effectUI.FetchTurns() == 0) {
                 Debug.Log("Remove effect");
                 Destroy(activeEffects[effectType]);

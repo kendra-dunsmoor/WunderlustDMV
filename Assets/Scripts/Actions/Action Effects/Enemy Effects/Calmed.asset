@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
   m_Name: Calmed
   m_EditorClassIdentifier: 
+  effectName: Calmed
   type: 7
   target: 1
   effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}

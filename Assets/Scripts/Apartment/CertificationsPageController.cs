@@ -37,12 +37,18 @@ public class CertificationsPageController : MonoBehaviour
 
     public void BuyCert(CertificateUIController certUI)
     {
-        if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
         Certificate cert = certUI.certificate;
-        if (gameManager.FetchSoulCredits() >= cert.price) {
+        if (gameManager.FetchSoulCredits() >= cert.price)
+        {
+            if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
             gameManager.AddCertificate(cert);
             gameManager.UpdateSoulCredits(-cert.price);
             certUI.MarkAsPurchased();
+        }
+        else
+        {
+            // Not enough money
+            if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
         }
     }
 

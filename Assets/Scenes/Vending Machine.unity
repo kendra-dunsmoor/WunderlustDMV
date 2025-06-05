@@ -628,6 +628,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5805737662135916524, guid: 3c02b44d121974bf1b70ff3b87d8d7da, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+    - target: {fileID: 5805737662135916524, guid: 3c02b44d121974bf1b70ff3b87d8d7da, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+    - target: {fileID: 5805737662135916524, guid: 3c02b44d121974bf1b70ff3b87d8d7da, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6043920474845609299, guid: 3c02b44d121974bf1b70ff3b87d8d7da, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -918,8 +930,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Use Office Bucks to purchase...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 78e738676d51449d69297101faad6c40, type: 2}
-  m_sharedMaterial: {fileID: 470837998282176843, guid: 78e738676d51449d69297101faad6c40, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+  m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -943,8 +955,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

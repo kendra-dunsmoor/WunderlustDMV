@@ -7,13 +7,9 @@ using System.ComponentModel.Design;
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float maxFrustration;
+    [SerializeField] private EnemyData enemyData;
     private float frustrationLevel;
     [SerializeField] private FloatingHealthBar frustrationMeter;
-    [SerializeField] private Sprite acceptedSprite;
-    [SerializeField] private Sprite rejectedSprite;
-    [SerializeField] private Sprite iconSprite;
     // Effects
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private Transform currentEffectsPanel;
@@ -38,7 +34,7 @@ public class Customer : MonoBehaviour
         if (movingToFront)
         {
             transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
-                moveSpeed * Time.deltaTime);
+                enemyData.moveSpeed * Time.deltaTime);
             if (transform.position.x >= goalPoint.position.x)
             {
                 movingToFront = false;
@@ -50,7 +46,7 @@ public class Customer : MonoBehaviour
         if (movingAway)
         {
             transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
-                moveSpeed * Time.deltaTime);
+                enemyData.moveSpeed * Time.deltaTime);
             if (transform.position.x >= goalPoint.position.x)
             {
                 movingAway = false;
@@ -60,7 +56,7 @@ public class Customer : MonoBehaviour
         if (movingBack)
         {
             transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
-                moveSpeed * Time.deltaTime);
+                enemyData.moveSpeed * Time.deltaTime);
             if (transform.position.x <= goalPoint.position.x)
             {
                 movingBack = false;
@@ -88,11 +84,13 @@ public class Customer : MonoBehaviour
         if (paperwork != null) paperwork.SetActive(false);
         if (accepted)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = acceptedSprite;
+            if (enemyData.acceptedSprite != null)
+                gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.acceptedSprite;
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = rejectedSprite;
+            if (enemyData.acceptedSprite != null)
+                gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.rejectedSprite;
         }
     }
 
@@ -112,8 +110,8 @@ public class Customer : MonoBehaviour
 
         frustrationLevel += change;
         Debug.Log("Customer frustration level updated to: " + frustrationLevel);
-        if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, maxFrustration);
-        if (frustrationLevel >= maxFrustration) {
+        if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, enemyData.maxFrustration);
+        if (frustrationLevel >= enemyData.maxFrustration) {
             // Check if customer is already irate:
             if (activeEffects.ContainsKey(EffectType.IRATE)) return;
             // else add effect: 

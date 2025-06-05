@@ -17,7 +17,7 @@ MonoBehaviour:
   WILL_MODIFIER: -3
   PERFORMANCE_MODIFIER: -10
   type: 1
-  movement: 1
+  movement: 0
   effects:
   - effect: {fileID: 11400000, guid: b2934fd83412147bc917d80008c94497, type: 2}
     stacks: 1

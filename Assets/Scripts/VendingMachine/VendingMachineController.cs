@@ -16,6 +16,7 @@ public class VendingMachineController : MonoBehaviour
     [SerializeField] private GameObject purchasePopUp;
     [SerializeField] private TextMeshProUGUI purchaseDescription;
     [SerializeField] private TextMeshProUGUI purchaseFlavorText;
+    private int activeIndex;
 
     void Start()
     {
@@ -29,27 +30,47 @@ public class VendingMachineController : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
 
         // Fill machine with items
-        List<Item> itemsForSale = gameManager.FetchRandomItems(4);
-        foreach (Item item in itemsForSale) {
+        List<Item> artifactsForSale = gameManager.FetchRandomItems(3, true);
+        List<Item> itemsForSale = gameManager.FetchRandomItems(3, false);
+        int i = 0;
+        foreach (Item item in itemsForSale)
+        {
             GameObject itemUI = Instantiate(itemPrefab, itemsGridParent);
-            itemUI.GetComponent<ItemUIController>().AddItem(item);
+            itemUI.GetComponent<ItemUIController>().AddItem(item, i);
+            i++;
+        }
+        foreach (Item item in artifactsForSale)
+        {
+            GameObject itemUI = Instantiate(itemPrefab, itemsGridParent);
+            itemUI.GetComponent<ItemUIController>().AddItem(item, i);
+            i++;
         }
     }
 
     public void BuyItem(ItemUIController itemUI)
     {
         Item item = itemUI.item;
-        if (gameManager.FetchOfficeBucks() >= item.price) {
+        if (gameManager.FetchOfficeBucks() >= item.price)
+        {
             if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
             if (item is UsableItem)
                 gameManager.AddToInventory(item.ID);
             else
                 gameManager.AddArtifact(item.ID);
             gameManager.UpdateOfficeBucks(-item.price);
-            // itemUI.MarkAsPurchased();
-            // TODO: need to get reference to the original UI, not the popup image
+            MarkActiveItemAsPurchased();
             CancelPurchase();
         }
+        else
+        {
+            if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
+        }
+    }
+
+    private void MarkActiveItemAsPurchased()
+    {
+        ItemUIController[] items = itemsGridParent.GetComponentsInChildren<ItemUIController>();
+        items[activeIndex].MarkAsPurchased();
     }
 
     public void NextShift()
@@ -57,8 +78,9 @@ public class VendingMachineController : MonoBehaviour
         SceneManager.LoadSceneAsync(3);
     }
 
-    public void PurchasePopUp(Item item)
+    public void PurchasePopUp(Item item, int index)
     {
+        activeIndex = index;
         if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         // Add opaque background
         opaqueScreen.SetActive(true);

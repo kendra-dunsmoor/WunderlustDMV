@@ -99,7 +99,6 @@ public class CombatManager : MonoBehaviour
     */
     private void AddActionLoadout() {
         if (gameManager != null) actionLoadout = gameManager.FetchActions();
-        if (actionLoadout == null || actionLoadout.Count == 0) actionLoadout = STARTER_LOADOUT;
         foreach (Action action in actionLoadout) {
             GameObject button = Instantiate(actionButtonPrefab, actionButtonGrid);
             button.GetComponent<Button>().onClick.AddListener(() => TakeAction(action));

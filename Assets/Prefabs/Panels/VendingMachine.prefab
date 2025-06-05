@@ -617,6 +617,7 @@ MonoBehaviour:
   priceTag: {fileID: 0}
   purchasedTag: {fileID: 0}
   itemImage: {fileID: 8837722641903970426}
+  itemIndex: 0
   item: {fileID: 0}
 --- !u!222 &3865429095861576930
 CanvasRenderer:

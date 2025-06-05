@@ -714,12 +714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b96766d1b11841ecbb2fa38e2d9a9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxFrustration: 50
+  enemyData: {fileID: 11400000, guid: 93ed125ea917146bba675300e5292843, type: 2}
   frustrationMeter: {fileID: 3258849979349409404}
-  acceptedSprite: {fileID: 6408797999967510028, guid: ba21e96c02777459b8086b3334b7de72, type: 3}
-  rejectedSprite: {fileID: -2129212043851828337, guid: 67bf37e2f35bc490ea6ecaad44a868ad, type: 3}
-  iconSprite: {fileID: 0}
   currentEffectPrefab: {fileID: 8950778992821901451, guid: 9f54dd8e490f741179ee7762ca57ab24, type: 3}
   currentEffectsPanel: {fileID: 5473944893170378270}
   irateEffect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}

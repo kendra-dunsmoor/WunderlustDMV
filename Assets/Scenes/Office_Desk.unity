@@ -5613,6 +5613,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c64f0519786b64fafa8ff34233c4e664, type: 2}
   - {fileID: 11400000, guid: af7d50cf0bd6c4015b7a6d62c66e005a, type: 2}
   - {fileID: 11400000, guid: c579fc11071c540cb956c5c7e8056f82, type: 2}
+  actionsDisabled: 0
   buttonsParent: {fileID: 1656352164}
 --- !u!4 &1958720741
 Transform:

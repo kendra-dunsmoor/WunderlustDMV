@@ -8,13 +8,15 @@ public class ItemUIController : MonoBehaviour
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject purchasedTag;
     [SerializeField] private GameObject itemImage;
+    public int itemIndex;
 
     public Item item;
 
-    public void AddItem(Item item)
+    public void AddItem(Item item, int index)
     {
         Debug.Log("Adding item for vending UI");
         this.item = item;
+        itemIndex = index;
         purchasedTag.SetActive(false);
         price.text = item.price.ToString();
         if (gameObject.GetComponent<MouseOverDescription>() != null) {
@@ -26,13 +28,14 @@ public class ItemUIController : MonoBehaviour
     public void MarkAsPurchased()
     {
         Debug.Log("Marking as purchased");
-        priceTag.SetActive(false);
-        purchasedTag.SetActive(true);
+        if (priceTag != null) priceTag.SetActive(false);
+        if (priceTag != null) purchasedTag.SetActive(true);
     }
 
     public void PurchaseScreen(ItemUIController itemUI)
     {
-        FindFirstObjectByType<VendingMachineController>().PurchasePopUp(itemUI.item);
+        if (!purchasedTag.activeInHierarchy)
+            FindFirstObjectByType<VendingMachineController>().PurchasePopUp(itemUI.item, itemIndex);
     }
 
     public void AddItemUIForPurchase(Item item)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System.Runtime.InteropServices;
 
 /*
 * Game Manager
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         // temp:
         foreach ( Action action in STARTER_LOADOUT) {
-            playerStatus.AddActionToLoadout(action);
+            playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
         }
     }
 
@@ -153,14 +154,8 @@ public class GameManager : MonoBehaviour
         return itemDatabase.GetItemCopy(id);
     }
 
-    public List<Item> FetchRandomItems(int numItems) {
-        List<Item> itemsToReturn = new List<Item>();
-        for (int i = 0; i < numItems; i++) {
-            // hard coded rn just for testing
-            // Do we want to ensure there are no duplicates?
-            itemsToReturn.Add(itemDatabase.GetItemFromIndex(Random.Range(0, 4)));
-        }
-        return itemsToReturn;
+    public List<Item> FetchRandomItems(int numItems, bool shouldBeArtifact) {
+        return itemDatabase.GetRandomItems(numItems, shouldBeArtifact);
     }
 
     // TODO: improve random selection with rarity values:

@@ -1,34 +1,41 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using static ActionEffect;
-using System.ComponentModel.Design;
+using static EnemyData;
+using TMPro;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
-    private float frustrationLevel;
     [SerializeField] private FloatingHealthBar frustrationMeter;
-    // Effects
+    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+
+    [Header("------------- Effects -------------")]
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private Transform currentEffectsPanel;
-    // Serialized because some enemy types could start with effects:
     [SerializeField] private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
     [SerializeField] private ActionEffect irateEffect;
+
+    private float frustrationLevel;
+
     // temp:
     private bool movingToFront;
     private bool movingAway;
     private bool movingBack;
     private Transform goalPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    CombatManager combatManager;
+
     void Start()
     {
         frustrationLevel = 0;
+        UpdateFrustration(enemyData.startingFrustration);
+        combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
+        dialogueBox.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (movingToFront)
@@ -38,10 +45,10 @@ public class Customer : MonoBehaviour
             if (transform.position.x >= goalPoint.position.x)
             {
                 movingToFront = false;
-                CombatManager combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
+                SayDialogueLine(LineType.OPENING);
                 combatManager.EnableActions();
-                combatManager.SpawnPaperwork();                
-            } 
+                combatManager.SpawnPaperwork();
+            }
         }
         if (movingAway)
         {
@@ -51,7 +58,7 @@ public class Customer : MonoBehaviour
             {
                 movingAway = false;
                 Destroy(gameObject);
-            } 
+            }
         }
         if (movingBack)
         {
@@ -60,7 +67,8 @@ public class Customer : MonoBehaviour
             if (transform.position.x <= goalPoint.position.x)
             {
                 movingBack = false;
-            } 
+                dialogueBox.SetActive(false);
+            }
         }
     }
 
@@ -77,6 +85,7 @@ public class Customer : MonoBehaviour
         if (gameObject == null) return;
 
         Debug.Log("Sending customer away");
+        SayDialogueLine(LineType.POSITIVE);
         movingAway = true;
         goalPoint = point;
         // toogle paperwork visibility false
@@ -97,21 +106,23 @@ public class Customer : MonoBehaviour
     public void SendToBack(Transform point)
     {
         if (gameObject == null) return;
-
         Debug.Log("Sending customer to back");
+        SayDialogueLine(LineType.NEGATIVE);
         movingBack = true;
         goalPoint = point;
         // toogle paperwork visibility false
         GameObject.FindGameObjectWithTag("Paperwork").SetActive(false);
     }
 
-    public void UpdateFrustration(float change) {
+    public void UpdateFrustration(float change)
+    {
         if (gameObject == null) return;
 
         frustrationLevel += change;
         Debug.Log("Customer frustration level updated to: " + frustrationLevel);
         if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, enemyData.maxFrustration);
-        if (frustrationLevel >= enemyData.maxFrustration) {
+        if (frustrationLevel >= enemyData.maxFrustration)
+        {
             // Check if customer is already irate:
             if (activeEffects.ContainsKey(EffectType.IRATE)) return;
             // else add effect: 
@@ -122,7 +133,41 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public Dictionary<EffectType, GameObject> GetActiveEffects() {
+    public Dictionary<EffectType, GameObject> GetActiveEffects()
+    {
         return activeEffects;
+    }
+
+    public void TakeTurn()
+    {
+        Debug.Log("Customer Turn Starting");
+        // Apply turn frustration
+        Debug.Log("Adding frustration for waiting");
+        UpdateFrustration(enemyData.frustrationIncreasePerTurn);
+        // Take action
+
+        // Add dialogue
+        SayDialogueLine(LineType.NEUTRAL);
+        Debug.Log("Customer Turn Completed");
+        combatManager.EnableActions();
+    }
+
+    public void SayDialogueLine(LineType lineType)
+    {
+        var dialogueChoices = lineType switch
+        {
+            LineType.OPENING => enemyData.openingDialogueLines,
+            LineType.NEUTRAL => enemyData.neutralDialogueLines,
+            LineType.NEGATIVE => enemyData.negativeDialogueLines,
+            LineType.POSITIVE => enemyData.positiveDialogueLines,
+            _ => enemyData.neutralDialogueLines
+        };
+        dialogueBox.SetActive(true);
+        dialogueText.text = dialogueChoices[Random.Range(0, dialogueChoices.Length)];
+    }
+
+    public void AddEnemyData(EnemyData data)
+    {
+        enemyData = data;
     }
 }

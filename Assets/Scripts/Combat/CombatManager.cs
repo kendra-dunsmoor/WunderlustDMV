@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static ActionEffect;
 
@@ -13,15 +11,14 @@ using static ActionEffect;
 */
 public class CombatManager : MonoBehaviour
 {
+    [SerializeField] EnemySpawner enemySpawner;
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
 
     [Header("------------- Prefabs -------------")]
-    // Prefabs
     [SerializeField] private GameObject combatRewardsScreen;
     [SerializeField] private GameObject gameOverMenu;
-    [SerializeField] private GameObject customer; // temp will need to have data for diff enemy types
     [SerializeField] private GameObject paperwork; // temp object placeholder
     [SerializeField] private GameObject actionButtonPrefab;
     [SerializeField] private GameObject currentEffectPrefab;
@@ -46,6 +43,7 @@ public class CombatManager : MonoBehaviour
     private Queue<Customer> customersInLine = new Queue<Customer>();
     private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
     private Customer currCustomer;
+
     [Header("------------- Combat Values -------------")]
     [SerializeField] Action acceptAction;
     [SerializeField] Action rejectAction;
@@ -72,7 +70,7 @@ public class CombatManager : MonoBehaviour
 
     void Start()
     {
-        audioManager = 	FindFirstObjectByType<AudioManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         if (audioManager != null) audioManager.PlayMusic(audioManager.combatMusic);
 
         // temp initialization for quick testing when game manager is null:
@@ -83,7 +81,8 @@ public class CombatManager : MonoBehaviour
 
         gameManager = FindFirstObjectByType<GameManager>();
         inventoryManager = FindFirstObjectByType<InventoryManager>();
-        if (gameManager != null) {
+        if (gameManager != null)
+        {
             if (remainingTurns == 0) remainingTurns = CUSTOMER_GOAL + gameManager.FetchCurrentCalendarDay() - 1; // temp
             performanceLevel = gameManager.FetchPerformance();
             willLevel = gameManager.FetchWill();
@@ -95,6 +94,7 @@ public class CombatManager : MonoBehaviour
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         AddActionLoadout();
         InitializeCustomerQueue();
+        paperwork.SetActive(false);
     }
 
     /* Add Action Loadout: 
@@ -186,12 +186,7 @@ public class CombatManager : MonoBehaviour
     * Add correct images to customer queue and move first customer to front of line
     */
     private void InitializeCustomerQueue() {
-        // Temp: Spawn all customers off screen and add to in game and icon queues
-        Debug.Log("Initialize customer queue: " + CUSTOMER_GOAL);
-        for (int i = 0; i < CUSTOMER_GOAL; i++) {
-            customersInLine.Enqueue(Instantiate(customer, spawnPoint).GetComponent<Customer>());
-            customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
-        }
+        enemySpawner.SpawnEnemies(CUSTOMER_GOAL, out customersInLine, out customerIconQueue);
         currCustomer = customersInLine.Dequeue();
         Destroy(customerIconQueue.Dequeue());
         currCustomer.SendToFront(frontOfLinePoint);
@@ -417,6 +412,9 @@ public class CombatManager : MonoBehaviour
         switch (movement) {
             case Action.ActionMovement.FRONT:
                 Debug.Log("Customer remains in front");
+                // Disable actions while customer takes their turn
+                DisableActions();
+                currCustomer.TakeTurn();
                 break;
             case Action.ActionMovement.AWAY:
                 Debug.Log("Customer is removed from queue");

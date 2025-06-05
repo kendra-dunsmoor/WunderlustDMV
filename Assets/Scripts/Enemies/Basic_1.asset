@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2317b91b03bf84be59ac058cad418af6, type: 3}
+  m_Name: Basic_1
+  m_EditorClassIdentifier: 
+  enemyName: Test
+  enemyDescription: 
+  enemyType: 0
+  moveSpeed: 5
+  startingFrustration: 10
+  frustrationIncreasePerTurn: 5
+  maxFrustration: 100
+  availableActions: []
+  openingDialogueLines:
+  - I hope these queue times have improved.
+  - I remember when this was all just primordial soup... and still, I waited.
+  neutralDialogueLines:
+  - "I suppose I don\u2019t mind waiting.."
+  positiveDialogueLines:
+  - "Waiting wasn\u2019t so bad.. Thank you."
+  negativeDialogueLines:
+  - Oh, I suppose this is just how it is then... forever.
+  acceptedSprite: {fileID: 6408797999967510028, guid: ba21e96c02777459b8086b3334b7de72, type: 3}
+  rejectedSprite: {fileID: -2129212043851828337, guid: 67bf37e2f35bc490ea6ecaad44a868ad, type: 3}
+  iconSprite: {fileID: -8104599600323273583, guid: 94543f97e3a184f4b9178d7fedfb0dc6, type: 3}

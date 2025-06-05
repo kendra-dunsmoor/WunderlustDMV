@@ -10,6 +10,7 @@ public class DialogueResponse
     public bool containsReward;
     public int officeBucks;
     public int soulCredits;
+    public int chaos;
     public List<Item> itemsRewards;
     public List<ActionEffectStacks> effectRewards;
     public float performanceBoost;

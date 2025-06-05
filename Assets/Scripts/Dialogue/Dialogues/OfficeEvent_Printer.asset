@@ -14,39 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     tag: Start
-    dialogueText: 'You come to the Lost and Found of the afterlife and see the manifold
-      possessions of the dead flooding the under-sized room.
+    dialogueText: 'You approach the coin operated printer and can see several ways
+      of sabotaging it.
 
 '
     responses:
-    - responseText: "Take the Ruby Red Slippers item from Lost and Found, no one
-        will notice\u2026 right?"
+    - responseText: Steal ream of paper
       nextNodeIndex: 0
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards:
-      - {fileID: 11400000, guid: 0074ee6d094b24a24bfcfef843d7e5ad, type: 2}
+      - {fileID: 11400000, guid: 6f26cf3e41e3647efbbee2f95baf230d, type: 2}
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
-    - responseText: 'Light the Lost and Found on Fire '
+    - responseText: 'Photocopy your butt and set it to infinite print '
       nextNodeIndex: 0
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 2
       itemsRewards: []
       effectRewards:
-      - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
+      - effect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}
         stacks: 1
       performanceBoost: 0
       willBoost: 0
-    - responseText: Take everything from Lost and Found and sell it all to Sothoth.
-        No one can blame you if you don't have anything on you.
+    - responseText: 'Break into the coin slot and take the coins from the printer '
       nextNodeIndex: 0
       containsReward: 1
-      officeBucks: 50
+      officeBucks: 15
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
@@ -55,4 +56,4 @@ MonoBehaviour:
   - tag: 0 - End
     dialogueText: 
     responses: []
-  character: {fileID: 11400000, guid: ee4cdb37daa82461da299aa9fdad7924, type: 2}
+  character: {fileID: 11400000, guid: d7f99d469cc014097b09db9737c5ae2a, type: 2}

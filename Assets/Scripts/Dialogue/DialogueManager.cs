@@ -142,33 +142,43 @@ public class DialogueManager : MonoBehaviour
         }
         isTyping = false; 
     }
-    private void AddRewards(DialogueResponse currNode) {
+    private void AddRewards(DialogueResponse currNode)
+    {
         // Add any items/effects connected to node
-        foreach (Item item in currNode.itemsRewards) {
+        foreach (Item item in currNode.itemsRewards)
+        {
             if (item is ArtifactItem)
                 gameManager.AddArtifact(item.ID);
-            else 
+            else
                 gameManager.AddToInventory(item.ID);
             // Add pop-up
             // For now just add individual screens per item, could combine multipl into one later if need be
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(item.Icon, item.itemName, item.flavorText);
         }
-        if (currNode.officeBucks != 0) {
+        if (currNode.officeBucks != 0)
+        {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");
         }
-        if (currNode.soulCredits != 0) {
+        if (currNode.soulCredits != 0)
+        {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits", "Use to pay rent & purchase apartment upgrades!");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " soulCredits", "Use to pay rent & purchase apartment upgrades!");
         }
-        if (currNode.performanceBoost != 0) {
+        if (currNode.performanceBoost != 0)
+        {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.performanceBoost + " performance", "");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.performanceBoost + " performance", "");
+        }
+        if (currNode.willBoost != 0)
+        {
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.willBoost + " will", "");
         }
         if (currNode.willBoost != 0) {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.willBoost + " will", "");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.chaos + " chaos", "");            
         }
         // TODO: add effects and special cases
     }

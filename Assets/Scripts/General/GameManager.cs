@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
     public void RestartRun() {
         // Back to apartment, reset certain run only trackers
         playerStatus.ResetRun();
+        foreach ( Action action in STARTER_LOADOUT) {
+            playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
+        }
         gameStatus.ResetRun();
     }
 

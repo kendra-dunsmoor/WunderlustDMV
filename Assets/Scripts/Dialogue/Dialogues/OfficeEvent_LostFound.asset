@@ -10,41 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
-  m_Name: OfficeEvent_LostAndFound
+  m_Name: OfficeEvent_LostFound
   m_EditorClassIdentifier: 
   RootNode:
     tag: Start
-    dialogueText: "You approach the coffee machine, and the opportunity for mischief
-      seems\u2026limited. But there\u2019s always something to break around the office. "
+    dialogueText: 'You come to the Lost and Found of the afterlife and see the manifold
+      possessions of the dead flooding the under-sized room.
+
+'
     responses:
-    - responseText: 'Make an extra cup of coffee '
+    - responseText: "Take the Ruby Red Slippers, no one will notice\u2026 right?"
       nextNodeIndex: 0
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards:
-      - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
+      - {fileID: 11400000, guid: 0074ee6d094b24a24bfcfef843d7e5ad, type: 2}
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
-    - responseText: 'Pour out all the coffee and hide the grounds so no one can have
-        any. '
+    - responseText: 'Light the Lost and Found on Fire '
       nextNodeIndex: 0
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 3
       itemsRewards: []
       effectRewards:
-      - effect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}
+      - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
         stacks: 1
       performanceBoost: 0
       willBoost: 0
-    - responseText: Take the BuckStar cup out of the trash to fill and sell it to
-        Verrine.
+    - responseText: Take everything from Lost and Found and sell it all to Sothoth.
+        No one can blame you if you don't have anything on you.
       nextNodeIndex: 0
       containsReward: 1
-      officeBucks: 30
+      officeBucks: 20
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
@@ -53,4 +57,4 @@ MonoBehaviour:
   - tag: 0 - End
     dialogueText: 
     responses: []
-  character: {fileID: 11400000, guid: d7f99d469cc014097b09db9737c5ae2a, type: 2}
+  character: {fileID: 11400000, guid: ee4cdb37daa82461da299aa9fdad7924, type: 2}

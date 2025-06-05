@@ -22,6 +22,7 @@ MonoBehaviour:
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards:
       - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
       effectRewards: []
@@ -33,18 +34,18 @@ MonoBehaviour:
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 1
       itemsRewards: []
-      effectRewards:
-      - effect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}
-        stacks: 1
+      effectRewards: []
       performanceBoost: 0
       willBoost: 0
     - responseText: Take the BuckStar cup out of the trash to fill and sell it to
         Verrine.
       nextNodeIndex: 0
       containsReward: 1
-      officeBucks: 30
+      officeBucks: 10
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e02f114e01049c8954218a6161ef6b, type: 3}
+  m_Name: Anti-Depressants
+  m_EditorClassIdentifier: 
+  itemName: Anti-Depressants
+  Icon: {fileID: -6762094021322151088, guid: 7f843a1869a9e407e80475139d879e8e, type: 3}
+  ID: A_011
+  price: 0
+  itemRarity: 0
+  flavorText: '"You gotta calm down, dude. I found these under the couch. How about
+    you try a couple?" - Astaroth'
+  description: Gain 1 "Hustling" and 1 "Drained"
+  effects:
+  - effect: {fileID: 11400000, guid: 4460588d827a64ea8be435880ec67bf2, type: 2}
+    stacks: 1
+  - effect: {fileID: 11400000, guid: dc93f4b07e5054ce28535c5b0e4da1e6, type: 2}
+    stacks: 1
+  willModifier: 0
+  performanceModifier: 0
+  frustrationModifier: 0
+  turnClock: 3
+  currentTurnCounter: 0
+  isEndOfShiftEffect: 0

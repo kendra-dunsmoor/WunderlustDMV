@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.2124, y: 0.8}
-  m_SizeDelta: {x: 28.1608, y: 17.4364}
+  m_AnchoredPosition: {x: 0.1616, y: 0.8}
+  m_SizeDelta: {x: 36.773, y: 17.4364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1391574479865870177
 CanvasRenderer:
@@ -143,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '-'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 78e738676d51449d69297101faad6c40, type: 2}
-  m_sharedMaterial: {fileID: 470837998282176843, guid: 78e738676d51449d69297101faad6c40, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+  m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: -62.7}
-  m_SizeDelta: {x: 40, y: 25}
+  m_AnchoredPosition: {x: 0, y: -62.7}
+  m_SizeDelta: {x: 51.3279, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3194616236835409943
 CanvasRenderer:
@@ -355,8 +355,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sold Out
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 78e738676d51449d69297101faad6c40, type: 2}
-  m_sharedMaterial: {fileID: 470837998282176843, guid: 78e738676d51449d69297101faad6c40, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+  m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -380,15 +380,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -590,4 +590,5 @@ MonoBehaviour:
   priceTag: {fileID: 5175603357346021824}
   purchasedTag: {fileID: 3160318910933014030}
   itemImage: {fileID: 8537871839956812676}
+  itemIndex: 0
   item: {fileID: 0}

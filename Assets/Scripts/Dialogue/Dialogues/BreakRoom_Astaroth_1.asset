@@ -57,7 +57,7 @@ MonoBehaviour:
       soulCredits: 0
       itemsRewards: []
       effectRewards: []
-      performanceBoost: -15
+      performanceBoost: -10
       willBoost: 0
     - responseText: No, I just need to catch my breath.
       nextNodeIndex: 4
@@ -65,11 +65,9 @@ MonoBehaviour:
       officeBucks: 0
       soulCredits: 0
       itemsRewards: []
-      effectRewards:
-      - effect: {fileID: 11400000, guid: 70c0a72e12eb9494ab04d843dcc2bb7b, type: 2}
-        stacks: 1
+      effectRewards: []
       performanceBoost: 0
-      willBoost: 0
+      willBoost: 5
   - tag: 2 - Branch B
     dialogueText: Me too. Avoiding work gets exhausting.
     responses:
@@ -78,7 +76,7 @@ MonoBehaviour:
       nextNodeIndex: 5
       containsReward: 1
       officeBucks: 0
-      soulCredits: 40
+      soulCredits: 10
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
@@ -88,7 +86,8 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
-      itemsRewards: []
+      itemsRewards:
+      - {fileID: 11400000, guid: 24c678fc7bf7d44aa8e218ec734276c7, type: 2}
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
@@ -119,7 +118,7 @@ MonoBehaviour:
       willBoost: 0
   - tag: 5 - Branch B1
     dialogueText: "You need soul credits? I\u2019ve got some. Don\u2019t waste your
-      time working. You can\u2019t waste eternity worrying about everything."
+      time working."
     responses:
     - responseText: Continue
       nextNodeIndex: 8

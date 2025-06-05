@@ -57,11 +57,9 @@ MonoBehaviour:
       officeBucks: 0
       soulCredits: 0
       itemsRewards: []
-      effectRewards:
-      - effect: {fileID: 11400000, guid: d89b749773aae47bea3dfb029a1f2865, type: 2}
-        stacks: 1
+      effectRewards: []
       performanceBoost: 0
-      willBoost: 0
+      willBoost: 5
   - tag: 1 - Branch B
     dialogueText: "That\u2019s a rare one. Usually the hordes of recently deceased
       are pretty upset. You know\u2026being lost and dead and all that. But your
@@ -72,8 +70,8 @@ MonoBehaviour:
         and I just wanted to stop thinking about it before my shift."
       nextNodeIndex: 4
       containsReward: 0
-      officeBucks: 0
-      soulCredits: 0
+      officeBucks: -50
+      soulCredits: 10
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
@@ -84,7 +82,8 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
-      itemsRewards: []
+      itemsRewards:
+      - {fileID: 11400000, guid: d8d792df3ab094c84bfae66b72159a97, type: 2}
       effectRewards: []
       performanceBoost: 0
       willBoost: 0

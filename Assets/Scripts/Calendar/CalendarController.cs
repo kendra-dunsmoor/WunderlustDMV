@@ -20,7 +20,6 @@ public class CalendarController : MonoBehaviour
     {
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
-        // gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gameManager != null) {
             currDay = gameManager.FetchCurrentCalendarDay();
         } else {

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Leadership Training
   m_EditorClassIdentifier: 
   type: 4
-  description: Performance Reviews are easier
+  description: +10 Will when entering a Preformance Review
   title: Leadership Training
-  price: 30
+  price: 40

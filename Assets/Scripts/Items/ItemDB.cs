@@ -96,8 +96,8 @@ public class ItemDB : ScriptableObject
 		return rarity switch
 		{
 			Item.Rarity.COMMON => 0.5f,
-			Item.Rarity.UNCOMMON => 0.4f,
-			Item.Rarity.RARE => 0.3f,
+			Item.Rarity.UNCOMMON => 0.35f,
+			Item.Rarity.RARE => 0.15f,
 			_ => 1f
 		};
 	}

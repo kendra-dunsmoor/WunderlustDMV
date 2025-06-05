@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IT Cert
   m_EditorClassIdentifier: 
   type: 2
-  description: Printer events
-  title: IT Cert
-  price: 20
+  description: Reduces Frustration changes by 20%
+  title: Anger Managment
+  price: 50

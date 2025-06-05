@@ -137,6 +137,29 @@ public class GameManager : MonoBehaviour
         if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetOfficeBucks().ToString();
     }
 
+    public int FetchVRep()
+    {
+        return playerStatus.GetVRep();
+    }
+
+    public void UpdateVRep(int change) {
+        playerStatus.UpdateVRep(change);
+        GameObject counter = GameObject.FindGameObjectWithTag("Counter_VRep");
+        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetVRep().ToString();
+    }
+
+     public int FetchARep()
+    {
+        return playerStatus.GetARep();
+    }
+
+    public void UpdateARep(int change) {
+        playerStatus.UpdateARep(change);
+        GameObject counter = GameObject.FindGameObjectWithTag("Counter_ARep");
+        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetARep().ToString();
+    }
+
+
     public List<Certificate> FetchCertificates() {
         return playerStatus.GetCertificates();
     }

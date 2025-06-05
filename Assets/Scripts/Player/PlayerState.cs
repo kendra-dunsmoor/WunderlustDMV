@@ -23,13 +23,18 @@ public class PlayerState
     */
     private int soulCredits = 0;
 
+    /* Reputation:
+    Reputation tracking for Astaroth, Verinne, and Sothoth. 
+    Used by some events and side-quests
+    Rewarded by NPC quests and post-combat
+    */
+    private int aRep = 0;
+    private int vRep = 0;
+    private int sRep = 0;
+
     // TODO: specializations
 
-    /* TODO: Social Currency with Coworkers
-	Rewarded by Events, Modifiers.
-	Spent in NPC interactions
-    All unspent is lost when Fired or Reincarnated.
-    */
+
     private List<Action> actionLoadout = new List<Action>();
     private List<Certificate> activeCertificates = new List<Certificate>();
     private List<string> itemInventory = new List<string>();
@@ -70,6 +75,32 @@ public class PlayerState
     public int GetSoulCredits() {
         return soulCredits;
     }
+
+    public void UpdateVRep(int amount) {
+        vRep += amount;
+    }
+
+    public int GetVRep() {
+        return vRep;
+    }
+
+    public void UpdateARep(int amount) {
+        aRep += amount;
+    }
+
+    public int GetARep() {
+        return aRep;
+    }
+
+    public void UpdateSRep(int amount) {
+        sRep += amount;
+    }
+
+    public int GetSRep() {
+        return sRep;
+    }
+
+
 
     public void AddCertificate(Certificate cert) {
         activeCertificates.Add(cert);

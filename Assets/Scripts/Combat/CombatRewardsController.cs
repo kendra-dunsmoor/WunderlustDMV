@@ -19,9 +19,26 @@ public class CombatRewardsController : MonoBehaviour
     {
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
+
         int currency = GetCurrencyRewards();
-        rewardsDescription.text = currency + " OfficeBucks based on performance";
+        rewardsDescription.text ="Performance Incentive: " + currency + " OfficeBucks";
         gameManager.UpdateOfficeBucks(currency);
+
+        int metaCurrency = GetMetaRewards();
+        rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Coins";
+        gameManager.UpdateSoulCredits(metaCurrency);
+
+        if(GetVRepRewards() == 1)
+        {
+            rewardsDescription.text +="\nAstaroth is Pleased!";
+            gameManager.UpdateVRep(1);
+        }
+        if(GetARepRewards() == 1)
+        {
+            rewardsDescription.text +="\nVerrine is Impressed!";
+            gameManager.UpdateARep(1);
+        }
+
         SpawnActionUpgrades();
     }
 
@@ -68,5 +85,26 @@ public class CombatRewardsController : MonoBehaviour
         float performance = gameManager.FetchPerformance();
         if (performance > 100) return (int) Math.Round((200 - performance) / 2);
         else return (int) Math.Round(performance / 2);
+    }
+
+    private int GetMetaRewards()
+    {
+
+       // Check if finished early, if true return 3
+       return 5;
+    }
+
+    private int GetVRepRewards()
+    {
+        float performance = gameManager.FetchPerformance();
+        if (performance > 130) return 1;
+        else return 0;
+    }
+    
+    private int GetARepRewards()
+    {
+        float performance = gameManager.FetchPerformance();
+        if (performance < 70) return 1;
+        else return 0;
     }
 }

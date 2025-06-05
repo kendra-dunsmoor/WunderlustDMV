@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   target: 0
   effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
-  effectDescription: Each stack increases Performance changes by 20%
+  effectDescription: +20% Performance changes per stack
   shouldStack: 1
   shouldDecay: 0
   isPercent: 1

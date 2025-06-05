@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Side-Gig
   m_EditorClassIdentifier: 
   type: 1
-  description: Beverages are 20% cheaper at the Vending Machine
+  description: Beverages are 20% cheaper
   title: Side-Gig
-  price: 40
+  price: 20

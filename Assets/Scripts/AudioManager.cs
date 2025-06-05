@@ -49,8 +49,8 @@ public class AudioManager : MonoBehaviour
     
     void Start()
     {
-        if (breakRoomMusic != null) {
-            musicSource.clip = breakRoomMusic;
+        if (apartmentMusic != null) {
+            musicSource.clip = apartmentMusic;
             musicSource.Play();
         }
     }

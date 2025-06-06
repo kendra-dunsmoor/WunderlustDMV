@@ -51,6 +51,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] Action acceptAction;
     [SerializeField] Action rejectAction;
     [SerializeField] Action escalateAction;
+    [SerializeField, Tooltip("Remove this much attention at end of shift")] private int END_SHIFT_ATTENTION_MODIFIER = -30;
     [SerializeField, Tooltip("Modifier for going through all customers before shift end")] private int EARLY_FINISH_PENALTY;
     [SerializeField, Tooltip("Customer goal set at beginning of combat scene")] private int CUSTOMER_GOAL;
     [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
@@ -141,8 +142,7 @@ public class CombatManager : MonoBehaviour
         if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
         // End of shift artifact effects
         inventoryManager.EndShiftArtifacts();
-        if (attentionLevel>30)     UpdateAttention(-30);
-        else ClearAttention();
+        UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
         // Pop up end screen
         gameManager.ShiftCompleted(performanceLevel, willLevel);
         // Get combat rewards
@@ -209,7 +209,10 @@ public class CombatManager : MonoBehaviour
     * Check for game over state
     */
     public void UpdatePerformance(float diff) {
-        performanceLevel += (float) Math.Round(diff * ( 1 + attentionLevel/100));
+        // TODO: Check if attention should be modifying end of shift performance change too:
+        float attentionModifier = 1 + attentionLevel / 100;
+        Debug.Log("Performance attention modifier: " + attentionModifier);
+        performanceLevel += (float) Math.Round(diff * attentionModifier);
         performanceMeter.GetComponent<SliderCounter>().UpdateBar(performanceLevel);
         Debug.Log("Performance level updated to: " + performanceLevel);
         if (performanceLevel <= 0) {
@@ -240,16 +243,7 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdateAttention(float diff) {
         attentionLevel += diff;
-        attentionTracker.text = attentionLevel + "%";
-        Debug.Log("Attention updated to: " + attentionLevel);
-    }
-
-    /* Clear Attention: 
-    * ~~~~~~~~~~~~~
-    * Resetting attention when it would go below 0. 
-    */
-    public void ClearAttention() {
-        attentionLevel = 0;
+        if (attentionLevel < 0) attentionLevel = 0;
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
     }
@@ -416,15 +410,18 @@ public class CombatManager : MonoBehaviour
             if (type == EffectType.INCOHERENT)
             {
                 // Set attention to 0 when escalated
-                if (action.actionName == "Escalate")     UpdateAttention(0-attentionLevel);
+                if (action.actionName == "Escalate")
+                    UpdateAttention(-attentionLevel);
             }
         }
 
         // Update meters with after effects and artifacts values
+        // TODO: should attention be modified before or after performance, 
+        // i.e. should current action new attention affect same turn?
         UpdatePerformance(performaceModifier);
+        UpdateAttention(attentionModifier);
         UpdateWill(willModifier);
         UpdateFrustration(frustrationModifier);
-        attentionTracker.text = attentionLevel + "%";
     }
 
 
@@ -453,7 +450,7 @@ public class CombatManager : MonoBehaviour
         // Any special cases that need to be hard coded for now:
         switch (effectType) {
             case EffectType.IRATE:
-                 UpdateAttention(30);
+                UpdateAttention(30);
                 break;
            /* Commenting out due to Attention re-work 
             case EffectType.ATTENTION:
@@ -466,8 +463,7 @@ public class CombatManager : MonoBehaviour
                 // performance gains remove attention
                 if (performaceModifier > 0) {
                     Debug.Log("Positive performance modifier while hustling effect active");
-                      if (attentionLevel>10)     UpdateAttention(-10);
-                      else ClearAttention();
+                      UpdateAttention(-10);
                 }
                 break;
             case EffectType.CAFFIENATED:

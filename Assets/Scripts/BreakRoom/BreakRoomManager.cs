@@ -11,7 +11,7 @@ public class BreakRoomManager : MonoBehaviour
     }
     public void StartShift()
     {
-        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
+        if (audioManager != null) audioManager.PlaySFX(audioManager.openDoor);
         SceneManager.LoadSceneAsync(3);
     }
 

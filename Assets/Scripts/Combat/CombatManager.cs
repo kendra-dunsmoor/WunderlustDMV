@@ -237,12 +237,14 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdateWill(float diff) {
         willLevel += diff;
+        if (willLevel > gameManager.FetchMaxWill()) willLevel = gameManager.FetchMaxWill();
+        if (willLevel < 0) willLevel = 0;
         willMeter.GetComponent<SliderCounter>().UpdateBar(willLevel);
         Debug.Log("Will updated to: " + willLevel);
     }
 
     /* Update Attention: 
-    * ~~~~~~~~~~~~~
+    * ~~~~~~~~~~~~~~~~~~~
     * Update attention after player action
     */
     public void UpdateAttention(float diff) {

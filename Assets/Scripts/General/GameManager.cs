@@ -129,6 +129,14 @@ public class GameManager : MonoBehaviour
         gameStatus.UpdateWill(will);
     }
 
+    public float FetchMaxWill() {
+        return gameStatus.GetMaxWill();
+    }
+    public void UpdateMaxWill(float maxWill)
+    {
+        gameStatus.UpdateWill(maxWill);
+    }
+
     public float FetchAttention()
     {
         return gameStatus.GetAttention();

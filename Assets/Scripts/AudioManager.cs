@@ -30,6 +30,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip shiftOver_Fired;
     public AudioClip shiftOver_Reincarnated;
     public AudioClip computerBootUp;
+    public AudioClip vendingMachineItem;
+    public AudioClip paperRustle;
+    public AudioClip drink;
+    public AudioClip openDoor;
 
     public static AudioManager instance;
     [SerializeField] private AudioMixer mixer;

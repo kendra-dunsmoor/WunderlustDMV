@@ -54,7 +54,7 @@ public class InventoryManager : MonoBehaviour
     public void InventoryClick(Item item) {
         if (combatManager.actionsDisabled) return;
         if (item is UsableItem) {
-            if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
+            if (audioManager != null) audioManager.PlaySFX(audioManager.drink);
             UsableItem usableItem = (UsableItem) item;
 
             AddEffectsAndModifiers(item);

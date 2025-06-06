@@ -9,6 +9,7 @@ using UnityEngine;
 */
 public class GameState
 {
+    private float maxWill = 100f;
     private float performance = 100f;
     private float will = 100f;
     private float attention = 20f;
@@ -62,6 +63,11 @@ public class GameState
         return will;
     }
     
+    public float GetMaxWill()
+    {
+        return maxWill;
+    }
+
     public void UpdatePerformance(float performance)
     {
         this.performance = performance;
@@ -76,8 +82,14 @@ public class GameState
     {
         this.will = will;
     }
+    
+     public void UpdateMaxWill(float maxWill)
+    {
+        this.maxWill = maxWill;
+    }
 
-    public void ResetRun() {
+    public void ResetRun()
+    {
         will = 100f;
         performance = 100f;
         attention = 20f;

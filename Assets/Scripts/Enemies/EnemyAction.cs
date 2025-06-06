@@ -10,10 +10,14 @@ public class EnemyAction : ScriptableObject
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
     public float PERFORMANCE_MODIFIER;
-
     public float ATTENTION_MODIFIER;
-
-    public bool PASSIVE = false;
+    public enum EnemyActionType
+    {
+        PASSIVE,
+        NEGATIVE,
+        POSTIVE,
+        NEUTRAL
+    }
 
     public float ACTION_CHANCE = 1.0f; // The chance of the action happening, 1.0f = 100%
 

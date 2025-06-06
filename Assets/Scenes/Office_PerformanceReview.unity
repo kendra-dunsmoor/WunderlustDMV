@@ -6061,26 +6061,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7594fe7447137468982028a0035c55db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 0}
+  combatTutorialDialogue: {fileID: 0}
   combatRewardsScreen: {fileID: 530363540952408881, guid: 49fe5abc5059849f1b36a8d0aefd7228, type: 3}
   gameOverMenu: {fileID: 530363540952408881, guid: 567c082e16ca3464b8323626eea5ab07, type: 3}
-  customer: {fileID: 5122412275413886723, guid: 8e42d207b7c06414885e0052f7e9d650, type: 3}
   paperwork: {fileID: 0}
   actionButtonPrefab: {fileID: 634796642407987267, guid: 9fee90e40b9f742e38b3f467a68a221f, type: 3}
   currentEffectPrefab: {fileID: 8950778992821901451, guid: c8e27bef23a2a4a80a5b0aba48a3dfab, type: 3}
   customerIconPrefab: {fileID: 1217931479451259783, guid: 847439a6485eb405389d9209cdecec1b, type: 3}
-  attentionEffect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
   performanceMeter: {fileID: 286162194}
   willMeter: {fileID: 1456086135}
   customerGoalText: {fileID: 0}
   remainingTurnsText: {fileID: 0}
+  attentionTracker: {fileID: 0}
   currentEffectsPanel: {fileID: 975500296}
   customerQueuePanel: {fileID: 0}
   actionButtonGrid: {fileID: 1686420899}
   spawnPoint: {fileID: 409806353}
   offScreenPoint: {fileID: 1821154105}
   frontOfLinePoint: {fileID: 780199051}
+  acceptAction: {fileID: 0}
+  rejectAction: {fileID: 0}
+  escalateAction: {fileID: 0}
+  END_SHIFT_ATTENTION_MODIFIER: -30
+  EARLY_FINISH_PENALTY: 0
   CUSTOMER_GOAL: 5
   performanceLevel: 100
+  attentionLevel: 0
   willLevel: 100
   remainingTurns: 10
   STARTER_LOADOUT:

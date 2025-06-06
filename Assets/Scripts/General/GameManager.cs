@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 /*
 * Game Manager

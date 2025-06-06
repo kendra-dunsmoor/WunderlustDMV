@@ -44,6 +44,8 @@ public class Customer : MonoBehaviour
                 enemyData.moveSpeed * Time.deltaTime);
             if (transform.position.x >= goalPoint.position.x)
             {
+                // Customer hits front of line
+                // TODO: Passive action check here
                 movingToFront = false;
                 SayDialogueLine(LineType.OPENING);
                 combatManager.EnableActions();

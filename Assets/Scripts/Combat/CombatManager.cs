@@ -141,7 +141,8 @@ public class CombatManager : MonoBehaviour
         if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
         // End of shift artifact effects
         inventoryManager.EndShiftArtifacts();
-        UpdateAttention(-30);
+        if (attentionLevel>30)     UpdateAttention(-30);
+        else ClearAttention();
         // Pop up end screen
         gameManager.ShiftCompleted(performanceLevel, willLevel);
         // Get combat rewards
@@ -239,6 +240,16 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdateAttention(float diff) {
         attentionLevel += diff;
+        attentionTracker.text = attentionLevel + "%";
+        Debug.Log("Attention updated to: " + attentionLevel);
+    }
+
+    /* Clear Attention: 
+    * ~~~~~~~~~~~~~
+    * Resetting attention when it would go below 0. 
+    */
+    public void ClearAttention() {
+        attentionLevel = 0;
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
     }
@@ -455,7 +466,8 @@ public class CombatManager : MonoBehaviour
                 // performance gains remove attention
                 if (performaceModifier > 0) {
                     Debug.Log("Positive performance modifier while hustling effect active");
-                    UpdateAttention(-10); 
+                      if (attentionLevel>10)     UpdateAttention(-10);
+                      else ClearAttention();
                 }
                 break;
             case EffectType.CAFFIENATED:

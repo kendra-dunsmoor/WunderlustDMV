@@ -6,7 +6,7 @@ public class Certificate : ScriptableObject
     public enum CertificateType {
         SUPPLY_SOURCING,
         SIDE_GIG,
-        IT_CERT,
+        ANGER_MANAGE,
         DATA_ENTRY,
         LEADERSHIP_TRAINING,
         FINANCIAL_LITERACY

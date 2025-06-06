@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,6 +10,9 @@ using UnityEditor;
 public class ItemDB : ScriptableObject
 {
 	[SerializeField] Item[] items;
+
+	private GameManager gameManager;
+
 
 	public Item GetItemReference(string itemID)
 	{
@@ -93,6 +97,22 @@ public class ItemDB : ScriptableObject
 
 	private float GetItemSpawnRate(Item.Rarity rarity)
 	{
+
+        gameManager = FindFirstObjectByType<GameManager>();
+		List<Certificate> playerCerts = gameManager.FetchCertificates();
+
+		
+		if (playerCerts.Any(c => c.type == SUPPLY_SOURCING))
+		{
+			return rarity switch
+			{
+				Item.Rarity.COMMON => 0.3f,
+				Item.Rarity.UNCOMMON => 0.4f,
+				Item.Rarity.RARE => 0.3f,
+				_ => 1f
+			};
+		}
+		
 		return rarity switch
 		{
 			Item.Rarity.COMMON => 0.5f,

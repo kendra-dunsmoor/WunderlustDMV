@@ -40,9 +40,11 @@ public class Action : ScriptableObject
         if (ATTENTION_MODIFIER != 0) description += "\nAttention: " + ATTENTION_MODIFIER + "%";
         foreach (ActionEffectStacks effectStacks in effects)
         {
+            // TODO: Clearer descriptions for particular actions
+           /*
             if (effectStacks.effect.type == ADD_TURNS) description += "\nSkips a turn.";
             else if (effectStacks.effect.type == MADE_MISTAKE) description += "\nEach Mistake draws more Attention." ;
-            else if (effectStacks != null) description += "\nAdds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
+            else */ if (effectStacks != null) description += "\nAdds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
         }
         switch (movement)
         {

@@ -107,7 +107,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 36e6dad0ef65841bb9005821b073ab50, type: 2}
   opaqueScreen: {fileID: 6043920474845609299}
   purchasePopUp: {fileID: 5453029929037837045}
-  purchaseCertName: {fileID: 152048080796583682}
   purchaseDescription: {fileID: 546763251441989855}
 --- !u!1 &609866951971451686
 GameObject:
@@ -1241,10 +1240,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use soul credits to purchase certifications
+  m_text: Use Chthonic Credits to purchase certifications
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 78e738676d51449d69297101faad6c40, type: 2}
-  m_sharedMaterial: {fileID: 470837998282176843, guid: 78e738676d51449d69297101faad6c40, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
+  m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1634,17 +1633,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9b9458e5779e46b7b6e6ab101999e5e, type: 3}
---- !u!114 &152048080796583682 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7044419074056591356, guid: c9b9458e5779e46b7b6e6ab101999e5e, type: 3}
-  m_PrefabInstance: {fileID: 7196439117168120062}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1239931887026727385 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8280989713089722663, guid: c9b9458e5779e46b7b6e6ab101999e5e, type: 3}

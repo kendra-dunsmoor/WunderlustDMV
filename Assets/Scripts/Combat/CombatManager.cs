@@ -329,16 +329,25 @@ public class CombatManager : MonoBehaviour
 
         List<EffectType> effectsToRemove = new List<EffectType>();
         // Check player effects:
-        foreach(var (type, effectUI) in activeEffects) {
-            ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+        foreach (var (type, effectUI) in activeEffects)
+        {
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+            performaceModifier += effectResult.PerformanceModifier;
+            willModifier += effectResult.WillModifier;
+            frustrationModifier += effectResult.FrustrationModifier;
         }
         // Check curr customer effects:
         foreach(var (type, effectUI) in currCustomer.GetActiveEffects()) {
-            ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+            performaceModifier += effectResult.PerformanceModifier;
+            willModifier += effectResult.WillModifier;
+            frustrationModifier += effectResult.FrustrationModifier;
             // Temp: Annoying special case
-            if (type == EffectType.INCOHERENT) {
+            if (type == EffectType.INCOHERENT)
+            {
                 // Removes 5 "Attention" when Escalated
-                if (action.actionName == "Escalate") {
+                if (action.actionName == "Escalate")
+                {
                     RemoveEffectStacks(5, EffectType.ATTENTION);
                 }
             }
@@ -411,7 +420,6 @@ public class CombatManager : MonoBehaviour
         if (effectController.FetchTurns() == 0) effectResult.shouldRemoveEffect = true;
         return effectResult;
     }
-
 
     /* Move Customer:
     * ~~~~~~~~~~~~~~~~

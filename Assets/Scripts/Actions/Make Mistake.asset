@@ -16,11 +16,10 @@ MonoBehaviour:
   FRUSTRATION_MODIFIER: 10
   WILL_MODIFIER: -2
   PERFORMANCE_MODIFIER: -10
+  ATTENTION_MODIFIER: 10
   type: 1
   movement: 0
-  effects:
-  - effect: {fileID: 11400000, guid: 3aefc459b6d934e7a84e128ec3e520d4, type: 2}
-    stacks: 1
+  effects: []
   actionUpgrades: []
   baseButtonImage: {fileID: -8056330897230721852, guid: 4eab4155d0f344c749d1c4476e82a5fa, type: 3}
   hoverButtonImage: {fileID: -270451870714119327, guid: 0de858823da4841ddb22c464a4d92017, type: 3}

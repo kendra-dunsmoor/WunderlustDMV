@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,13 +25,14 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject actionButtonPrefab;
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private GameObject customerIconPrefab;
-    [SerializeField] private ActionEffect attentionEffect;
+  //  [SerializeField] private ActionEffect attentionEffect;
 
     [Header("------------- UI Meters -------------")]
     [SerializeField] private Slider performanceMeter;
     [SerializeField] private Slider willMeter;
     [SerializeField] private TextMeshProUGUI customerGoalText;
     [SerializeField] private TextMeshProUGUI remainingTurnsText;
+    [SerializeField] private TextMeshProUGUI attentionTracker;
 
     [Header("------------- Spawn Points -------------")]
     [SerializeField] private Transform currentEffectsPanel;
@@ -52,6 +54,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField, Tooltip("Modifier for going through all customers before shift end")] private int EARLY_FINISH_PENALTY;
     [SerializeField, Tooltip("Customer goal set at beginning of combat scene")] private int CUSTOMER_GOAL;
     [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
+    [SerializeField, Tooltip("Current attention level, UI might not update if this is changed until action taken")] private float attentionLevel; // temp range 0 to 100
     [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
     [SerializeField, Tooltip("Remaining turns in combat, UI might not update if this is changed until action taken")] private int remainingTurns; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
@@ -62,6 +65,7 @@ public class CombatManager : MonoBehaviour
         public float FrustrationModifier { get; set; }
         public float PerformanceModifier { get; set; }
         public float WillModifier { get; set; }
+        public float AttentionModifier { get; set; }
     }
 
     private float MAX_PERFORMANCE;
@@ -76,6 +80,7 @@ public class CombatManager : MonoBehaviour
         // temp initialization for quick testing when game manager is null:
         if (performanceLevel == 0) performanceLevel = 50f;
         if (willLevel == 0) willLevel = 50f;
+        if (attentionLevel == 0) attentionLevel = 20f;
         if (CUSTOMER_GOAL == 0) CUSTOMER_GOAL = 10;
         MAX_PERFORMANCE = performanceMeter.maxValue;
 
@@ -86,6 +91,7 @@ public class CombatManager : MonoBehaviour
             if (gameManager.inTutorial) remainingTurns = 10;
             else remainingTurns = 20;
             performanceLevel = gameManager.FetchPerformance();
+            attentionLevel = gameManager.FetchAttention();
             willLevel = gameManager.FetchWill();
         }
         performanceMeter.value = performanceLevel;
@@ -93,6 +99,7 @@ public class CombatManager : MonoBehaviour
         willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
         performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
         paperwork.SetActive(false);
@@ -134,6 +141,8 @@ public class CombatManager : MonoBehaviour
         if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
         // End of shift artifact effects
         inventoryManager.EndShiftArtifacts();
+        if (attentionLevel>30)     UpdateAttention(-30);
+        else ClearAttention();
         // Pop up end screen
         gameManager.ShiftCompleted(performanceLevel, willLevel);
         // Get combat rewards
@@ -200,7 +209,7 @@ public class CombatManager : MonoBehaviour
     * Check for game over state
     */
     public void UpdatePerformance(float diff) {
-        performanceLevel += diff;
+        performanceLevel += (float) Math.Round(diff * ( 1 + attentionLevel/100));
         performanceMeter.GetComponent<SliderCounter>().UpdateBar(performanceLevel);
         Debug.Log("Performance level updated to: " + performanceLevel);
         if (performanceLevel <= 0) {
@@ -223,6 +232,26 @@ public class CombatManager : MonoBehaviour
         willLevel += diff;
         willMeter.GetComponent<SliderCounter>().UpdateBar(willLevel);
         Debug.Log("Will updated to: " + willLevel);
+    }
+
+    /* Update Attention: 
+    * ~~~~~~~~~~~~~
+    * Update attention after player action
+    */
+    public void UpdateAttention(float diff) {
+        attentionLevel += diff;
+        attentionTracker.text = attentionLevel + "%";
+        Debug.Log("Attention updated to: " + attentionLevel);
+    }
+
+    /* Clear Attention: 
+    * ~~~~~~~~~~~~~
+    * Resetting attention when it would go below 0. 
+    */
+    public void ClearAttention() {
+        attentionLevel = 0;
+        attentionTracker.text = attentionLevel + "%";
+        Debug.Log("Attention updated to: " + attentionLevel);
     }
 
     /* Update Frustration: 
@@ -364,30 +393,30 @@ public class CombatManager : MonoBehaviour
         float performaceModifier = action.PERFORMANCE_MODIFIER;
         float frustrationModifier = action.FRUSTRATION_MODIFIER;
         float willModifier = action.WILL_MODIFIER;
+        float attentionModifier = action.ATTENTION_MODIFIER;
 
         // Check player effects:
         foreach (var (type, effectUI) in activeEffects)
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier, attentionModifier);
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
             frustrationModifier += effectResult.FrustrationModifier;
+            attentionModifier += effectResult.AttentionModifier;
         }
         // Check curr customer effects:
         foreach (var (type, effectUI) in currCustomer.GetActiveEffects())
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier, attentionModifier);
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
             frustrationModifier += effectResult.FrustrationModifier;
+            attentionModifier += effectResult.AttentionModifier;
             // Temp: Annoying special case
             if (type == EffectType.INCOHERENT)
             {
-                // Removes 5 "Attention" when Escalated
-                if (action.actionName == "Escalate")
-                {
-                    RemoveEffectStacks(5, EffectType.ATTENTION);
-                }
+                // Set attention to 0 when escalated
+                if (action.actionName == "Escalate")     UpdateAttention(0-attentionLevel);
             }
         }
 
@@ -395,6 +424,7 @@ public class CombatManager : MonoBehaviour
         UpdatePerformance(performaceModifier);
         UpdateWill(willModifier);
         UpdateFrustration(frustrationModifier);
+        attentionTracker.text = attentionLevel + "%";
     }
 
 
@@ -403,7 +433,7 @@ public class CombatManager : MonoBehaviour
     * For each individual effect, update modifiers
     */
     private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController,
-        float performaceModifier, float willModifier, float frustrationModifier) {
+        float performaceModifier, float willModifier, float frustrationModifier, float attentionModifier) {
 
         ActionEffect effect = effectController.effect;
 
@@ -412,28 +442,32 @@ public class CombatManager : MonoBehaviour
             frustrationModifier *= effect.FRUSTRATION_MODIFIER;
             performaceModifier *= effect.PERFORMANCE_MODIFIER;
             willModifier *= effect.WILL_MODIFIER;
+            attentionModifier *= effect.ATTENTION_MODIFIER;
         } else {
             frustrationModifier += effect.FRUSTRATION_MODIFIER;
             performaceModifier += effect.PERFORMANCE_MODIFIER;
-            willModifier += effect.WILL_MODIFIER;               
+            willModifier += effect.WILL_MODIFIER;  
+            attentionModifier += effect.ATTENTION_MODIFIER;                
         }
 
         // Any special cases that need to be hard coded for now:
         switch (effectType) {
             case EffectType.IRATE:
-                AddNewEffect(attentionEffect, 2);
+                 UpdateAttention(30);
                 break;
+           /* Commenting out due to Attention re-work 
             case EffectType.ATTENTION:
                 Debug.Log("Multiplying performance change due to attention");
                 for (int i = 0; i < effectController.FetchTurns(); i++) {
                     performaceModifier *= effect.PERFORMANCE_MODIFIER;
                 }
-                break;
+                break; */
             case EffectType.HUSTLING:
                 // performance gains remove attention
                 if (performaceModifier > 0) {
                     Debug.Log("Positive performance modifier while hustling effect active");
-                    RemoveEffectStacks(1, EffectType.ATTENTION);
+                      if (attentionLevel>10)     UpdateAttention(-10);
+                      else ClearAttention();
                 }
                 break;
             case EffectType.CAFFIENATED:
@@ -445,7 +479,8 @@ public class CombatManager : MonoBehaviour
         EffectResult effectResult = new EffectResult { 
             FrustrationModifier = frustrationModifier, 
             PerformanceModifier = performaceModifier, 
-            WillModifier = willModifier
+            WillModifier = willModifier,
+            AttentionModifier = attentionModifier
         };
         return effectResult;
     }

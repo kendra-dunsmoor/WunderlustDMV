@@ -7,7 +7,6 @@ public class ActionEffect : ScriptableObject
     public string effectName;
     public enum EffectType
     {
-        ATTENTION,
         HUSTLING,
         ADD_TURNS,
         DRAINED,
@@ -38,4 +37,5 @@ public class ActionEffect : ScriptableObject
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
     public float PERFORMANCE_MODIFIER; // TODO: will depend on correct answer?
+    public float ATTENTION_MODIFIER;
 }

@@ -9,6 +9,7 @@ public class Action : ScriptableObject
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
     public float PERFORMANCE_MODIFIER; // TODO: will depend on correct answer?
+    public float ATTENTION_MODIFIER;
     public enum ActionType
     {
         BASIC,
@@ -33,8 +34,9 @@ public class Action : ScriptableObject
     {
         string description = generalDescription;
         if (WILL_MODIFIER != 0) description += "Will cost: " + WILL_MODIFIER;
-        if (FRUSTRATION_MODIFIER != 0) description += " Frustration modifier: " + FRUSTRATION_MODIFIER;
-        if (PERFORMANCE_MODIFIER != 0) description += " Performance modifier: " + PERFORMANCE_MODIFIER;
+        if (FRUSTRATION_MODIFIER != 0) description += " Frustration: " + FRUSTRATION_MODIFIER;
+        if (PERFORMANCE_MODIFIER != 0) description += " Performance: " + PERFORMANCE_MODIFIER;
+        if (ATTENTION_MODIFIER != 0) description += " Attention: " + ATTENTION_MODIFIER + "%";
         foreach (ActionEffectStacks effectStacks in effects)
         {
             if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";

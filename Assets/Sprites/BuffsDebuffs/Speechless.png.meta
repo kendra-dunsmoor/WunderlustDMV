@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Speechless_0: -6844505873195856281
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

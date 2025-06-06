@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53affa4cf940a489bbab5e70dfd43215, type: 3}
+  m_Name: Objection!
+  m_EditorClassIdentifier: 
+  enemyActionName: Objection!
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0
+  PASSIVE: 0
+  ACTION_CHANCE: 0.5
+  BOSS_WILL_MODIFIER: 0

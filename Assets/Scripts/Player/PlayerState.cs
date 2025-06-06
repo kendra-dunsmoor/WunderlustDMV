@@ -32,9 +32,7 @@ public class PlayerState
     private int vRep = 0;
     private int sRep = 0;
 
-    // TODO: specializations
-
-
+    private Class playerClass;
     private List<Action> actionLoadout = new List<Action>();
     private List<Certificate> activeCertificates = new List<Certificate>();
     private List<string> itemInventory = new List<string>();
@@ -44,12 +42,19 @@ public class PlayerState
         return actionLoadout;
     }
 
-    public void ApplyActionUpgrade(ActionUpgrade upgrade, int actionAppliedTo) {
+    public void AddStarterItem()
+    {
+        artifacts.Add(playerClass.startingItem.ID);
+    }
+
+    public void ApplyActionUpgrade(ActionUpgrade upgrade, int actionAppliedTo)
+    {
         Action action = actionLoadout[actionAppliedTo];
         action.FRUSTRATION_MODIFIER += upgrade.FRUSTRATION_MODIFIER;
         action.PERFORMANCE_MODIFIER += upgrade.PERFORMANCE_MODIFIER;
         action.WILL_MODIFIER += upgrade.WILL_MODIFIER;
-        foreach(ActionEffectStacks effectStack in upgrade.effects) {
+        foreach (ActionEffectStacks effectStack in upgrade.effects)
+        {
             // TODO: fix this to actually check if there is already a stack of the same effect type
             action.effects.Add(effectStack);
         }
@@ -100,8 +105,6 @@ public class PlayerState
         return sRep;
     }
 
-
-
     public void AddCertificate(Certificate cert) {
         activeCertificates.Add(cert);
     }
@@ -132,8 +135,19 @@ public class PlayerState
     public bool ContainsItem(string itemId) {
         return artifacts.Contains(itemId) || itemInventory.Contains(itemId);
     }
+    
+    public Class GetClass() {
+        return playerClass;
+    }
 
-    public void ResetRun() {
+    public void UpdateClass(Class playerClass)
+    {
+        this.playerClass = playerClass;
+        actionLoadout = new List<Action>();
+    }
+
+    public void ResetRun()
+    {
         artifacts = new List<string>();
         itemInventory = new List<string>();
         officeBucks = 0;

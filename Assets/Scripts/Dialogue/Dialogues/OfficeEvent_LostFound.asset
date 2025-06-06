@@ -30,6 +30,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: 'Light the Lost and Found on Fire '
       nextNodeIndex: 0
       containsReward: 1
@@ -42,6 +43,7 @@ MonoBehaviour:
         stacks: 1
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: Take everything from Lost and Found and sell it all to Sothoth.
         No one can blame you if you don't have anything on you.
       nextNodeIndex: 0
@@ -53,8 +55,9 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - End
     dialogueText: 
     responses: []
-  character: {fileID: 11400000, guid: ee4cdb37daa82461da299aa9fdad7924, type: 2}
+  character: {fileID: 11400000, guid: bb93c2fb250444905b26d88f8fde27f4, type: 2}

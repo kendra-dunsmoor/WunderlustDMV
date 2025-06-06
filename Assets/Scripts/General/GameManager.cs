@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 /*
 * Game Manager
@@ -24,7 +22,7 @@ public class GameManager : MonoBehaviour
     private List<string> eventChoices = new List<string> {"Vending Machine", "Break Room", "Office Event"};
 
     // temporary until can configure loadout in apartment
-    [SerializeField, Tooltip("If loadout not customized from apartment use base")] private List<Action> STARTER_LOADOUT;
+    [SerializeField, Tooltip("If loadout not customized from apartment use base")] private Class STARTER_CLASS;
 
     // ~~~~~~ Functions ~~~~~~
     private void Awake()
@@ -47,14 +45,21 @@ public class GameManager : MonoBehaviour
 
         // temp:
         inTutorial = true;
-
-        // temp:
-        foreach ( Action action in STARTER_LOADOUT) {
-            playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
-        }
     }
 
-    public int FetchCurrentCalendarDay() {
+    public void StartRun()
+    {
+        // Landlord takes rest of soul credits
+        UpdateSoulCredits(-playerStatus.GetSoulCredits());
+        // Clear last run outcome status
+        gameStatus.UpdateRunStatus(GameState.RunStatus.ACTIVE);
+        // Setup class from computer selection
+        if (playerStatus.GetClass() == null) playerStatus.UpdateClass(STARTER_CLASS);
+        playerStatus.AddStarterItem(); // Initialize empty inventory + starter artifact
+    }
+
+    public int FetchCurrentCalendarDay()
+    {
         // temp just return current day for calendar
         return gameStatus.GetDay();
     }
@@ -95,7 +100,7 @@ public class GameManager : MonoBehaviour
     public void RestartRun() {
         // Back to apartment, reset certain run only trackers
         playerStatus.ResetRun();
-        foreach ( Action action in STARTER_LOADOUT) {
+        foreach ( Action action in playerStatus.GetClass().actionLoadout) {
             playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
         }
         gameStatus.ResetRun();
@@ -108,8 +113,21 @@ public class GameManager : MonoBehaviour
     public void UpdateRunStatus(GameState.RunStatus state) {
         gameStatus.UpdateRunStatus(state);
     }
+    public Class FetchPlayerClass() {
+        return playerStatus.GetClass();
+    }
 
-    public int FetchOfficeBucks() {
+    public void UpdatePlayerClass(Class playerClass)
+    {
+        Debug.Log("Updating class to + " + playerClass.className);
+        playerStatus.UpdateClass(playerClass);
+        foreach ( Action action in playerStatus.GetClass().actionLoadout) {
+            playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
+        }
+    }
+
+    public int FetchOfficeBucks()
+    {
         return playerStatus.GetOfficeBucks();
     }
     

@@ -204,9 +204,6 @@ public class CombatManager : MonoBehaviour
     */
     private void InitializeCustomerQueue() {
         Debug.Log("Initializing queue");
-        Debug.Log(CUSTOMER_GOAL);
-        Debug.Log(customersInLine != null);
-        Debug.Log(customerIconQueue != null);
         enemySpawner.SpawnEnemies(CUSTOMER_GOAL, out customersInLine, out customerIconQueue);
         currCustomer = customersInLine.Dequeue();
         Destroy(customerIconQueue.Dequeue());

@@ -8,8 +8,9 @@ public class Action : ScriptableObject
     public string actionName;
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
-    public float PERFORMANCE_MODIFIER; // TODO: will depend on correct answer?
+    public float PERFORMANCE_MODIFIER;
     public float ATTENTION_MODIFIER;
+    public float INCORRECT_CHOICE_ATTENTION_MODIFIER;
     public enum ActionType
     {
         BASIC,

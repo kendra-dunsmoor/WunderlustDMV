@@ -22,12 +22,12 @@ public class EventSelector : MonoBehaviour
         string scene = SceneManager.GetActiveScene().name;
         switch(scene) {
             case "Office_BreakRoom":
-                if (gameManager.inTutorial)
+                if (gameManager.InTutorial())
                 {
                     if (gameManager.FetchCurrentCalendarDay() == 0) return introBreakRoomVerrineDialogue;
                     else
                     {
-                        gameManager.inTutorial = false;
+                        gameManager.UpdateTutorialStatus(false);
                         return introBreakRoomSothothDialogue;
                     }
                 }

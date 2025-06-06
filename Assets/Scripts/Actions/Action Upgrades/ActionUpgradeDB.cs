@@ -1,37 +1,66 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 [CreateAssetMenu]
-public class ActionUpgradeDB: ScriptableObject
+public class ActionUpgradeDB : ScriptableObject
 {
 	[SerializeField] ActionUpgrade[] upgrades;
 
-	public ActionUpgrade[] GetRandomUpgrades()
+	public List<ActionUpgrade> GetRandomUpgrades(int numUpgrades)
 	{
-		// TODO: temp just return
-		return upgrades;
+		List<ActionUpgrade> toReturn = new List<ActionUpgrade>();
+		for (int i = 0; i < numUpgrades; i++)
+		{
+			toReturn.Add(GetRandomUpgrade());
+		}
+		return toReturn;
 	}
 
-	#if UNITY_EDITOR
-    private void OnValidate()
+	private ActionUpgrade GetRandomUpgrade() {
+				// Get total drop chance
+		float totalChance = 0f;
+		for (int i = 0; i < upgrades.Length; i++)
+		{
+			totalChance += GetUpgradeSpawnRate(upgrades[i].rarity);
+		}
+		float rand = Random.Range(0f, totalChance);
+		float cumulativeChance = 0f;
+		for (int i = 0; i < upgrades.Length; i++)
+		{
+			cumulativeChance += GetUpgradeSpawnRate(upgrades[i].rarity);
+			if (rand <= cumulativeChance)
+			{
+				return upgrades[i];
+			}
+		}
+		return upgrades[0];
+	}
+
+#if UNITY_EDITOR
+	private void OnValidate()
 	{
 		LoadItems();
 	}
 
-    private void LoadItems()
+	private void LoadItems()
 	{
 		upgrades = FindAssetsByType<ActionUpgrade>("Assets/Scripts/Actions/Action Upgrades");
 	}
-    public static T[] FindAssetsByType<T>(params string[] folders) where T : Object
+	public static T[] FindAssetsByType<T>(params string[] folders) where T : Object
 	{
 		string type = typeof(T).Name;
 
 		string[] guids;
-		if (folders == null || folders.Length == 0) {
+		if (folders == null || folders.Length == 0)
+		{
 			guids = AssetDatabase.FindAssets("t:" + type);
-		} else {
+		}
+		else
+		{
 			guids = AssetDatabase.FindAssets("t:" + type, folders);
 		}
 
@@ -45,4 +74,15 @@ public class ActionUpgradeDB: ScriptableObject
 		return assets;
 	}
 	#endif
+	
+	private float GetUpgradeSpawnRate(Item.Rarity rarity)
+	{
+		return rarity switch
+		{
+			Item.Rarity.COMMON => 0.5f,
+			Item.Rarity.UNCOMMON => 0.35f,
+			Item.Rarity.RARE => 0.15f,
+			_ => 1f
+		};
+	}
 }

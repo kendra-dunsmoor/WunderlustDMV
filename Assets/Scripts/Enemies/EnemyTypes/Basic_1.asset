@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2317b91b03bf84be59ac058cad418af6, type: 3}
   m_Name: Basic_1
   m_EditorClassIdentifier: 
-  enemyName: Test
+  enemyName: Resigned Spirit
   enemyDescription: 
   enemyType: 0
   moveSpeed: 5
+  correctPaperworkOdds: 0.75
   startingFrustration: 10
   frustrationIncreasePerTurn: 5
   maxFrustration: 100
   availableActions: []
   openingDialogueLines:
   - I hope these queue times have improved.
-  - I remember when this was all just primordial soup... and still, I waited.
+  - ...
   neutralDialogueLines:
   - "I suppose I don\u2019t mind waiting.."
   positiveDialogueLines:

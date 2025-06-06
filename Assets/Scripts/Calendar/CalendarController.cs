@@ -16,13 +16,22 @@ public class CalendarController : MonoBehaviour
     private int currDay = 0;
 
     private AudioManager audioManager;
-    void Start()
+
+    void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
-        gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager != null) {
+        gameManager = FindFirstObjectByType<GameManager>();        
+    }
+
+    void Start()
+    {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.paperRustle);
+        if (gameManager != null)
+        {
             currDay = gameManager.FetchCurrentCalendarDay();
-        } else {
+        }
+        else
+        {
             Debug.LogError("No game manager found");
             currDay = 1;
         }

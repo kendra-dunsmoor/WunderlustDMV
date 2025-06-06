@@ -52,7 +52,7 @@ public class VendingMachineController : MonoBehaviour
         Item item = itemUI.item;
         if (gameManager.FetchOfficeBucks() >= item.price)
         {
-            if (audioManager != null) audioManager.PlaySFX(audioManager.buyUpgrade);
+            if (audioManager != null) audioManager.PlaySFX(audioManager.vendingMachineItem);
             if (item is UsableItem)
                 gameManager.AddToInventory(item.ID);
             else

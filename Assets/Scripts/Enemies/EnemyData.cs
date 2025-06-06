@@ -15,6 +15,7 @@ public class EnemyData : ScriptableObject
     }
     public EnemyType enemyType;
     public float moveSpeed;
+    public float correctPaperworkOdds;
 
     [Header("------------- Frustration -------------")]
     public float startingFrustration;

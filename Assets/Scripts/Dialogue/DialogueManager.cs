@@ -194,9 +194,14 @@ public class DialogueManager : MonoBehaviour
                 .GetComponent<SliderCounter>()
                 .UpdateBar(newWill);
         }
-        if (currNode.chaos != 0) {
+        if (currNode.chaos != 0)
+        {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.chaos + " chaos", "");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.chaos + " chaos", "");
+        }
+        if (currNode.specialRewardMessage != null && currNode.specialRewardMessage != "") {
+            GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.specialRewardMessage, "");            
         }
         // TODO: add effects and special cases
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 /* Enemy Spawner
 * ~~~~~~~~~~~~~~~~
@@ -13,9 +14,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField, Tooltip("Customer icon for queue visibility")] private GameObject customerIconPrefab;
     [SerializeField, Tooltip("Location to spawn enemies")] private Transform spawnPoint;
     [SerializeField, Tooltip("Location for customer queue icons")] private Transform customerQueuePanel;
+    private System.Random randomGen = new System.Random();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         gameManager = FindFirstObjectByType<GameManager>();
     }
@@ -32,10 +33,42 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < numCustomers; i++)
         {
             Customer customer = Instantiate(customerPrefab, spawnPoint).GetComponent<Customer>();
-            customer.AddEnemyData(enemyTypes[0]); // just base one for testing rn
+            if (gameManager.InTutorial()) customer.AddEnemyData(enemyTypes[0]); // just base one for testing rn
+            else customer.AddEnemyData(GetRandomEnemy());
             customersInLine.Enqueue(customer);
             customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
         }
-        // TODO: add random selection based on available enemy types
+    }
+    
+    private EnemyData GetRandomEnemy()
+	{
+		// Get total drop chance
+        float totalChance = 0f;
+        for (int i = 0; i < enemyTypes.Length; i++)
+        {
+            totalChance += GetEnemySpawnRate(enemyTypes[i].enemyType);
+        }
+        float rand = (float) randomGen.NextDouble() * totalChance;
+		float cumulativeChance = 0f;
+		for (int i = 0; i < enemyTypes.Length; i++)
+		{
+			cumulativeChance += GetEnemySpawnRate(enemyTypes[i].enemyType);
+			if (rand <= cumulativeChance)
+			{
+                return enemyTypes[i];
+			}
+		}
+        return enemyTypes[0];
+    }
+
+    private float GetEnemySpawnRate(EnemyData.EnemyType enemyType)
+    {
+        return enemyType switch
+        {
+            EnemyData.EnemyType.BASIC => 0.5f,
+            EnemyData.EnemyType.SPECIAL => 0.35f,
+            EnemyData.EnemyType.ELITE => 0.15f,
+            _ => 1f
+        };
     }
 }

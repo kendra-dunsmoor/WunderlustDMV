@@ -327,7 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 63b6c3ea3ebe14566b312750f75a31ee, type: 2}
-  inTutorial: 0
   STARTER_LOADOUT:
   - {fileID: 11400000, guid: c16afa8938ebf4fa1b7c679f649bb32d, type: 2}
   - {fileID: 11400000, guid: af7d50cf0bd6c4015b7a6d62c66e005a, type: 2}
@@ -363,6 +362,7 @@ MonoBehaviour:
   breakRoomDialogues:
   - {fileID: 11400000, guid: 4c2a251ecc62e48899c2abdcde0b0017, type: 2}
   - {fileID: 11400000, guid: caf90a7dba7db4fe1b22372ff7cc0d81, type: 2}
+  - {fileID: 11400000, guid: ec7f5b20173284c9f90516907423fe4b, type: 2}
   officeEventDialogues:
   - {fileID: 11400000, guid: 3693d1a46e98c4e9a8f37311aa9651e2, type: 2}
   - {fileID: 11400000, guid: ca1819f5769b74192ba367834a4ba279, type: 2}
@@ -564,6 +564,10 @@ MonoBehaviour:
   shiftOver_Fired: {fileID: 8300000, guid: 72b5ba1d5fcdc4a72a5300db8653b155, type: 3}
   shiftOver_Reincarnated: {fileID: 8300000, guid: eb55d91c71e004a309166d1fc12c75a8, type: 3}
   computerBootUp: {fileID: 8300000, guid: ba26dd1851cbc4f738a44a543b0cdadc, type: 3}
+  vendingMachineItem: {fileID: 8300000, guid: cc4e16081ca164995b8347c7b5b23f77, type: 3}
+  paperRustle: {fileID: 8300000, guid: 57b9bf3bd744541c4ab81ed77bc5d1c5, type: 3}
+  drink: {fileID: 8300000, guid: 6173efd8b26384094899041b43737294, type: 3}
+  openDoor: {fileID: 8300000, guid: e621f4ee0bb734659bf2f88197936e47, type: 3}
   mixer: {fileID: 24100000, guid: 9683fc10df16640ad8a3fbb85353dc45, type: 2}
 --- !u!1 &1279189369
 GameObject:

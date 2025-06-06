@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 /*
 * Game Manager
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemDB itemDatabase;
 
     // temp solution until events are expanded:
-    public bool inTutorial;
+    private bool inTutorial;
 
     // temporary for events:
     private List<string> eventChoices = new List<string> {"Vending Machine", "Break Room", "Office Event"};
@@ -57,8 +58,17 @@ public class GameManager : MonoBehaviour
         // temp just return current day for calendar
         return gameStatus.GetDay();
     }
+    
+    public bool InTutorial() {
+        return inTutorial;
+    }
 
-    public string FetchNextShiftChoice() {
+    public void UpdateTutorialStatus(bool status) {
+        inTutorial = status;
+    }
+
+    public string FetchNextShiftChoice()
+    {
         // Tutorial force break room for Sothoth event
         if (inTutorial) return eventChoices[1];
         // TODO: improve this for select shift choice for run
@@ -67,11 +77,12 @@ public class GameManager : MonoBehaviour
         return eventChoices[choice];
     }
 
-    public void ShiftCompleted(float performance, float will)
+    public void ShiftCompleted(float performance, float will, float attention)
     {
         gameStatus.CompleteDay();
         gameStatus.UpdatePerformance(performance);
         gameStatus.UpdateWill(will);
+        gameStatus.UpdateAttention(attention);
     }
 
     public void StoreRunChoice(string choice) {
@@ -116,6 +127,14 @@ public class GameManager : MonoBehaviour
     public void UpdateWill(float will)
     {
         gameStatus.UpdateWill(will);
+    }
+
+    public float FetchMaxWill() {
+        return gameStatus.GetMaxWill();
+    }
+    public void UpdateMaxWill(float maxWill)
+    {
+        gameStatus.UpdateWill(maxWill);
     }
 
     public float FetchAttention()

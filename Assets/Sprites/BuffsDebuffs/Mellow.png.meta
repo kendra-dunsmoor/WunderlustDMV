@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mellow_0: -1364882979583499215
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

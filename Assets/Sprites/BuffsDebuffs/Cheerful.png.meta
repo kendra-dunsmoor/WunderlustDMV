@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cheerful_0: -185374415144326819
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

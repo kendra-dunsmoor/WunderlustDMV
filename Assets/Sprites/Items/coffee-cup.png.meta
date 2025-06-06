@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      coffee-cup_0: 1366570683238143911
+      coffee-cup_1: 3846933737136925507
+      coffee-cup_2: -6891120060615098493
+      coffee-cup_3: 7662449001761123305
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

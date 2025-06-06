@@ -10,8 +10,10 @@ public class ApartmentManager : MonoBehaviour
     void Start()
     {
         audioManager = 	FindFirstObjectByType<AudioManager>();
-        if (audioManager != null) audioManager.PlayMusic(audioManager.apartmentMusic);
-        gameManager = 	FindFirstObjectByType<GameManager>();
+        // Don't restart music if it is already playing from main menu:
+        if (audioManager != null && !audioManager.isMusicClipPlaying(audioManager.apartmentMusic))
+            audioManager.PlayMusic(audioManager.apartmentMusic);
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     public void StartRun() {

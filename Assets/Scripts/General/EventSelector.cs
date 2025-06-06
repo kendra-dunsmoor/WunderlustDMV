@@ -34,19 +34,18 @@ public class EventSelector : MonoBehaviour
                 else
                     return breakRoomDialogues[Random.Range(0, breakRoomDialogues.Length)];
             case "Apartment":
-                if (gameManager.inTutorial) {
-                    return introAptDialogue;
-                } else {
-                    // Check result of last run
-                    GameState.RunStatus lastRunResult = gameManager.FetchRunState();
-                    switch (lastRunResult) {
-                        case GameState.RunStatus.FIRED:
-                            return firedAptDialogue;
-                        case GameState.RunStatus.REINCARNATED:
-                            return reincarnatedAptDialogue;                        
-                    }
-                    return winnerAptDialogue;
+                // Check result of last run
+                GameState.RunStatus lastRunResult = gameManager.FetchRunState();
+                switch (lastRunResult)
+                {
+                    case GameState.RunStatus.FIRED:
+                        return firedAptDialogue;
+                    case GameState.RunStatus.REINCARNATED:
+                        return reincarnatedAptDialogue;     
+                    case GameState.RunStatus.WON:
+                        return reincarnatedAptDialogue;                         
                 }
+                return introAptDialogue;
             case "Office_Event":
                 return officeEventDialogues[Random.Range(0, officeEventDialogues.Length)];
         }

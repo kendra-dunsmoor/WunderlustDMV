@@ -123,13 +123,7 @@ public class Customer : MonoBehaviour
         if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, enemyData.maxFrustration);
         if (frustrationLevel >= enemyData.maxFrustration)
         {
-            // Check if customer is already irate:
-            if (activeEffects.ContainsKey(EffectType.IRATE)) return;
-            // else add effect: 
-            GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
-            effectMarker.GetComponent<UIEffectController>().AddEffect(irateEffect, 1);
-            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(irateEffect.effectDescription);
-            activeEffects.Add(EffectType.IRATE, effectMarker);
+            AddNewEnemyEffect(irateEffect, 1);
         }
     }
 
@@ -169,5 +163,64 @@ public class Customer : MonoBehaviour
     public void AddEnemyData(EnemyData data)
     {
         enemyData = data;
+    }
+
+    /* Add New Enemy Effect
+    * ~~~~~~~~~~~~~~
+    * add to UI and activeEffects tracker
+    */
+    public void AddNewEnemyEffect(ActionEffect effect, int stacks)
+    {
+        // Add to active/displayed buffs/debuffs
+        if (activeEffects.ContainsKey(effect.type))
+        {
+            UIEffectController currUIEffect = activeEffects[effect.type].GetComponent<UIEffectController>();
+            if (effect.shouldStack)
+            {
+                Debug.Log("Effect already active, add to stack");
+                currUIEffect.UpdateTurns(stacks);
+                activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + currUIEffect.FetchTurns(), effect.effectName);
+            }
+            else
+            {
+                Debug.Log("Effect does not stack and is already active, ignoring");
+            }
+        }
+        else
+        {
+            Debug.Log("Add new effect");
+            GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
+            activeEffects.Add(effect.type, effectMarker);
+            effectMarker.GetComponent<UIEffectController>().AddEffect(effect, stacks);
+            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + stacks, effect.effectName);
+        }
+    }
+
+    public void IncrementActiveEffects()
+    {
+        foreach (var (type, effectUI) in activeEffects)
+        {
+            ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
+            if (effect.shouldDecay) RemoveEffectStacks(1, effect.type);
+        }
+    }
+
+    /* Remove Effect Stacks:
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Remove stacks from effect if active
+    */
+    private void RemoveEffectStacks(int amount, EffectType effectType) {
+        if (activeEffects.ContainsKey(effectType)) {
+            Debug.Log("Incrementing customer effect");
+            UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
+            effectUI.UpdateTurns(-amount);
+            activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
+            effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
+            if (effectUI.FetchTurns() == 0) {
+                Debug.Log("Remove effect from UI");
+                Destroy(activeEffects[effectType]);
+                activeEffects.Remove(effectType);
+            }
+        }
     }
 }

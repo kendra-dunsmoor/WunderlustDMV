@@ -145,8 +145,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateVRep(int change) {
         playerStatus.UpdateVRep(change);
-        GameObject counter = GameObject.FindGameObjectWithTag("Counter_VRep");
-        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetVRep().ToString();
+        // GameObject counter = GameObject.FindGameObjectWithTag("Counter_VRep");
+        // if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetVRep().ToString();
     }
 
      public int FetchARep()
@@ -156,8 +156,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateARep(int change) {
         playerStatus.UpdateARep(change);
-        GameObject counter = GameObject.FindGameObjectWithTag("Counter_ARep");
-        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetARep().ToString();
+        // GameObject counter = GameObject.FindGameObjectWithTag("Counter_ARep");
+        // if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetARep().ToString();
     }
 
 
@@ -198,29 +198,6 @@ public class GameManager : MonoBehaviour
     public List<Item> FetchRandomItems(int numItems, bool shouldBeArtifact) {
         return itemDatabase.GetRandomItems(numItems, shouldBeArtifact);
     }
-
-    // TODO: improve random selection with rarity values:
-
-    // private int GetRandomItem() {
-    //     float totalChance = 0f;
-    //     int maxCharacter = Characters.Count < Manager.GetLevel() + 1 ? Characters.Count : Manager.GetLevel() + 1;
-    //     for (int i = 0; i < maxCharacter; i++)
-    //     {
-    //         totalChance += Characters[i].GetComponent<Character>().getSpawnRate();
-    //     }
-    //     float rand = Random.Range(0f, totalChance);
-    //     float cumulativeChance = 0f;
-    //     for (int i = 0; i < maxCharacter; i++)
-    //     {
-    //         cumulativeChance += Characters[i].GetComponent<Character>().getSpawnRate();
-    //         if (rand <= cumulativeChance)
-    //         {
-    //             Debug.Log("Spawn: " + i);
-    //             return i;
-    //         }
-    //     }
-    //     return 0;
-    // }
 
     public bool ContainsItem(string itemId) {
         return playerStatus.ContainsItem(itemId);

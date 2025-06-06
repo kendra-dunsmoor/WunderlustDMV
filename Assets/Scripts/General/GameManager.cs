@@ -118,6 +118,16 @@ public class GameManager : MonoBehaviour
         gameStatus.UpdateWill(will);
     }
 
+    public float FetchAttention()
+    {
+        return gameStatus.GetAttention();
+    }
+
+    public void UpdateAttention(float attention)
+    {
+        gameStatus.UpdateAttention(attention);
+    }
+
     public float FetchPerformance()
     {
         return gameStatus.GetPerformance();

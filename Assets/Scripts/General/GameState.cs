@@ -11,6 +11,7 @@ public class GameState
 {
     private float performance = 100f;
     private float will = 100f;
+    private float attention = 20f;
     private int currentWeekday = 0;
     private List<string> runPath = new List<string>();
 
@@ -52,6 +53,10 @@ public class GameState
     public float GetPerformance() {
         return performance;
     }
+
+    public float GetAttention() {
+        return attention;
+    }
     
     public float GetWill() {
         return will;
@@ -62,6 +67,11 @@ public class GameState
         this.performance = performance;
     }
 
+     public void UpdateAttention(float attention)
+    {
+        this.attention = attention;
+    }
+
     public void UpdateWill(float will)
     {
         this.will = will;
@@ -70,6 +80,7 @@ public class GameState
     public void ResetRun() {
         will = 100f;
         performance = 100f;
+        attention = 20f;
         runPath = new List<string>();
         currentWeekday = 0;
     }

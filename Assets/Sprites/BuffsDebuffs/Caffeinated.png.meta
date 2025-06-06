@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Caffeinated_0: 8840023293538461910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

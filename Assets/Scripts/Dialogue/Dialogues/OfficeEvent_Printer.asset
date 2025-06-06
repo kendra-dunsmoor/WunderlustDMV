@@ -30,6 +30,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: 'Photocopy your butt and set it to infinite print '
       nextNodeIndex: 0
       containsReward: 1
@@ -42,6 +43,7 @@ MonoBehaviour:
         stacks: 1
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: 'Break into the coin slot and take the coins from the printer '
       nextNodeIndex: 0
       containsReward: 1
@@ -52,8 +54,9 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - End
     dialogueText: 
     responses: []
-  character: {fileID: 11400000, guid: d7f99d469cc014097b09db9737c5ae2a, type: 2}
+  character: {fileID: 11400000, guid: ee4cdb37daa82461da299aa9fdad7924, type: 2}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e02f114e01049c8954218a6161ef6b, type: 3}
+  m_Name: Special Red Pen
+  m_EditorClassIdentifier: 
+  itemName: Special Red Pen
+  Icon: {fileID: 7177831760212934264, guid: be0536396c2ca4f1c94fcfe0fa652b8d, type: 3}
+  ID: A_012
+  price: 0
+  itemRarity: 0
+  flavorText: '"This is my eviction pen. Rent''s been light, so this should fix it,
+    or else you''ll be seeing its ink on your bills." - Mr. Dreggs '
+  description: Rejections cost 1 less Will
+  effects: []
+  willModifier: 0
+  performanceModifier: 0
+  frustrationModifier: 0
+  turnClock: 1
+  currentTurnCounter: 0
+  isEndOfShiftEffect: 0

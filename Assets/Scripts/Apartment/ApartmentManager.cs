@@ -18,9 +18,7 @@ public class ApartmentManager : MonoBehaviour
 
     public void StartRun() {
         if (audioManager != null) audioManager.PlaySFX(audioManager.openDoor);
-        // Landlord takes rest of soul credits
-        gameManager.UpdateSoulCredits(-gameManager.FetchSoulCredits());
-        gameManager.UpdateRunStatus(GameState.RunStatus.ACTIVE);
+        gameManager.StartRun();
         if (gameManager.InTutorial()) SceneManager.LoadSceneAsync(2);
         else SceneManager.LoadSceneAsync(3);
     }

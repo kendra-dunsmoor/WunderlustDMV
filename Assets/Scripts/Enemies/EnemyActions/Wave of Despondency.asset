@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53affa4cf940a489bbab5e70dfd43215, type: 3}
   m_Name: Wave of Despondency
   m_EditorClassIdentifier: 
-  enemyActionName: 
+  enemyActionName: Wave of Despondency
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: 0
+  WILL_MODIFIER: -3
   PERFORMANCE_MODIFIER: 0

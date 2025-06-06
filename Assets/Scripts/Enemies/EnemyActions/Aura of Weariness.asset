@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53affa4cf940a489bbab5e70dfd43215, type: 3}
   m_Name: Aura of Weariness
   m_EditorClassIdentifier: 
-  enemyActionName: 
+  enemyActionName: Aura of Weariness
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: 0
+  WILL_MODIFIER: -1
   PERFORMANCE_MODIFIER: 0

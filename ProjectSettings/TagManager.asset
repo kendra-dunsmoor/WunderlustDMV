@@ -9,6 +9,20 @@ TagManager:
   - Canvas
   - MenuManager
   - AudioManager
+  - Panel_InstructionsMenu
+  - Panel_OptionsMenu
+  - Panel_MainMenu
+  - Panel_Computer
+  - Panel_Certifications
+  - Panel_Furniture
+  - Counter_SoulCredits
+  - Counter_OfficeBucks
+  - Panel_CreditsMenu
+  - AcceptButton
+  - RejectButton
+  - EscalateButton
+  - PerformanceMeter
+  - WillMeter
   layers:
   - Default
   - TransparentFX
@@ -16,7 +30,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Top
   - 
   - 
   - 
@@ -43,6 +57,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1118913797
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

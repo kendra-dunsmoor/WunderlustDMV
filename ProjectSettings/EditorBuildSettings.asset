@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Office_Desk.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Office_Event.unity
+    guid: f408e7b80f1b64df8a5270c4c5f36422
+  - enabled: 1
+    path: Assets/Scenes/Office_PerformanceReview.unity
+    guid: 8721fa10e5f394259b228f7778f3fef3
+  - enabled: 1
+    path: Assets/Scenes/Vending Machine.unity
+    guid: ccd505f43fd834efb96e681c06cf0ad5
+  - enabled: 1
+    path: Assets/Scenes/OpeningAnimation.unity
+    guid: bf936c85e785a4e458f206eb3cabb1f3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

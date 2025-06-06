@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 7
   target: 1
   effectSprite: {fileID: 609116775951729996, guid: e2ddfcb242d404a39862e719c3f05011, type: 3}
-  effectDescription: -20% Attention when Escalated
+  effectDescription: Removes all Attention when Escalated
   shouldStack: 0
   shouldDecay: 0
   isPercent: 0

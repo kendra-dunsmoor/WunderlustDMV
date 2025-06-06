@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
-  m_Name: Attention
+  m_Name: Oops
   m_EditorClassIdentifier: 
-  effectName: Attention
-  type: 0
+  effectName: Oops
+  type: 12
   target: 0
-  effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
-  effectDescription: +20% Performance changes per stack
+  effectSprite: {fileID: -5585567927670397733, guid: 1d40ef65ca4eb40b98aba75172ba8b5b, type: 3}
+  effectDescription: Making Mistakes draws more Attention
   shouldStack: 1
-  shouldDecay: 0
-  isPercent: 1
+  shouldDecay: 1
+  isPercent: 0
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
-  PERFORMANCE_MODIFIER: 1.2
+  PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0

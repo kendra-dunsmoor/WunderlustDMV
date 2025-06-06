@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b09a67f6b7442a8866ef536567b18c, type: 3}
   m_Name: Green Cow
   m_EditorClassIdentifier: 
-  itemName: GreenCow
+  itemName: BlueBovine
   Icon: {fileID: -8599744417402607100, guid: 2140d6cd8164c4b4d96d3a9ca0c8bfb3, type: 3}
   ID: C_002
   price: 40
   itemRarity: 1
-  flavorText: Legally we have to inform you that GreenCow does not actually provide
+  flavorText: Legally we have to inform you that Blue Bovine does not actually provide
     wings.
   description: Restore 10 Will & Gain 3 "Caffienated"
   effects:

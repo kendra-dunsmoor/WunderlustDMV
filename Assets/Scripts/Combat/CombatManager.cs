@@ -261,7 +261,7 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdateFrustration(float diff) {
       
-		if (playerCerts.Any(c => c.type == ANGER_MANAGE))
+		if (playerCerts.Any(c => c.type == Certificate.CertificateType.ANGER_MANAGE))
 		{
 			diff *= .8f;
 		} 
@@ -427,7 +427,7 @@ public class CombatManager : MonoBehaviour
                 {
                     attentionModifier += 10;
                   
-                    if (playerCerts.Any(c => c.type == DATA_ENTRY))  attentionModifier -= 5;
+                    if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
                  
                 }
             }

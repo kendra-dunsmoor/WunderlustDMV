@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cheerful
   m_EditorClassIdentifier: 
   effectName: Cheerful
-  type: 12
+  type: 11
   target: 0
   effectSprite: {fileID: -185374415144326819, guid: 931fb55f2179f4ba78f8290f70b344fa, type: 3}
   effectDescription: 
@@ -23,3 +23,4 @@ MonoBehaviour:
   FRUSTRATION_MODIFIER: -5
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0

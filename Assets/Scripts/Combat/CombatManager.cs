@@ -209,10 +209,7 @@ public class CombatManager : MonoBehaviour
     * Check for game over state
     */
     public void UpdatePerformance(float diff) {
-        // TODO: Check if attention should be modifying end of shift performance change too:
-        float attentionModifier = 1 + attentionLevel / 100;
-        Debug.Log("Performance attention modifier: " + attentionModifier);
-        performanceLevel += (float) Math.Round(diff * attentionModifier);
+        performanceLevel += (float) Math.Round(diff);
         performanceMeter.GetComponent<SliderCounter>().UpdateBar(performanceLevel);
         Debug.Log("Performance level updated to: " + performanceLevel);
         if (performanceLevel <= 0) {
@@ -418,7 +415,7 @@ public class CombatManager : MonoBehaviour
         // Update meters with after effects and artifacts values
         // TODO: should attention be modified before or after performance, 
         // i.e. should current action new attention affect same turn?
-        UpdatePerformance(performaceModifier);
+        UpdatePerformance(performaceModifier * (1 + attentionLevel / 100));
         UpdateAttention(attentionModifier);
         UpdateWill(willModifier);
         UpdateFrustration(frustrationModifier);

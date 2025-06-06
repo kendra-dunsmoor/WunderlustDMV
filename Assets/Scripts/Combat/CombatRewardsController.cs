@@ -47,7 +47,7 @@ public class CombatRewardsController : MonoBehaviour
         // TODO: just add first action to test, make random later
         List<Action> playerActions = gameManager.FetchActions();
         Debug.Log("Fetched player actions: " + playerActions);
-        ActionUpgrade[] randomUpgrades = actionUpgradeDB.GetRandomUpgrades();
+        List<ActionUpgrade> randomUpgrades = actionUpgradeDB.GetRandomUpgrades(3);
         foreach (ActionUpgrade upgrade in randomUpgrades)
         {
             int actionIndex = UnityEngine.Random.Range(0, 4);

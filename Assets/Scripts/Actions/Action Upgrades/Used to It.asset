@@ -9,18 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdbbbcb545746426bba108c2b3e757b3, type: 3}
-  m_Name: Drained
+  m_Script: {fileID: 11500000, guid: 1d86f7f9f2e84467a839e8357d61fa98, type: 3}
+  m_Name: Used to It
   m_EditorClassIdentifier: 
-  effectName: Drained
-  type: 2
-  target: 0
-  effectSprite: {fileID: -6847344870767953996, guid: ff198d3b148b34929b7ccd1df3fa83e5, type: 3}
-  effectDescription: Lose 1 will each turn
-  shouldStack: 1
-  shouldDecay: 1
-  isPercent: 0
+  upgradeName: Used to It
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: -1
   PERFORMANCE_MODIFIER: 0
-  ATTENTION_MODIFIER: 0
+  updateMovement: 0
+  movement: 1
+  effects: []
+  rarity: 1

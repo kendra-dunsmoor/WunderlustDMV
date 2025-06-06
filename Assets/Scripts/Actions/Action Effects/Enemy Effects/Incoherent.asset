@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Incoherent
   m_EditorClassIdentifier: 
   effectName: Incoherent
-  type: 8
+  type: 7
   target: 1
   effectSprite: {fileID: 609116775951729996, guid: e2ddfcb242d404a39862e719c3f05011, type: 3}
   effectDescription: Removes 5 "Attention" when Escalated
@@ -23,3 +23,4 @@ MonoBehaviour:
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0

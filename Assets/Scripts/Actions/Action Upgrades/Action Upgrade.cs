@@ -10,6 +10,7 @@ public class ActionUpgrade : ScriptableObject
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
     public float PERFORMANCE_MODIFIER;
+    public float ATTENTION_MODIFIER;
     public bool updateMovement = false;
     public Action.ActionMovement movement;
     public List<ActionEffectStacks> effects;

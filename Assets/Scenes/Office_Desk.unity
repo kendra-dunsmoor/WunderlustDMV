@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
-  description: <u>Attention<\u> \n Modifies performance changes
+  description: <u>Attention</u> \n Modifies performance changes
 --- !u!1 &75736065
 GameObject:
   m_ObjectHideFlags: 0

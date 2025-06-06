@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d86f7f9f2e84467a839e8357d61fa98, type: 3}
-  m_Name: Look Busy
+  m_Name: Same Stuff Different Day
   m_EditorClassIdentifier: 
-  upgradeName: Look Busy
+  upgradeName: Same S*** Different Day
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: 0
+  WILL_MODIFIER: -2
   PERFORMANCE_MODIFIER: 0
-  ATTENTION_MODIFIER: -10
   updateMovement: 0
-  movement: 0
+  movement: 1
   effects: []
-  rarity: 1
+  rarity: 3

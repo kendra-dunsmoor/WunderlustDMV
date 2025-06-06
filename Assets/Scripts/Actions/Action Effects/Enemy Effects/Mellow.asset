@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mellow
   m_EditorClassIdentifier: 
   effectName: Mellow
-  type: 10
+  type: 9
   target: 1
   effectSprite: {fileID: -1364882979583499215, guid: 61422aa35dc6f4876945119c46632cb8, type: 3}
   effectDescription: Halve Frustration Changes
@@ -23,3 +23,4 @@ MonoBehaviour:
   FRUSTRATION_MODIFIER: 0.5
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0

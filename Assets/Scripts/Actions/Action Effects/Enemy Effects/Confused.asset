@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Confused
   m_EditorClassIdentifier: 
   effectName: Confusion
-  type: 6
+  type: 5
   target: 1
   effectSprite: {fileID: 594318413343068850, guid: 2caad757fe69246daa0a88f4dd890344, type: 3}
   effectDescription: Gain 5 Frustration each turn
@@ -23,3 +23,4 @@ MonoBehaviour:
   FRUSTRATION_MODIFIER: 5
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0

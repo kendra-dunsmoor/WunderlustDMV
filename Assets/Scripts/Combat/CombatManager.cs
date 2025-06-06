@@ -209,7 +209,7 @@ public class CombatManager : MonoBehaviour
     * Check for game over state
     */
     public void UpdatePerformance(float diff) {
-        // TODO: Check if attention should be modifying end of shift performance change too:
+        // TODO: Check if attention should be modifying end of shift performance change too: 
         float attentionModifier = 1 + attentionLevel / 100;
         Debug.Log("Performance attention modifier: " + attentionModifier);
         performanceLevel += (float) Math.Round(diff * attentionModifier);
@@ -244,6 +244,7 @@ public class CombatManager : MonoBehaviour
     public void UpdateAttention(float diff) {
         attentionLevel += diff;
         if (attentionLevel < 0) attentionLevel = 0;
+         if (attentionLevel > 100) attentionLevel = 100;
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
     }

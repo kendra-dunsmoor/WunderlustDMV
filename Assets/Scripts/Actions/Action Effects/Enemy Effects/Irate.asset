@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Irate
   m_EditorClassIdentifier: 
   effectName: Irate
-  type: 5
+  type: 4
   target: 1
   effectSprite: {fileID: -7122397028852304327, guid: ff81ce91be69348149a51a9c278848bf, type: 3}
-  effectDescription: Applies +2 Attention to Player at start of turn
+  effectDescription: +20% Attention per turn
   shouldStack: 0
   shouldDecay: 0
   isPercent: 0
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 20

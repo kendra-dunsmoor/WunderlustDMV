@@ -10,6 +10,7 @@ public class ActionUpgrade : ScriptableObject
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
     public float PERFORMANCE_MODIFIER;
+    public float ATTENTION_MODIFIER;
     public bool updateMovement = false;
     public Action.ActionMovement movement;
     public List<ActionEffectStacks> effects;
@@ -20,6 +21,7 @@ public class ActionUpgrade : ScriptableObject
         if (WILL_MODIFIER != 0) description += "Reduced will cost: " + WILL_MODIFIER;
         if (FRUSTRATION_MODIFIER != 0) description += " Frustration modifier: " + FRUSTRATION_MODIFIER;
         if (PERFORMANCE_MODIFIER != 0) description += " Performance modifier: " + PERFORMANCE_MODIFIER;
+        if (ATTENTION_MODIFIER != 0) description += " Attention modifier: " + ATTENTION_MODIFIER;
         foreach (ActionEffectStacks effectStacks in effects ) {
             if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
         }

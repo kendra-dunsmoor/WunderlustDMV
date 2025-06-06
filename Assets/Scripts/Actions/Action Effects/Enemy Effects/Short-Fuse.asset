@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Short-Fuse
   m_EditorClassIdentifier: 
   effectName: Short-fuse
-  type: 9
+  type: 8
   target: 1
   effectSprite: {fileID: 1249290777543417328, guid: e5126f1ffd9e54c03af0456dd96cd44e, type: 3}
-  effectDescription: Doubles Frustration Changes
+  effectDescription: +100% Frustration Changes
   shouldStack: 0
   shouldDecay: 0
   isPercent: 1
   FRUSTRATION_MODIFIER: 2
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0

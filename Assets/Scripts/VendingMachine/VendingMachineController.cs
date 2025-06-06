@@ -91,7 +91,7 @@ public class VendingMachineController : MonoBehaviour
         // Add purchase popup
         purchasePopUp.SetActive(true);
         purchasePopUp.GetComponentInChildren<ItemUIController>().AddItemUIForPurchase(item);
-        purchaseDescription.text = "Buy " + item.itemName + " for " + item.price + " office bucks?";
+        purchaseDescription.text = "Buy " + item.itemName + " for " + item.price + " Obols?";
         purchaseFlavorText.text = item.flavorText;
     }
 

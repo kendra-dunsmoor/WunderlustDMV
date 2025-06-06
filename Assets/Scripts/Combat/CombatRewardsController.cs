@@ -21,21 +21,21 @@ public class CombatRewardsController : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
 
         int currency = GetCurrencyRewards();
-        rewardsDescription.text ="Performance Incentive: " + currency + " OfficeBucks";
+        rewardsDescription.text ="Performance Incentive: " + currency + " Office Obols";
         gameManager.UpdateOfficeBucks(currency);
 
         int metaCurrency = GetMetaRewards();
-        rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Coins";
+        rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Credits";
         gameManager.UpdateSoulCredits(metaCurrency);
 
         if(GetVRepRewards() == 1)
         {
-            rewardsDescription.text +="\nAstaroth is Pleased!";
+            rewardsDescription.text +="\nVerrine is Impressed!";
             gameManager.UpdateVRep(1);
         }
         if(GetARepRewards() == 1)
         {
-            rewardsDescription.text +="\nVerrine is Impressed!";
+            rewardsDescription.text +="\nAstaroth is Pleased!";
             gameManager.UpdateARep(1);
         }
 

@@ -79,7 +79,7 @@ public class CertificationsPageController : MonoBehaviour
         Debug.Log("here");
         purchasePopUp.GetComponentInChildren<CertificateUIController>().AddCertificate(cert);
         Debug.Log("Do we get here?");
-        purchaseDescription.text = "Buy " + cert.title + " certification for " + cert.price + " soul credits?";
+        purchaseDescription.text = "Buy " + cert.title + " certification for " + cert.price + " Chthonic Credits?";
     }
 
     public void Cancel() {

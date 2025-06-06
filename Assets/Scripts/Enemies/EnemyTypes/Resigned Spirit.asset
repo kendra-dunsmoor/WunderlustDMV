@@ -20,10 +20,6 @@ MonoBehaviour:
   startingFrustration: 10
   frustrationIncreasePerTurn: 5
   maxFrustration: 100
-  availableActions:
-  - {fileID: 11400000, guid: 86912288334b4a749a067a8cdbad3989, type: 2}
-  - {fileID: 11400000, guid: 706e00f1721fdee4998ec496f98e529c, type: 2}
-  - {fileID: 11400000, guid: d2ba529cedd530b4d8261c78572a7931, type: 2}
   openingDialogueLines:
   - I hope these queue times have improved.
   - ...
@@ -33,6 +29,10 @@ MonoBehaviour:
   - "Waiting wasn\u2019t so bad.. Thank you."
   negativeDialogueLines:
   - Oh, I suppose this is just how it is then... forever.
+  positiveAction: {fileID: 11400000, guid: d2ba529cedd530b4d8261c78572a7931, type: 2}
+  neutralAction: {fileID: 11400000, guid: 86912288334b4a749a067a8cdbad3989, type: 2}
+  negativeAction: {fileID: 11400000, guid: 706e00f1721fdee4998ec496f98e529c, type: 2}
+  passiveAction: {fileID: 0}
   acceptedSprite: {fileID: 6408797999967510028, guid: ba21e96c02777459b8086b3334b7de72, type: 3}
   rejectedSprite: {fileID: -2129212043851828337, guid: 67bf37e2f35bc490ea6ecaad44a868ad, type: 3}
   iconSprite: {fileID: -8104599600323273583, guid: 94543f97e3a184f4b9178d7fedfb0dc6, type: 3}

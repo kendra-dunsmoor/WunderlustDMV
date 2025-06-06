@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Financial Literacy
   m_EditorClassIdentifier: 
   type: 5
-  description: Up to 10 Soul Credits persist between weeks
+  description: Up to 10 Chthonic Credits persist between weeks
   title: Financial Literacy
   price: 30

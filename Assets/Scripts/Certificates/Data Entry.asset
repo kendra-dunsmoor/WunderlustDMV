@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Data Entry
   m_EditorClassIdentifier: 
   type: 3
-  description: Make Mistake costs 1 less WILL
+  description: Make Mistake has a lower Attention increase
   title: Data Entry
   price: 60

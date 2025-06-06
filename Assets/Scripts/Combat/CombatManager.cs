@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class CombatManager : MonoBehaviour
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
+    List<Certificate> playerCerts; 
 
     [Header("------------- Prefabs -------------")]
     [SerializeField] private GameObject combatRewardsScreen;
@@ -78,6 +80,7 @@ public class CombatManager : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
         inventoryManager = FindFirstObjectByType<InventoryManager>();
+        
     }
 
     void Start()
@@ -98,6 +101,7 @@ public class CombatManager : MonoBehaviour
             performanceLevel = gameManager.FetchPerformance();
             attentionLevel = gameManager.FetchAttention();
             willLevel = gameManager.FetchWill();
+            playerCerts = gameManager.FetchCertificates();
         }
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
@@ -256,6 +260,12 @@ public class CombatManager : MonoBehaviour
     * Update current customer frustration meter after player action
     */
     public void UpdateFrustration(float diff) {
+      
+		if (playerCerts.Any(c => c.type == ANGER_MANAGE))
+		{
+			diff *= .8f;
+		} 
+
         Debug.Log("Change curr customer frustration by " + diff);
         currCustomer.UpdateFrustration(diff);
     }
@@ -408,6 +418,19 @@ public class CombatManager : MonoBehaviour
                 willModifier += effectResult.WillModifier;
                 frustrationModifier += effectResult.FrustrationModifier;
                 attentionModifier += effectResult.AttentionModifier;
+
+            if (type == EffectType.MADE_MISTAKE)
+            {
+                // Check for additional attention penalty
+                // TODO: this is increasing the penalty from 5 to 20 instead of 15?
+                if (action.actionName == "Make Mistake")
+                {
+                    attentionModifier += 10;
+                  
+                    if (playerCerts.Any(c => c.type == DATA_ENTRY))  attentionModifier -= 5;
+                 
+                }
+            }
             }
         // Check curr customer effects:
         foreach (var (type, effectUI) in currCustomer.GetActiveEffects())
@@ -422,13 +445,13 @@ public class CombatManager : MonoBehaviour
             {
                 // Set attention to 0 when escalated
                 if (action.actionName == "Escalate")
-                    UpdateAttention(-attentionLevel);
+                    attentionModifier = -attentionLevel;
             }
         }
 
         // Update meters with after effects and artifacts values
-        // TODO: should attention be modified before or after performance, 
-        // i.e. should current action new attention affect same turn?
+        // TODO: should attention be modified before or after performance,      after
+        // i.e. should current action new attention affect same turn?           no
         UpdatePerformance(performaceModifier * (1 + attentionLevel / 100));
         UpdateAttention(attentionModifier);
         UpdateWill(willModifier);
@@ -460,7 +483,7 @@ public class CombatManager : MonoBehaviour
         // Any special cases that need to be hard coded for now:
         switch (effectType) {
             case EffectType.IRATE:
-                UpdateAttention(30);
+                UpdateAttention(20);
                 break;
            /* Commenting out due to Attention re-work 
             case EffectType.ATTENTION:

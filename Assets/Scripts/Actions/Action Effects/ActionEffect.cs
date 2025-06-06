@@ -18,7 +18,8 @@ public class ActionEffect : ScriptableObject
         SHORTFUSE,
         MELLOW,
         ELATED,
-        CHEERFUL
+        CHEERFUL,
+        MADE_MISTAKE
     };
     public EffectType type;
     public enum TargetType {

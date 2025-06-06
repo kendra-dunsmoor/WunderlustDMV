@@ -355,17 +355,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Art Direction & GUI: Stephanie Boland
+  m_text: 'Producer: Ryan Gordon (Z)
 
-    Programming: Kendra Dunsmoor
+    Art Direction & GUI: Stephanie Boland
+
+    Programming:
+    Kendra Dunsmoor
+
+    Systems & Mechanics Design: Josh Ahlborn
 
     Encounter
-    design: Joe Young
-
-    Systems & Mechanics design: Joshua Ahlborn
-
-    Producer:
-    Ryan Gordon (Z)
+    Design: Joe Young
 
     Narrative & Audio: Solomon Richards'
   m_isRightToLeft: 0

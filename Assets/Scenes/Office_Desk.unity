@@ -3630,7 +3630,7 @@ PrefabInstance:
       objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
     - target: {fileID: 3616757493364601216, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: description
-      value: Soul Credits
+      value: Chthonic Credits
       objectReference: {fileID: 0}
     - target: {fileID: 3882763601322697628, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_Name
@@ -3722,7 +3722,7 @@ PrefabInstance:
       objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
     - target: {fileID: 5363027372184118029, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: description
-      value: Cthonic Tokens
+      value: Office Obols
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

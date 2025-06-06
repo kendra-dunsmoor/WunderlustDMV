@@ -156,13 +156,21 @@ public class Customer : MonoBehaviour
             LineType.POSITIVE => enemyData.positiveDialogueLines,
             _ => enemyData.neutralDialogueLines
         };
-        dialogueBox.SetActive(true);
-        dialogueText.text = dialogueChoices[Random.Range(0, dialogueChoices.Length)];
+        if (dialogueChoices.Length > 0)
+        {
+            dialogueBox.SetActive(true);
+            dialogueText.text = dialogueChoices[Random.Range(0, dialogueChoices.Length)];
+        }
     }
 
     public void AddEnemyData(EnemyData data)
     {
         enemyData = data;
+    }
+
+    public float GetPaperworkOdds()
+    {
+        return enemyData.correctPaperworkOdds;
     }
 
     /* Add New Enemy Effect

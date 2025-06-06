@@ -16,8 +16,9 @@ MonoBehaviour:
   enemyDescription: 
   enemyType: 2
   moveSpeed: 5
-  startingFrustration: 0
-  frustrationIncreasePerTurn: 0
+  correctPaperworkOdds: 0.65
+  startingFrustration: 40
+  frustrationIncreasePerTurn: 5
   maxFrustration: 100
   availableActions: []
   openingDialogueLines:

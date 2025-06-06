@@ -30,12 +30,12 @@ public class CombatRewardsController : MonoBehaviour
 
         if(GetVRepRewards() == 1)
         {
-            rewardsDescription.text +="\nAstaroth is Pleased!";
+            rewardsDescription.text +="\nVerrine is Impressed!";
             gameManager.UpdateVRep(1);
         }
         if(GetARepRewards() == 1)
         {
-            rewardsDescription.text +="\nVerrine is Impressed!";
+            rewardsDescription.text +="\nAstaroth is Pleased!";
             gameManager.UpdateARep(1);
         }
 

@@ -73,9 +73,15 @@ public class CombatManager : MonoBehaviour
     public bool actionsDisabled;
     [SerializeField] private GameObject buttonsParent;
 
-    void Start()
+    void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
+    }
+
+    void Start()
+    {
         if (audioManager != null) audioManager.PlayMusic(audioManager.combatMusic);
 
         // temp initialization for quick testing when game manager is null:
@@ -85,11 +91,9 @@ public class CombatManager : MonoBehaviour
         if (CUSTOMER_GOAL == 0) CUSTOMER_GOAL = 10;
         MAX_PERFORMANCE = performanceMeter.maxValue;
 
-        gameManager = FindFirstObjectByType<GameManager>();
-        inventoryManager = FindFirstObjectByType<InventoryManager>();
         if (gameManager != null)
         {
-            if (gameManager.inTutorial) remainingTurns = 10;
+            if (gameManager.InTutorial()) remainingTurns = 10;
             else remainingTurns = 20;
             performanceLevel = gameManager.FetchPerformance();
             attentionLevel = gameManager.FetchAttention();
@@ -103,7 +107,6 @@ public class CombatManager : MonoBehaviour
         attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
-        paperwork.SetActive(false);
     }
 
     /* Add Action Loadout: 
@@ -144,7 +147,7 @@ public class CombatManager : MonoBehaviour
         inventoryManager.EndShiftArtifacts();
         UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
         // Pop up end screen
-        gameManager.ShiftCompleted(performanceLevel, willLevel);
+        gameManager.ShiftCompleted(performanceLevel, willLevel, attentionLevel);
         // Get combat rewards
         if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
         GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
@@ -186,8 +189,8 @@ public class CombatManager : MonoBehaviour
     */
     public void SpawnPaperwork()
     {
-        // TODO: Paperwork will be unique/randomized and instantiated in, just for looks rn
-        paperwork.SetActive(true);
+        paperwork.GetComponent<Paperwork>()
+            .CreatePaperwork(currCustomer.GetPaperworkOdds());
     }
 
     /* Initialize Customer Queue: 
@@ -196,6 +199,10 @@ public class CombatManager : MonoBehaviour
     * Add correct images to customer queue and move first customer to front of line
     */
     private void InitializeCustomerQueue() {
+        Debug.Log("Initializing queue");
+        Debug.Log(CUSTOMER_GOAL);
+        Debug.Log(customersInLine != null);
+        Debug.Log(customerIconQueue != null);
         enemySpawner.SpawnEnemies(CUSTOMER_GOAL, out customersInLine, out customerIconQueue);
         currCustomer = customersInLine.Dequeue();
         Destroy(customerIconQueue.Dequeue());
@@ -315,7 +322,7 @@ public class CombatManager : MonoBehaviour
         if (remainingTurns == 0) EndShift(false);
 
         // Check to trigger tutorial
-        if (gameManager.inTutorial && remainingTurns == 7)
+        if (gameManager.InTutorial() && remainingTurns == 7)
             FindFirstObjectByType<DialogueManager>().StartDialogue(combatTutorialDialogue);
     }
 
@@ -386,15 +393,23 @@ public class CombatManager : MonoBehaviour
         float willModifier = action.WILL_MODIFIER;
         float attentionModifier = action.ATTENTION_MODIFIER;
 
-        // Check player effects:
-        foreach (var (type, effectUI) in activeEffects)
-        {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier, attentionModifier);
-            performaceModifier += effectResult.PerformanceModifier;
-            willModifier += effectResult.WillModifier;
-            frustrationModifier += effectResult.FrustrationModifier;
-            attentionModifier += effectResult.AttentionModifier;
+        // Check for correct paperwork choice if accept/reject
+        if (action.INCORRECT_CHOICE_ATTENTION_MODIFIER != 0 &&
+            !MadeCorrectPaperworkChoice(action)){
+            Debug.Log("Incorrect choice for paperwork, apply negative performance and attention");
+            attentionModifier = action.INCORRECT_CHOICE_ATTENTION_MODIFIER;
+            performaceModifier = -action.PERFORMANCE_MODIFIER;                
         }
+
+        // Check player effects:
+            foreach (var (type, effectUI) in activeEffects)
+            {
+                EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier, attentionModifier);
+                performaceModifier += effectResult.PerformanceModifier;
+                willModifier += effectResult.WillModifier;
+                frustrationModifier += effectResult.FrustrationModifier;
+                attentionModifier += effectResult.AttentionModifier;
+            }
         // Check curr customer effects:
         foreach (var (type, effectUI) in currCustomer.GetActiveEffects())
         {
@@ -420,7 +435,6 @@ public class CombatManager : MonoBehaviour
         UpdateWill(willModifier);
         UpdateFrustration(frustrationModifier);
     }
-
 
     /* Apply Effect Modifiers:
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -528,12 +542,18 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    private bool MadeCorrectPaperworkChoice(Action action) {
+        bool wasAcceptable = paperwork.GetComponent<Paperwork>().isAcceptable;
+        if (action.actionName == "Accept") return wasAcceptable;
+        else return !wasAcceptable;
+    }
+
     /* Clear Player Conditions:
     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     * Clear all active player conditions
-    */    
+    */
     public void ClearPlayerConditions() {
-        foreach(var (type, effect) in activeEffects) {
+        foreach (var (type, effect) in activeEffects) {
             Destroy(effect);
         }
         activeEffects = new Dictionary<EffectType, GameObject>();

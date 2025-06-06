@@ -363,6 +363,7 @@ MonoBehaviour:
   breakRoomDialogues:
   - {fileID: 11400000, guid: 4c2a251ecc62e48899c2abdcde0b0017, type: 2}
   - {fileID: 11400000, guid: caf90a7dba7db4fe1b22372ff7cc0d81, type: 2}
+  - {fileID: 11400000, guid: ec7f5b20173284c9f90516907423fe4b, type: 2}
   officeEventDialogues:
   - {fileID: 11400000, guid: 3693d1a46e98c4e9a8f37311aa9651e2, type: 2}
   - {fileID: 11400000, guid: ca1819f5769b74192ba367834a4ba279, type: 2}

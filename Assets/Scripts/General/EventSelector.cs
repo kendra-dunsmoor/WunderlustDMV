@@ -12,20 +12,26 @@ public class EventSelector : MonoBehaviour
     [SerializeField] Dialogue reincarnatedAptDialogue;
     [SerializeField] Dialogue winnerAptDialogue;
 
-    [SerializeField] Dialogue introBreakRoomDialogue;
+    [SerializeField] Dialogue introBreakRoomVerrineDialogue;
+    [SerializeField] Dialogue introBreakRoomSothothDialogue;
     [SerializeField] GameManager gameManager;
 
     public Dialogue FetchRandomEvent()
     {
-        // TODO: add more complicated logic, need to determine if first time, etc
+        // Note: tutorial structured as landlord, Verrine, Astaroth in combat, then Sothoth
         string scene = SceneManager.GetActiveScene().name;
         switch(scene) {
-            // TODO: gotta double check names
             case "Office_BreakRoom":
-                if (gameManager.inTutorial) {
-                    gameManager.inTutorial = false;
-                    return introBreakRoomDialogue;
-                } else
+                if (gameManager.inTutorial)
+                {
+                    if (gameManager.FetchCurrentCalendarDay() == 0) return introBreakRoomVerrineDialogue;
+                    else
+                    {
+                        gameManager.inTutorial = false;
+                        return introBreakRoomSothothDialogue;
+                    }
+                }
+                else
                     return breakRoomDialogues[Random.Range(0, breakRoomDialogues.Length)];
             case "Apartment":
                 if (gameManager.inTutorial) {

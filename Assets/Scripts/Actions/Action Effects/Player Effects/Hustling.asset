@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Hustling
   type: 1
   target: 0
-  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
+  effectSprite: {fileID: 8703510263788255335, guid: 6423e4b34ad4842eaad99ba64a68eccc, type: 3}
   effectDescription: Performance gains also remove 1 "Attention"
   shouldStack: 1
   shouldDecay: 1

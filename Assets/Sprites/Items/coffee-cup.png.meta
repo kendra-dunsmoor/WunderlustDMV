@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: e959e3f87c1dd4e289bb0be8854c6bfe
+guid: be366a48ed9d6402790375d1c0c62863
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6231044458718751821
-    second: circle_0
+      213: 1366570683238143911
+    second: coffee-cup_0
+  - first:
+      213: 3846933737136925507
+    second: coffee-cup_1
+  - first:
+      213: -6891120060615098493
+    second: coffee-cup_2
+  - first:
+      213: 7662449001761123305
+    second: coffee-cup_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: circle_0
+      name: coffee-cup_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 6
-        width: 22
-        height: 20
+        x: 10
+        y: 0
+        width: 80
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3176a0412e689a0800000000000000
-      internalID: -6231044458718751821
+      spriteID: 7a75fd6cbc807f210800000000000000
+      internalID: 1366570683238143911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coffee-cup_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 84
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b238c1add036530800000000000000
+      internalID: 3846933737136925507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coffee-cup_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 84
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ff77ac0d2dd50a0800000000000000
+      internalID: -6891120060615098493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coffee-cup_3
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 84
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eba48b05cc765a60800000000000000
+      internalID: 7662449001761123305
       vertices: []
       indices: 
       edges: []
@@ -147,8 +222,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      circle_0: -6231044458718751821
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

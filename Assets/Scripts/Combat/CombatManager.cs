@@ -12,6 +12,7 @@ using static ActionEffect;
 public class CombatManager : MonoBehaviour
 {
     [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] Dialogue combatTutorialDialogue;
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
@@ -83,7 +84,8 @@ public class CombatManager : MonoBehaviour
         inventoryManager = FindFirstObjectByType<InventoryManager>();
         if (gameManager != null)
         {
-            if (remainingTurns == 0) remainingTurns = CUSTOMER_GOAL + gameManager.FetchCurrentCalendarDay() - 1; // temp
+            if (gameManager.inTutorial) remainingTurns = 10;
+            else remainingTurns = 20;
             performanceLevel = gameManager.FetchPerformance();
             willLevel = gameManager.FetchWill();
         }
@@ -240,11 +242,13 @@ public class CombatManager : MonoBehaviour
     * Update performance, will, frustration, and effects based on action
     * Iterate turn counter and any active effects
     */
-    public void TakeAction (Action action) {
+    public void TakeAction(Action action)
+    {
         PlayActionSound(action);
 
         // Check if sufficient will available for action:
-        if (willLevel - action.WILL_MODIFIER < 0) {
+        if (willLevel - action.WILL_MODIFIER < 0)
+        {
             Debug.Log("Insufficient will left for action: " + action.actionName);
             if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
             return;
@@ -260,7 +264,8 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Turns remaining: " + remainingTurns);
         remainingTurnsText.text = "Turns remaining: " + remainingTurns;
         inventoryManager.IncrementArtifacts();
-        foreach (ActionEffectStacks effectStacks in action.effects) {
+        foreach (ActionEffectStacks effectStacks in action.effects)
+        {
             if (effectStacks.stacks < 0) RemoveEffectStacks(effectStacks.stacks, effectStacks.effect.type);
             else AddNewEffect(effectStacks.effect, effectStacks.stacks);
         }
@@ -270,6 +275,10 @@ public class CombatManager : MonoBehaviour
 
         // Check end shift state for turns:
         if (remainingTurns == 0) EndShift(false);
+
+        // Check to trigger tutorial
+        if (gameManager.inTutorial && remainingTurns == 7)
+            FindFirstObjectByType<DialogueManager>().StartDialogue(combatTutorialDialogue);
     }
 
 

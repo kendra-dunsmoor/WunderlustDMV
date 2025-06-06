@@ -371,7 +371,8 @@ MonoBehaviour:
   firedAptDialogue: {fileID: 11400000, guid: 1fc20eb5a7d9140b895ef6ea64c84656, type: 2}
   reincarnatedAptDialogue: {fileID: 11400000, guid: 94bd786daa0fb4ee48cb85e97613a9c2, type: 2}
   winnerAptDialogue: {fileID: 11400000, guid: 9bfae17122b644341a8b623e5a0e7395, type: 2}
-  introBreakRoomDialogue: {fileID: 11400000, guid: 910dc7d9faa2a4ff3963282ed0002ef8, type: 2}
+  introBreakRoomVerrineDialogue: {fileID: 11400000, guid: 910dc7d9faa2a4ff3963282ed0002ef8, type: 2}
+  introBreakRoomSothothDialogue: {fileID: 11400000, guid: 24055d9abe79146c28cf97771be22e71, type: 2}
   gameManager: {fileID: 575042071}
 --- !u!1 &1051730669
 GameObject:

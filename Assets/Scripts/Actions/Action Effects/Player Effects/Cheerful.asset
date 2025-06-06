@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Cheerful
   type: 12
   target: 0
-  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
+  effectSprite: {fileID: -185374415144326819, guid: 931fb55f2179f4ba78f8290f70b344fa, type: 3}
   effectDescription: 
   shouldStack: 1
   shouldDecay: 1

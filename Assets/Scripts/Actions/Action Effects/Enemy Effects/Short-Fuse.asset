@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Short-fuse
   type: 9
   target: 1
-  effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
+  effectSprite: {fileID: 1249290777543417328, guid: e5126f1ffd9e54c03af0456dd96cd44e, type: 3}
   effectDescription: Doubles Frustration Changes
   shouldStack: 0
   shouldDecay: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Confusion
   type: 6
   target: 1
-  effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
+  effectSprite: {fileID: 594318413343068850, guid: 2caad757fe69246daa0a88f4dd890344, type: 3}
   effectDescription: Gain 5 Frustration each turn
   shouldStack: 1
   shouldDecay: 1

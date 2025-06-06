@@ -26,7 +26,7 @@ public class CalendarController : MonoBehaviour
             Debug.LogError("No game manager found");
             currDay = 1;
         }
-        // TODO: if end of week skip calendar for now go straight to performance review
+        // TODO: if end of week enable vending machine button
         if (currDay == 5) SceneManager.LoadSceneAsync(5);
         else FillCalendar();
     }

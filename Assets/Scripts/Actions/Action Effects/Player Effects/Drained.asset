@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Drained
   type: 3
   target: 0
-  effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
+  effectSprite: {fileID: -6847344870767953996, guid: ff198d3b148b34929b7ccd1df3fa83e5, type: 3}
   effectDescription: Lose 1 will each turn
   shouldStack: 1
   shouldDecay: 1

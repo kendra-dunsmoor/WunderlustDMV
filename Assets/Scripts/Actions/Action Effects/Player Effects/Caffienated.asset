@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Caffeinated
   type: 4
   target: 0
-  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
+  effectSprite: {fileID: 8840023293538461910, guid: 4c8dd4258706b4c5998a05aed9024928, type: 3}
   effectDescription: Gain 2 will each turn
   shouldStack: 1
   shouldDecay: 1

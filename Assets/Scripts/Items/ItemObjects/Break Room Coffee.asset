@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Break Room Coffee
   m_EditorClassIdentifier: 
   itemName: Break Room Coffee
-  Icon: {fileID: 7137440915498232245, guid: b9bdd7127853f4aeb9e3cc898b8c4e87, type: 3}
+  Icon: {fileID: 1366570683238143911, guid: be366a48ed9d6402790375d1c0c62863, type: 3}
   ID: C_001
   price: 0
   itemRarity: 0

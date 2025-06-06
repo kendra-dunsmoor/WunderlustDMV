@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Calmed
   type: 7
   target: 1
-  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
+  effectSprite: {fileID: -7241632764626139670, guid: 5ff496bcc55144a05a6df0f2cf96179d, type: 3}
   effectDescription: Lose 5 Frustration each turn
   shouldStack: 1
   shouldDecay: 1

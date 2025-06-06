@@ -59,10 +59,11 @@ public class GameManager : MonoBehaviour
     }
 
     public string FetchNextShiftChoice() {
+        // Tutorial force break room for Sothoth event
+        if (inTutorial) return eventChoices[1];
         // TODO: improve this for select shift choice for run
         int choice = Random.Range(0, 3);
         Debug.Log("Choice: " + choice);
-        // temp just testing vending machine:
         return eventChoices[choice];
     }
 

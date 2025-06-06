@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Elated
   type: 11
   target: 1
-  effectSprite: {fileID: 8643384908807092483, guid: e0faaede918364061901d699b00cccc5, type: 3}
+  effectSprite: {fileID: -3294232438985111124, guid: 77272e0d9073f407384b579feefc3852, type: 3}
   effectDescription: Increases Performance by 5 per Turn
   shouldStack: 0
   shouldDecay: 0

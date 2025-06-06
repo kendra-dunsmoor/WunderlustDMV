@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: BreakRoom_Sothoth_Tutorial
+  m_EditorClassIdentifier: 
+  RootNode:
+    tag: Start
+    dialogueText: "Ah, the initiate. I\u2019ve been waiting for you."
+    responses:
+    - responseText: ...
+      nextNodeIndex: 0
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  nodes:
+  - tag: 0 - Start Continued
+    dialogueText: "Look at the weight of your quotidian tasks and the slight alteration
+      your tawdry trinkets bring to the banality of it all. Don\u2019t you want more?"
+    responses:
+    - responseText: What?
+      nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: Who are you?
+      nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 1- Branch A
+    dialogueText: 'In concord, for it to have its name, there must too be discord
+      among the masses. Silence must have its cacophony, consonance its dissonance.
+      Balance requires two halves, and the answer to the order our DMV so seeks is
+      disorder. '
+    responses:
+    - responseText: So what?
+      nextNodeIndex: 2
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+    - responseText: Could you speak normally?
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 2 - Branch A1
+    dialogueText: We have our castes; our burdens are our own. But consider the possibilities,
+      should they merge and make something greater than their sum!
+    responses:
+    - responseText: ...
+      nextNodeIndex: 4
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 3 - Branch A2
+    dialogueText: 'The bounds of normality are beyond me like the sea of chaos is
+      beyond you. We have our castes; our burdens are our own. But consider the possibilities,
+      should they merge and make something greater than their sum! '
+    responses:
+    - responseText: ...
+      nextNodeIndex: 4
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 4 - Branch A Conclusion
+    dialogueText: 'Consider chaos, little initiate: whether to dally or maliciously
+      make mistakes, the manifold possibilities of death are open to you. '
+    responses:
+    - responseText: ...
+      nextNodeIndex: 5
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 5 - Continued
+    dialogueText: "Maintain your mundane un-existence. Or, embrace the vacillating
+      uncertainty available to you. \n\nI\u2019ll find you when you\u2019ve made
+      your choice. "
+    responses:
+    - responseText: Leave
+      nextNodeIndex: 6
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 6 - End
+    dialogueText: 
+    responses: []
+  character: {fileID: 11400000, guid: e758d177cd2454b068c8dc44f32b3051, type: 2}

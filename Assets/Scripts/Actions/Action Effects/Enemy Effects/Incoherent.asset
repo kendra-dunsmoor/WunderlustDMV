@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Incoherent
   type: 8
   target: 1
-  effectSprite: {fileID: -3830017661457245493, guid: 0a1c4d8c39d7148d7bb35c9e0a0ae4a6, type: 3}
+  effectSprite: {fileID: 609116775951729996, guid: e2ddfcb242d404a39862e719c3f05011, type: 3}
   effectDescription: Removes 5 "Attention" when Escalated
   shouldStack: 0
   shouldDecay: 0

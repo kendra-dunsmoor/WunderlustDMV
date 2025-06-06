@@ -22,6 +22,7 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
@@ -37,6 +38,7 @@ MonoBehaviour:
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards:
       - {fileID: 11400000, guid: 691115029e9ee4ecebca07e90a6bdfc7, type: 2}
       effectRewards: []
@@ -52,11 +54,27 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
-  - tag: 2 - End
+  - tag: 2 - No branching
+    dialogueText: "I can\u2019t wait for productivity to shoot right up! But hey,
+      when you\u2019re screening hoards of the damned, don\u2019t forget to have
+      a little fun with it!"
+    responses:
+    - responseText: Leave
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 3 - End
     dialogueText: 
     responses: []
   character: {fileID: 11400000, guid: e7c920c6a0807440d881d6db3c4539fc, type: 2}

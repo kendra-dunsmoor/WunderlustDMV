@@ -22,6 +22,6 @@ MonoBehaviour:
   - effect: {fileID: 11400000, guid: 4460588d827a64ea8be435880ec67bf2, type: 2}
     stacks: 3
   actionUpgrades: []
-  baseButtonImage: {fileID: 9180975770158401754, guid: 54af7f48d71c64d5f86335f0a77c338f, type: 3}
-  hoverButtonImage: {fileID: 2282812904391682941, guid: 5758fb99909f34f58a2b456c68153502, type: 3}
+  baseButtonImage: {fileID: 9096754822223135116, guid: 050f5d12f0c0b4ff8b99ee74928f64cd, type: 3}
+  hoverButtonImage: {fileID: -8456405615666986507, guid: 80a579398b90d43488ac9d416f0d2194, type: 3}
   generalDescription: 

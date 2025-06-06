@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Printer
   m_EditorClassIdentifier: 
   characterName: Printer
-  characterImage: {fileID: 0}
+  characterImage: {fileID: 8756457212138747365, guid: 5d9e3f76d04274de6a584bef746aefb4, type: 3}
   typingSpeed: 0.01

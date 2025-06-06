@@ -14,47 +14,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     tag: Start
-    dialogueText: "Hey. Get up. Rent\u2019s due at the end of the week."
+    dialogueText: Hey kiddo!
     responses:
-    - responseText: Huh?
+    - responseText: ...
       nextNodeIndex: 0
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
   nodes:
-  - tag: 0 - Branch A
+  - tag: 0 - No Branching
+    dialogueText: "Yeah, you! Wake up. This rent isn\u2019t gonna pay itself, and
+      you\u2019re not staying here for free."
+    responses:
+    - responseText: Huh?
+      nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 1 - Branch A
     dialogueText: "What? Did you think you\u2019d get out of paying just because
       you died? Come on, kid. Your soul\u2019s gotta rest somewhere, and the un-furnished
       pre-furnished apartment won\u2019t furnish itself. "
     responses:
     - responseText: "How am I supposed to pay rent? I don\u2019t have a job. "
-      nextNodeIndex: 1
-      containsReward: 0
-      officeBucks: 0
-      soulCredits: 0
-      itemsRewards: []
-      effectRewards: []
-      performanceBoost: 0
-      willBoost: 0
-  - tag: 1 - Branch A1
-    dialogueText: "The Department of Metaphysical Verification is always looking
-      for lost-err.. new souls to fill up space. Head down there. I\u2019m sure they\u2019ll
-      have something for you."
-    responses:
-    - responseText: Okay...
       nextNodeIndex: 2
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
-  - tag: 
+  - tag: 2 - Branch A1
+    dialogueText: "The Department of Metaphysical Verification is always looking
+      for lost-err.. new souls to fill up space. Head down there. I\u2019m sure they\u2019ll
+      have something for you. Just don\u2019t get fired, yeah? Because then we\u2019ll
+      have to start his whole thing over again, and neither of us wants that."
+    responses:
+    - responseText: "Uh\u2026okay."
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: End
     dialogueText: 
     responses: []
   character: {fileID: 11400000, guid: 2fa7b00d940f74b7eb4973fb96bd574d, type: 2}

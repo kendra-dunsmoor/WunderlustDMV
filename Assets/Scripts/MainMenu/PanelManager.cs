@@ -21,7 +21,7 @@ public class PanelManager : MonoBehaviour
     {
         Debug.Log("New game");
         audioManager.PlaySFX(audioManager.buttonClick);
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(7);
     }
     public void CreditsButton()
     {

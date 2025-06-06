@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Irate
   type: 5
   target: 1
-  effectSprite: {fileID: 2338019365221269074, guid: a73c885879ec2484f8242a329d1c4af0, type: 3}
+  effectSprite: {fileID: -7122397028852304327, guid: ff81ce91be69348149a51a9c278848bf, type: 3}
   effectDescription: Applies +2 Attention to Player at start of turn
   shouldStack: 0
   shouldDecay: 0

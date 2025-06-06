@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60df1682d7f4d7391903eeb0cd0b72, type: 3}
+  m_Name: Combat_Astaroth_Tutorial
+  m_EditorClassIdentifier: 
+  RootNode:
+    tag: Start
+    dialogueText: 'Whoa! What are you doing? '
+    responses:
+    - responseText: "I\u2019m doing my job\u2026"
+      nextNodeIndex: 0
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  nodes:
+  - tag: 0 - Branch A
+    dialogueText: Yeah. A little too well. Get too much done and Nepo-baby may just
+      reward you with reincarnation!
+    responses:
+    - responseText: That sounds great!
+      nextNodeIndex: 1
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 1 - Branch A
+    dialogueText: "Dude, it\u2019s not great. \u2018cause then you have to die, and
+      find another job, and do well again, and die again. I mean, it gets old, dying
+      for all eternity, you know? Just like, ride the wave. Don\u2019t think about
+      it too much. "
+    responses:
+    - responseText: "So I shouldn\u2019t do well? What if I get fired?"
+      nextNodeIndex: 2
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 2 - Branch A
+    dialogueText: "Well, don\u2019t do that! Just be mediocre. Everyone does it,
+      and it\u2019s not so bad when you really settle into all, you know? Stick with
+      mediocrity and mediocrity will stick with you. It worked for me in life, and
+      I don\u2019t see how it could go wrong in death."
+    responses:
+    - responseText: If you say so...
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+  - tag: 3 - Branch A
+    dialogueText: 
+    responses: []
+  character: {fileID: 11400000, guid: 702073cb1a38a455d88e55ffdb2c6127, type: 2}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using static ActionEffect;
 using static EnemyData;
 using TMPro;
+using UnityEditor;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
@@ -11,6 +12,11 @@ public class Customer : MonoBehaviour
     [SerializeField] private FloatingHealthBar frustrationMeter;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [Header("------------- Enemy Actions -------------")]
+    [SerializeField] private GameObject actionTelegraph;
+    private EnemyAction preppedAction;
+    private float negativeActionBoundary;
+    private float positiveActionBoundary;
 
     [Header("------------- Effects -------------")]
     [SerializeField] private GameObject currentEffectPrefab;
@@ -34,6 +40,7 @@ public class Customer : MonoBehaviour
         UpdateFrustration(enemyData.startingFrustration);
         combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
         dialogueBox.SetActive(false);
+        actionTelegraph.SetActive(false);
     }
 
     void Update()
@@ -45,11 +52,12 @@ public class Customer : MonoBehaviour
             if (transform.position.x >= goalPoint.position.x)
             {
                 // Customer hits front of line
-                // TODO: Passive action check here
+                // TODO: Passive action check here in future
                 movingToFront = false;
                 SayDialogueLine(LineType.OPENING);
-                combatManager.EnableActions();
+                SetNewPreppedAction();
                 combatManager.SpawnPaperwork();
+                combatManager.EnableActions();
             }
         }
         if (movingAway)
@@ -137,10 +145,15 @@ public class Customer : MonoBehaviour
     public void TakeTurn()
     {
         Debug.Log("Customer Turn Starting");
+        // Take prepped action
+        if (preppedAction != null) TakeEnemyAction(preppedAction);
+
         // Apply turn frustration
         Debug.Log("Adding frustration for waiting");
         UpdateFrustration(enemyData.frustrationIncreasePerTurn);
-        // Take action
+
+        // Telegraph next action
+        SetNewPreppedAction();
 
         // Add dialogue
         SayDialogueLine(LineType.NEUTRAL);
@@ -219,18 +232,46 @@ public class Customer : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
     * Remove stacks from effect if active
     */
-    private void RemoveEffectStacks(int amount, EffectType effectType) {
-        if (activeEffects.ContainsKey(effectType)) {
+    private void RemoveEffectStacks(int amount, EffectType effectType)
+    {
+        if (activeEffects.ContainsKey(effectType))
+        {
             Debug.Log("Incrementing customer effect");
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
             activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
             effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
-            if (effectUI.FetchTurns() == 0) {
+            if (effectUI.FetchTurns() == 0)
+            {
                 Debug.Log("Remove effect from UI");
                 Destroy(activeEffects[effectType]);
                 activeEffects.Remove(effectType);
             }
         }
+    }
+
+    private void SetNewPreppedAction()
+    {
+        // Set new action based on enemy state
+        if (frustrationLevel < 10) preppedAction = enemyData.positiveAction;
+        else if (activeEffects.ContainsKey(irateEffect.type)) preppedAction = enemyData.negativeAction;
+        else preppedAction = enemyData.neutralAction;
+        if (preppedAction != null)
+        {
+            actionTelegraph.SetActive(true);
+            // TODO: should it be different sprite for diff action type?
+            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.enemyActionName);
+        }
+    }
+
+    private void TakeEnemyAction(EnemyAction action)
+    {
+        Debug.Log("Taking Enemy Action: " + action.enemyActionName);
+        combatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
+        combatManager.UpdateWill(action.WILL_MODIFIER);
+        combatManager.UpdateAttention(action.ATTENTION_MODIFIER);
+
+        // TODO: show somehow in dialogue box action was taken?
+        actionTelegraph.SetActive(false);
     }
 }

@@ -63,8 +63,16 @@ public class GameManager : MonoBehaviour
 
         // Clear last run outcome status
         gameStatus.UpdateRunStatus(GameState.RunStatus.ACTIVE);
-        // Setup class from computer selection
-        if (playerStatus.GetClass() == null) playerStatus.UpdateClass(STARTER_CLASS);
+        
+        // Setup class from computer selection or default if no choice made
+        if (playerStatus.GetClass() == null)
+        {
+            playerStatus.UpdateClass(STARTER_CLASS);
+            foreach (Action action in playerStatus.GetClass().actionLoadout)
+            {
+                playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
+            }
+        }
         playerStatus.AddStarterItem(); // Initialize empty inventory + starter artifact
     }
 

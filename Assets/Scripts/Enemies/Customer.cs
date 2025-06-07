@@ -202,7 +202,7 @@ public class Customer : MonoBehaviour
             {
                 Debug.Log("Effect already active, add to stack");
                 currUIEffect.UpdateTurns(stacks);
-                activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + currUIEffect.FetchTurns(), effect.effectName);
+                activeEffects[effect.type].GetComponent<CustomerEffect_MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + currUIEffect.FetchTurns(), effect.effectName);
             }
             else
             {
@@ -215,7 +215,7 @@ public class Customer : MonoBehaviour
             GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
             activeEffects.Add(effect.type, effectMarker);
             effectMarker.GetComponent<UIEffectController>().AddEffect(effect, stacks);
-            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + stacks, effect.effectName);
+            effectMarker.GetComponent<CustomerEffect_MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + stacks, effect.effectName);
         }
     }
 
@@ -239,7 +239,7 @@ public class Customer : MonoBehaviour
             Debug.Log("Incrementing customer effect");
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
-            activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
+            activeEffects[effectType].GetComponent<CustomerEffect_MouseOverDescription>().UpdateDescription(
             effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
             if (effectUI.FetchTurns() == 0)
             {

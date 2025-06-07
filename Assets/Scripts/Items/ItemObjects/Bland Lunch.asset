@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bland Lunch
   Icon: {fileID: -652364575595862753, guid: f47a979ae08a7864ab463994336fb6b0, type: 3}
-  ID: A_010
+  ID: A_013
   price: 0
   itemRarity: 0
   flavorText: 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using System.Linq;
+
 
 public class ApartmentManager : MonoBehaviour
 {
@@ -20,20 +20,7 @@ public class ApartmentManager : MonoBehaviour
 
     public void StartRun() {
         if (audioManager != null) audioManager.PlaySFX(audioManager.openDoor);
-        List<Certificate> playerCerts = gameManager.FetchCertificates();
-
-        // Landlord takes rest of soul credits
-        int rent = gameManager.FetchSoulCredits();
-         if (playerCerts.Any(c => c.type == FINANCIAL_LITERACY))
-		{
-            if (rent>10) rent -= 10;
-            else rent = 0;
-		}
-
-        gameManager.UpdateSoulCredits(-rent);
-
-        gameManager.StartRun(); // TODO: Need to update to use rent 
-
+        gameManager.StartRun();
         if (gameManager.InTutorial()) SceneManager.LoadSceneAsync(2);
         else SceneManager.LoadSceneAsync(3);
     }

@@ -102,7 +102,7 @@ public class ItemDB : ScriptableObject
 		List<Certificate> playerCerts = gameManager.FetchCertificates();
 
 		
-		if (playerCerts.Any(c => c.type == SUPPLY_SOURCING))
+		if (playerCerts.Any(c => c.type == Certificate.CertificateType.SUPPLY_SOURCING))
 		{
 			return rarity switch
 			{

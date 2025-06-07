@@ -98,7 +98,7 @@ public class CombatRewardsController : MonoBehaviour
         // TODO:Check if finished early, if true set to 3
 
        
-		if (playerCerts.Any(c => c.type == SIDE_GIG))
+		if (playerCerts.Any(c => c.type == Certificate.CertificateType.SIDE_GIG))
 		{
 			metaCoins += 2;
 		}

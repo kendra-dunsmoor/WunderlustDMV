@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 
 /*
@@ -49,8 +50,17 @@ public class GameManager : MonoBehaviour
 
     public void StartRun()
     {
+        List<Certificate> playerCerts = FetchCertificates();
+
         // Landlord takes rest of soul credits
-        UpdateSoulCredits(-playerStatus.GetSoulCredits());
+        int rent = FetchSoulCredits();
+         if (playerCerts.Any(c => c.type == Certificate.CertificateType.FINANCIAL_LITERACY))
+		{
+            if (rent>10) rent -= 10;
+            else rent = 0;
+		}
+        UpdateSoulCredits(-rent);
+
         // Clear last run outcome status
         gameStatus.UpdateRunStatus(GameState.RunStatus.ACTIVE);
         // Setup class from computer selection

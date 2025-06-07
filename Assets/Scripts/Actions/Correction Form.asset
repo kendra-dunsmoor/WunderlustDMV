@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Correction Form
   m_EditorClassIdentifier: 
   actionName: Correction Form
-  FRUSTRATION_MODIFIER: 10
+  FRUSTRATION_MODIFIER: 15
   WILL_MODIFIER: -2
-  PERFORMANCE_MODIFIER: -5
+  PERFORMANCE_MODIFIER: -2
+  ATTENTION_MODIFIER: 0
+  INCORRECT_CHOICE_ATTENTION_MODIFIER: 0
   type: 1
   movement: 1
   effects:

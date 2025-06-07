@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Reject
   m_EditorClassIdentifier: 
   actionName: Reject
-  FRUSTRATION_MODIFIER: 30
+  FRUSTRATION_MODIFIER: 10
   WILL_MODIFIER: -2
   PERFORMANCE_MODIFIER: 10
   ATTENTION_MODIFIER: 0

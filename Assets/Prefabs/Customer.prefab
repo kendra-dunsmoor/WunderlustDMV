@@ -31,6 +31,7 @@ RectTransform:
   m_LocalScale: {x: 0.2, y: 0.22, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6824445355560331850}
   - {fileID: 1738007462557393846}
   - {fileID: 5473944893170378270}
   - {fileID: 2108423664726112194}
@@ -137,8 +138,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.5, y: -9.156}
-  m_SizeDelta: {x: 3.326, y: 11.969}
+  m_AnchoredPosition: {x: 9.5, y: -9.793}
+  m_SizeDelta: {x: 3.326, y: 10.694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4628446410622574834
 MonoBehaviour:
@@ -795,6 +796,7 @@ MonoBehaviour:
   frustrationMeter: {fileID: 3258849979349409404}
   dialogueBox: {fileID: 4831157923402654633}
   dialogueText: {fileID: 1868775077134303150}
+  actionTelegraph: {fileID: 8403576458326407937}
   currentEffectPrefab: {fileID: 8950778992821901451, guid: 9f54dd8e490f741179ee7762ca57ab24, type: 3}
   currentEffectsPanel: {fileID: 5473944893170378270}
   irateEffect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}
@@ -1097,6 +1099,96 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8403576458326407937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6824445355560331850}
+  - component: {fileID: 4551443187886077153}
+  - component: {fileID: 681334109888987165}
+  - component: {fileID: 7226497156945004914}
+  m_Layer: 5
+  m_Name: ActionTelegraph
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6824445355560331850
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403576458326407937}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 89.95128}
+  m_LocalScale: {x: 0.11112499, y: 0.10102273, z: 0.022219999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4036706337730239898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -12.9, y: -7.1}
+  m_SizeDelta: {x: 45, y: 45}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4551443187886077153
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403576458326407937}
+  m_CullTransparentMesh: 1
+--- !u!114 &681334109888987165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403576458326407937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 2338019365221269074, guid: a73c885879ec2484f8242a329d1c4af0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7226497156945004914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403576458326407937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98ac5a69325d44b1a45c96f371029ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
+  description: 
 --- !u!1 &8967223203237926736
 GameObject:
   m_ObjectHideFlags: 0

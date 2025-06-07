@@ -11,7 +11,8 @@ public class ItemInventory : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < itemSlots.Length; i++) {
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
             itemSlots[i].OnClickEvent += OnItemClickedEvent;
         }
         RefreshUI();
@@ -24,18 +25,22 @@ public class ItemInventory : MonoBehaviour
         RefreshUI();
     }
 
-    private void RefreshUI() {
+    private void RefreshUI()
+    {
         int i = 0;
-        for (; i< items.Count && i < itemSlots.Length; i++) {
+        for (; i < items.Count && i < itemSlots.Length; i++)
+        {
             itemSlots[i].Item = items[i];
         }
-        for (; i < itemSlots.Length; i++) {
+        for (; i < itemSlots.Length; i++)
+        {
             itemSlots[i].Item = null;
         }
         Debug.Log("UI refreshed");
     }
 
-    public bool AddItem(Item item) {
+    public bool AddItem(Item item)
+    {
         Debug.Log("Adding item " + item + " to inventory UI");
         if (IsFull())
             return false;
@@ -44,15 +49,24 @@ public class ItemInventory : MonoBehaviour
         return true;
     }
 
-    public bool RemoveItem(Item item) {
-        if (items.Remove(item)) {
+    public bool RemoveItem(Item item)
+    {
+        if (items.Remove(item))
+        {
             RefreshUI();
             return true;
         }
         return false;
     }
 
-    public bool IsFull() {
+    public bool IsFull()
+    {
         return items.Count >= itemSlots.Length;
+    }
+
+    public void UpdateDescription(int index, string description, string itemName)
+    {
+        itemSlots[index].GetComponent<MouseOverDescription>().UpdateDescription(description, itemName);
+
     }
 }

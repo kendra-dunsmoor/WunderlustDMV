@@ -73,14 +73,25 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void IncrementArtifacts() {
-        foreach (ArtifactItem item in artifacts.items) {
+        Debug.Log("Incrementing artifacts");
+        for (int i = 0; i < artifacts.items.Count; i++)
+        {
+            ArtifactItem item = (ArtifactItem) artifacts.items[i];
             item.currentTurnCounter++;
+            // increment turns in hover description
+            artifacts.UpdateDescription(
+                i,
+                item.description + "\n Turn Counter: " + item.currentTurnCounter + "/" +item.turnClock,
+                item.itemName
+            );
             if (item.currentTurnCounter == item.turnClock)
-                UseArtifact(item);
+                item.currentTurnCounter = 0;
+            UseArtifact(item);
         }
     }
 
     private void UseArtifact(ArtifactItem item) {
+        Debug.Log("Use artifact: " + item.itemName);
         // TODO: should there be a sound here? Maybe not
         if (audioManager != null) audioManager.PlaySFX(audioManager.specialActionButton);
         // Add item effects

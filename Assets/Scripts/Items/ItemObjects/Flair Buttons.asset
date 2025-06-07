@@ -25,4 +25,5 @@ MonoBehaviour:
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 3
-  currentTurnCounter: 16
+  currentTurnCounter: 0
+  isEndOfShiftEffect: 0

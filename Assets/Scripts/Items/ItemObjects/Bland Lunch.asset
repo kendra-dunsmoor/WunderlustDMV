@@ -17,10 +17,10 @@ MonoBehaviour:
   ID: A_010
   price: 0
   itemRarity: 0
-  flavorText: 
-  description: Every 5 turns gain 5 will
+  flavorText: '"Eh, good enough"'
+  description: Every 5 turns gain 3 will
   effects: []
-  willModifier: 5
+  willModifier: 3
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 5

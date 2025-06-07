@@ -419,18 +419,22 @@ public class CombatManager : MonoBehaviour
                 frustrationModifier += effectResult.FrustrationModifier;
                 attentionModifier += effectResult.AttentionModifier;
 
-            if (type == EffectType.MADE_MISTAKE)
-            {
-                // Check for additional attention penalty
-                // TODO: this is increasing the penalty from 5 to 20 instead of 15?
-                if (action.actionName == "Make Mistake")
+                if (type == EffectType.MADE_MISTAKE)
                 {
-                    attentionModifier += 10;
-                  
-                    if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
-                 
+                    // Check for additional attention penalty
+                    // TODO: this is increasing the penalty from 5 to 20 instead of 15?
+                    if (action.actionName == "Make Mistake")
+                    {
+                        attentionModifier += 10;
+                        
+                        if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
+                        
+                    }
                 }
-            }
+                if (gameManager.ContainsItem("A_012"))
+                {
+                    if (action.actionName == "Reject") willModifier += 1;
+                }
             }
         // Check curr customer effects:
         foreach (var (type, effectUI) in currCustomer.GetActiveEffects())

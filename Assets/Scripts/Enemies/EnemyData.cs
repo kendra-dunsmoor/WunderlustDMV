@@ -22,13 +22,9 @@ public class EnemyData : ScriptableObject
     public float frustrationIncreasePerTurn;
     public float maxFrustration;
 
-    [Header("------------- Actions -------------")]
-
-    public EnemyAction[] availableActions;
-
     [Header("------------- Dialogue -------------")]
     public string[] openingDialogueLines;
-    public string[] neutralDialogueLines; // mostly just use when they have a turn
+    public string[] neutralDialogueLines;
     public string[] positiveDialogueLines;
     public string[] negativeDialogueLines;
 
@@ -39,6 +35,12 @@ public class EnemyData : ScriptableObject
         POSITIVE,
         NEGATIVE
     }
+
+    [Header("------------- Actions -------------")]
+    public EnemyAction positiveAction;
+    public EnemyAction neutralAction;
+    public EnemyAction negativeAction;
+    public EnemyAction passiveAction;
 
     [Header("------------- UI -------------")]    
     public Sprite acceptedSprite;

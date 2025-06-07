@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 6
   target: 1
   effectSprite: {fileID: -7241632764626139670, guid: 5ff496bcc55144a05a6df0f2cf96179d, type: 3}
-  effectDescription: Lose 5 Frustration each turn
+  effectDescription: -5 Frustration per turn
   shouldStack: 1
   shouldDecay: 1
   isPercent: 0

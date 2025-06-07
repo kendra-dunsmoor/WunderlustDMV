@@ -34,24 +34,28 @@ public class Action : ScriptableObject
     public string GetDescription()
     {
         string description = generalDescription;
-        if (WILL_MODIFIER != 0) description += "Will cost: " + WILL_MODIFIER;
-        if (FRUSTRATION_MODIFIER != 0) description += " Frustration: " + FRUSTRATION_MODIFIER;
-        if (PERFORMANCE_MODIFIER != 0) description += " Performance: " + PERFORMANCE_MODIFIER;
-        if (ATTENTION_MODIFIER != 0) description += " Attention: " + ATTENTION_MODIFIER + "%";
+        description += "Will: " + WILL_MODIFIER;
+        if (FRUSTRATION_MODIFIER != 0) description += "\nFrustration: " + FRUSTRATION_MODIFIER;
+        if (PERFORMANCE_MODIFIER != 0) description += "\nPerformance: " + PERFORMANCE_MODIFIER;
+        if (ATTENTION_MODIFIER != 0) description += "\nAttention: " + ATTENTION_MODIFIER + "%";
         foreach (ActionEffectStacks effectStacks in effects)
         {
-            if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
+            // TODO: Clearer descriptions for particular actions
+           /*
+            if (effectStacks.effect.type == ADD_TURNS) description += "\nSkips a turn.";
+            else if (effectStacks.effect.type == MADE_MISTAKE) description += "\nEach Mistake draws more Attention." ;
+            else */ if (effectStacks != null) description += "\nAdds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
         }
         switch (movement)
         {
             case ActionMovement.FRONT:
-                description += " Customer does not move.";
+                description += "\nCustomer does not move.";
                 break;
             case ActionMovement.BACK:
-                description += " Customer moves to back of queue.";
+                description += "\nCustomer moves to back of queue.";
                 break;
             case ActionMovement.AWAY:
-                description += " Customer leaves queue.";
+                description += "\nCustomer leaves queue.";
                 break;
         }
         // TODO: Add actionUpgrades descriptions

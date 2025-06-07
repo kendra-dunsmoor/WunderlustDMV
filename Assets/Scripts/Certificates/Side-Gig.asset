@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Side-Gig
   m_EditorClassIdentifier: 
   type: 1
-  description: Beverages are 20% cheaper
+  description: +2 Chthonic Coins after each shift
   title: Side-Gig
   price: 20

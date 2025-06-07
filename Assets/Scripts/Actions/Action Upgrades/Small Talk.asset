@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Small Talk
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: 1
+  WILL_MODIFIER: -1
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0
   updateMovement: 0
   movement: 1
   effects:

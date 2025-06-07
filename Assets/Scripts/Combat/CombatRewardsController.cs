@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,12 +21,14 @@ public class CombatRewardsController : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
 
+
+
         int currency = GetCurrencyRewards();
-        rewardsDescription.text ="Performance Incentive: " + currency + " OfficeBucks";
+        rewardsDescription.text ="Performance Incentive: " + currency + " Office Obols";
         gameManager.UpdateOfficeBucks(currency);
 
         int metaCurrency = GetMetaRewards();
-        rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Coins";
+        rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Credits";
         gameManager.UpdateSoulCredits(metaCurrency);
 
         if(GetVRepRewards() == 1)
@@ -89,9 +92,18 @@ public class CombatRewardsController : MonoBehaviour
 
     private int GetMetaRewards()
     {
+        int metaCoins = 5;
+        List<Certificate> playerCerts = gameManager.FetchCertificates();
 
-       // Check if finished early, if true return 3
-       return 5;
+        // TODO:Check if finished early, if true set to 3
+
+       
+		if (playerCerts.Any(c => c.type == Certificate.CertificateType.SIDE_GIG))
+		{
+			metaCoins += 2;
+		}
+
+       return metaCoins;
     }
 
     private int GetVRepRewards()

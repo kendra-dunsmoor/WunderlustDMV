@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 /*
 * Game Manager
@@ -51,12 +50,29 @@ public class GameManager : MonoBehaviour
 
     public void StartRun()
     {
+        List<Certificate> playerCerts = FetchCertificates();
+
         // Landlord takes rest of soul credits
-        UpdateSoulCredits(-playerStatus.GetSoulCredits());
+        int rent = FetchSoulCredits();
+         if (playerCerts.Any(c => c.type == Certificate.CertificateType.FINANCIAL_LITERACY))
+		{
+            if (rent>10) rent -= 10;
+            else rent = 0;
+		}
+        UpdateSoulCredits(-rent);
+
         // Clear last run outcome status
         gameStatus.UpdateRunStatus(GameState.RunStatus.ACTIVE);
-        // Setup class from computer selection
-        if (playerStatus.GetClass() == null) playerStatus.UpdateClass(STARTER_CLASS);
+        
+        // Setup class from computer selection or default if no choice made
+        if (playerStatus.GetClass() == null)
+        {
+            playerStatus.UpdateClass(STARTER_CLASS);
+            foreach (Action action in playerStatus.GetClass().actionLoadout)
+            {
+                playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
+            }
+        }
         playerStatus.AddStarterItem(); // Initialize empty inventory + starter artifact
     }
 
@@ -241,7 +257,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Item GetItemFromDB(string id) {
-        return itemDatabase.GetItemCopy(id);
+        return Instantiate(itemDatabase.GetItemCopy(id));
     }
 
     public List<Item> FetchRandomItems(int numItems, bool shouldBeArtifact) {

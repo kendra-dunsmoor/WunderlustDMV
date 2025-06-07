@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 2
   target: 0
   effectSprite: {fileID: -6847344870767953996, guid: ff198d3b148b34929b7ccd1df3fa83e5, type: 3}
-  effectDescription: Lose 1 will each turn
+  effectDescription: -1 Will each turn
   shouldStack: 1
   shouldDecay: 1
   isPercent: 0

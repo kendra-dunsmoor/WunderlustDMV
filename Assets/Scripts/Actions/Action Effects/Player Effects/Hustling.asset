@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   target: 0
   effectSprite: {fileID: 8703510263788255335, guid: 6423e4b34ad4842eaad99ba64a68eccc, type: 3}
-  effectDescription: Performance gains also remove 1 "Attention"
+  effectDescription: Performance gains remove 10% Attention
   shouldStack: 1
   shouldDecay: 1
   isPercent: 0

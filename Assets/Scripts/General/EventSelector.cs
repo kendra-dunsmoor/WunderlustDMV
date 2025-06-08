@@ -25,11 +25,7 @@ public class EventSelector : MonoBehaviour
                 if (gameManager.InTutorial())
                 {
                     if (gameManager.FetchCurrentCalendarDay() == 0) return introBreakRoomVerrineDialogue;
-                    else
-                    {
-                        gameManager.UpdateTutorialStatus(false);
-                        return introBreakRoomSothothDialogue;
-                    }
+                    else return introBreakRoomSothothDialogue;
                 }
                 else
                     return breakRoomDialogues[Random.Range(0, breakRoomDialogues.Length)];

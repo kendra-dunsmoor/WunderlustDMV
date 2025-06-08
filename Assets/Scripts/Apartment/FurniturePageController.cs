@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FurniturePageController : MonoBehaviour
 {
+    [SerializeField] private int FURNITURE_WILL_MODIFIER = 5;
     [SerializeField] private GameObject furniturePrefab;
     [SerializeField] private Transform furnitureParent;
     [SerializeField] private GameObject upgradesScreen;
@@ -53,7 +54,7 @@ public class FurniturePageController : MonoBehaviour
             // Not enough money
             if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
         }
-        gameManager.UpdateMaxWill(100+ 5*gameManager.FetchFurniture().Count);
+        gameManager.UpdateMaxWill(gameManager.FetchWill() + FURNITURE_WILL_MODIFIER);
     }
 
     public void ReturnToUpgrades()
@@ -77,9 +78,7 @@ public class FurniturePageController : MonoBehaviour
         opaqueScreen.SetActive(true);
         // Add purchase popup
         purchasePopUp.SetActive(true);
-        Debug.Log("here");
         purchasePopUp.GetComponentInChildren<FurnitureUIController>().AddFurniture(furniture);
-        Debug.Log("Do we get here?");
         purchaseDescription.text = "Buy " + furniture.title + " for " + furniture.price + " Chthonic Credits?";
     }
 

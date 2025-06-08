@@ -26,6 +26,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - Branch A
     dialogueText: Yeah. A little too well. Get too much done and Nepo-baby may just
@@ -41,11 +42,11 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 1 - Branch A
     dialogueText: "Dude, it\u2019s not great. \u2018cause then you have to die, and
       find another job, and do well again, and die again. I mean, it gets old, dying
-      for all eternity, you know? Just like, ride the wave. Don\u2019t think about
-      it too much. "
+      for all eternity, you know? \n\nJust like, ride the wave."
     responses:
     - responseText: "So I shouldn\u2019t do well? What if I get fired?"
       nextNodeIndex: 2
@@ -57,11 +58,11 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 2 - Branch A
     dialogueText: "Well, don\u2019t do that! Just be mediocre. Everyone does it,
-      and it\u2019s not so bad when you really settle into all, you know? Stick with
-      mediocrity and mediocrity will stick with you. It worked for me in life, and
-      I don\u2019t see how it could go wrong in death."
+      and it\u2019s not so bad when you really settle into all, you know? \n\nStick
+      with mediocrity and mediocrity will stick with you. "
     responses:
     - responseText: If you say so...
       nextNodeIndex: 3
@@ -73,6 +74,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 3 - Branch A
     dialogueText: 
     responses: []

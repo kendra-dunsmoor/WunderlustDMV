@@ -2,7 +2,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
- 
+using UnityEngine.SceneManagement;
+
 /*
 * Dialogue Manager
 * ~~~~~~~~~~~~~~~~~
@@ -18,7 +19,11 @@ public class DialogueManager : MonoBehaviour
 	private AudioManager audioManager;
     private GameManager gameManager;
 
+    [Header("------------- Temp Tutorials -------------")]
+    [SerializeField] private TutorialManager tutorialManager; // temp
+    [SerializeField] private TutorialDialogue tutorial; // temp
 
+    [Header("------------- Dialogue -------------")]
     // UI references
     [SerializeField] private GameObject DialogueParent; // Main container for dialogue UI
     [SerializeField] private TextMeshProUGUI DialogueTitleText, DialogueBodyText; // Text components for title and body
@@ -112,9 +117,15 @@ public class DialogueManager : MonoBehaviour
         {
             // If no follow-up node, end the dialogue
             HideDialogue();
+            // this is a terrible way to do this but I need to temporarily to trigger tutorial after dialogue
+            // TODO: add a better way to trigger this
+            if (SceneManager.GetActiveScene().buildIndex == 3 && tutorialManager != null)
+            {
+                tutorialManager.StartTutorial(tutorial);
+            }
         }
     }
- 
+
     // Hide the dialogue UI
     public void HideDialogue()
     {

@@ -76,9 +76,7 @@ public class CertificationsPageController : MonoBehaviour
         opaqueScreen.SetActive(true);
         // Add purchase popup
         purchasePopUp.SetActive(true);
-        Debug.Log("here");
         purchasePopUp.GetComponentInChildren<CertificateUIController>().AddCertificate(cert);
-        Debug.Log("Do we get here?");
         purchaseDescription.text = "Buy " + cert.title + " certification for " + cert.price + " Chthonic Credits?";
     }
 

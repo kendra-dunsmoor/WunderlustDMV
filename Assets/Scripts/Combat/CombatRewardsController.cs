@@ -95,7 +95,7 @@ public class CombatRewardsController : MonoBehaviour
         int metaCoins = 5;
         List<Certificate> playerCerts = gameManager.FetchCertificates();
 
-        // TODO:Check if finished early, if true set to 3
+        // TODO:Check if finished early, if true set to 2
 
        
 		if (playerCerts.Any(c => c.type == Certificate.CertificateType.SIDE_GIG))

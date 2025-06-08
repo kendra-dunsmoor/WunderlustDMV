@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 986266340482616162}
   - component: {fileID: 4037478032029498427}
   - component: {fileID: 2103904729648309739}
-  - component: {fileID: -2617061936898695040}
+  - component: {fileID: -6247005417690148702}
   m_Layer: 5
   m_Name: Panel_Furniture
   m_TagString: Panel_Computer
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-2617061936898695040
+--- !u!114 &-6247005417690148702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,12 +89,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 530363540952408881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c0cb34ea8ee4342b5e27d032ce0489, type: 3}
+  m_Script: {fileID: 11500000, guid: d012caf27cd3e3b479643d6bfc6886b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureScreen: {fileID: 0}
-  certificationsScreen: {fileID: 0}
-  upgradesScreen: {fileID: 0}
+  furniturePrefab: {fileID: 8537871839956812676, guid: d54b20af96fdff946ae3782b67e796cc, type: 3}
+  furnitureParent: {fileID: 0}
+  upgradesScreen: {fileID: 530363540952408881, guid: 441e3863567894bb59095fc2bd932c4e, type: 3}
+  FurnitureAvailable: []
+  opaqueScreen: {fileID: 2497658215622996663, guid: 25e904f52a574467985f906a22345ca5, type: 3}
+  purchasePopUp: {fileID: 553031448974983727, guid: 935dbdcfdb43942f58b829b0428d7fc4, type: 3}
+  purchaseDescription: {fileID: 0}
 --- !u!1 &1522326334683785372
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2617061936898695040}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ComputerController, Assembly-CSharp
         m_MethodName: CloseComputer
         m_Mode: 1
@@ -821,7 +825,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2617061936898695040}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ComputerController, Assembly-CSharp
         m_MethodName: OpenCertifications
         m_Mode: 1
@@ -1090,7 +1094,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2617061936898695040}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ComputerController, Assembly-CSharp
         m_MethodName: CloseComputer
         m_Mode: 1
@@ -1632,7 +1636,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2617061936898695040}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ComputerController, Assembly-CSharp
         m_MethodName: OpenFurniture
         m_Mode: 1

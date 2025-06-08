@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static ActionEffect;
@@ -27,28 +28,21 @@ public class BossCombatManager : MonoBehaviour
     [Header("------------- UI Meters -------------")]
     [SerializeField] private Slider performanceMeter;
     [SerializeField] private Slider willMeter;
+    [SerializeField] private Slider bossWillMeter;
+    [SerializeField] private Boss boss;
 
     [Header("------------- Spawn Points -------------")]
     [SerializeField] private Transform currentEffectsPanel;
     [SerializeField] private Transform actionButtonGrid;
     [SerializeField] private Transform spawnPoint;
 
-    //?? don't think we need this?
-    // [Header("------------- Customer Queues -------------")]
-    // private Queue<Customer> customersInLine = new Queue<Customer>();
-    // private Queue<GameObject> customerIconQueue = new Queue<GameObject>();
-    // private Customer currCustomer;
-
     [Header("------------- Combat Values -------------")]
-    //!! needs new logic
-    [SerializeField] Action acceptAction;
-    //!! needs new logic
-    [SerializeField] Action rejectAction;
-    //!! needs new logic
-    [SerializeField] Action escalateAction;
+    [SerializeField] Action praiseAction;
+    [SerializeField] Action counterPointAction;
+    [SerializeField] Action factsAction;
     [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
     [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
-    //!! [SerializeField, Tooltip("Current boss will level, UI might not update if this is changed until action taken")] private float bossWillLevel; // temp value
+    [SerializeField, Tooltip("Current boss will level, UI might not update if this is changed until action taken")] private float bossWillLevel; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
     private List<Action> actionLoadout;
     [SerializeField, Tooltip("If loadout not customized from apartment use base")] private List<Action> STARTER_LOADOUT;
@@ -219,11 +213,11 @@ public class BossCombatManager : MonoBehaviour
         }
         //!! needs updating
         GameObject.FindGameObjectWithTag("AcceptButton").GetComponent<MouseOverDescription>()
-            .UpdateDescription(acceptAction.GetDescription(), acceptAction.actionName);
+            .UpdateDescription(praiseAction.GetDescription(), praiseAction.actionName);
         GameObject.FindGameObjectWithTag("RejectButton").GetComponent<MouseOverDescription>()
-            .UpdateDescription(rejectAction.GetDescription(), rejectAction.actionName);
+            .UpdateDescription(counterPointAction.GetDescription(), counterPointAction.actionName);
         GameObject.FindGameObjectWithTag("EscalateButton").GetComponent<MouseOverDescription>()
-            .UpdateDescription(escalateAction.GetDescription(), escalateAction.actionName);
+            .UpdateDescription(factsAction.GetDescription(), factsAction.actionName);
     }
 
     /* End Shift: 
@@ -300,15 +294,15 @@ public class BossCombatManager : MonoBehaviour
 
     /* Update Boss Will: 
     * ~~~~~~~~~~~~~~~~~~~~
-    * Update current customer frustration meter after player action
+    * Update boss will meter after player action
     */
     public void UpdateBossWill(float diff)
     {
         Debug.Log("Change boss will by " + diff);
         bossWillLevel += diff;
-        if (bossWillLevel > gameManager.FetchMaxWill()) bossWillLevel = gameManager.FetchMaxWill();
+        if (bossWillLevel > gameManager.FetchBossMaxWill()) bossWillLevel = gameManager.FetchBossMaxWill();
         if (bossWillLevel < 0) bossWillLevel = 0;
-        willMeter.GetComponent<SliderCounter>().UpdateBar(bossWillLevel);
+        bossWillMeter.GetComponent<SliderCounter>().UpdateBar(bossWillLevel);
         Debug.Log("Will updated to: " + bossWillLevel);
     }
 
@@ -316,7 +310,7 @@ public class BossCombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~
     * Player selects action button
     * Check action effects and cost
-    * Update performance, will, frustration, and effects based on action
+    * Update performance, will, bossWill, and effects based on action
     * Iterate turn counter and any active effects
     */
     public void TakeAction(Action action)
@@ -424,26 +418,30 @@ public class BossCombatManager : MonoBehaviour
     {
         float performaceModifier = action.PERFORMANCE_MODIFIER;
         float willModifier = action.WILL_MODIFIER;
+        float bossWillModifier = action.BOSS_WILL_MODIFIER;
 
         // Check player effects:
         foreach (var (type, effectUI) in activeEffects)
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, bossWillModifier);
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
+            bossWillModifier += effectResult.BossWillModifier;
         }
         // Check boss effects:
         foreach (var (type, effectUI) in boss.GetActiveEffects())
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, bossWillModifier);
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
+            bossWillModifier += effectResult.BossWillModifier;
             // Temp: Annoying special case
         }
 
         // Update meters with after effects and artifacts values
         UpdatePerformance(performaceModifier);
         UpdateWill(willModifier);
+        UpdateBossWill(bossWillModifier);
     }
 
     /* Apply Effect Modifiers:
@@ -451,7 +449,7 @@ public class BossCombatManager : MonoBehaviour
     * For each individual effect, update modifiers
     */
     private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController,
-        float performaceModifier, float willModifier)
+        float performaceModifier, float willModifier, float bossWillModifier)
     {
 
         ActionEffect effect = effectController.effect;
@@ -461,11 +459,13 @@ public class BossCombatManager : MonoBehaviour
         {
             performaceModifier *= effect.PERFORMANCE_MODIFIER;
             willModifier *= effect.WILL_MODIFIER;
+            bossWillModifier *= effect.BOSS_WILL_MODIFIER;
         }
         else
         {
             performaceModifier += effect.PERFORMANCE_MODIFIER;
             willModifier += effect.WILL_MODIFIER;
+            bossWillModifier += effect.BOSS_WILL_MODIFIER;
         }
 
         // Any special cases that need to be hard coded for now:
@@ -481,6 +481,7 @@ public class BossCombatManager : MonoBehaviour
         {
             PerformanceModifier = performaceModifier,
             WillModifier = willModifier,
+            BossWillModifier = bossWillModifier
         };
         return effectResult;
     }

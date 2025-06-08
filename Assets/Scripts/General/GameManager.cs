@@ -168,6 +168,11 @@ public class GameManager : MonoBehaviour
     public float FetchMaxWill() {
         return gameStatus.GetMaxWill();
     }
+
+    public float FetchBossMaxWill()
+    {
+        return gameStatus.GetBossMaxWill();
+    }
     public void UpdateMaxWill(float maxWill)
     {
         gameStatus.UpdateWill(maxWill);

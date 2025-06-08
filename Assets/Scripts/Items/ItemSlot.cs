@@ -21,7 +21,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 string description = _item.description;
                 if (_item is ArtifactItem) {
                     ArtifactItem artifact = (ArtifactItem)_item;
-                    if (!artifact.isEndOfShiftEffect) description += "\n Turn Counter: " + artifact.currentTurnCounter + "/" + artifact.turnClock;
+                    if (artifact.turnClock != 1){
+                     if (!artifact.isEndOfShiftEffect) description += "\n Turn Counter: " + artifact.currentTurnCounter + "/" + artifact.turnClock;
+                    }
                 }
                 gameObject.GetComponent<MouseOverDescription>().UpdateDescription(description, _item.itemName);
             }

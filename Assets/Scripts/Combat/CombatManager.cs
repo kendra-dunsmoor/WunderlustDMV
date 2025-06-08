@@ -409,6 +409,11 @@ public class CombatManager : MonoBehaviour
             attentionModifier = action.INCORRECT_CHOICE_ATTENTION_MODIFIER;
             performaceModifier = -action.PERFORMANCE_MODIFIER;                
         }
+        //TODO: This is not working
+        if (gameManager.ContainsItem("A_012"))
+        {
+             if (action.actionName == "Reject") willModifier += 1;
+        }
 
         // Check player effects:
             foreach (var (type, effectUI) in activeEffects)
@@ -422,7 +427,6 @@ public class CombatManager : MonoBehaviour
                 if (type == EffectType.MADE_MISTAKE)
                 {
                     // Check for additional attention penalty
-                    // TODO: this is increasing the penalty from 5 to 20 instead of 15?
                     if (action.actionName == "Make Mistake")
                     {
                         attentionModifier += 10;
@@ -430,10 +434,6 @@ public class CombatManager : MonoBehaviour
                         if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
                         
                     }
-                }
-                if (gameManager.ContainsItem("A_012"))
-                {
-                    if (action.actionName == "Reject") willModifier += 1;
                 }
             }
         // Check curr customer effects:
@@ -454,8 +454,6 @@ public class CombatManager : MonoBehaviour
         }
 
         // Update meters with after effects and artifacts values
-        // TODO: should attention be modified before or after performance,      after
-        // i.e. should current action new attention affect same turn?           no
         UpdatePerformance(performaceModifier * (1 + attentionLevel / 100));
         UpdateAttention(attentionModifier);
         UpdateWill(willModifier);

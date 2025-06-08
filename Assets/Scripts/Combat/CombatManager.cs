@@ -14,11 +14,16 @@ using static ActionEffect;
 public class CombatManager : MonoBehaviour
 {
     [SerializeField] EnemySpawner enemySpawner;
-    [SerializeField] Dialogue combatTutorialDialogue;
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
     List<Certificate> playerCerts; 
+
+    [Header("------------- Tutorials -------------")]
+    [SerializeField] TutorialManager tutorialManager;
+    [SerializeField] Dialogue combatTutorialDialogue;
+    [SerializeField] TutorialDialogue openingTutorial;
+    [SerializeField] TutorialDialogue secondCombatTutorial;
 
     [Header("------------- Prefabs -------------")]
     [SerializeField] private GameObject combatRewardsScreen;
@@ -111,6 +116,15 @@ public class CombatManager : MonoBehaviour
         attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
+
+        // Check for tutorials:
+        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0) tutorialManager.StartTutorial(openingTutorial);
+        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 1)
+        {
+            remainingTurns = 20;
+            tutorialManager.StartTutorial(secondCombatTutorial);
+            gameManager.UpdateTutorialStatus(false);
+        }
     }
 
     /* Add Action Loadout: 
@@ -202,7 +216,8 @@ public class CombatManager : MonoBehaviour
     * Instantiate all customers off screen at start of combat
     * Add correct images to customer queue and move first customer to front of line
     */
-    private void InitializeCustomerQueue() {
+    private void InitializeCustomerQueue()
+    {
         Debug.Log("Initializing queue");
         enemySpawner.SpawnEnemies(CUSTOMER_GOAL, out customersInLine, out customerIconQueue);
         currCustomer = customersInLine.Dequeue();
@@ -330,7 +345,7 @@ public class CombatManager : MonoBehaviour
         // Check end shift state for turns:
         if (remainingTurns == 0) EndShift(false);
 
-        // Check to trigger tutorial
+        // Check to trigger astaroth tutorial
         if (gameManager.InTutorial() && remainingTurns == 7)
             FindFirstObjectByType<DialogueManager>().StartDialogue(combatTutorialDialogue);
     }

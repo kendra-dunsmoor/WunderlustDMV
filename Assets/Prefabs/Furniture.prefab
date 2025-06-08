@@ -110,7 +110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000010967, y: -67.146}
+  m_AnchoredPosition: {x: -0.000010967, y: -63.4}
   m_SizeDelta: {x: 89.154, y: 31.5931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2353627621799133054
@@ -716,13 +716,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 2cb190b5ce46c2b4f85b334d014e0374, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 8352723009647827294}
+        m_TargetAssemblyTypeName: FurnitureUIController, Assembly-CSharp
+        m_MethodName: PurchaseScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8352723009647827294}
+          m_ObjectArgumentAssemblyTypeName: FurnitureUIController, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

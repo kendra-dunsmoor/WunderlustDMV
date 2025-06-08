@@ -10,21 +10,7 @@ public class BossAction : ScriptableObject
     public float WILL_MODIFIER;
     public float PERFORMANCE_MODIFIER;
     public float BOSS_WILL_MODIFIER;
-    public enum BossActionType
-    {
-        PASSIVE,
-        NEGATIVE,
-        POSTIVE,
-        NEUTRAL
-    }
-
-    // TODO: add accuracy check:
     public float ACTION_CHANCE = 1.0f; // The chance of the action happening, 1.0f = 100%
-
-    // TODO: add value for conditions and for how many turns the condition lasts
-
-    // TODO: add a function that accepts unique actions
-
     public string GetDescription()
     {
         string description = generalDescription;

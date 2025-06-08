@@ -17,7 +17,6 @@ public class BossData : ScriptableObject
     public BossAction[] turnActions; // total list of actions boss is capable of
     public BossAction[] passiveActions; // total list of passives boss is capable of
 
-
     [Header("------------- Dialogue -------------")]
     public string[] openingDialogueLines;
     public string[] encounterDialogueLines; // lines needed for throughout the encounter

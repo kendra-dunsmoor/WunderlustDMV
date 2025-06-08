@@ -48,11 +48,10 @@ public class BossCombatManager : MonoBehaviour
     [SerializeField, Tooltip("If loadout not customized from apartment use base")] private List<Action> STARTER_LOADOUT;
 
     // New Boss State Management
-    public enum BossState { Neutral, Angry, Pacified, FinalPhase }
+    public enum BossState { Neutral, Angry, Pacified }
     private BossState currentBossState;
-    private BossState[] usableStates = { BossState.Neutral, BossState.Angry, BossState.Pacified };
-    //?? not sure how to add a list of possible actions
-    // public enum BossAction { FabricateError, ...  };
+    private BossState[] usableStates = { BossState.Neutral, BossState.Angry, BossState.Pacified }; // states that the boss hasn't used
+    private Boss bossData;
     private bool isBossVulnerable = false;
     private int bossStateCounter;
     private int turnCounter = 0;
@@ -119,12 +118,15 @@ public class BossCombatManager : MonoBehaviour
         {
             case 0:
                 SetBossState(BossState.Angry);
+                currentBossState = BossState.Angry;
                 break;
             case 1:
                 SetBossState(BossState.Pacified);
+                currentBossState = BossState.Pacified;
                 break;
             case 2:
                 SetBossState(BossState.Neutral);
+                currentBossState = BossState.Neutral;
                 break;
         }
     }
@@ -149,29 +151,91 @@ public class BossCombatManager : MonoBehaviour
             case BossState.Neutral:
                 OnEnterNeutralState();
                 break;
-            case BossState.FinalPhase:
-                OnEnterFinalPhase();
-                break;
         }
     }
 
     // --- State-Specific Logic ---
     private void OnEnterAngryState()
     {
-        // Boss says angry text
-        // boss sprite(face) changes
-        // boss gains affect of angry
+        // remove angry from usable states
+        List<BossState> tempList = new List<BossState>(usableStates);
+        tempList.Remove(BossState.Angry);
+
+        // set turn timer for boss state
+        bossStateCounter = 4;
+
+        // set active boss sprite(face)
+
+        // increase player's WILL by 5
+        UpdateWill(10);
+
+        // set player condition to caffeinated
+        // ?? how to set decay value?
+        // ApplyEffectModifiers(EffectType.CAFFIENATED);
+
+        // THIS WILL ACT AS THE PASSIVE
+        // if PERFORMANCE_MODIFIER is negative
+        // player loses 2 performanceat at end of turn
+
+        // TODO: set boss dialogue
+        // TODO: there's some dialogue for each state, but I'd leave that for polish
+
+        // set boss available turn action to Fabricate Error
 
     }
 
     private void OnEnterPacifiedState()
     {
-        // ADD PACIFIED STATE LOGIC HERE
+        // remove angry from usable states
+        List<BossState> tempList = new List<BossState>(usableStates);
+        tempList.Remove(BossState.Pacified);
+
+        // set turn timer for boss state
+        bossStateCounter = 3;
+
+        // set active boss sprite(face)
+
+        // increase player's WILL by 5
+        UpdateWill(5);
+
+        // set player condition to Drained
+        // ?? how to set decay value?
+        // ApplyEffectModifiers(EffectType.DRAINED);
+
+        // THIS WILL ACT AS THE PASSIVE
+        // if PERFORMANCE_MODIFIER is positive
+        // player gains 2 performance at the end of turn
+
+        // TODO: set boss dialogue
+        // TODO: there's some dialogue for each state, but I'd leave that for polish
+
+        // set boss available turn action to Gloat
+
     }
 
     private void OnEnterNeutralState()
     {
-        // ADD NEUTRAL STATE LOGIC HERE
+        // remove angry from usable states
+        List<BossState> tempList = new List<BossState>(usableStates);
+        tempList.Remove(BossState.Neutral);
+
+        // set turn timer for boss state
+        bossStateCounter = 2;
+
+        // set active boss sprite(face)
+
+        // player's WILL does not change
+
+        // no condition applied to player
+
+        // no need to set passive
+        // one of two actions will happen at random
+
+        // TODO: set boss dialogue
+        // TODO: there's some dialogue for each state, but I'd leave that for polish
+
+        // set boss available turn action to [Hyper-Crit, Credit Steal] at random
+
     }
 
     private void OnEnterFinalPhase()
@@ -192,11 +256,6 @@ public class BossCombatManager : MonoBehaviour
         }
     }
 
-    private void getBossStatePassiveEffect(BossState state)
-    {
-        //gets affect from state that 
-    }
-
     /* Add Action Loadout: 
     * ~~~~~~~~~~~~~~~
     * Fetch player action loadout to customize class actions
@@ -211,12 +270,11 @@ public class BossCombatManager : MonoBehaviour
             button.GetComponent<OnHoverChangeImage>().UpdateImages(action.baseButtonImage, action.hoverButtonImage);
             button.GetComponent<MouseOverDescription>().UpdateDescription(action.GetDescription(), action.actionName);
         }
-        //!! needs updating
-        GameObject.FindGameObjectWithTag("AcceptButton").GetComponent<MouseOverDescription>()
+        GameObject.FindGameObjectWithTag("PraiseButton").GetComponent<MouseOverDescription>()
             .UpdateDescription(praiseAction.GetDescription(), praiseAction.actionName);
-        GameObject.FindGameObjectWithTag("RejectButton").GetComponent<MouseOverDescription>()
+        GameObject.FindGameObjectWithTag("CounterPointButton").GetComponent<MouseOverDescription>()
             .UpdateDescription(counterPointAction.GetDescription(), counterPointAction.actionName);
-        GameObject.FindGameObjectWithTag("EscalateButton").GetComponent<MouseOverDescription>()
+        GameObject.FindGameObjectWithTag("FactsButton").GetComponent<MouseOverDescription>()
             .UpdateDescription(factsAction.GetDescription(), factsAction.actionName);
     }
 
@@ -347,13 +405,74 @@ public class BossCombatManager : MonoBehaviour
         // Update turn counter for artifacts and apply any effects:
         inventoryManager.IncrementArtifacts();
 
-        // Update turn counter for active effects:
+        // check if boss is vulnerable
+        if (!isBossVulnerable)
+        {
+            // if boss will power is less than 1 set isBossVulnerable to true
+            if (bossWillLevel < 1) isBossVulnerable = true;
+        }
+        else
+        {
+            // vulnerability modifiers
+            // Name: Exposed
+            // Effect: Special Actions MODIFIERS are doubled
+
+            // boss doesn't act one turn(also ok with causing non-special action to double positive affects if it's too complicated to cause boss to lose a turn
+            if (bossWillLevel > 0) isBossVulnerable = false;
+        }
+
+        // Check if phase is over, check if final phase needs to happen, decrease turn counter for boss state and trigger any passive effects:
+        if (bossStateCounter == 0 && usableStates.Length == 0)
+        {
+            OnEnterFinalPhase();
+        }
+        else if (bossStateCounter == 0)
+        {
+            EnableBasicActions();
+            // maybe set an inbetween state here where boss doesn't do anything
+        }
+        else
+        {
+            bossStateCounter--;
+        }
+
+        // TRIGGER BOSS PASSIVE EFFECTS HERE
+        foreach (var (type, effectUI) in activeEffects)
+        {
+            // if boss is angry and performance modifier is negative, player loses 2 performance
+            ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
+            if (BossState.Angry == currentBossState && effect.PERFORMANCE_MODIFIER < 0)
+            {
+                UpdatePerformance(-2);
+            }
+            else if (BossState.Pacified == currentBossState && effect.PERFORMANCE_MODIFIER > 0)
+            {
+                UpdatePerformance(2);
+            }
+            // if boss is neutral, one of two actions will happen at random
+            // ?? is this a good place for this?
+            else if (BossState.Neutral == currentBossState)
+            {
+                System.Random rand = new System.Random();
+                int randomAction = rand.Next(0, 2);
+                if (randomAction == 0)
+                {
+                    // Hyper-Crit
+                    UpdatePerformance(-5);
+                }
+                else
+                {
+                    // Credit Steal
+                    UpdateBossWill(5);
+                }
+            }
+        }
+
         foreach (var (type, effectUI) in activeEffects)
         {
             ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
             if (effect.shouldDecay) RemoveEffectStacks(1, effect.type);
         }
-        boss.IncrementActiveEffects();
 
         // Check to trigger tutorial
         // if (gameManager.InTutorial() && remainingTurns == 7)
@@ -538,6 +657,23 @@ public class BossCombatManager : MonoBehaviour
         foreach (Button button in buttons)
         {
             button.interactable = true;
+        }
+    }
+
+    public void EnableBasicActions()
+    {
+        actionsDisabled = false;
+        Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
+        foreach (Button button in buttons)
+        {
+            if (button.CompareTag("PraiseButton") || button.CompareTag("CounterPointButton") || button.CompareTag("FactsButton"))
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
         }
     }
 

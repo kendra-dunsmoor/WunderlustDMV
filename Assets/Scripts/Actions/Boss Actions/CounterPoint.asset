@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
-  m_Name: Accept
+  m_Name: CounterPoint
   m_EditorClassIdentifier: 
-  actionName: Accept
-  FRUSTRATION_MODIFIER: -20
-  WILL_MODIFIER: 0
-  BOSS_WILL_MODIFIER: 0
-  PERFORMANCE_MODIFIER: 10
+  actionName: CounterPoint
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 3
+  BOSS_WILL_MODIFIER: -5
+  PERFORMANCE_MODIFIER: -5
   ATTENTION_MODIFIER: 0
-  INCORRECT_CHOICE_ATTENTION_MODIFIER: 5
-  type: 0
+  INCORRECT_CHOICE_ATTENTION_MODIFIER: 0
+  type: 2
   movement: 2
   effects: []
   actionUpgrades: []
   baseButtonImage: {fileID: 0}
   hoverButtonImage: {fileID: 0}
-  generalDescription: If paperwork is invalid lose performance and gain attention
+  generalDescription: Nepobaby will enter into an ANGRY state.. such a bad nepobaby.

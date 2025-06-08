@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53affa4cf940a489bbab5e70dfd43215, type: 3}
+  m_Script: {fileID: 11500000, guid: e10957e6c5ab59745aff5bfe85691f5d, type: 3}
   m_Name: Fabricate Error
   m_EditorClassIdentifier: 
-  enemyActionName: 'Fabricate Error  '
-  FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: 7
+  BossActionName: Fabricate Error
+  generalDescription: 
+  WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: -7
-  ATTENTION_MODIFIER: 0
-  PASSIVE: 0
-  ACTION_CHANCE: 1
   BOSS_WILL_MODIFIER: -10
+  ACTION_CHANCE: 1

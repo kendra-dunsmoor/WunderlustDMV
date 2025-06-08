@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53affa4cf940a489bbab5e70dfd43215, type: 3}
-  m_Name: Credit Stealer
+  m_Script: {fileID: 11500000, guid: e10957e6c5ab59745aff5bfe85691f5d, type: 3}
+  m_Name: Gloat
   m_EditorClassIdentifier: 
-  enemyActionName: Credit Stealer
-  FRUSTRATION_MODIFIER: 0
+  BossActionName: Hyper-Crit
+  generalDescription: 
   WILL_MODIFIER: 0
-  PERFORMANCE_MODIFIER: 2
-  ATTENTION_MODIFIER: 0
-  PASSIVE: 1
-  ACTION_CHANCE: 0
-  BOSS_WILL_MODIFIER: 0
+  PERFORMANCE_MODIFIER: 0
+  BOSS_WILL_MODIFIER: 8
+  ACTION_CHANCE: 1

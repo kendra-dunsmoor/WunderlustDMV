@@ -119,7 +119,7 @@ public class CombatManager : MonoBehaviour
         willMeter.value = willLevel;
         willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
         performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
-        remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        remainingTurnsText.text = remainingTurns.ToString();
         attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
@@ -327,7 +327,7 @@ public class CombatManager : MonoBehaviour
         // Decrease remaining turn count and increment active effects
         remainingTurns--;
         Debug.Log("Turns remaining: " + remainingTurns);
-        remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        remainingTurnsText.text = remainingTurns.ToString();
 
         // Update turn counter for artifacts and apply any effects:
         inventoryManager.IncrementArtifacts();

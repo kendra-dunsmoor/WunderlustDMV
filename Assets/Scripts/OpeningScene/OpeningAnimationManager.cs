@@ -6,12 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class OpeningAnimationManager : MonoBehaviour
 {
+    AudioManager audioManager;
     [SerializeField] GameObject textBox;
     [SerializeField] TextMeshProUGUI openingText;
     [SerializeField] GameObject continueButton;
     [SerializeField] string[] dialogueLines;
+    [SerializeField] AudioClip textSound;
+
     private bool isTyping;
 
+    void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +41,7 @@ public class OpeningAnimationManager : MonoBehaviour
     IEnumerator TypeLine(string text)
     {
         isTyping = true;
+        audioManager.PlayDialogue(textSound);
         openingText.text = "";
         foreach (char letter in text)
         {
@@ -41,12 +49,14 @@ public class OpeningAnimationManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         isTyping = false;
-        yield return new WaitForSeconds(0.5f);
+        audioManager.StopDialogue();
+        yield return new WaitForSeconds(0.75f);
         continueButton.SetActive(true);
     }
 
     public void GoToApartment()
     {
+        audioManager.PlayDialogue(textSound);
         SceneManager.LoadSceneAsync(1);
     }
 }

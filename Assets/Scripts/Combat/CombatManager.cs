@@ -14,6 +14,7 @@ using static ActionEffect;
 public class CombatManager : MonoBehaviour
 {
     [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] SceneFader sceneFader;
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
@@ -85,29 +86,35 @@ public class CombatManager : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
         inventoryManager = FindFirstObjectByType<InventoryManager>();
-        
+        sceneFader.gameObject.SetActive(true);
     }
 
     void Start()
     {
         if (audioManager != null) audioManager.PlayMusic(audioManager.combatMusic);
-
-        // temp initialization for quick testing when game manager is null:
-        if (performanceLevel == 0) performanceLevel = 50f;
-        if (willLevel == 0) willLevel = 50f;
-        if (attentionLevel == 0) attentionLevel = 20f;
-        if (CUSTOMER_GOAL == 0) CUSTOMER_GOAL = 10;
-        MAX_PERFORMANCE = performanceMeter.maxValue;
-
         if (gameManager != null)
         {
             if (gameManager.InTutorial()) remainingTurns = 10;
             else remainingTurns = 20;
+            if (gameManager.InTutorial()) CUSTOMER_GOAL = 5;
+            else CUSTOMER_GOAL = 10;
             performanceLevel = gameManager.FetchPerformance();
             attentionLevel = gameManager.FetchAttention();
             willLevel = gameManager.FetchWill();
             playerCerts = gameManager.FetchCertificates();
         }
+
+        // Check for tutorials:
+        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0) tutorialManager.StartTutorial(openingTutorial);
+        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 1)
+        {
+            remainingTurns = 20;
+            CUSTOMER_GOAL = 10;
+            tutorialManager.StartTutorial(secondCombatTutorial);
+            gameManager.UpdateTutorialStatus(false);
+        }
+
+        MAX_PERFORMANCE = performanceMeter.maxValue;
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
         willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
@@ -116,15 +123,6 @@ public class CombatManager : MonoBehaviour
         attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
-
-        // Check for tutorials:
-        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0) tutorialManager.StartTutorial(openingTutorial);
-        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 1)
-        {
-            remainingTurns = 20;
-            tutorialManager.StartTutorial(secondCombatTutorial);
-            gameManager.UpdateTutorialStatus(false);
-        }
     }
 
     /* Add Action Loadout: 

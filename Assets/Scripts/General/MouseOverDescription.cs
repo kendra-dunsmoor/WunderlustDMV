@@ -10,34 +10,44 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
     [SerializeField] private string description;
     private GameObject spawnedPopUp;
     private Transform originalTransform;
+    private bool firstEnter;
 
     void Start()
     {
         this.originalTransform = this.transform;
-        if (popUpBox != null) {
+        if (popUpBox != null)
+        {
             //spawnedPopUp = Instantiate(popUpBox, transform);
-            
+
             spawnedPopUp = Instantiate(popUpBox, GameObject.FindGameObjectWithTag("Canvas").transform);
             spawnedPopUp.SetActive(false);
         }
+        // testing:
+        firstEnter = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (spawnedPopUp != null)
+        Debug.Log("In pointer enter");
+        if (spawnedPopUp != null && !firstEnter)
         {
+            Debug.Log("First enter");
             spawnedPopUp.transform.SetAsLastSibling();
             spawnedPopUp.transform.position = this.originalTransform.position;
             spawnedPopUp.SetActive(true);
-
-           
             spawnedPopUp.GetComponentInChildren<TextMeshProUGUI>().text = description;
-          
+            firstEnter = true;
+        }
+        else if (spawnedPopUp != null && firstEnter)
+        {
+            Debug.Log("Not first enter");
+            spawnedPopUp.SetActive(true);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        Debug.Log("In pointer exit");
         if (spawnedPopUp != null) spawnedPopUp.SetActive(false);
     }
 

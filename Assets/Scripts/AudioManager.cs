@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     [Header("-------------Audio Source-------------")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource dialogueSource;
     
     
     [Header("-------------Music Audio Clips-------------")]
@@ -78,6 +79,18 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = clip;
             musicSource.Play();
         }
+    }
+    public void PlayDialogue(AudioClip clip)
+    {
+        if (clip != null) {
+            dialogueSource.clip = clip;
+            dialogueSource.Play();
+        }
+    }
+
+    public void StopDialogue()
+    {
+        dialogueSource.Stop();
     }
 
     public void StopSFX()

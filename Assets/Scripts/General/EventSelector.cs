@@ -15,12 +15,20 @@ public class EventSelector : MonoBehaviour
     [SerializeField] Dialogue introBreakRoomVerrineDialogue;
     [SerializeField] Dialogue introBreakRoomSothothDialogue;
     [SerializeField] GameManager gameManager;
+    private System.Random randomGen;
+
+    void Awake()
+    {
+        randomGen = new System.Random();
+
+    }
 
     public Dialogue FetchRandomEvent()
     {
         // Note: tutorial structured as landlord, Verrine, Astaroth in combat, then Sothoth
         string scene = SceneManager.GetActiveScene().name;
-        switch(scene) {
+        switch (scene)
+        {
             case "Office_BreakRoom":
                 if (gameManager.InTutorial())
                 {
@@ -28,7 +36,7 @@ public class EventSelector : MonoBehaviour
                     else return introBreakRoomSothothDialogue;
                 }
                 else
-                    return breakRoomDialogues[Random.Range(0, breakRoomDialogues.Length)];
+                    return breakRoomDialogues[GetRandom(0, breakRoomDialogues.Length)];
             case "Apartment":
                 // Check result of last run
                 GameState.RunStatus lastRunResult = gameManager.FetchRunState();
@@ -37,14 +45,19 @@ public class EventSelector : MonoBehaviour
                     case GameState.RunStatus.FIRED:
                         return firedAptDialogue;
                     case GameState.RunStatus.REINCARNATED:
-                        return reincarnatedAptDialogue;     
+                        return reincarnatedAptDialogue;
                     case GameState.RunStatus.WON:
-                        return reincarnatedAptDialogue;                         
+                        return reincarnatedAptDialogue;
                 }
                 return introAptDialogue;
             case "Office_Event":
-                return officeEventDialogues[Random.Range(0, officeEventDialogues.Length)];
+                return officeEventDialogues[GetRandom(0, officeEventDialogues.Length)];
         }
         return introAptDialogue;
+    }
+
+    private int GetRandom(int min, int max)
+    {
+        return randomGen.Next(min, max);
     }
 }

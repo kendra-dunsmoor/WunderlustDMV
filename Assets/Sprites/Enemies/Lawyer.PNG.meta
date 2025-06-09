@@ -1,0 +1,1118 @@
+fileFormatVersion: 2
+guid: cb7d2a8ae507444e19b149aacad3fa26
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8478346005408351139
+    second: Lawyer_0
+  - first:
+      213: 199162650290323380
+    second: Lawyer_1
+  - first:
+      213: -9210218266991354021
+    second: Lawyer_2
+  - first:
+      213: 780508259678454176
+    second: Lawyer_3
+  - first:
+      213: -8918003768817207339
+    second: Lawyer_4
+  - first:
+      213: -1653135088013141041
+    second: Lawyer_5
+  - first:
+      213: 1535415744296702261
+    second: Lawyer_6
+  - first:
+      213: 2447677986859469002
+    second: Lawyer_7
+  - first:
+      213: -4647972146649464880
+    second: Lawyer_8
+  - first:
+      213: -1885185052488804950
+    second: Lawyer_9
+  - first:
+      213: 4937334631681310116
+    second: Lawyer_10
+  - first:
+      213: 4588299196556919804
+    second: Lawyer_11
+  - first:
+      213: 5043791729058867882
+    second: Lawyer_12
+  - first:
+      213: -5021817638648767922
+    second: Lawyer_13
+  - first:
+      213: -8757248136473528340
+    second: Lawyer_14
+  - first:
+      213: 5153435747444738087
+    second: Lawyer_15
+  - first:
+      213: -5899389465797955130
+    second: Lawyer_16
+  - first:
+      213: 8008551142563664063
+    second: Lawyer_17
+  - first:
+      213: 120342282081114525
+    second: Lawyer_18
+  - first:
+      213: 6044148504835836298
+    second: Lawyer_19
+  - first:
+      213: -2633453722150481689
+    second: Lawyer_20
+  - first:
+      213: 8813901159853493332
+    second: Lawyer_21
+  - first:
+      213: -54872862812647626
+    second: Lawyer_22
+  - first:
+      213: -2368592973999628096
+    second: Lawyer_23
+  - first:
+      213: -4281447677868147605
+    second: Lawyer_24
+  - first:
+      213: -6903055505224323728
+    second: Lawyer_25
+  - first:
+      213: -106931181477867692
+    second: Lawyer_26
+  - first:
+      213: -7911297261297768197
+    second: Lawyer_27
+  - first:
+      213: -4395803534969529650
+    second: Lawyer_28
+  - first:
+      213: 917394553254654842
+    second: Lawyer_29
+  - first:
+      213: -672919503195222755
+    second: Lawyer_30
+  - first:
+      213: -7645254129114071106
+    second: Lawyer_31
+  - first:
+      213: 2425938005920545486
+    second: Lawyer_32
+  - first:
+      213: -332630814470055538
+    second: Lawyer_33
+  - first:
+      213: -8942578603057933980
+    second: Lawyer_34
+  - first:
+      213: 8191084243246955708
+    second: Lawyer_35
+  - first:
+      213: -5616695066659215450
+    second: Lawyer_36
+  - first:
+      213: -4450364743416593849
+    second: Lawyer_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lawyer_0
+      rect:
+        serializedVersion: 2
+        x: 3189
+        y: 6124
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c78c07a3dd65a80800000000000000
+      internalID: -8478346005408351139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_1
+      rect:
+        serializedVersion: 2
+        x: 2914
+        y: 6036
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bf741f006193c200800000000000000
+      internalID: 199162650290323380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_2
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 5989
+        width: 52
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f9a24b84bbe2080800000000000000
+      internalID: -9210218266991354021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_3
+      rect:
+        serializedVersion: 2
+        x: 2935
+        y: 6024
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1846a702ce4da00800000000000000
+      internalID: 780508259678454176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 4986
+        height: 5990
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d73e0662d2ec3480800000000000000
+      internalID: -8918003768817207339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_5
+      rect:
+        serializedVersion: 2
+        x: 2839
+        y: 5989
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcb1e396562ee09e0800000000000000
+      internalID: -1653135088013141041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 853
+        width: 9
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 531d8550c74ee4510800000000000000
+      internalID: 1535415744296702261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_7
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 872
+        width: 15
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac84d432926e7f120800000000000000
+      internalID: 2447677986859469002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 852
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df7c0965f51f7fb0800000000000000
+      internalID: -4647972146649464880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_9
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 848
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa55782de2a76d5e0800000000000000
+      internalID: -1885185052488804950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_10
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 825
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad399a30bfe48440800000000000000
+      internalID: 4937334631681310116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_11
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 838
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf34cf53fc9ecaf30800000000000000
+      internalID: 4588299196556919804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_12
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 809
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa6b9bbad52ff540800000000000000
+      internalID: 5043791729058867882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_13
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 804
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a9c81e67bee4ab0800000000000000
+      internalID: -5021817638648767922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_14
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 784
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce73b8fb731087680800000000000000
+      internalID: -8757248136473528340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_15
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 782
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7284e3b128ea48740800000000000000
+      internalID: 5153435747444738087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_16
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 787
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c17e638988212ea0800000000000000
+      internalID: -5899389465797955130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_17
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 776
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb05e0245d6142f60800000000000000
+      internalID: 8008551142563664063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_18
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 762
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9997eefaaa8ba100800000000000000
+      internalID: 120342282081114525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_19
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 686
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a89c278ba0121e350800000000000000
+      internalID: 6044148504835836298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_20
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 684
+        width: 23
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e05ac6dac7147bd0800000000000000
+      internalID: -2633453722150481689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_21
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 604
+        width: 30
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45c88762864415a70800000000000000
+      internalID: 8813901159853493332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_22
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 676
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63f4e380c6d0d3ff0800000000000000
+      internalID: -54872862812647626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_23
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 676
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0244f4d31112fd0800000000000000
+      internalID: -2368592973999628096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_24
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 599
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6c7f34650e3594c0800000000000000
+      internalID: -4281447677868147605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_25
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 574
+        width: 19
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07dac4a879b6330a0800000000000000
+      internalID: -6903055505224323728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_26
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 581
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45f499038aa148ef0800000000000000
+      internalID: -106931181477867692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_27
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 571
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf863d38e0d653290800000000000000
+      internalID: -7911297261297768197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_28
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 552
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eca1cb399f7fef2c0800000000000000
+      internalID: -4395803534969529650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_29
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 556
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a733f915c7d3bbc00800000000000000
+      internalID: 917394553254654842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_30
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 517
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1dcd91f64f49a6f0800000000000000
+      internalID: -672919503195222755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_31
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 528
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf319830e996e590800000000000000
+      internalID: -7645254129114071106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_32
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 517
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eca730263c9aaa120800000000000000
+      internalID: 2425938005920545486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_33
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 474
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e89d92e5902426bf0800000000000000
+      internalID: -332630814470055538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_34
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 505
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46119bce32495e380800000000000000
+      internalID: -8942578603057933980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_35
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 503
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbcb80498b39ca170800000000000000
+      internalID: 8191084243246955708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_36
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 498
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a7a61c689d7d02b0800000000000000
+      internalID: -5616695066659215450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lawyer_37
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 388
+        width: 28
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7424bbb48d02d32c0800000000000000
+      internalID: -4450364743416593849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Lawyer_0: -8478346005408351139
+      Lawyer_1: 199162650290323380
+      Lawyer_10: 4937334631681310116
+      Lawyer_11: 4588299196556919804
+      Lawyer_12: 5043791729058867882
+      Lawyer_13: -5021817638648767922
+      Lawyer_14: -8757248136473528340
+      Lawyer_15: 5153435747444738087
+      Lawyer_16: -5899389465797955130
+      Lawyer_17: 8008551142563664063
+      Lawyer_18: 120342282081114525
+      Lawyer_19: 6044148504835836298
+      Lawyer_2: -9210218266991354021
+      Lawyer_20: -2633453722150481689
+      Lawyer_21: 8813901159853493332
+      Lawyer_22: -54872862812647626
+      Lawyer_23: -2368592973999628096
+      Lawyer_24: -4281447677868147605
+      Lawyer_25: -6903055505224323728
+      Lawyer_26: -106931181477867692
+      Lawyer_27: -7911297261297768197
+      Lawyer_28: -4395803534969529650
+      Lawyer_29: 917394553254654842
+      Lawyer_3: 780508259678454176
+      Lawyer_30: -672919503195222755
+      Lawyer_31: -7645254129114071106
+      Lawyer_32: 2425938005920545486
+      Lawyer_33: -332630814470055538
+      Lawyer_34: -8942578603057933980
+      Lawyer_35: 8191084243246955708
+      Lawyer_36: -5616695066659215450
+      Lawyer_37: -4450364743416593849
+      Lawyer_4: -8918003768817207339
+      Lawyer_5: -1653135088013141041
+      Lawyer_6: 1535415744296702261
+      Lawyer_7: 2447677986859469002
+      Lawyer_8: -4647972146649464880
+      Lawyer_9: -1885185052488804950
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3677026419165174857}
   - component: {fileID: 4085437630148359879}
   - component: {fileID: 139300258642220024}
+  - component: {fileID: -5137165044910135666}
   m_Layer: 5
   m_Name: Special Action Button
   m_TagString: Untagged
@@ -166,6 +167,18 @@ MonoBehaviour:
   image: {fileID: 2755861827983331424}
   hoverImage: {fileID: 4437820018830493574, guid: 8297d69beb45e4bf5aa3e41f6acf430a, type: 3}
   baseImage: {fileID: 1695850689617446438, guid: 1fcdb938a3d2e468a81c1fe72ea1a36f, type: 3}
+--- !u!225 &-5137165044910135666
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634796642407987267}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &5367034414788819291
 GameObject:
   m_ObjectHideFlags: 0

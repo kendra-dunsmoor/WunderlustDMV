@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /*
 * Calendar Controller
@@ -12,7 +12,15 @@ using UnityEngine.SceneManagement;
 public class CalendarController : MonoBehaviour
 {
     [SerializeField] CalendarDay[] calendarDays;
+    [SerializeField] TextMeshProUGUI optionA;
+    [SerializeField] TextMeshProUGUI optionB;
+    [SerializeField] Sprite emptySpotImage;
+    [SerializeField] Sprite stickyNoteImage;
+    [SerializeField] Color emptySpotColor;
+
     private GameManager gameManager;
+    private SceneFader sceneFader;
+
     private int currDay = 0;
 
     private AudioManager audioManager;
@@ -25,6 +33,8 @@ public class CalendarController : MonoBehaviour
 
     void Start()
     {
+        sceneFader = FindFirstObjectByType<SceneFader>();
+        sceneFader.transform.SetAsLastSibling(); // See if this layers it on top
         if (audioManager != null) audioManager.PlaySFX(audioManager.paperRustle);
         if (gameManager != null)
         {
@@ -36,57 +46,71 @@ public class CalendarController : MonoBehaviour
             currDay = 1;
         }
         // TODO: if end of week enable vending machine button
-        if (currDay == 5) SceneManager.LoadSceneAsync(5);
+        if (currDay == 5) sceneFader.LoadScene(5);
         else FillCalendar();
     }
-    private void FillCalendar() {
+    
+    private void FillCalendar()
+    {
         Debug.Log("Fill Calendar for day: " + currDay);
         // Set options for current shift
         calendarDays[currDay - 1].shiftCompleteMarker.SetActive(true);
-        calendarDays[currDay - 1].orText.SetActive(true);
-        calendarDays[currDay - 1].optionA.SetActive(true);
-        calendarDays[currDay - 1].optionB.SetActive(true);
-        calendarDays[currDay - 1].optionA.GetComponentInChildren<TextMeshProUGUI>().text = gameManager.FetchNextShiftChoice();
-        calendarDays[currDay - 1].optionB.GetComponentInChildren<TextMeshProUGUI>().text = gameManager.FetchNextShiftChoice();
-        
+        calendarDays[currDay - 1].choiceMarker.SetActive(true);
+        SetToEmptySlot(calendarDays[currDay - 1].choiceMarker);
+        optionA.text = gameManager.FetchNextShiftChoice();
+        optionB.text = gameManager.FetchNextShiftChoice();
+
         // Fetch past run choices and fill calendar
         List<string> runPath = gameManager.FetchRunPath();
         if (runPath == null) return;
-        for (int i = 0; i < runPath.Count; i++) {
+        for (int i = 0; i < runPath.Count; i++)
+        {
             calendarDays[i].shiftCompleteMarker.SetActive(true);
-            // TODO: only storing string rn so just adding to first note, not which (top or bottom) player actually picked
-            calendarDays[i].orText.SetActive(false);
-            calendarDays[i].optionB.SetActive(false);
-            calendarDays[i].optionA.SetActive(true);
-            calendarDays[i].optionA.GetComponentInChildren<TextMeshProUGUI>().text = runPath[i];
+            calendarDays[i].choiceMarker.SetActive(true);
+            SetSlotToChoiceMade(calendarDays[i].choiceMarker, runPath[i]);
         }
     }
 
-    public void SelectChoice(TextMeshProUGUI choice) {
-        if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
+    private void SetToEmptySlot(GameObject noteSlot)
+    {
+        noteSlot.GetComponent<Image>().sprite = emptySpotImage;
+        noteSlot.GetComponentInChildren<TextMeshProUGUI>().text = "Select Break Activity";
+        noteSlot.GetComponentInChildren<TextMeshProUGUI>().color = emptySpotColor;
+    }
+
+    private void SetSlotToChoiceMade(GameObject noteSlot, string choice)
+    {
+        noteSlot.GetComponent<Image>().sprite = stickyNoteImage;
+        noteSlot.GetComponentInChildren<TextMeshProUGUI>().text = choice;        
+    }
+
+    public void SelectChoice(TextMeshProUGUI choice)
+    {
+        if (audioManager != null) audioManager.PlaySFX(audioManager.paperRustle);
         Debug.Log("Selecting choice: " + choice.text);
         gameManager.StoreRunChoice(choice.text);
-        switch (choice.text) {
-            case "Break Room":
+        switch (choice.text)
+        {
+            case "<u>Break Room</u>":
                 BreakRoom();
                 break;
-            case "Office Event":
+            case "<u>Office Event</u>":
                 TriggerEvent();
                 break;
-            case "Vending Machine":
+            case "<u>Vending Machine</u>":
                 GoToVendingMachine();
                 break;
         }
     }
     private void GoToVendingMachine() {
-        SceneManager.LoadSceneAsync(6);
+        sceneFader.LoadScene(6);
     }
 
     private void BreakRoom() {
-        SceneManager.LoadSceneAsync(2);
+        sceneFader.LoadScene(2);
     }
 
     private void TriggerEvent() {
-        SceneManager.LoadSceneAsync(4);
+        sceneFader.LoadScene(4);
     }
 }

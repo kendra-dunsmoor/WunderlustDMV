@@ -7,6 +7,7 @@ public class VendingMachineController : MonoBehaviour
 {
     [SerializeField] private Transform itemsGridParent;
     [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private SceneFader sceneFader;
 
     private AudioManager audioManager;
     private GameManager gameManager;
@@ -18,16 +19,19 @@ public class VendingMachineController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI purchaseFlavorText;
     private int activeIndex;
 
+    void Awake()
+    { 
+        audioManager = FindFirstObjectByType<AudioManager>();
+        // Get Game Manager for updating inventory
+        gameManager = FindFirstObjectByType<GameManager>();
+    }
+
     void Start()
     {
+        sceneFader.gameObject.SetActive(true);
         // These should probably get moved to prefab script but leaving all pop up logic in here for now:
         opaqueScreen.SetActive(false);
         purchasePopUp.SetActive(false);
-
-        audioManager = FindFirstObjectByType<AudioManager>();
-
-        // Get Game Manager for updating inventory
-        gameManager = FindFirstObjectByType<GameManager>();
 
         // Fill machine with items
         List<Item> artifactsForSale = gameManager.FetchRandomItems(3, true);
@@ -79,7 +83,7 @@ public class VendingMachineController : MonoBehaviour
 
     public void NextShift()
     {
-        SceneManager.LoadSceneAsync(3);
+        sceneFader.LoadScene(3);
     }
 
     public void PurchasePopUp(Item item, int index)

@@ -97,7 +97,6 @@ public class GameManager : MonoBehaviour
         if (inTutorial) return eventChoices[1];
         // TODO: improve this for select shift choice for run
         int choice = Random.Range(0, 3);
-        Debug.Log("Choice: " + choice);
         return eventChoices[choice];
     }
 

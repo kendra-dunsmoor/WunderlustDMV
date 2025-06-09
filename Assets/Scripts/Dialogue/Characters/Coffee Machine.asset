@@ -15,3 +15,5 @@ MonoBehaviour:
   characterName: Coffee Machine
   characterImage: {fileID: 6483408644546281665, guid: 90b5343ab4735436b9feeb00df1f8205, type: 3}
   typingSpeed: 0.01
+  sounds:
+  - {fileID: 8300000, guid: b2352a24057f84118ae2a207f276feaf, type: 3}

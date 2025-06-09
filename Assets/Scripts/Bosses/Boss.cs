@@ -135,7 +135,7 @@ public class Boss : MonoBehaviour
         if (currentBossState == BossState.Neutral) preppedAction = bossData.neutralPhaseActions[0];
         if (currentBossState == BossState.Angry) preppedAction = bossData.angryPhaseActions[0];
         if (currentBossState == BossState.Pacified) preppedAction = bossData.pacifiedPhaseActions[0];
-        if (currentBossState == BossState.Transition) preppedAction = null;
+        if (currentBossState == BossState.Transition) preppedAction = bossData.pacifiedPhaseActions[0];
 
         if (preppedAction != null)
         {

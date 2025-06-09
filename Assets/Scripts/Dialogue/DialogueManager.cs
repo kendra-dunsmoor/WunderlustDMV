@@ -34,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject RewardScreen;
 
     private bool isTyping;
+    private bool isObjectCharacter;
     private AudioClip[] typingSounds;
     private Dialogue currDialogue;
 
@@ -71,6 +72,14 @@ public class DialogueManager : MonoBehaviour
         DialogueTitleText.text = dialogue.character.characterName;
         characterImage.sprite = dialogue.character.characterImage;
         typingSounds = dialogue.character.sounds;
+        
+        // Temp logic, I want to cut off the sound for these early if needed:
+        if (dialogue.character.characterName == "Printer" ||
+        dialogue.character.characterName == "Coffee Machine" ||
+        dialogue.character.characterName == "Lost & Found")
+        {
+            isObjectCharacter = true;
+        }
         
         currDialogue = dialogue;
         StartLine(dialogue.RootNode);
@@ -157,8 +166,8 @@ public class DialogueManager : MonoBehaviour
             DialogueBodyText.text += letter;
             yield return new WaitForSeconds(currDialogue.character.typingSpeed);
         }
-        // if decid to do a looping sound can add this line back in
-        // audioManager.StopDialogue();
+        // Cut off long looping sound:
+        if (isObjectCharacter) audioManager.StopDialogue();
         isTyping = false; 
     }
 

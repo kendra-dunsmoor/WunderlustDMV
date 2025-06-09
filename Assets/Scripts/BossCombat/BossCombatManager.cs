@@ -428,11 +428,19 @@ public class BossCombatManager : MonoBehaviour
         UpdateMetersWithEffects(action);
 
         // Apply new effects for next turn
+        List<EffectType> cleanupEffects = new List<EffectType>();
         foreach (ActionEffectStacks effectStacks in action.effects)
         {
-            if (effectStacks.stacks < 0) RemoveEffectStacks(effectStacks.stacks, effectStacks.effect.type);
+            // If marked as negative, remove those stacks
+            if (effectStacks.stacks < 0)
+            {
+                bool shouldCleanup = RemoveEffectStacks(-effectStacks.stacks, effectStacks.effect.type);
+                if (shouldCleanup) cleanupEffects.Add(effectStacks.effect.type);
+            }
+            // Else add new stacks
             else AddNewEffect(effectStacks.effect, effectStacks.stacks);
         }
+        foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
 
         IncrementTurns();
     }
@@ -465,42 +473,50 @@ public class BossCombatManager : MonoBehaviour
         }
 
         // TRIGGER BOSS PASSIVE EFFECTS HERE
-            foreach (var (type, effectUI) in activeEffects)
-            {
-                // if boss is angry and performance modifier is negative, player loses 2 performance
-                ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
-                if (BossState.Angry == currentBossState && effect.PERFORMANCE_MODIFIER < 0)
-                {
-                    UpdatePerformance(-2);
-                }
-                else if (BossState.Pacified == currentBossState && effect.PERFORMANCE_MODIFIER > 0)
-                {
-                    UpdatePerformance(2);
-                }
-                // if boss is neutral, one of two actions will happen at random
-                // ?? is this a good place for this?
-                else if (BossState.Neutral == currentBossState)
-                {
-                    System.Random rand = new System.Random();
-                    int randomAction = rand.Next(0, 2);
-                    if (randomAction == 0)
-                    {
-                        // Hyper-Crit
-                        UpdatePerformance(-5);
-                    }
-                    else
-                    {
-                        // Credit Steal
-                        UpdateBossWill(5);
-                    }
-                }
-            }
+        // foreach (var (type, effectUI) in activeEffects)
+        // {
+        //     // if boss is angry and performance modifier is negative, player loses 2 performance
+        //     ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
+        //     if (BossState.Angry == currentBossState && effect.PERFORMANCE_MODIFIER < 0)
+        //     {
+        //         UpdatePerformance(-2);
+        //     }
+        //     else if (BossState.Pacified == currentBossState && effect.PERFORMANCE_MODIFIER > 0)
+        //     {
+        //         UpdatePerformance(2);
+        //     }
+        //     // if boss is neutral, one of two actions will happen at random
+        //     // ?? is this a good place for this?
+        //     else if (BossState.Neutral == currentBossState)
+        //     {
+        //         System.Random rand = new System.Random();
+        //         int randomAction = rand.Next(0, 2);
+        //         if (randomAction == 0)
+        //         {
+        //             // Hyper-Crit
+        //             UpdatePerformance(-5);
+        //         }
+        //         else
+        //         {
+        //             // Credit Steal
+        //             UpdateBossWill(5);
+        //         }
+        //     }
+        // }
 
+
+        // Decrement all active player effects
+        List<EffectType> cleanupEffects = new List<EffectType>();
         foreach (var (type, effectUI) in activeEffects)
         {
             ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
-            if (effect.shouldDecay) RemoveEffectStacks(1, effect.type);
+                if (effect.shouldDecay)
+                {
+                    bool shouldCleanup = RemoveEffectStacks(1, effect.type);
+                    if (shouldCleanup) cleanupEffects.Add(effect.type);
+                }
         }
+        foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
     }
 
 
@@ -578,7 +594,6 @@ public class BossCombatManager : MonoBehaviour
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
             bossWillModifier += effectResult.BossWillModifier;
-            // Temp: Annoying special case
         }
 
         // Update meters with after effects and artifacts values
@@ -633,23 +648,28 @@ public class BossCombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
     * Remove stacks from effect if active
     */
-    public void RemoveEffectStacks(int amount, EffectType effectType)
-    {
+    public bool RemoveEffectStacks(int amount, EffectType effectType) {
         if (activeEffects.ContainsKey(effectType))
         {
             Debug.Log("Decreasing effectType: " + effectType + " by " + amount);
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
-            activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
-            effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
-            if (effectUI.FetchTurns() == 0)
-            {
-                Debug.Log("Remove effect");
-                Destroy(activeEffects[effectType]);
-                activeEffects.Remove(effectType);
-            }
-        }
+            if (effectUI.FetchTurns() == 0) return true;
+            else return false;
+        } return false;
     }
+
+    /* Delete Effect:
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~
+    * If no stacks remaining delete efect, separated to avoid collection errors
+    */
+    public void DeleteEffect(EffectType effectType)
+    {
+        Debug.Log("Cleanup effect: " + effectType);
+        Destroy(activeEffects[effectType]);
+        activeEffects.Remove(effectType);
+    }
+
 
     /* Clear Player Conditions:
     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

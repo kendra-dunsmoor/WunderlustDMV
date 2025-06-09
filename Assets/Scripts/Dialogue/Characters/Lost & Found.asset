@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Lost & Found
   m_EditorClassIdentifier: 
   characterName: Lost & Found
-  characterImage: {fileID: 4727633781103762509, guid: eb692b08a70478c4fb123f39fbe1079b, type: 3}
+  characterImage: {fileID: 2773253230455894949, guid: aac9706384568448f90adaa5fe2669c4, type: 3}
   typingSpeed: 0.01
+  sounds:
+  - {fileID: 8300000, guid: b2352a24057f84118ae2a207f276feaf, type: 3}

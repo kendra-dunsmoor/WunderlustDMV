@@ -15,35 +15,41 @@ MonoBehaviour:
   RootNode:
     tag: Start
     dialogueText: "It\u2019s rare that someone gets fired from the DMV, much less
-      on their first day."
+      on their first week."
     responses:
     - responseText: "How\u2019d you know I got fired? "
       nextNodeIndex: 0
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: 'How long can I stay here? '
       nextNodeIndex: 1
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: Well, how much would I owe for rent if I could pay?
       nextNodeIndex: 2
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - Choice A
     dialogueText: "Word travels fast, especially when money\u2019s involved."
@@ -53,10 +59,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 1 - Choice B
     dialogueText: "If it were anyone else, I\u2019d kick them out immediately. But
       I can see something in your future\u2026\n\nDebt!"
@@ -66,10 +74,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 2 - Choice C
     dialogueText: "More than you have. More than you\u2019d make in a day. So I guess
       I\u2019d have to give you some leeway anyways. "
@@ -79,10 +89,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 3
     dialogueText: The only thanks I need is on time repayment.
     responses:
@@ -91,10 +103,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 4 - End
     dialogueText: You can pay me on your way out.
     responses:
@@ -103,10 +117,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 5 - End
     dialogueText: 
     responses: []

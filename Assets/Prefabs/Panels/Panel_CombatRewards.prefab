@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efdecc75553614340bb86645298968d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextShiftCalendar: {fileID: 530363540952408881, guid: 983ceb4219df94b53929f78470eed70b, type: 3}
+  nextShiftCalendar: {fileID: 530363540952408881, guid: a8c75d9bea7b2479da5c112bd3fa10b0, type: 3}
   earlyFinishText: {fileID: 7303020422630069981}
   rewardsDescription: {fileID: 5071029316026196017}
   actionUpgradeGrid: {fileID: 2046450793905364278}
@@ -967,7 +967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Performance boosted for early finish!
+  m_text: Sent Home Early! (Only Paid for a Half Shift)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}

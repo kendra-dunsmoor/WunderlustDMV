@@ -36,6 +36,7 @@ public class Action : ScriptableObject
     public string GetDescription()
     {
         string description = generalDescription;
+        if (generalDescription != "") description += "\n";
         description += "Will: " + WILL_MODIFIER;
         if (FRUSTRATION_MODIFIER != 0) description += "\nFrustration: " + FRUSTRATION_MODIFIER;
         if (PERFORMANCE_MODIFIER != 0) description += "\nPerformance: " + PERFORMANCE_MODIFIER;

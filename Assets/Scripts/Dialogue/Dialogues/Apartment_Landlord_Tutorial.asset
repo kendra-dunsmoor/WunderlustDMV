@@ -26,6 +26,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - No Branching
     dialogueText: "Yeah, you! Wake up. This rent isn\u2019t gonna pay itself, and
@@ -41,6 +42,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 1 - Branch A
     dialogueText: "What? Did you think you\u2019d get out of paying just because
       you died? Come on, kid. Your soul\u2019s gotta rest somewhere, and the un-furnished
@@ -56,13 +58,13 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 2 - Branch A1
     dialogueText: "The Department of Metaphysical Verification is always looking
       for lost-err.. new souls to fill up space. Head down there. I\u2019m sure they\u2019ll
-      have something for you. Just don\u2019t get fired, yeah? Because then we\u2019ll
-      have to start his whole thing over again, and neither of us wants that."
+      have something for you. "
     responses:
-    - responseText: "Uh\u2026okay."
+    - responseText: ...
       nextNodeIndex: 3
       containsReward: 0
       officeBucks: 0
@@ -72,7 +74,23 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
-  - tag: End
+      specialRewardMessage: 
+  - tag: 3 - no branch
+    dialogueText: "Just don\u2019t get fired, yeah? Because then we\u2019ll have
+      to start his whole thing over again, and neither of us wants that."
+    responses:
+    - responseText: Uh... Okay.
+      nextNodeIndex: 4
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+      specialRewardMessage: 
+  - tag: 4 - End
     dialogueText: 
     responses: []
   character: {fileID: 11400000, guid: 2fa7b00d940f74b7eb4973fb96bd574d, type: 2}

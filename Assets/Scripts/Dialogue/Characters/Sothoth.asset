@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Sothoth
   characterImage: {fileID: -1385934229298786784, guid: b891809d733ae42f7a66af6b37d47c09, type: 3}
-  typingSpeed: 0.018
+  typingSpeed: 0.014
+  sounds:
+  - {fileID: 8300000, guid: 6ec5450df7c2b453eab7c8552e6c0406, type: 3}
+  - {fileID: 8300000, guid: 02f88394114e84128b9382b0373c004e, type: 3}
+  - {fileID: 8300000, guid: 34760d12c8f8a45da9d3b31d41aacf6f, type: 3}

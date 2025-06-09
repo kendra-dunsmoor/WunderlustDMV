@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76990b31ba3b402e92cf8da0af3fe75, type: 3}
+  m_Name: 2nd Combat Tutorial
+  m_EditorClassIdentifier: 
+  lines:
+  - dialogueText: Special actions let you slow down the line, impress your boss,
+      or cause some chaos.
+    targetBox: 2
+  - dialogueText: 'Use Hustle when you are close to being fired to show your work
+      ethic. '
+    targetBox: 2
+  - dialogueText: "Your other actions get you further through your shift without
+      strongly affecting your performance, but the customer won\u2019t usually like
+      it. "
+    targetBox: 2
+  - dialogueText: Be careful though, you have limited willpower for special actions,
+      and it only recharges on the weekend, so spend it wisely!
+    targetBox: 4

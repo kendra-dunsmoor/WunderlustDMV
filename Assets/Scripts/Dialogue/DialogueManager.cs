@@ -2,7 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
- 
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
 /*
 * Dialogue Manager
 * ~~~~~~~~~~~~~~~~~
@@ -18,7 +20,11 @@ public class DialogueManager : MonoBehaviour
 	private AudioManager audioManager;
     private GameManager gameManager;
 
+    [Header("------------- Temp Tutorials -------------")]
+    [SerializeField] private TutorialManager tutorialManager; // temp
+    [SerializeField] private TutorialDialogue tutorial; // temp
 
+    [Header("------------- Dialogue -------------")]
     // UI references
     [SerializeField] private GameObject DialogueParent; // Main container for dialogue UI
     [SerializeField] private TextMeshProUGUI DialogueTitleText, DialogueBodyText; // Text components for title and body
@@ -28,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject RewardScreen;
 
     private bool isTyping;
+    private AudioClip[] typingSounds;
     private Dialogue currDialogue;
 
     private void Awake()
@@ -63,6 +70,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Setting Character: " + dialogue.character.characterName);
         DialogueTitleText.text = dialogue.character.characterName;
         characterImage.sprite = dialogue.character.characterImage;
+        typingSounds = dialogue.character.sounds;
         
         currDialogue = dialogue;
         StartLine(dialogue.RootNode);
@@ -91,9 +99,11 @@ public class DialogueManager : MonoBehaviour
     // Handles response selection and triggers next dialogue node
     public void SelectResponse(DialogueResponse response)
     {
-        if (isTyping) {
+        if (isTyping)
+        {
             StopAllCoroutines();
             isTyping = false;
+            audioManager.StopDialogue();
         }
 		// Button click audio
         audioManager.PlaySFX(audioManager.buttonClick);
@@ -112,9 +122,15 @@ public class DialogueManager : MonoBehaviour
         {
             // If no follow-up node, end the dialogue
             HideDialogue();
+            // this is a terrible way to do this but I need to temporarily to trigger tutorial after dialogue
+            // TODO: add a better way to trigger this
+            if (SceneManager.GetActiveScene().buildIndex == 3 && tutorialManager != null)
+            {
+                tutorialManager.StartTutorial(tutorial);
+            }
         }
     }
- 
+
     // Hide the dialogue UI
     public void HideDialogue()
     {
@@ -135,12 +151,20 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeLine(string text) {
         isTyping = true; 
+        audioManager.PlayDialogue(PickFromSounds());
         DialogueBodyText.text = "";
         foreach (char letter in text) {
             DialogueBodyText.text += letter;
             yield return new WaitForSeconds(currDialogue.character.typingSpeed);
         }
+        // if decid to do a looping sound can add this line back in
+        // audioManager.StopDialogue();
         isTyping = false; 
+    }
+
+    private AudioClip PickFromSounds()
+    {
+        return typingSounds[Random.Range(0,typingSounds.Length)];
     }
     private void AddRewards(DialogueResponse currNode)
     {
@@ -199,9 +223,10 @@ public class DialogueManager : MonoBehaviour
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
             screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.chaos + " chaos", "");
         }
-        if (currNode.specialRewardMessage != null && currNode.specialRewardMessage != "") {
+        if (currNode.specialRewardMessage != null && currNode.specialRewardMessage != "")
+        {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.specialRewardMessage, "");            
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.specialRewardMessage, "");
         }
         // TODO: add effects and special cases
     }

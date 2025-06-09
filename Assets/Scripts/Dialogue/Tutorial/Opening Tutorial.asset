@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76990b31ba3b402e92cf8da0af3fe75, type: 3}
+  m_Name: Opening Tutorial
+  m_EditorClassIdentifier: 
+  lines:
+  - dialogueText: Welcome to the DMV!
+    targetBox: 0
+  - dialogueText: "To get through your shift you\u2019ll have to accept, reject,
+      or delay paperwork."
+    targetBox: 1
+  - dialogueText: "You can see the customer\u2019s documents on the right side of
+      the tool bar. "
+    targetBox: 6
+  - dialogueText: Choose the option which best corresponds to get through your shift.
+    targetBox: 0
+  - dialogueText: "Or don\u2019t, and see how long you\u2019ll last in your new job\u2026"
+    targetBox: 0

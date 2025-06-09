@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void StartRun()
     {
         List<Certificate> playerCerts = FetchCertificates();
+        List<Furniture> playerFurn = FetchFurniture();
 
         // Landlord takes rest of soul credits
         int rent = FetchSoulCredits();
@@ -96,7 +97,6 @@ public class GameManager : MonoBehaviour
         if (inTutorial) return eventChoices[1];
         // TODO: improve this for select shift choice for run
         int choice = Random.Range(0, 3);
-        Debug.Log("Choice: " + choice);
         return eventChoices[choice];
     }
 
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
     }
 
     public float FetchMaxWill() {
-        return gameStatus.GetMaxWill();
+           return gameStatus.GetMaxWill();
     }
 
     public float FetchBossMaxWill()
@@ -237,6 +237,14 @@ public class GameManager : MonoBehaviour
 
     public void AddCertificate(Certificate cert) {
         playerStatus.AddCertificate(cert);
+    }
+
+    public List<Furniture> FetchFurniture() {
+        return playerStatus.GetFurniture();
+    }
+
+    public void AddFurniture(Furniture furn) {
+        playerStatus.AddFurniture(furn);
     }
 
     public List<string> FetchInventory() {

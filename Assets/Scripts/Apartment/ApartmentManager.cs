@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-
 
 public class ApartmentManager : MonoBehaviour
 {
@@ -9,20 +6,26 @@ public class ApartmentManager : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField] GameObject computerScreenPanel;
+    [SerializeField] SceneFader sceneFader;
+
+    void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        sceneFader.gameObject.SetActive(true);
+    }
     void Start()
     {
-        audioManager = 	FindFirstObjectByType<AudioManager>();
         // Don't restart music if it is already playing from main menu:
         if (audioManager != null && !audioManager.isMusicClipPlaying(audioManager.apartmentMusic))
             audioManager.PlayMusic(audioManager.apartmentMusic);
-        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     public void StartRun() {
         if (audioManager != null) audioManager.PlaySFX(audioManager.openDoor);
         gameManager.StartRun();
-        if (gameManager.InTutorial()) SceneManager.LoadSceneAsync(2);
-        else SceneManager.LoadSceneAsync(3);
+        if (gameManager.InTutorial()) sceneFader.LoadScene(2);
+        else sceneFader.LoadScene(3);
     }
 
     public void OpenComputer() {

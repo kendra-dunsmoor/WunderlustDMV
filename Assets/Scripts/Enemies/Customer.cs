@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using static ActionEffect;
 using static EnemyData;
 using TMPro;
-using UnityEditor;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
@@ -12,11 +11,15 @@ public class Customer : MonoBehaviour
     [SerializeField] private FloatingHealthBar frustrationMeter;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [Header("------------- Sound Clips -------------")]
+    [SerializeField] private AudioClip turnSound;
+    [SerializeField] private AudioClip angrySound;
+    [SerializeField] private AudioClip happySound;
+    [SerializeField] private AudioClip openingSound;
+
     [Header("------------- Enemy Actions -------------")]
     [SerializeField] private GameObject actionTelegraph;
     private EnemyAction preppedAction;
-    private float negativeActionBoundary;
-    private float positiveActionBoundary;
 
     [Header("------------- Effects -------------")]
     [SerializeField] private GameObject currentEffectPrefab;
@@ -32,13 +35,18 @@ public class Customer : MonoBehaviour
     private bool movingBack;
     private Transform goalPoint;
 
+    AudioManager audioManager;
     CombatManager combatManager;
 
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
+    }
     void Start()
     {
         frustrationLevel = 0;
         UpdateFrustration(enemyData.startingFrustration);
-        combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
         dialogueBox.SetActive(false);
         actionTelegraph.SetActive(false);
     }
@@ -55,6 +63,7 @@ public class Customer : MonoBehaviour
                 // TODO: Passive action check here in future
                 movingToFront = false;
                 SayDialogueLine(LineType.OPENING);
+                audioManager.PlayDialogue(openingSound);
                 SetNewPreppedAction();
                 combatManager.SpawnPaperwork();
                 combatManager.EnableActions();
@@ -101,16 +110,18 @@ public class Customer : MonoBehaviour
         // toogle paperwork visibility false
         GameObject paperwork = GameObject.FindGameObjectWithTag("Paperwork");
         if (paperwork != null) paperwork.SetActive(false);
-        if (accepted)
-        {
-            if (enemyData.acceptedSprite != null)
-                gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.acceptedSprite;
-        }
-        else
-        {
-            if (enemyData.acceptedSprite != null)
-                gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.rejectedSprite;
-        }
+
+        // No difference in sprites currently, can uncomment if that changes
+        // if (accepted)
+        // {
+        //     if (enemyData.acceptedSprite != null)
+        //         gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.acceptedSprite;
+        // }
+        // else
+        // {
+        //     if (enemyData.rejectedSprite != null)
+        //         gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.rejectedSprite;
+        // }
     }
 
     public void SendToBack(Transform point)
@@ -118,6 +129,7 @@ public class Customer : MonoBehaviour
         if (gameObject == null) return;
         Debug.Log("Sending customer to back");
         SayDialogueLine(LineType.NEGATIVE);
+        audioManager.PlayDialogue(angrySound);
         movingBack = true;
         goalPoint = point;
         // toogle paperwork visibility false
@@ -133,7 +145,13 @@ public class Customer : MonoBehaviour
         if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, enemyData.maxFrustration);
         if (frustrationLevel >= enemyData.maxFrustration)
         {
+            audioManager.PlayDialogue(angrySound);
             AddNewEnemyEffect(irateEffect, 1);
+        }
+        if (frustrationLevel <= 0)
+        {
+            audioManager.PlayDialogue(happySound);
+            // AddNewEnemyEffect(elatedEffect, 1);
         }
     }
 
@@ -181,6 +199,7 @@ public class Customer : MonoBehaviour
     public void AddEnemyData(EnemyData data)
     {
         enemyData = data;
+        gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.acceptedSprite;
     }
 
     public float GetPaperworkOdds()
@@ -202,7 +221,7 @@ public class Customer : MonoBehaviour
             {
                 Debug.Log("Effect already active, add to stack");
                 currUIEffect.UpdateTurns(stacks);
-                activeEffects[effect.type].GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + currUIEffect.FetchTurns(), effect.effectName);
+                activeEffects[effect.type].GetComponent<CustomerEffect_MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + currUIEffect.FetchTurns(), effect.effectName);
             }
             else
             {
@@ -215,7 +234,7 @@ public class Customer : MonoBehaviour
             GameObject effectMarker = Instantiate(currentEffectPrefab, currentEffectsPanel);
             activeEffects.Add(effect.type, effectMarker);
             effectMarker.GetComponent<UIEffectController>().AddEffect(effect, stacks);
-            effectMarker.GetComponent<MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + stacks, effect.effectName);
+            effectMarker.GetComponent<CustomerEffect_MouseOverDescription>().UpdateDescription(effect.effectDescription + "\nTurns: " + stacks, effect.effectName);
         }
     }
 
@@ -239,7 +258,7 @@ public class Customer : MonoBehaviour
             Debug.Log("Incrementing customer effect");
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
-            activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
+            activeEffects[effectType].GetComponent<CustomerEffect_MouseOverDescription>().UpdateDescription(
             effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
             if (effectUI.FetchTurns() == 0)
             {

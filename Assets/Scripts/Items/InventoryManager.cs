@@ -79,14 +79,19 @@ public class InventoryManager : MonoBehaviour
             ArtifactItem item = (ArtifactItem) artifacts.items[i];
             item.currentTurnCounter++;
             // increment turns in hover description
-            artifacts.UpdateDescription(
-                i,
-                item.description + "\n Turn Counter: " + item.currentTurnCounter + "/" +item.turnClock,
-                item.itemName
-            );
+            if (!item.isEndOfShiftEffect)
+            {
+                artifacts.UpdateDescription(
+                    i,
+                    item.description + "\n Turn Counter: " + item.currentTurnCounter + "/" +item.turnClock,
+                    item.itemName
+                );   
+            }
             if (item.currentTurnCounter == item.turnClock)
+            {
                 item.currentTurnCounter = 0;
-            UseArtifact(item);
+                UseArtifact(item);
+            }
         }
     }
 
@@ -103,8 +108,7 @@ public class InventoryManager : MonoBehaviour
     // Check for specific end of shift incremented artifacts:
     public void EndShiftArtifacts() {
         foreach (ArtifactItem item in artifacts.items) {
-            if (item.itemName == "Fuzzy Dice")
-                combatManager.UpdateWill(item.willModifier);
+            if (item.isEndOfShiftEffect) UseArtifact(item);
         }
     }
 

@@ -35,6 +35,7 @@ public class PlayerState
     private Class playerClass;
     private List<Action> actionLoadout = new List<Action>();
     private List<Certificate> activeCertificates = new List<Certificate>();
+    private List<Furniture> activeFurniture = new List<Furniture>();
     private List<string> itemInventory = new List<string>();
     private List<string> artifacts = new List<string>();
 
@@ -111,6 +112,14 @@ public class PlayerState
 
     public List<Certificate> GetCertificates() {
             return activeCertificates;
+    }
+
+    public void AddFurniture(Furniture furn) {
+        activeFurniture.Add(furn);
+    }
+
+    public List<Furniture> GetFurniture() {
+            return activeFurniture;
     }
 
     public void AddItem(string itemId) {

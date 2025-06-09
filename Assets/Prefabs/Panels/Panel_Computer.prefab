@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c0cb34ea8ee4342b5e27d032ce0489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureScreen: {fileID: 530363540952408881, guid: 1ea6a8b392dab4b86a30ff37aecfb32a, type: 3}
+  furnitureScreen: {fileID: 530363540952408881, guid: e0bc9854eb070498a8f062b4d16086f6, type: 3}
   certificationsScreen: {fileID: 530363540952408881, guid: 1f35f97efb13b497793c233e395ed3da, type: 3}
   classesScreen: {fileID: 530363540952408881, guid: 7c419e80659fe45a5bdab4224d0f9646, type: 3}
 --- !u!1 &1522326334683785372

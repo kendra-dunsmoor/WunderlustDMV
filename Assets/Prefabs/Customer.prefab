@@ -138,8 +138,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.5, y: -9.156}
-  m_SizeDelta: {x: 3.326, y: 11.969}
+  m_AnchoredPosition: {x: 9.5, y: -9.793}
+  m_SizeDelta: {x: 3.326, y: 10.694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4628446410622574834
 MonoBehaviour:
@@ -351,8 +351,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 25}
+  m_AnchoredPosition: {x: 3.75, y: 2.85}
+  m_SizeDelta: {x: 7.5, y: 36.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3279039572164994927
 CanvasRenderer:
@@ -375,14 +375,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7865236202758947301, guid: 90706fd2782c34939b3b31761b65ecbd, type: 3}
+  m_Sprite: {fileID: -4228967657252302267, guid: 5f4437c9278b94b98a652ad074217731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -796,6 +796,10 @@ MonoBehaviour:
   frustrationMeter: {fileID: 3258849979349409404}
   dialogueBox: {fileID: 4831157923402654633}
   dialogueText: {fileID: 1868775077134303150}
+  turnSound: {fileID: 8300000, guid: fd4c492f45d274057bbac3a14f7ba3ff, type: 3}
+  angrySound: {fileID: 8300000, guid: f04e1c24fcd8a4787b614bbb8ba31d46, type: 3}
+  happySound: {fileID: 8300000, guid: 3142846e5421645e396aee45a70c66a6, type: 3}
+  openingSound: {fileID: 8300000, guid: 280be6d8d33fb46118578d37c8b770f4, type: 3}
   actionTelegraph: {fileID: 8403576458326407937}
   currentEffectPrefab: {fileID: 8950778992821901451, guid: 9f54dd8e490f741179ee7762ca57ab24, type: 3}
   currentEffectsPanel: {fileID: 5473944893170378270}
@@ -1297,6 +1301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 6772166546564842735}
+  transitionDuration: 1
+  targetValue: 0.5
 --- !u!114 &10210418874681855
 MonoBehaviour:
   m_ObjectHideFlags: 0

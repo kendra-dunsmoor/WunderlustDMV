@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Astaroth
   m_EditorClassIdentifier: 
   characterName: Astaroth
-  characterImage: {fileID: 0}
-  typingSpeed: 0.025
+  characterImage: {fileID: -6334500097685228359, guid: a781242f6c0d24be4b706aababcce6b0, type: 3}
+  typingSpeed: 0.016
+  sounds:
+  - {fileID: 8300000, guid: 621a36abde23944ad83facea501e8c78, type: 3}
+  - {fileID: 8300000, guid: 90a1b33abc8ba482ba405c040fe25f5d, type: 3}
+  - {fileID: 8300000, guid: ce742f103c42b4cb5a66fbd31fa9a8cf, type: 3}

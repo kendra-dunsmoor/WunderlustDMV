@@ -1,17 +1,23 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EventController : MonoBehaviour
 {
+    [SerializeField] SceneFader sceneFader;
+
     private AudioManager audioManager;
+    void Awake()
+    { 
+        audioManager = FindFirstObjectByType<AudioManager>();
+    }
+
     void Start()
     {
-        audioManager = FindFirstObjectByType<AudioManager>();
-        audioManager.PlayMusic(audioManager.breakRoomMusic);
+        if (audioManager!= null) audioManager.PlayMusic(audioManager.breakRoomMusic);
+        sceneFader.gameObject.SetActive(true);
     }
 
     public void NextShift() {
         if (audioManager != null) audioManager.PlaySFX(audioManager.openDoor);
-        SceneManager.LoadSceneAsync(3);
+        sceneFader.LoadScene(3);
     }
 }

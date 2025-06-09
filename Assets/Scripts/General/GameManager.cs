@@ -108,7 +108,18 @@ public class GameManager : MonoBehaviour
         gameStatus.UpdateAttention(attention);
     }
 
-    public void StoreRunChoice(string choice) {
+    public void RunWon()
+    {
+        gameStatus.UpdateRunStatus(GameState.RunStatus.WON);
+        playerStatus.ResetRun();
+        foreach ( Action action in playerStatus.GetClass().actionLoadout) {
+            playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
+        }
+        gameStatus.ResetRun();
+    }
+
+    public void StoreRunChoice(string choice)
+    {
         gameStatus.AddRunChoice(choice);
     }
     public List<string> FetchRunPath() {
@@ -169,10 +180,6 @@ public class GameManager : MonoBehaviour
            return gameStatus.GetMaxWill();
     }
 
-    public float FetchBossMaxWill()
-    {
-        return gameStatus.GetBossMaxWill();
-    }
     public void UpdateMaxWill(float maxWill)
     {
         gameStatus.UpdateWill(maxWill);

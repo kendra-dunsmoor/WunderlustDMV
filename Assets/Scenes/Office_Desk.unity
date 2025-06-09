@@ -2023,6 +2023,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1049413749}
   artifacts: {fileID: 1749440093}
+  combatManager: {fileID: 1958720740}
+  bossCombatManager: {fileID: 0}
 --- !u!1 &610208363
 GameObject:
   m_ObjectHideFlags: 0

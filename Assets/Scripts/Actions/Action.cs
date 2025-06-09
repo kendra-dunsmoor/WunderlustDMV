@@ -32,16 +32,16 @@ public class Action : ScriptableObject
     public Sprite baseButtonImage;
     public Sprite hoverButtonImage;
     public string generalDescription;
-
-    public string GetDescription()
+    public string GetDescription(bool inPerformanceReview = false)
     {
+        if (type == ActionType.BOSS) return generalDescription;
         string description = generalDescription;
         if (generalDescription != "") description += "\n";
         description += "Will: " + WILL_MODIFIER;
-        if (FRUSTRATION_MODIFIER != 0) description += "\nFrustration: " + FRUSTRATION_MODIFIER;
+        if (FRUSTRATION_MODIFIER != 0 && !inPerformanceReview) description += "\nFrustration: " + FRUSTRATION_MODIFIER;
         if (PERFORMANCE_MODIFIER != 0) description += "\nPerformance: " + PERFORMANCE_MODIFIER;
         if (ATTENTION_MODIFIER != 0) description += "\nAttention: " + ATTENTION_MODIFIER + "%";
-        if (BOSS_WILL_MODIFIER != 0) description += "\nBoss Will: " + BOSS_WILL_MODIFIER + "%";
+        if (BOSS_WILL_MODIFIER != 0 && inPerformanceReview) description += "\nBoss Will: " + BOSS_WILL_MODIFIER + "%";
         foreach (ActionEffectStacks effectStacks in effects)
         {
             // TODO: Clearer descriptions for particular actions
@@ -51,17 +51,20 @@ public class Action : ScriptableObject
              else */
             if (effectStacks != null) description += "\nAdds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
         }
-        switch (movement)
+        if (!inPerformanceReview)
         {
-            case ActionMovement.FRONT:
-                description += "\nCustomer does not move.";
-                break;
-            case ActionMovement.BACK:
-                description += "\nCustomer moves to back of queue.";
-                break;
-            case ActionMovement.AWAY:
-                description += "\nCustomer leaves queue.";
-                break;
+            switch (movement)
+            {
+                case ActionMovement.FRONT:
+                    description += "\nCustomer does not move.";
+                    break;
+                case ActionMovement.BACK:
+                    description += "\nCustomer moves to back of queue.";
+                    break;
+                case ActionMovement.AWAY:
+                    description += "\nCustomer leaves queue.";
+                    break;
+            }
         }
         // TODO: Add actionUpgrades descriptions
         return description;

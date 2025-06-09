@@ -13,7 +13,6 @@ using static ActionEffect;
 */
 public class BossCombatManager : MonoBehaviour
 {
-    [SerializeField] Dialogue combatTutorialDialogue;
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
@@ -23,7 +22,6 @@ public class BossCombatManager : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject actionButtonPrefab;
     [SerializeField] private GameObject currentEffectPrefab;
-    [SerializeField] private GameObject customerIconPrefab;
 
     [Header("------------- UI Meters -------------")]
     [SerializeField] private Slider performanceMeter;
@@ -34,27 +32,30 @@ public class BossCombatManager : MonoBehaviour
     [Header("------------- Spawn Points -------------")]
     [SerializeField] private Transform currentEffectsPanel;
     [SerializeField] private Transform actionButtonGrid;
-    [SerializeField] private Transform spawnPoint;
+    [Header("------------- Sound Clips -------------")]
+    [SerializeField] private AudioClip neutralSound;
+    [SerializeField] private AudioClip angrySound;
+    [SerializeField] private AudioClip happySound;
+    [SerializeField] private AudioClip openingSound;
+    [SerializeField] private AudioClip gameOverSound;
+    [SerializeField] private AudioClip noWillSound;
 
     [Header("------------- Combat Values -------------")]
     [SerializeField] Action praiseAction;
     [SerializeField] Action counterPointAction;
     [SerializeField] Action factsAction;
-    [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
-    [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
-    [SerializeField, Tooltip("Current boss will level, UI might not update if this is changed until action taken")] private float bossWillLevel; // temp value
+    [SerializeField, Tooltip("Current performance level")] private float performanceLevel; // temp range 0 to 50
+    [SerializeField, Tooltip("Current will level")] private float willLevel; // temp value
+    [SerializeField, Tooltip("Current boss will level")] private float bossWillLevel; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
     private List<Action> actionLoadout;
-    [SerializeField, Tooltip("If loadout not customized from apartment use base")] private List<Action> STARTER_LOADOUT;
 
     // New Boss State Management
-    public enum BossState { Neutral, Angry, Pacified }
+    public enum BossState { Neutral, Angry, Pacified, Opening, Transition }
     private BossState currentBossState;
-    private BossState[] usableStates = { BossState.Neutral, BossState.Angry, BossState.Pacified }; // states that the boss hasn't used
-    private Boss bossData;
+    private List<BossState> usableStates = new List<BossState> { BossState.Neutral, BossState.Angry, BossState.Pacified }; // states that the boss hasn't used
     private bool isBossVulnerable = false;
-    private int bossStateCounter;
-    private int turnCounter = 0;
+    private int bossStateCounter = 0; // how many turns remaining in state
     public class EffectResult
     {
         public float PerformanceModifier { get; set; }
@@ -63,8 +64,9 @@ public class BossCombatManager : MonoBehaviour
     }
 
     private float MAX_PERFORMANCE;
-    public bool actionsDisabled;
-    [SerializeField] private GameObject buttonsParent;
+    [SerializeField] private GameObject baseButtonsParent;
+    [SerializeField] private GameObject specialButtonsParent;
+
 
     void Awake()
     {
@@ -75,11 +77,10 @@ public class BossCombatManager : MonoBehaviour
 
     void Start()
     {
+        DisableActions(baseButtonsParent);
+        DisableActions(specialButtonsParent);
         if (audioManager != null) audioManager.PlayMusic(audioManager.combatMusic);
 
-        // temp initialization for quick testing when game manager is null:
-        if (performanceLevel == 0) performanceLevel = 50f;
-        if (willLevel == 0) willLevel = 50f;
         MAX_PERFORMANCE = performanceMeter.maxValue;
 
         if (gameManager != null)
@@ -89,7 +90,7 @@ public class BossCombatManager : MonoBehaviour
         }
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
-        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
+        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "Free Will");
         performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
         AddActionLoadout();
         StartBossEncounter();
@@ -101,32 +102,26 @@ public class BossCombatManager : MonoBehaviour
     */
     private void StartBossEncounter()
     {
-        // FindObjectOfType<DialogueManager>().StartDialogue(bossIntroDialogue, OnDialogueChoice);
-
-        // OnDialogueChoice(0); // Example for Angry
-        // OnDialogueChoice(1); // Example for Pacified
-        // OnDialogueChoice(2); // Example for Neutral
+        UpdateBossWill(boss.GetStartingWill());
+        SetBossState(BossState.Opening);
     }
 
     /* On Dialogue Choice:
     * ~~~~~~~~~~~~~~~~~~~
     * Sets the initial state of the boss based on the player's dialogue choice.
     */
-    public void OnDialogueChoice(int choiceIndex)
+    public void OpeningActionChoice(Action action)
     {
-        switch (choiceIndex)
+        switch (action.actionName)
         {
-            case 0:
-                SetBossState(BossState.Angry);
-                currentBossState = BossState.Angry;
-                break;
-            case 1:
+            case "Praise":
                 SetBossState(BossState.Pacified);
-                currentBossState = BossState.Pacified;
                 break;
-            case 2:
+            case "CounterPoint":
+                SetBossState(BossState.Angry);
+                break;
+            case "Facts":
                 SetBossState(BossState.Neutral);
-                currentBossState = BossState.Neutral;
                 break;
         }
     }
@@ -139,9 +134,14 @@ public class BossCombatManager : MonoBehaviour
     {
         currentBossState = newState;
         Debug.Log("Boss has entered state: " + newState);
-
         switch (newState)
         {
+            case BossState.Opening:
+                if (audioManager != null) audioManager.PlayDialogue(openingSound);
+                boss.SayDialogueLine(EnemyData.LineType.OPENING);
+                DisableActions(specialButtonsParent);
+                EnableActions(baseButtonsParent);
+                break;
             case BossState.Angry:
                 OnEnterAngryState();
                 break;
@@ -151,15 +151,24 @@ public class BossCombatManager : MonoBehaviour
             case BossState.Neutral:
                 OnEnterNeutralState();
                 break;
+            case BossState.Transition:
+                if (audioManager != null) audioManager.PlayDialogue(openingSound);
+                // TODO: update to transition dialogue prompt
+                Debug.Log("Entering transition state");
+                boss.SayDialogueLine(EnemyData.LineType.NEUTRAL);
+                boss.SetNewPreppedAction(BossState.Transition);
+                DisableActions(specialButtonsParent);
+                EnableActions(baseButtonsParent);
+                break;
         }
     }
 
     // --- State-Specific Logic ---
     private void OnEnterAngryState()
     {
+        if (audioManager != null) audioManager.PlayDialogue(angrySound);
         // remove angry from usable states
-        List<BossState> tempList = new List<BossState>(usableStates);
-        tempList.Remove(BossState.Angry);
+        usableStates.Remove(BossState.Angry);
 
         // set turn timer for boss state
         bossStateCounter = 4;
@@ -168,6 +177,13 @@ public class BossCombatManager : MonoBehaviour
 
         // increase player's WILL by 5
         UpdateWill(10);
+        boss.SayDialogueLine(EnemyData.LineType.NEGATIVE);
+
+        boss.SetNewPreppedAction(BossState.Angry);
+
+        // Allow player moves
+        DisableActions(baseButtonsParent);
+        EnableActions(specialButtonsParent);
 
         // set player condition to caffeinated
         // ?? how to set decay value?
@@ -186,9 +202,9 @@ public class BossCombatManager : MonoBehaviour
 
     private void OnEnterPacifiedState()
     {
-        // remove angry from usable states
-        List<BossState> tempList = new List<BossState>(usableStates);
-        tempList.Remove(BossState.Pacified);
+        if (audioManager != null) audioManager.PlayDialogue(happySound);
+        // remove pacified from usable states
+        usableStates.Remove(BossState.Pacified);
 
         // set turn timer for boss state
         bossStateCounter = 3;
@@ -208,16 +224,21 @@ public class BossCombatManager : MonoBehaviour
 
         // TODO: set boss dialogue
         // TODO: there's some dialogue for each state, but I'd leave that for polish
+        boss.SayDialogueLine(EnemyData.LineType.POSITIVE);
+        boss.SetNewPreppedAction(BossState.Pacified);
 
         // set boss available turn action to Gloat
 
+        DisableActions(baseButtonsParent);
+        EnableActions(specialButtonsParent);
     }
 
     private void OnEnterNeutralState()
     {
-        // remove angry from usable states
-        List<BossState> tempList = new List<BossState>(usableStates);
-        tempList.Remove(BossState.Neutral);
+        if (audioManager != null) audioManager.PlayDialogue(neutralSound);
+
+        // remove neutral from usable states
+        usableStates.Remove(BossState.Neutral);
 
         // set turn timer for boss state
         bossStateCounter = 2;
@@ -233,27 +254,32 @@ public class BossCombatManager : MonoBehaviour
 
         // TODO: set boss dialogue
         // TODO: there's some dialogue for each state, but I'd leave that for polish
-
+        boss.SayDialogueLine(EnemyData.LineType.NEUTRAL);
+        boss.SetNewPreppedAction(BossState.Neutral);
         // set boss available turn action to [Hyper-Crit, Credit Steal] at random
 
+        DisableActions(baseButtonsParent);
+        EnableActions(specialButtonsParent);
     }
 
     private void OnEnterFinalPhase()
     {
-        // Randomly choose one of the three states for the final phase
-        int randomState = UnityEngine.Random.Range(0, 3);
-        switch (randomState)
-        {
-            case 0:
-                SetBossState(BossState.Angry);
-                break;
-            case 1:
-                SetBossState(BossState.Pacified);
-                break;
-            case 2:
-                SetBossState(BossState.Neutral);
-                break;
-        }
+        EndShift();
+
+        // // Randomly choose one of the three states for the final phase
+        // int randomState = UnityEngine.Random.Range(0, 3);
+        // switch (randomState)
+        // {
+        //     case 0:
+        //         SetBossState(BossState.Angry);
+        //         break;
+        //     case 1:
+        //         SetBossState(BossState.Pacified);
+        //         break;
+        //     case 2:
+        //         SetBossState(BossState.Neutral);
+        //         break;
+        // }
     }
 
     /* Add Action Loadout: 
@@ -268,38 +294,34 @@ public class BossCombatManager : MonoBehaviour
             GameObject button = Instantiate(actionButtonPrefab, actionButtonGrid);
             button.GetComponent<Button>().onClick.AddListener(() => TakeAction(action));
             button.GetComponent<OnHoverChangeImage>().UpdateImages(action.baseButtonImage, action.hoverButtonImage);
-            button.GetComponent<MouseOverDescription>().UpdateDescription(action.GetDescription(), action.actionName);
+            button.GetComponent<MouseOverDescription>().UpdateDescription(action.GetDescription(true), action.actionName);
         }
-        GameObject.FindGameObjectWithTag("PraiseButton").GetComponent<MouseOverDescription>()
+        GameObject.FindGameObjectWithTag("AcceptButton").GetComponent<MouseOverDescription>()
             .UpdateDescription(praiseAction.GetDescription(), praiseAction.actionName);
-        GameObject.FindGameObjectWithTag("CounterPointButton").GetComponent<MouseOverDescription>()
+        GameObject.FindGameObjectWithTag("RejectButton").GetComponent<MouseOverDescription>()
             .UpdateDescription(counterPointAction.GetDescription(), counterPointAction.actionName);
-        GameObject.FindGameObjectWithTag("FactsButton").GetComponent<MouseOverDescription>()
+        GameObject.FindGameObjectWithTag("EscalateButton").GetComponent<MouseOverDescription>()
             .UpdateDescription(factsAction.GetDescription(), factsAction.actionName);
     }
 
     /* End Shift: 
-    // * ~~~~~~~~~~~~~~~
-    // * Shift completed by either running out of turns or customers
-    // * Add any end of shift effects and add combat rewards
-    // */
-    // private void EndShift(bool completedQueue)
-    // {
-    //     DisableActions();
-    //     // Check if customers ran out
-    //     if (completedQueue) UpdatePerformance(EARLY_FINISH_PENALTY);
-    //     // Check for game over state first:
-    //     if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
-    //     // End of shift artifact effects
-    //     inventoryManager.EndShiftArtifacts();
-    //     UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
-    //     // Pop up end screen
-    //     gameManager.ShiftCompleted(performanceLevel, willLevel, attentionLevel);
-    //     // Get combat rewards
-    //     if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
-    //     GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-    //     screen.GetComponent<CombatRewardsController>().markEarlyFinish(completedQueue);
-    // }
+    * ~~~~~~~~~~~~~~~
+    * Shift completed by either running out of turns or customers
+    * Add any end of shift effects and add combat rewards
+    */
+    private void EndShift()
+    {
+        DisableActions(baseButtonsParent);
+        DisableActions(specialButtonsParent);
+
+        // Check for game over state first:
+        if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
+        // TODO: game manager un complete function
+        gameManager.RunWon();
+        // Get combat rewards
+        if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
+        Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+    }
 
     /* Game Over: 
     * ~~~~~~~~~~~~~~~
@@ -308,8 +330,11 @@ public class BossCombatManager : MonoBehaviour
     */
     private void GameOver()
     {
-        DisableActions();
+        if (audioManager != null) audioManager.PlayDialogue(gameOverSound);
+        DisableActions(specialButtonsParent);
+        DisableActions(baseButtonsParent);
         // Pop up end screen
+        // TODO update description for boss
         Instantiate(gameOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
@@ -358,10 +383,18 @@ public class BossCombatManager : MonoBehaviour
     {
         Debug.Log("Change boss will by " + diff);
         bossWillLevel += diff;
-        if (bossWillLevel > gameManager.FetchBossMaxWill()) bossWillLevel = gameManager.FetchBossMaxWill();
+        if (bossWillLevel > boss.GetMaxWill()) bossWillLevel = boss.GetMaxWill();
         if (bossWillLevel < 0) bossWillLevel = 0;
         bossWillMeter.GetComponent<SliderCounter>().UpdateBar(bossWillLevel);
         Debug.Log("Will updated to: " + bossWillLevel);
+
+        // if boss will power empty set isBossVulnerable to true
+        if (bossWillLevel == 0)
+        {
+            isBossVulnerable = true;
+            if (audioManager != null) audioManager.PlayDialogue(noWillSound);
+        }
+        if (bossWillLevel > 0) isBossVulnerable = false;
     }
 
     /* Take Action:
@@ -375,6 +408,13 @@ public class BossCombatManager : MonoBehaviour
     {
         PlayActionSound(action);
 
+        // If base action send into boss state
+        if (currentBossState == BossState.Opening || currentBossState == BossState.Transition)
+        {
+            OpeningActionChoice(action);
+        }
+
+        // Else modify for special actions
         // Check if sufficient will available for action:
         if (willLevel - action.WILL_MODIFIER < 0)
         {
@@ -406,77 +446,61 @@ public class BossCombatManager : MonoBehaviour
         inventoryManager.IncrementArtifacts();
 
         // check if boss is vulnerable
-        if (!isBossVulnerable)
-        {
-            // if boss will power is less than 1 set isBossVulnerable to true
-            if (bossWillLevel < 1) isBossVulnerable = true;
-        }
-        else
+        if (isBossVulnerable)
         {
             // vulnerability modifiers
             // Name: Exposed
             // Effect: Special Actions MODIFIERS are doubled
 
             // boss doesn't act one turn(also ok with causing non-special action to double positive affects if it's too complicated to cause boss to lose a turn
-            if (bossWillLevel > 0) isBossVulnerable = false;
         }
 
         // Check if phase is over, check if final phase needs to happen, decrease turn counter for boss state and trigger any passive effects:
-        if (bossStateCounter == 0 && usableStates.Length == 0)
-        {
-            OnEnterFinalPhase();
-        }
-        else if (bossStateCounter == 0)
-        {
-            EnableBasicActions();
-            // maybe set an inbetween state here where boss doesn't do anything
-        }
+        if (bossStateCounter == 0 && usableStates.Count == 0) OnEnterFinalPhase();
+        else if (bossStateCounter == 0) SetBossState(BossState.Transition);
         else
         {
+            boss.TakeTurn(currentBossState);
             bossStateCounter--;
         }
 
         // TRIGGER BOSS PASSIVE EFFECTS HERE
-        foreach (var (type, effectUI) in activeEffects)
-        {
-            // if boss is angry and performance modifier is negative, player loses 2 performance
-            ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
-            if (BossState.Angry == currentBossState && effect.PERFORMANCE_MODIFIER < 0)
+            foreach (var (type, effectUI) in activeEffects)
             {
-                UpdatePerformance(-2);
-            }
-            else if (BossState.Pacified == currentBossState && effect.PERFORMANCE_MODIFIER > 0)
-            {
-                UpdatePerformance(2);
-            }
-            // if boss is neutral, one of two actions will happen at random
-            // ?? is this a good place for this?
-            else if (BossState.Neutral == currentBossState)
-            {
-                System.Random rand = new System.Random();
-                int randomAction = rand.Next(0, 2);
-                if (randomAction == 0)
+                // if boss is angry and performance modifier is negative, player loses 2 performance
+                ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
+                if (BossState.Angry == currentBossState && effect.PERFORMANCE_MODIFIER < 0)
                 {
-                    // Hyper-Crit
-                    UpdatePerformance(-5);
+                    UpdatePerformance(-2);
                 }
-                else
+                else if (BossState.Pacified == currentBossState && effect.PERFORMANCE_MODIFIER > 0)
                 {
-                    // Credit Steal
-                    UpdateBossWill(5);
+                    UpdatePerformance(2);
+                }
+                // if boss is neutral, one of two actions will happen at random
+                // ?? is this a good place for this?
+                else if (BossState.Neutral == currentBossState)
+                {
+                    System.Random rand = new System.Random();
+                    int randomAction = rand.Next(0, 2);
+                    if (randomAction == 0)
+                    {
+                        // Hyper-Crit
+                        UpdatePerformance(-5);
+                    }
+                    else
+                    {
+                        // Credit Steal
+                        UpdateBossWill(5);
+                    }
                 }
             }
-        }
 
         foreach (var (type, effectUI) in activeEffects)
         {
             ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
             if (effect.shouldDecay) RemoveEffectStacks(1, effect.type);
         }
-
-        // Check to trigger tutorial
-        // if (gameManager.InTutorial() && remainingTurns == 7)
-        //     FindFirstObjectByType<DialogueManager>().StartDialogue(combatTutorialDialogue);
     }
 
 
@@ -640,9 +664,8 @@ public class BossCombatManager : MonoBehaviour
         activeEffects = new Dictionary<EffectType, GameObject>();
     }
 
-    public void DisableActions()
+    public void DisableActions(GameObject buttonsParent)
     {
-        actionsDisabled = true;
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
         foreach (Button button in buttons)
         {
@@ -650,38 +673,26 @@ public class BossCombatManager : MonoBehaviour
         }
     }
 
-    public void EnableActions()
+    public void EnableActions(GameObject buttonsParent)
     {
-        actionsDisabled = false;
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
         foreach (Button button in buttons)
         {
-            button.interactable = true;
-        }
-    }
-
-    public void EnableBasicActions()
-    {
-        actionsDisabled = false;
-        Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
-        foreach (Button button in buttons)
-        {
-            if (button.CompareTag("PraiseButton") || button.CompareTag("CounterPointButton") || button.CompareTag("FactsButton"))
-            {
-                button.interactable = true;
-            }
-            else
-            {
-                button.interactable = false;
-            }
+            // Only enable buttons that haven't been used yet
+            if (button.tag == "EscalateButton") button.interactable = usableStates.Contains(BossState.Neutral);
+            else if (button.tag == "RejectButton") button.interactable = usableStates.Contains(BossState.Angry);
+            else if (button.tag == "AcceptButton") button.interactable = usableStates.Contains(BossState.Pacified);
+            else button.interactable = true;
         }
     }
 
     private void PlayActionSound(Action action)
     {
         if (audioManager != null)
-        //TODO: needs to be updated with sounds for nepobaby
         {
+            if (action.actionName == "Praise") audioManager.PlaySFX(audioManager.acceptButton);
+            else if (action.actionName == "CounterPoint") audioManager.PlaySFX(audioManager.rejectButton);
+            else audioManager.PlaySFX(audioManager.specialActionButton);
         }
     }
 }

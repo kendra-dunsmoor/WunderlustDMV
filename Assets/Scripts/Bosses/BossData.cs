@@ -14,21 +14,17 @@ public class BossData : ScriptableObject
     public float willThreshold; // for vulnerabilities to trigger
 
     [Header("------------- Actions -------------")]
-    public BossAction[] turnActions; // total list of actions boss is capable of
+    public BossAction[] neutralPhaseActions; // total list of actions boss is capable of
+    public BossAction[] pacifiedPhaseActions; // total list of actions boss is capable of
+    public BossAction[] angryPhaseActions; // total list of actions boss is capable of
     public BossAction[] passiveActions; // total list of passives boss is capable of
 
     [Header("------------- Dialogue -------------")]
     public string[] openingDialogueLines;
-    public string[] encounterDialogueLines; // lines needed for throughout the encounter
-
-    public enum LineType
-    {
-        OPENING,
-        ENCOUNTER,
-    }
+    public string[] neutralDialogueLines;
+    public string[] positiveDialogueLines;
+    public string[] negativeDialogueLines;
 
     [Header("------------- UI -------------")]
     public Sprite[] bossSprites; // some bosses will use more than one sprite
-    [Header("------------- New Player Actions -------------")]
-    public Action[] newPlayerActions; // player gets new actions that replace [Accept, Reject, Escalte]
 }

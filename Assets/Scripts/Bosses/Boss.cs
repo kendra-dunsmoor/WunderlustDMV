@@ -3,138 +3,28 @@ using System.Collections.Generic;
 using static ActionEffect;
 using static EnemyData;
 using TMPro;
-using UnityEditor;
+using static BossCombatManager;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Boss : MonoBehaviour
 {
-    [SerializeField] private EnemyData enemyData;
-    [SerializeField] private FloatingHealthBar frustrationMeter;
+    [SerializeField] private BossData bossData;
+    [SerializeField] private BossCombatManager bossCombatManager;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [Header("------------- Enemy Actions -------------")]
     [SerializeField] private GameObject actionTelegraph;
-    private EnemyAction preppedAction;
-    private float negativeActionBoundary;
-    private float positiveActionBoundary;
+    private BossAction preppedAction;
 
     [Header("------------- Effects -------------")]
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private Transform currentEffectsPanel;
     [SerializeField] private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
-    [SerializeField] private ActionEffect irateEffect;
-
-    private float frustrationLevel;
-
-    // temp:
-    private bool movingToFront;
-    private bool movingAway;
-    private bool movingBack;
-    private Transform goalPoint;
-
-    CombatManager combatManager;
 
     void Start()
     {
-        frustrationLevel = 0;
-        UpdateFrustration(enemyData.startingFrustration);
-        combatManager = GameObject.FindGameObjectWithTag("CombatManager").GetComponent<CombatManager>();
         dialogueBox.SetActive(false);
         actionTelegraph.SetActive(false);
-    }
-
-    void Update()
-    {
-        if (movingToFront)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
-                enemyData.moveSpeed * Time.deltaTime);
-            if (transform.position.x >= goalPoint.position.x)
-            {
-                // Customer hits front of line
-                // TODO: Passive action check here in future
-                movingToFront = false;
-                SayDialogueLine(LineType.OPENING);
-                SetNewPreppedAction();
-                combatManager.SpawnPaperwork();
-                combatManager.EnableActions();
-            }
-        }
-        if (movingAway)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
-                enemyData.moveSpeed * Time.deltaTime);
-            if (transform.position.x >= goalPoint.position.x)
-            {
-                movingAway = false;
-                Destroy(gameObject);
-            }
-        }
-        if (movingBack)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, goalPoint.position,
-                enemyData.moveSpeed * Time.deltaTime);
-            if (transform.position.x <= goalPoint.position.x)
-            {
-                movingBack = false;
-                dialogueBox.SetActive(false);
-            }
-        }
-    }
-
-    public void SendToFront(Transform point)
-    {
-        if (gameObject == null) return;
-        Debug.Log("Sending customer to front");
-        movingToFront = true;
-        goalPoint = point;
-    }
-
-    public void SendAway(bool accepted, Transform point)
-    {
-        if (gameObject == null) return;
-
-        Debug.Log("Sending customer away");
-        SayDialogueLine(LineType.POSITIVE);
-        movingAway = true;
-        goalPoint = point;
-        // toogle paperwork visibility false
-        GameObject paperwork = GameObject.FindGameObjectWithTag("Paperwork");
-        if (paperwork != null) paperwork.SetActive(false);
-        if (accepted)
-        {
-            if (enemyData.acceptedSprite != null)
-                gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.acceptedSprite;
-        }
-        else
-        {
-            if (enemyData.acceptedSprite != null)
-                gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.rejectedSprite;
-        }
-    }
-
-    public void SendToBack(Transform point)
-    {
-        if (gameObject == null) return;
-        Debug.Log("Sending customer to back");
-        SayDialogueLine(LineType.NEGATIVE);
-        movingBack = true;
-        goalPoint = point;
-        // toogle paperwork visibility false
-        GameObject.FindGameObjectWithTag("Paperwork").SetActive(false);
-    }
-
-    public void UpdateFrustration(float change)
-    {
-        if (gameObject == null) return;
-
-        frustrationLevel += change;
-        Debug.Log("Customer frustration level updated to: " + frustrationLevel);
-        if (frustrationMeter != null) frustrationMeter.UpdateBar(frustrationLevel, enemyData.maxFrustration);
-        if (frustrationLevel >= enemyData.maxFrustration)
-        {
-            AddNewEnemyEffect(irateEffect, 1);
-        }
     }
 
     public Dictionary<EffectType, GameObject> GetActiveEffects()
@@ -142,50 +32,39 @@ public class Boss : MonoBehaviour
         return activeEffects;
     }
 
-    public void TakeTurn()
+    public void TakeTurn(BossState state)
     {
-        Debug.Log("Customer Turn Starting");
+        Debug.Log("Boss Turn Starting");
         // Take prepped action
-        if (preppedAction != null) TakeEnemyAction(preppedAction);
-
-        // Apply turn frustration
-        Debug.Log("Adding frustration for waiting");
-        UpdateFrustration(enemyData.frustrationIncreasePerTurn);
+        if (preppedAction != null) TakeBossAction(preppedAction);
 
         // Telegraph next action
-        SetNewPreppedAction();
+        SetNewPreppedAction(state);
 
-        // Add dialogue
-        SayDialogueLine(LineType.NEUTRAL);
-        Debug.Log("Customer Turn Completed");
-        combatManager.EnableActions();
+        Debug.Log("Boss Turn Completed");
     }
 
     public void SayDialogueLine(LineType lineType)
     {
         var dialogueChoices = lineType switch
         {
-            LineType.OPENING => enemyData.openingDialogueLines,
-            LineType.NEUTRAL => enemyData.neutralDialogueLines,
-            LineType.NEGATIVE => enemyData.negativeDialogueLines,
-            LineType.POSITIVE => enemyData.positiveDialogueLines,
-            _ => enemyData.neutralDialogueLines
+            LineType.OPENING => bossData.openingDialogueLines,
+            LineType.NEUTRAL => bossData.neutralDialogueLines,
+            LineType.NEGATIVE => bossData.negativeDialogueLines,
+            LineType.POSITIVE => bossData.positiveDialogueLines,
+            _ => bossData.neutralDialogueLines
         };
         if (dialogueChoices.Length > 0)
         {
             dialogueBox.SetActive(true);
             dialogueText.text = dialogueChoices[Random.Range(0, dialogueChoices.Length)];
+            // TODO: Make this type out like normal dialogue
         }
     }
 
-    public void AddEnemyData(EnemyData data)
+    public void AddEnemyData(BossData data)
     {
-        enemyData = data;
-    }
-
-    public float GetPaperworkOdds()
-    {
-        return enemyData.correctPaperworkOdds;
+        bossData = data;
     }
 
     /* Add New Enemy Effect
@@ -250,28 +129,42 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void SetNewPreppedAction()
+    public void SetNewPreppedAction(BossState currentBossState)
     {
         // Set new action based on enemy state
-        if (frustrationLevel < 10) preppedAction = enemyData.positiveAction;
-        else if (activeEffects.ContainsKey(irateEffect.type)) preppedAction = enemyData.negativeAction;
-        else preppedAction = enemyData.neutralAction;
+        if (currentBossState == BossState.Neutral) preppedAction = bossData.neutralPhaseActions[0];
+        if (currentBossState == BossState.Angry) preppedAction = bossData.angryPhaseActions[0];
+        if (currentBossState == BossState.Pacified) preppedAction = bossData.pacifiedPhaseActions[0];
+        if (currentBossState == BossState.Transition) preppedAction = null;
+
         if (preppedAction != null)
         {
             actionTelegraph.SetActive(true);
             // TODO: should it be different sprite for diff action type?
-            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.enemyActionName);
+            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.BossActionName);
         }
     }
 
-    private void TakeEnemyAction(EnemyAction action)
+    private void TakeBossAction(BossAction action)
     {
-        Debug.Log("Taking Enemy Action: " + action.enemyActionName);
-        combatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
-        combatManager.UpdateWill(action.WILL_MODIFIER);
-        combatManager.UpdateAttention(action.ATTENTION_MODIFIER);
+        // Apply will cost for boss
+        bossCombatManager.UpdateBossWill(action.BOSS_WILL_MODIFIER);
+
+        Debug.Log("Taking Enemy Action: " + action.BossActionName);
+        bossCombatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
+        bossCombatManager.UpdateWill(action.WILL_MODIFIER);
 
         // TODO: show somehow in dialogue box action was taken?
         actionTelegraph.SetActive(false);
+    }
+
+    public float GetStartingWill()
+    {
+        return bossData.startingWill;
+    }
+
+    public float GetMaxWill()
+    {
+        return bossData.maxWill;
     }
 }

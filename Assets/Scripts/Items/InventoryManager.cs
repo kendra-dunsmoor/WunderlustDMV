@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] ItemInventory inventory;
     [SerializeField] ItemInventory artifacts;
     private GameManager gameManager;
-    private CombatManager combatManager;
+    [SerializeField] private CombatManager combatManager;
+    [SerializeField] private BossCombatManager bossCombatManager;
+    private bool isPerformanceReview = false;
     private AudioManager audioManager;
 
     // TODO: maybe add artifacts panel here too? Idk if it should be separate
@@ -21,9 +22,10 @@ public class InventoryManager : MonoBehaviour
         // Get Game Manager for updating inventory
         gameManager = FindFirstObjectByType<GameManager>();
         audioManager = FindFirstObjectByType<AudioManager>();
-        combatManager = FindFirstObjectByType<CombatManager>();
+        if (combatManager == null) isPerformanceReview = true;
 		// Get curr inventory of player to update UI
-        if (gameManager != null) {
+        if (gameManager != null)
+        {
             LoadInventory();
             LoadArtifacts();
         }
@@ -112,18 +114,30 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void AddEffectsAndModifiers(Item item) {
-        foreach (ActionEffectStacks effectStack in item.effects) {
-            if (effectStack.stacks < 0) combatManager.RemoveEffectStacks(effectStack.stacks, effectStack.effect.type);
-            else combatManager.AddNewEffect(effectStack.effect, effectStack.stacks);
+    private void AddEffectsAndModifiers(Item item)
+    {
+        foreach (ActionEffectStacks effectStack in item.effects)
+        {
+            if (effectStack.stacks < 0 && !isPerformanceReview) combatManager.RemoveEffectStacks(effectStack.stacks, effectStack.effect.type);
+            else if (!isPerformanceReview) combatManager.AddNewEffect(effectStack.effect, effectStack.stacks);
+
+            if (effectStack.stacks < 0 && isPerformanceReview) bossCombatManager.RemoveEffectStacks(effectStack.stacks, effectStack.effect.type);
+            else if (isPerformanceReview) bossCombatManager.AddNewEffect(effectStack.effect, effectStack.stacks);
         }
 
         // Add item modifiers:
-        if (item.willModifier != 0)
+        if (item.willModifier != 0 && !isPerformanceReview)
             combatManager.UpdateWill(item.willModifier);
-        if (item.performanceModifier != 0)
+        if (item.performanceModifier != 0 && !isPerformanceReview)
             combatManager.UpdatePerformance(item.performanceModifier);
-        if (item.frustrationModifier != 0)
+        if (item.frustrationModifier != 0 && !isPerformanceReview)
             combatManager.UpdateFrustration(item.frustrationModifier);
+
+        if (item.willModifier != 0 && isPerformanceReview)
+            bossCombatManager.UpdateWill(item.willModifier);
+        if (item.performanceModifier != 0 && isPerformanceReview)
+            bossCombatManager.UpdatePerformance(item.performanceModifier);
+        if (item.frustrationModifier != 0 && isPerformanceReview)
+            bossCombatManager.UpdateBossWill(item.frustrationModifier);
     }
 }

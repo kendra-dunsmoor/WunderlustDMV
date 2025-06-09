@@ -10,7 +10,6 @@ using UnityEngine;
 public class GameState
 {
     private float maxWill = 100f;
-    private float bossMaxWill = 100f; // TODO: make this dynamic based on boss
     private float performance = 100f;
     private float will = 100f;
     private float attention = 20f;
@@ -67,11 +66,6 @@ public class GameState
     public float GetMaxWill()
     {
         return maxWill;
-    }
-
-    public float GetBossMaxWill()
-    {
-        return bossMaxWill;
     }
 
     public void UpdatePerformance(float performance)

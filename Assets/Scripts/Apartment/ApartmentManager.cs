@@ -24,7 +24,8 @@ public class ApartmentManager : MonoBehaviour
     public void StartRun() {
         if (audioManager != null) audioManager.PlaySFX(audioManager.openDoor);
         gameManager.StartRun();
-        if (gameManager.InTutorial()) sceneFader.LoadScene(2);
+        // TODO: Change back from 5 to 7 when done testing performance review
+        if (gameManager.InTutorial()) sceneFader.LoadScene(7);
         else sceneFader.LoadScene(3);
     }
 

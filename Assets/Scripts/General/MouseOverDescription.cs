@@ -28,10 +28,8 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("In pointer enter");
         if (spawnedPopUp != null && !firstEnter)
         {
-            Debug.Log("First enter");
             spawnedPopUp.transform.SetAsLastSibling();
             spawnedPopUp.transform.position = this.originalTransform.position;
             spawnedPopUp.SetActive(true);
@@ -40,7 +38,6 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
         }
         else if (spawnedPopUp != null && firstEnter)
         {
-            Debug.Log("Not first enter");
             spawnedPopUp.SetActive(true);
         }
     }

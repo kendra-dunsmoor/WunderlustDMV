@@ -17,6 +17,9 @@ public class CalendarController : MonoBehaviour
     [SerializeField] Sprite emptySpotImage;
     [SerializeField] Sprite stickyNoteImage;
     [SerializeField] Color emptySpotColor;
+    [SerializeField] GameObject choiceOffering;
+    [SerializeField] Button performanceReviewButton;
+
 
     private GameManager gameManager;
     private SceneFader sceneFader;
@@ -45,14 +48,17 @@ public class CalendarController : MonoBehaviour
             Debug.LogError("No game manager found");
             currDay = 1;
         }
-        // TODO: if end of week enable vending machine button
-        if (currDay == 5) sceneFader.LoadScene(5);
-        else FillCalendar();
+        FillCalendar();
     }
     
     private void FillCalendar()
     {
         Debug.Log("Fill Calendar for day: " + currDay);
+        // TODO: if end of week enable vending machine button
+        // also remove hover change when not day 5
+        choiceOffering.SetActive(currDay != 5);
+        performanceReviewButton.interactable = currDay == 5;
+
         // Set options for current shift
         calendarDays[currDay - 1].shiftCompleteMarker.SetActive(true);
         calendarDays[currDay - 1].choiceMarker.SetActive(true);

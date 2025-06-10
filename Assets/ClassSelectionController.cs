@@ -32,7 +32,6 @@ public class ClassSelectionController : MonoBehaviour
             classUI.GetComponent<ClassUIController>().AddClass(playerClass);
             // TODO: Check active class and mark as active
         }
-        // TODO: If in tutorial mark bottom two to as not unlocked somehow
     }
 
     public void SelectClass(Class playerClass)

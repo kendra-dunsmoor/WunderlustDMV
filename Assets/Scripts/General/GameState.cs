@@ -14,6 +14,7 @@ public class GameState
     private float will = 100f;
     private float attention = 20f;
     private int currentWeekday = 0;
+    private int earlyShifts = 0;
     private List<string> runPath = new List<string>();
 
     public enum RunStatus {
@@ -59,6 +60,11 @@ public class GameState
         return attention;
     }
     
+        
+    public float GetEarlyShifts() {
+        return earlyShifts;
+    }
+
     public float GetWill() {
         return will;
     }
@@ -81,6 +87,11 @@ public class GameState
     public void UpdateWill(float will)
     {
         this.will = will;
+    }
+
+    public void EarlyShift()
+    {
+        earlyShifts++;
     }
     
      public void UpdateMaxWill(float maxWill)

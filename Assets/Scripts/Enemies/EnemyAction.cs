@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyAction", menuName = "Scriptable Objects/EnemyAction")]
@@ -22,7 +24,8 @@ public class EnemyAction : ScriptableObject
     // TODO: add accuracy check:
     public float ACTION_CHANCE = 1.0f; // The chance of the action happening, 1.0f = 100%
 
-    // TODO: add value for conditions and for how many turns the condition lasts
+    public List<ActionEffectStacks> effects;
+
 
     // TODO: add a function that accepts unique actions
     

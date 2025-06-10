@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2317b91b03bf84be59ac058cad418af6, type: 3}
-  m_Name: Eternally Resigned Spirit
+  m_Name: Eternally Resigned Spirit 2
   m_EditorClassIdentifier: 
-  enemyName: Eternally Resigned Spirit A
+  enemyName: Eternally Resigned Spirit B
   enemyDescription: 
-  enemyType: 1
+  enemyType: 3
   moveSpeed: 5
   correctPaperworkOdds: 1
   startingFrustration: 30
@@ -32,7 +32,7 @@ MonoBehaviour:
   positiveAction: {fileID: 11400000, guid: c9af89917910fa041b869eccea157faf, type: 2}
   neutralAction: {fileID: 11400000, guid: a22e74aeee81840219aab33dfe3fe94d, type: 2}
   negativeAction: {fileID: 11400000, guid: ab5696ca0eef249e7b5941b3e381edfd, type: 2}
-  passiveAction: {fileID: 11400000, guid: 180e8d6c49e00ca4ba3af309fa68126a, type: 2}
+  passiveAction: {fileID: 11400000, guid: 564449f53679c7542afd5af9f5c83ba0, type: 2}
   acceptedSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}
   rejectedSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}
   iconSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}

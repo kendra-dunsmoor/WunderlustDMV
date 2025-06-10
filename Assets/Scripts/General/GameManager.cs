@@ -107,6 +107,10 @@ public class GameManager : MonoBehaviour
         gameStatus.UpdateWill(will);
         gameStatus.UpdateAttention(attention);
     }
+    public void EarlyShift()
+    {
+        gameStatus.EarlyShift();
+    }
 
     public void RunWon()
     {

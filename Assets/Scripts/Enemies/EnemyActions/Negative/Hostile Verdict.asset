@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Hostile Verdict
   m_EditorClassIdentifier: 
   enemyActionName: Hostile Verdict
+  generalDescription: 
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: -5
   PERFORMANCE_MODIFIER: -5
-  ATTENTION_MODIFIER: 3
-  PASSIVE: 0
+  ATTENTION_MODIFIER: 10
   ACTION_CHANCE: 1
-  BOSS_WILL_MODIFIER: 0
+  effects:
+  - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
+    stacks: 3

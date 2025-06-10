@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Spectral Litigator
   enemyDescription: 
-  enemyType: 2
+  enemyType: 4
   moveSpeed: 5
   correctPaperworkOdds: 0.65
-  startingFrustration: 40
+  startingFrustration: 50
   frustrationIncreasePerTurn: 5
   maxFrustration: 100
   openingDialogueLines:

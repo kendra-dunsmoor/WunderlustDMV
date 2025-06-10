@@ -61,6 +61,7 @@ public class Customer : MonoBehaviour
             {
                 // Customer hits front of line
                 // TODO: Passive action check here in future
+                if (enemyData.passiveAction != null) TakeEnemyAction(enemyData.passiveAction);
                 movingToFront = false;
                 SayDialogueLine(LineType.OPENING);
                 audioManager.PlayDialogue(openingSound);
@@ -97,6 +98,12 @@ public class Customer : MonoBehaviour
         Debug.Log("Sending customer to front");
         movingToFront = true;
         goalPoint = point;
+        //TakeTurn();
+    }
+    public void Interupt(string action)
+    {
+       if(enemyData.passiveAction.enemyActionName == action)       
+        TakeEnemyAction(enemyData.passiveAction);
     }
 
     public void SendAway(bool accepted, Transform point)
@@ -151,7 +158,7 @@ public class Customer : MonoBehaviour
         if (frustrationLevel <= 0)
         {
             audioManager.PlayDialogue(happySound);
-            // AddNewEnemyEffect(elatedEffect, 1);
+            //AddNewEnemyEffect(elatedEffect, 1);
         }
     }
 
@@ -285,10 +292,31 @@ public class Customer : MonoBehaviour
 
     private void TakeEnemyAction(EnemyAction action)
     {
-        Debug.Log("Taking Enemy Action: " + action.enemyActionName);
+              Debug.Log("Taking Enemy Action: " + action.enemyActionName);
         combatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
         combatManager.UpdateWill(action.WILL_MODIFIER);
         combatManager.UpdateAttention(action.ATTENTION_MODIFIER);
+
+        
+
+        // Apply new effects for next turn
+        List<EffectType> cleanupEffects = new List<EffectType>();
+        foreach (ActionEffectStacks effectStacks in action.effects)
+        {
+            // If marked as negative, remove those stacks
+            if (effectStacks.stacks < 0)
+            {
+                bool shouldCleanup = combatManager.RemoveEffectStacks(-effectStacks.stacks, effectStacks.effect.type);
+                if (shouldCleanup) cleanupEffects.Add(effectStacks.effect.type);
+            }
+            // Else add new stacks
+            else 
+            {
+                
+                combatManager.AddNewEffect(effectStacks.effect, effectStacks.stacks);
+            }
+        }
+        foreach (EffectType effect in cleanupEffects) combatManager.DeleteEffect(effect);
 
         // TODO: show somehow in dialogue box action was taken?
         actionTelegraph.SetActive(false);

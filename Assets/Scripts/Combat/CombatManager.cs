@@ -94,9 +94,9 @@ public class CombatManager : MonoBehaviour
         if (audioManager != null) audioManager.PlayMusic(audioManager.combatMusic);
         if (gameManager != null)
         {
-            if (gameManager.InTutorial()) remainingTurns = 10;
+            if (gameManager.InTutorial()) remainingTurns = 5;
             else remainingTurns = 20;
-            if (gameManager.InTutorial()) CUSTOMER_GOAL = 5;
+            if (gameManager.InTutorial()) CUSTOMER_GOAL = 6;
             else CUSTOMER_GOAL = 10;
             performanceLevel = gameManager.FetchPerformance();
             attentionLevel = gameManager.FetchAttention();
@@ -105,7 +105,11 @@ public class CombatManager : MonoBehaviour
         }
 
         // Check for tutorials:
-        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0) tutorialManager.StartTutorial(openingTutorial);
+        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0) 
+        {
+            tutorialManager.StartTutorial(openingTutorial);
+            GameObject.FindGameObjectWithTag("ClassPanel").SetActive(false);
+        }
         if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 1)
         {
             remainingTurns = 20;
@@ -152,22 +156,31 @@ public class CombatManager : MonoBehaviour
     * Shift completed by either running out of turns or customers
     * Add any end of shift effects and add combat rewards
     */
-    private void EndShift(bool completedQueue)
+    private void EndShift()
     {
-        DisableActions();
-        // Check if customers ran out
-        if (completedQueue) UpdatePerformance(EARLY_FINISH_PENALTY);
-        // Check for game over state first:
-        if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
-        // End of shift artifact effects
-        inventoryManager.EndShiftArtifacts();
-        UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
-        // Pop up end screen
-        gameManager.ShiftCompleted(performanceLevel, willLevel, attentionLevel);
-        // Get combat rewards
-        if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
-        GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-        screen.GetComponent<CombatRewardsController>().markEarlyFinish(completedQueue);
+        bool completedQueue = false;
+        if(customersInLine.Count == 0 || remainingTurns == 0){
+
+            DisableActions();
+            // Check if customers ran out
+            if (remainingTurns > 0)
+            {
+                completedQueue = true;
+                UpdatePerformance(EARLY_FINISH_PENALTY);
+                gameManager.EarlyShift();
+            }
+            // Check for game over state first:
+            if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
+            // End of shift artifact effects
+            inventoryManager.EndShiftArtifacts();
+            UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
+            // Pop up end screen
+            gameManager.ShiftCompleted(performanceLevel, willLevel, attentionLevel);
+            // Get combat rewards
+            if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
+            GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+            screen.GetComponent<CombatRewardsController>().markEarlyFinish(completedQueue);
+        }
     }
 
     /* Game Over: 
@@ -189,8 +202,8 @@ public class CombatManager : MonoBehaviour
     private void NextCustomer()
     {
         customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
-        if (customersInLine.Count == 0) EndShift(true);
-        else {
+        if (customersInLine.Count > 0)
+        {
             currCustomer = customersInLine.Dequeue();
             Debug.Log("Customer dequeued");
             currCustomer.SendToFront(frontOfLinePoint);
@@ -307,6 +320,10 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Taking action: " + action.actionName);
         UpdateMetersWithEffects(action);
 
+        //Messy hardcode of Objection
+        if (action.actionName == "Reject") 
+             currCustomer.Interupt("Objection!");
+
         // Apply new effects for next turn
         List<EffectType> cleanupEffects = new List<EffectType>();
         foreach (ActionEffectStacks effectStacks in action.effects)
@@ -330,6 +347,8 @@ public class CombatManager : MonoBehaviour
         MoveCustomer(action.movement);
 
         IncrementTurns();
+
+        EndShift();
     }
 
     /* Increment Turns
@@ -359,11 +378,8 @@ public class CombatManager : MonoBehaviour
         foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
         currCustomer.IncrementActiveEffects();
 
-        // Check end shift state for turns:
-        if (remainingTurns == 0) EndShift(false);
-
         // Check to trigger astaroth tutorial
-        if (gameManager.InTutorial() && remainingTurns == 7)
+        if (gameManager.InTutorial() && remainingTurns == 3)
             FindFirstObjectByType<DialogueManager>().StartDialogue(combatTutorialDialogue);
     }
 
@@ -470,12 +486,27 @@ public class CombatManager : MonoBehaviour
             willModifier += effectResult.WillModifier;
             frustrationModifier += effectResult.FrustrationModifier;
             attentionModifier += effectResult.AttentionModifier;
+
+           
             // Temp: Annoying special case
             if (type == EffectType.INCOHERENT)
             {
                 // Set attention to 0 when escalated
                 if (action.actionName == "Escalate")
                     attentionModifier = -attentionLevel;
+            }
+            // Temp: Annoying special case
+            else if (type == EffectType.SHORTFUSE)
+            {
+                
+                if (action.actionName == "Escalate" || action.actionName == "Reject" )
+                    attentionModifier += 20;
+            }
+               // Temp: Annoying special case
+             else if (type == EffectType.MELLOW)
+            {
+                if (action.actionName == "Hustle"  ) frustrationModifier += 30;
+                else frustrationModifier -= 5;
             }
         }
 
@@ -495,7 +526,7 @@ public class CombatManager : MonoBehaviour
         ActionEffect effect = effectController.effect;
 
         // General modifiers:
-           float frustrationModifier = effect.FRUSTRATION_MODIFIER;
+          float frustrationModifier = effect.FRUSTRATION_MODIFIER;
           float  performaceModifier = effect.PERFORMANCE_MODIFIER;
           float  willModifier = effect.WILL_MODIFIER;  
           float  attentionModifier = effect.ATTENTION_MODIFIER;                

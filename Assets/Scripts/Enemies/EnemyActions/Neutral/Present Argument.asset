@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Present Argument
   m_EditorClassIdentifier: 
   enemyActionName: Present Argument
+  generalDescription: 
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
-  PERFORMANCE_MODIFIER: -4
-  ATTENTION_MODIFIER: 1
-  PASSIVE: 0
+  PERFORMANCE_MODIFIER: -5
+  ATTENTION_MODIFIER: 5
   ACTION_CHANCE: 1
-  BOSS_WILL_MODIFIER: 0

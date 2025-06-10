@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Objection!
   m_EditorClassIdentifier: 
   enemyActionName: Objection!
+  generalDescription: 
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
   ATTENTION_MODIFIER: 0
-  PASSIVE: 0
-  ACTION_CHANCE: 0.5
-  BOSS_WILL_MODIFIER: 0
+  ACTION_CHANCE: 1
+  effects:
+  - effect: {fileID: 11400000, guid: dc93f4b07e5054ce28535c5b0e4da1e6, type: 2}
+    stacks: 3

@@ -16,11 +16,12 @@ MonoBehaviour:
   type: 2
   target: 0
   effectSprite: {fileID: -6847344870767953996, guid: ff198d3b148b34929b7ccd1df3fa83e5, type: 3}
-  effectDescription: -1 Will each turn
+  effectDescription: -2 Will each turn
   shouldStack: 1
   shouldDecay: 1
   isPercent: 0
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: -1
+  WILL_MODIFIER: -2
+  BOSS_WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
   ATTENTION_MODIFIER: 0

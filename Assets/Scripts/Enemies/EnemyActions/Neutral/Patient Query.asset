@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Patient Query
   m_EditorClassIdentifier: 
   enemyActionName: Patient Query
+  generalDescription: 
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0
+  ACTION_CHANCE: 1
+  effects: []

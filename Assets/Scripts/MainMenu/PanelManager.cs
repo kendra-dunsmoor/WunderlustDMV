@@ -11,8 +11,7 @@ public class PanelManager : MonoBehaviour
 {
     private AudioManager audioManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }

@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -282.1, y: -56.015625}
-  m_SizeDelta: {x: 111.0429, y: 28.8304}
+  m_AnchoredPosition: {x: -282.1, y: -63.405}
+  m_SizeDelta: {x: 134.62, y: 23.6109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7763835777418936133
 CanvasRenderer:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -265,8 +265,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.4, y: 0.0000011921}
-  m_SizeDelta: {x: 386.7135, y: 110.83}
+  m_AnchoredPosition: {x: -21.4156, y: -1.0137}
+  m_SizeDelta: {x: 373.5287, y: 138.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8643247851253968300
 CanvasRenderer:
@@ -402,7 +402,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -282.1, y: 8.4}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3989331534080043915
 CanvasRenderer:
@@ -491,6 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da6998a34a7f424f99d8fb4c2636609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialManager: {fileID: 0}
+  tutorial: {fileID: 0}
   DialogueParent: {fileID: 8099543377113129057}
   DialogueTitleText: {fileID: 1193400413068162345}
   DialogueBodyText: {fileID: 7090363600701209737}

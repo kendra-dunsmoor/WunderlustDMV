@@ -17,9 +17,9 @@ public class CalendarController : MonoBehaviour
     [SerializeField] Sprite emptySpotImage;
     [SerializeField] Sprite stickyNoteImage;
     [SerializeField] Color emptySpotColor;
-    [SerializeField] GameObject choiceOffering;
-    [SerializeField] Button performanceReviewButton;
-
+    [SerializeField] GameObject instructions;
+    [SerializeField] GameObject orText;
+    public GameObject fridayChoiceMarker;
 
     private GameManager gameManager;
     private SceneFader sceneFader;
@@ -31,7 +31,7 @@ public class CalendarController : MonoBehaviour
     void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
-        gameManager = FindFirstObjectByType<GameManager>();        
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     void Start()
@@ -50,21 +50,38 @@ public class CalendarController : MonoBehaviour
         }
         FillCalendar();
     }
-    
+
     private void FillCalendar()
     {
-        Debug.Log("Fill Calendar for day: " + currDay);
-        // TODO: if end of week enable vending machine button
-        // also remove hover change when not day 5
-        choiceOffering.SetActive(currDay != 5);
-        performanceReviewButton.interactable = currDay == 5;
-
         // Set options for current shift
-        calendarDays[currDay - 1].shiftCompleteMarker.SetActive(true);
-        calendarDays[currDay - 1].choiceMarker.SetActive(true);
-        SetToEmptySlot(calendarDays[currDay - 1].choiceMarker);
-        optionA.text = gameManager.FetchNextShiftChoice();
-        optionB.text = gameManager.FetchNextShiftChoice();
+        Debug.Log("Fill Calendar for day: " + currDay);
+        // TODO: if end of week enable vending machine button:
+        if (currDay == 5)
+        {
+            instructions.GetComponentInChildren<TextMeshProUGUI>().text = "Grab a snack before performance review!";
+            optionA.text = "Vending Machine";
+            optionB.transform.parent.gameObject.SetActive(false);
+            orText.SetActive(false);
+            fridayChoiceMarker.SetActive(true);
+        }
+        else
+        {
+            calendarDays[currDay - 1].shiftCompleteMarker.SetActive(true);
+            calendarDays[currDay - 1].choiceMarker.SetActive(true);
+            SetToEmptySlot(calendarDays[currDay - 1].choiceMarker);
+            if (gameManager.InTutorial())
+            {
+                // Special case to force break room
+                optionA.text = "Break Room";
+                optionB.transform.parent.gameObject.SetActive(false);
+                orText.SetActive(false);                
+            }
+            else
+            {
+                optionA.text = gameManager.FetchNextShiftChoice();
+                optionB.text = gameManager.FetchNextShiftChoice();   
+            }
+        }
 
         // Fetch past run choices and fill calendar
         List<string> runPath = gameManager.FetchRunPath();
@@ -87,7 +104,7 @@ public class CalendarController : MonoBehaviour
     private void SetSlotToChoiceMade(GameObject noteSlot, string choice)
     {
         noteSlot.GetComponent<Image>().sprite = stickyNoteImage;
-        noteSlot.GetComponentInChildren<TextMeshProUGUI>().text = choice;        
+        noteSlot.GetComponentInChildren<TextMeshProUGUI>().text = choice;
     }
 
     public void SelectChoice(TextMeshProUGUI choice)
@@ -108,15 +125,22 @@ public class CalendarController : MonoBehaviour
                 break;
         }
     }
-    private void GoToVendingMachine() {
+    private void GoToVendingMachine()
+    {
         sceneFader.LoadScene(6);
     }
 
-    private void BreakRoom() {
+    private void BreakRoom()
+    {
         sceneFader.LoadScene(2);
     }
 
-    private void TriggerEvent() {
+    private void TriggerEvent()
+    {
         sceneFader.LoadScene(4);
+    }
+    
+    public void PerformanceReview() {
+        sceneFader.LoadScene(5);
     }
 }

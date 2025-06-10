@@ -51,21 +51,6 @@ public class Action : ScriptableObject
              else */
             if (effectStacks != null) description += "\nAdds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
         }
-        if (!inPerformanceReview)
-        {
-            switch (movement)
-            {
-                case ActionMovement.FRONT:
-                    description += "\nCustomer does not move.";
-                    break;
-                case ActionMovement.BACK:
-                    description += "\nCustomer moves to back of queue.";
-                    break;
-                case ActionMovement.AWAY:
-                    description += "\nCustomer leaves queue.";
-                    break;
-            }
-        }
         // TODO: Add actionUpgrades descriptions
         return description;
     }

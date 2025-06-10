@@ -264,6 +264,7 @@ public class CombatManager : MonoBehaviour
     public void UpdateAttention(float diff) {
         attentionLevel += diff;
         if (attentionLevel < 0) attentionLevel = 0;
+        if (attentionLevel > 100) attentionLevel = 100;
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
     }
@@ -452,7 +453,6 @@ public class CombatManager : MonoBehaviour
                     // TODO: this is increasing the penalty from 5 to 20 instead of 15?
                     if (action.actionName == "Make Mistake")
                     {
-                        attentionModifier += 10;
                         
                         if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
                         

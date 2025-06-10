@@ -83,6 +83,7 @@ public class VendingMachineController : MonoBehaviour
 
     public void NextShift()
     {
+        if (gameManager.FetchCurrentCalendarDay() == 5) sceneFader.LoadScene(5);
         sceneFader.LoadScene(3);
     }
 

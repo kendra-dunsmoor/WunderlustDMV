@@ -371,14 +371,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df5a170feac53845aa0e442a46363d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
-  frustrationMeter: {fileID: 0}
+  bossData: {fileID: 0}
+  bossCombatManager: {fileID: 0}
   dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
   actionTelegraph: {fileID: 8403576458326407937}
   currentEffectPrefab: {fileID: 0}
   currentEffectsPanel: {fileID: 5473944893170378270}
-  irateEffect: {fileID: 0}
 --- !u!1 &6618334834112724758
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2338019365221269074, guid: a73c885879ec2484f8242a329d1c4af0, type: 3}
+  m_Sprite: {fileID: -8849761272369606009, guid: 9b63c6e4e12004561b4c2d22f58d456e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

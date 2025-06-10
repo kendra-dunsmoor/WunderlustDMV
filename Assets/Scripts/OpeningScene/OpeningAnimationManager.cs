@@ -56,7 +56,7 @@ public class OpeningAnimationManager : MonoBehaviour
 
     public void GoToApartment()
     {
-        audioManager.PlayDialogue(textSound);
+        audioManager.PlayDialogue(audioManager.buttonClick);
         SceneManager.LoadSceneAsync(1);
     }
 }

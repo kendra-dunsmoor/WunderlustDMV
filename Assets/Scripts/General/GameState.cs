@@ -106,5 +106,6 @@ public class GameState
         attention = 20f;
         runPath = new List<string>();
         currentWeekday = 0;
+        earlyShifts = 0;
     }
 }

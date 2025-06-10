@@ -292,12 +292,10 @@ public class Customer : MonoBehaviour
 
     private void TakeEnemyAction(EnemyAction action)
     {
-              Debug.Log("Taking Enemy Action: " + action.enemyActionName);
+        Debug.Log("Taking Enemy Action: " + action.enemyActionName);
         combatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
         combatManager.UpdateWill(action.WILL_MODIFIER);
         combatManager.UpdateAttention(action.ATTENTION_MODIFIER);
-
-        
 
         // Apply new effects for next turn
         List<EffectType> cleanupEffects = new List<EffectType>();
@@ -312,7 +310,6 @@ public class Customer : MonoBehaviour
             // Else add new stacks
             else 
             {
-                
                 combatManager.AddNewEffect(effectStacks.effect, effectStacks.stacks);
             }
         }

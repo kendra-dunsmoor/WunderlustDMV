@@ -159,28 +159,28 @@ public class CombatManager : MonoBehaviour
     private void EndShift()
     {
         bool completedQueue = false;
-        if(customersInLine.Count == 0 || remainingTurns == 0){
 
-            DisableActions();
-            // Check if customers ran out
-            if (remainingTurns > 0)
-            {
-                completedQueue = true;
-                UpdatePerformance(EARLY_FINISH_PENALTY);
-                gameManager.EarlyShift();
-            }
-            // Check for game over state first:
-            if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
-            // End of shift artifact effects
-            inventoryManager.EndShiftArtifacts();
-            UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
-            // Pop up end screen
-            gameManager.ShiftCompleted(performanceLevel, willLevel, attentionLevel);
-            // Get combat rewards
-            if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
-            GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<CombatRewardsController>().markEarlyFinish(completedQueue);
+        DisableActions();
+        // Check for game over state first:
+        if (performanceLevel <= 0 || performanceLevel >= performanceMeter.maxValue) return;
+
+        // Check if customers ran out
+        if (remainingTurns > 0)
+        {
+            completedQueue = true;
+            UpdatePerformance(EARLY_FINISH_PENALTY);
+            gameManager.EarlyShift();
         }
+        // End of shift artifact effects
+        inventoryManager.EndShiftArtifacts();
+        UpdateAttention(END_SHIFT_ATTENTION_MODIFIER);
+
+        // Pop up end screen
+        gameManager.ShiftCompleted(performanceLevel, willLevel, attentionLevel);
+        // Get combat rewards
+        if (audioManager != null) audioManager.PlaySFX(audioManager.shiftOver_Success);
+        GameObject screen = Instantiate(combatRewardsScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        screen.GetComponent<CombatRewardsController>().markEarlyFinish(completedQueue);
     }
 
     /* Game Over: 
@@ -320,9 +320,10 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Taking action: " + action.actionName);
         UpdateMetersWithEffects(action);
 
-        //Messy hardcode of Objection
-        if (action.actionName == "Reject") 
-             currCustomer.Interupt("Objection!");
+        // Messy hardcode of Objection
+        // TODO: update to not call this for all customer types
+        if (action.actionName == "Reject")
+            currCustomer.Interupt("Objection!");
 
         // Apply new effects for next turn
         List<EffectType> cleanupEffects = new List<EffectType>();
@@ -349,7 +350,7 @@ public class CombatManager : MonoBehaviour
 
         IncrementTurns();
 
-        EndShift();
+        if (customersInLine.Count == 0 || remainingTurns == 0) EndShift();
     }
 
     /* Increment Turns

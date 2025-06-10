@@ -31,10 +31,10 @@ MonoBehaviour:
   negativeDialogueLines:
   - This is an abuse of process! I find your conduct largely unacceptable! Consider
     yourself sanctioned!
-  positiveAction: {fileID: 0}
-  neutralAction: {fileID: 0}
-  negativeAction: {fileID: 0}
-  passiveAction: {fileID: 0}
+  positiveAction: {fileID: 11400000, guid: d93c6f7b91c2c55439b8412a4302c0ac, type: 2}
+  neutralAction: {fileID: 11400000, guid: d3818c867e7cd814a8994d14618f4ceb, type: 2}
+  negativeAction: {fileID: 11400000, guid: cd664dceb470053468cd22f565620682, type: 2}
+  passiveAction: {fileID: 11400000, guid: 40a835d81f5f0924a97042eb0c03f904, type: 2}
   acceptedSprite: {fileID: 21300000, guid: cb7d2a8ae507444e19b149aacad3fa26, type: 3}
   rejectedSprite: {fileID: 21300000, guid: cb7d2a8ae507444e19b149aacad3fa26, type: 3}
   iconSprite: {fileID: 21300000, guid: cb7d2a8ae507444e19b149aacad3fa26, type: 3}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b09a67f6b7442a8866ef536567b18c, type: 3}
   m_Name: Green Cow
   m_EditorClassIdentifier: 
-  itemName: BlueBovine
-  Icon: {fileID: -8599744417402607100, guid: 2140d6cd8164c4b4d96d3a9ca0c8bfb3, type: 3}
+  itemName: Blue Bovine
+  Icon: {fileID: -1212620033428731605, guid: 74dc041dfc53c4f02b5d14b7bc84c8ad, type: 3}
   ID: C_002
   price: 40
   itemRarity: 1

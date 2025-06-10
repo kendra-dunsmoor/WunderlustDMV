@@ -29,9 +29,9 @@ MonoBehaviour:
   - A flicker... perhaps this isn't the final queue after all. Thank you.
   negativeDialogueLines:
   - It matters not... nothing truly changes.
-  positiveAction: {fileID: 0}
-  neutralAction: {fileID: 0}
-  negativeAction: {fileID: 0}
+  positiveAction: {fileID: 11400000, guid: c9af89917910fa041b869eccea157faf, type: 2}
+  neutralAction: {fileID: 11400000, guid: a22e74aeee81840219aab33dfe3fe94d, type: 2}
+  negativeAction: {fileID: 11400000, guid: ab5696ca0eef249e7b5941b3e381edfd, type: 2}
   passiveAction: {fileID: 0}
   acceptedSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}
   rejectedSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}

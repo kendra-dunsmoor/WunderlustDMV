@@ -119,7 +119,7 @@ public class CombatManager : MonoBehaviour
         willMeter.value = willLevel;
         willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
         performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
-        remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        remainingTurnsText.text = remainingTurns.ToString();
         attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
@@ -264,6 +264,7 @@ public class CombatManager : MonoBehaviour
     public void UpdateAttention(float diff) {
         attentionLevel += diff;
         if (attentionLevel < 0) attentionLevel = 0;
+        if (attentionLevel > 100) attentionLevel = 100;
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
     }
@@ -307,11 +308,19 @@ public class CombatManager : MonoBehaviour
         UpdateMetersWithEffects(action);
 
         // Apply new effects for next turn
+        List<EffectType> cleanupEffects = new List<EffectType>();
         foreach (ActionEffectStacks effectStacks in action.effects)
         {
-            if (effectStacks.stacks < 0) RemoveEffectStacks(effectStacks.stacks, effectStacks.effect.type);
+            // If marked as negative, remove those stacks
+            if (effectStacks.stacks < 0)
+            {
+                bool shouldCleanup = RemoveEffectStacks(-effectStacks.stacks, effectStacks.effect.type);
+                if (shouldCleanup) cleanupEffects.Add(effectStacks.effect.type);
+            }
+            // Else add new stacks
             else AddNewEffect(effectStacks.effect, effectStacks.stacks);
         }
+        foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
 
         // Move current customer if needed:
         MoveCustomer(action.movement);
@@ -327,17 +336,23 @@ public class CombatManager : MonoBehaviour
         // Decrease remaining turn count and increment active effects
         remainingTurns--;
         Debug.Log("Turns remaining: " + remainingTurns);
-        remainingTurnsText.text = "Turns remaining: " + remainingTurns;
+        remainingTurnsText.text = remainingTurns.ToString();
 
         // Update turn counter for artifacts and apply any effects:
         inventoryManager.IncrementArtifacts();
 
+        List<EffectType> cleanupEffects = new List<EffectType>();
         // Update turn counter for active effects:
         foreach (var (type, effectUI) in activeEffects)
         {
             ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
-            if (effect.shouldDecay) RemoveEffectStacks(1, effect.type);
+                if (effect.shouldDecay)
+                {
+                    bool shouldCleanup = RemoveEffectStacks(1, effect.type);
+                    if (shouldCleanup) cleanupEffects.Add(effect.type);
+                }
         }
+        foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
         currCustomer.IncrementActiveEffects();
 
         // Check end shift state for turns:
@@ -442,7 +457,6 @@ public class CombatManager : MonoBehaviour
                     // Check for additional attention penalty
                     if (action.actionName == "Make Mistake")
                     {
-                        attentionModifier += 10;
                         
                         if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
                         
@@ -563,23 +577,34 @@ public class CombatManager : MonoBehaviour
     /* Remove Effect Stacks:
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
     * Remove stacks from effect if active
+    * Return if effect type should be removed from list, separated to avoid collection errors
     */
-    public void RemoveEffectStacks(int amount, EffectType effectType) {
-        if (activeEffects.ContainsKey(effectType)) {
+    public bool RemoveEffectStacks(int amount, EffectType effectType) {
+        if (activeEffects.ContainsKey(effectType))
+        {
             Debug.Log("Decreasing effectType: " + effectType + " by " + amount);
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
             activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
             effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
-            if (effectUI.FetchTurns() == 0) {
-                Debug.Log("Remove effect");
-                Destroy(activeEffects[effectType]);
-                activeEffects.Remove(effectType);
-            }
-        }
+            if (effectUI.FetchTurns() == 0) return true;
+            else return false;
+        } return false;
     }
 
-    private bool MadeCorrectPaperworkChoice(Action action) {
+    /* Delete Effect:
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~
+    * If no stacks remaining delete efect, separated to avoid collection errors
+    */
+    public void DeleteEffect(EffectType effectType)
+    {
+        Debug.Log("Cleanup effect: " + effectType);
+        Destroy(activeEffects[effectType]);
+        activeEffects.Remove(effectType);
+    }
+
+    private bool MadeCorrectPaperworkChoice(Action action)
+    {
         bool wasAcceptable = paperwork.GetComponent<Paperwork>().isAcceptable;
         if (action.actionName == "Accept") return wasAcceptable;
         else return !wasAcceptable;

@@ -17,6 +17,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject paperwork;
     [SerializeField] GameObject will;
     [SerializeField] GameObject customer;
+
+    private AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
     public void StartTutorial(TutorialDialogue tutorial)
     {
         currLine = 0;
@@ -29,6 +36,7 @@ public class TutorialManager : MonoBehaviour
     public void NextLine()
     {
         Debug.Log("Next tutorial line");
+        audioManager.PlaySFX(audioManager.buttonClick);
         activeBox.SetActive(false);
         if (currLine >= tutorial.lines.Length)
         {

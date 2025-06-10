@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf738f0ef32d04994ad4ac515237c427, type: 3}
+  m_Name: Praise
+  m_EditorClassIdentifier: 
+  actionName: Praise
+  FRUSTRATION_MODIFIER: 0
+  WILL_MODIFIER: 1
+  BOSS_WILL_MODIFIER: 3
+  PERFORMANCE_MODIFIER: 2
+  ATTENTION_MODIFIER: 0
+  INCORRECT_CHOICE_ATTENTION_MODIFIER: 0
+  type: 2
+  movement: 2
+  effects: []
+  actionUpgrades: []
+  baseButtonImage: {fileID: 0}
+  hoverButtonImage: {fileID: 0}
+  generalDescription: Nepobaby will enter into a PACIFIED state.. such a good nepobaby.

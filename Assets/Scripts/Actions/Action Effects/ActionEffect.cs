@@ -37,6 +37,7 @@ public class ActionEffect : ScriptableObject
     public bool isPercent; // Determine if multiplier or addition
     public float FRUSTRATION_MODIFIER;
     public float WILL_MODIFIER;
+    public float BOSS_WILL_MODIFIER; 
     public float PERFORMANCE_MODIFIER; // TODO: will depend on correct answer?
     public float ATTENTION_MODIFIER;
 }

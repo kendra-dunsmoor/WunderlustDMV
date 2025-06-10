@@ -47,7 +47,7 @@ public class EventSelector : MonoBehaviour
                     case GameState.RunStatus.REINCARNATED:
                         return reincarnatedAptDialogue;
                     case GameState.RunStatus.WON:
-                        return reincarnatedAptDialogue;
+                        return winnerAptDialogue;
                 }
                 return introAptDialogue;
             case "Office_Event":

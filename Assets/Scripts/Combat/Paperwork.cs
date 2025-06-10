@@ -31,7 +31,7 @@ public class Paperwork : MonoBehaviour
         else
         {
             Debug.Log("Add reject paperwork");
-            if (rejectImage != null) image.sprite = acceptImage;
+            if (rejectImage != null) image.sprite = rejectImage;
             isAcceptable = false;
         }
         gameObject.SetActive(true);

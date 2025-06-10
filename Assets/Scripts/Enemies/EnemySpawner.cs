@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
+using UnityEngine.UI;
 
 /* Enemy Spawner
 * ~~~~~~~~~~~~~~~~
@@ -32,11 +32,15 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Initialize customer queue: " + numCustomers);
         for (int i = 0; i < numCustomers; i++)
         {
+            EnemyData spawnedEnemy = GetRandomEnemy();
             Customer customer = Instantiate(customerPrefab, spawnPoint).GetComponent<Customer>();
             if (gameManager.InTutorial()) customer.AddEnemyData(enemyTypes[0]); // just base one for testing rn
-            else customer.AddEnemyData(GetRandomEnemy());
+            else customer.AddEnemyData(spawnedEnemy);
             customersInLine.Enqueue(customer);
-            customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
+            GameObject customerIcon = Instantiate(customerIconPrefab, customerQueuePanel);
+                    // Get all components of type T in children
+            customerIcon.GetComponentInChildren<Image>().sprite = spawnedEnemy.iconSprite;
+            customerIconQueue.Enqueue(customerIcon); // temp, this only works while there are less customers than the size of the panel
         }
     }
     

@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeDuration: 0.3
-  shakeAmount: 2
+  shakeAmount: 1
 --- !u!1 &8967223203237926736
 GameObject:
   m_ObjectHideFlags: 0

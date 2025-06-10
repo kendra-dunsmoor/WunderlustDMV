@@ -16,15 +16,18 @@ public class CertificationsPageController : MonoBehaviour
     [SerializeField] private GameObject purchasePopUp;
     [SerializeField] private TextMeshProUGUI purchaseDescription;
 
-    void Start()
+    void Awake()
     {
         audioManager = 	FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
+    }
+
+    void Start()
+    {
         // These should probably get moved to prefab script but leaving all pop up logic in here for now:
         opaqueScreen.SetActive(false);
         purchasePopUp.SetActive(false);
 
-        // Get Game Manager to check and add certs
-        gameManager = FindFirstObjectByType<GameManager>();
         // check if player has cert and mark as purchased
         List<Certificate> playerCerts = gameManager.FetchCertificates();
         // Instantiate all available certs for sale. For now just going to serialize a field for this

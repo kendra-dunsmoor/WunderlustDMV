@@ -771,6 +771,8 @@ MonoBehaviour:
   paperRustle: {fileID: 8300000, guid: 57b9bf3bd744541c4ab81ed77bc5d1c5, type: 3}
   drink: {fileID: 8300000, guid: 6173efd8b26384094899041b43737294, type: 3}
   openDoor: {fileID: 8300000, guid: e621f4ee0bb734659bf2f88197936e47, type: 3}
+  correct: {fileID: 8300000, guid: 745551891c78d4bb688878f403a4935c, type: 3}
+  incorrect: {fileID: 8300000, guid: 68ea8b876b2c6482c9925220f4eeebf0, type: 3}
   mixer: {fileID: 24100000, guid: 9683fc10df16640ad8a3fbb85353dc45, type: 2}
 --- !u!1 &1279189369
 GameObject:

@@ -114,6 +114,9 @@ public class Customer : MonoBehaviour
     {
         if (gameObject == null) return;
 
+        if (accepted) audioManager.PlayDialogue(happySound);
+        else audioManager.PlayDialogue(angrySound);
+
         Debug.Log("Sending customer away");
         movingAway = true;
         goalPoint = point;
@@ -175,6 +178,7 @@ public class Customer : MonoBehaviour
     // take prepped action, wait, update new prepped action
     private IEnumerator TakeTurnWithUI()
     {
+        yield return new WaitForSeconds(SHAKE_DURATION); // wait for player action results and SFX
         // Apply turn frustration
         Debug.Log("Adding frustration for waiting");
         UpdateFrustration(enemyData.frustrationIncreasePerTurn);

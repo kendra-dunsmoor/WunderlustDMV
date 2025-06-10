@@ -587,8 +587,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Decreasing effectType: " + effectType + " by " + amount);
             UIEffectController effectUI = activeEffects[effectType].GetComponent<UIEffectController>();
             effectUI.UpdateTurns(-amount);
-            activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(
-            effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
+            // activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
             if (effectUI.FetchTurns() == 0) return true;
             else return false;
         } return false;

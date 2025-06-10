@@ -25,4 +25,4 @@ MonoBehaviour:
   actionUpgrades: []
   baseButtonImage: {fileID: 0}
   hoverButtonImage: {fileID: 0}
-  generalDescription: If paperwork is invalid lose performance and gain attention
+  generalDescription: If paperwork is invalid gain attention

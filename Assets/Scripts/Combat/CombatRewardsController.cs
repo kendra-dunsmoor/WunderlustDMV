@@ -22,8 +22,6 @@ public class CombatRewardsController : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
 
-
-
         int currency = GetCurrencyRewards();
         rewardsDescription.text ="Performance Incentive: " + currency + " Office Obols";
         gameManager.UpdateOfficeBucks(currency);
@@ -31,8 +29,6 @@ public class CombatRewardsController : MonoBehaviour
         int metaCurrency = GetMetaRewards();
         rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Credits";
         gameManager.UpdateSoulCredits(metaCurrency);
-
-
 
         if(GetVRepRewards() == 1)
         {

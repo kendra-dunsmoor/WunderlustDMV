@@ -17,6 +17,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject paperwork;
     [SerializeField] GameObject will;
     [SerializeField] GameObject customer;
+    [SerializeField] GameObject turnCounter;
+    [SerializeField] GameObject attention;
 
     private AudioManager audioManager;
 
@@ -66,6 +68,12 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialBox.CUSTOMER:
                 activeBox = customer;
+                break;
+            case TutorialBox.ATTENTION:
+                activeBox = attention;
+                break;
+            case TutorialBox.TURN_COUNTER:
+                activeBox = turnCounter;
                 break;
         }
         activeBox.GetComponentInChildren<TextMeshProUGUI>().text = tutorialLine.dialogueText;

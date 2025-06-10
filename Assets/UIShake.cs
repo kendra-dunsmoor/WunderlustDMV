@@ -10,25 +10,27 @@
 
        public void StartShake()
        {
-           originalPosition = transform.localPosition;
-           StartCoroutine(Shake());
+            originalPosition = transform.localPosition;
+            Debug.Log("Starting shake");
+            StartCoroutine(Shake());
        }
 
        private IEnumerator Shake()
        {
-           float elapsed = 0f;
+            float elapsed = 0f;
 
-           while (elapsed < shakeDuration)
-           {
-               float x = originalPosition.x + Random.Range(-1f, 1f) * shakeAmount;
-               float y = originalPosition.y + Random.Range(-1f, 1f) * shakeAmount;
+            while (elapsed < shakeDuration)
+            {
+                   float x = originalPosition.x + Random.Range(-1f, 1f) * shakeAmount;
+                   float y = originalPosition.y + Random.Range(-1f, 1f) * shakeAmount;
 
-               transform.localPosition = new Vector3(x, y, originalPosition.z);
+                   transform.localPosition = new Vector3(x, y, originalPosition.z);
 
-               elapsed += Time.deltaTime;
-               yield return null;
-           }
+                   elapsed += Time.deltaTime;
+                   yield return null;
+            }
 
-           transform.localPosition = originalPosition;
+            transform.localPosition = originalPosition;
+            Debug.Log("Finished shake");
        }
    }

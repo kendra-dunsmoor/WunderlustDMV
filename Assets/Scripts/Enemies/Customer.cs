@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using static ActionEffect;
 using static EnemyData;
 using TMPro;
+using System;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Customer : MonoBehaviour
@@ -26,8 +28,11 @@ public class Customer : MonoBehaviour
     [SerializeField] private Transform currentEffectsPanel;
     [SerializeField] private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
     [SerializeField] private ActionEffect irateEffect;
-
+    [SerializeField] private ActionEffect elatedEffect;
     private float frustrationLevel;
+
+    private float SHAKE_DURATION = 1f;
+    private float DIALOGUE_DURATION = 2f;
 
     // temp:
     private bool movingToFront;
@@ -98,12 +103,11 @@ public class Customer : MonoBehaviour
         Debug.Log("Sending customer to front");
         movingToFront = true;
         goalPoint = point;
-        //TakeTurn();
     }
     public void Interupt(string action)
     {
-       if(enemyData.passiveAction.enemyActionName == action)       
-        TakeEnemyAction(enemyData.passiveAction);
+        if (enemyData.passiveAction != null && enemyData.passiveAction.enemyActionName == action)
+            TakeEnemyAction(enemyData.passiveAction);
     }
 
     public void SendAway(bool accepted, Transform point)
@@ -111,12 +115,8 @@ public class Customer : MonoBehaviour
         if (gameObject == null) return;
 
         Debug.Log("Sending customer away");
-        SayDialogueLine(LineType.POSITIVE);
         movingAway = true;
         goalPoint = point;
-        // toogle paperwork visibility false
-        GameObject paperwork = GameObject.FindGameObjectWithTag("Paperwork");
-        if (paperwork != null) paperwork.SetActive(false);
 
         // No difference in sprites currently, can uncomment if that changes
         // if (accepted)
@@ -158,7 +158,7 @@ public class Customer : MonoBehaviour
         if (frustrationLevel <= 0)
         {
             audioManager.PlayDialogue(happySound);
-            //AddNewEnemyEffect(elatedEffect, 1);
+            AddNewEnemyEffect(elatedEffect, 1);
         }
     }
 
@@ -169,21 +169,61 @@ public class Customer : MonoBehaviour
 
     public void TakeTurn()
     {
-        Debug.Log("Customer Turn Starting");
-        // Take prepped action
-        if (preppedAction != null) TakeEnemyAction(preppedAction);
+        StartCoroutine(TakeTurnWithUI());
+    }
 
+    // take prepped action, wait, update new prepped action
+    private IEnumerator TakeTurnWithUI()
+    {
         // Apply turn frustration
         Debug.Log("Adding frustration for waiting");
         UpdateFrustration(enemyData.frustrationIncreasePerTurn);
 
+        Debug.Log("Customer Turn Starting");
+        // Take prepped action
+        if (preppedAction != null) StartCoroutine(TakeActionWithUI(preppedAction));
+        yield return new WaitForSeconds(SHAKE_DURATION); // Shake duration
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // action text duration
+
         // Telegraph next action
         SetNewPreppedAction();
 
-        // Add dialogue
-        SayDialogueLine(LineType.NEUTRAL);
         Debug.Log("Customer Turn Completed");
         combatManager.EnableActions();
+    }
+
+    // shake enemy, wait, show dialogue, wait, apply action effects
+    private IEnumerator TakeActionWithUI(EnemyAction preppedAction)
+    {
+        // Enemy taking action shake
+        dialogueBox.SetActive(false);
+        actionTelegraph.GetComponent<UIShake>().StartShake();
+        yield return new WaitForSeconds(SHAKE_DURATION); // Shake duration
+
+        // Add dialogue
+        actionTelegraph.SetActive(false);
+        dialogueBox.SetActive(true);
+        SayDialogueLine(LineType.NEUTRAL); // TODO: type this out and check if it should be angry or happy instead
+        // TODO: add action result text
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
+
+        // Add action result text
+        dialogueBox.SetActive(true);
+        StartCoroutine(TypeLine(preppedAction.GetDescription())); // TODO: type this out and check if it should be angry or happy instead
+        // TODO: add action result text
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
+
+        // Apply effect results
+        TakeEnemyAction(preppedAction);
+    }
+
+    IEnumerator TypeLine(string text) {
+        dialogueText.text = "";
+        foreach (char letter in text) {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     public void SayDialogueLine(LineType lineType)
@@ -199,7 +239,7 @@ public class Customer : MonoBehaviour
         if (dialogueChoices.Length > 0)
         {
             dialogueBox.SetActive(true);
-            dialogueText.text = dialogueChoices[Random.Range(0, dialogueChoices.Length)];
+            StartCoroutine(TypeLine(dialogueChoices[UnityEngine.Random.Range(0, dialogueChoices.Length)]));
         }
     }
 

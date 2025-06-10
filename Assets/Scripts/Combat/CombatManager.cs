@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -18,7 +19,7 @@ public class CombatManager : MonoBehaviour
     private AudioManager audioManager;
     private GameManager gameManager;
     private InventoryManager inventoryManager;
-    List<Certificate> playerCerts; 
+    List<Certificate> playerCerts;
 
     [Header("------------- Tutorials -------------")]
     [SerializeField] TutorialManager tutorialManager;
@@ -33,7 +34,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject actionButtonPrefab;
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private GameObject customerIconPrefab;
-  //  [SerializeField] private ActionEffect attentionEffect;
+    //  [SerializeField] private ActionEffect attentionEffect;
 
     [Header("------------- UI Meters -------------")]
     [SerializeField] private Slider performanceMeter;
@@ -105,7 +106,7 @@ public class CombatManager : MonoBehaviour
         }
 
         // Check for tutorials:
-        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0) 
+        if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 0)
         {
             tutorialManager.StartTutorial(openingTutorial);
             GameObject.FindGameObjectWithTag("ClassPanel").SetActive(false);
@@ -210,7 +211,7 @@ public class CombatManager : MonoBehaviour
             Destroy(customerIconQueue.Dequeue());
         }
     }
-    
+
     /* Spawn Paperwork: 
     * ~~~~~~~~~~~~~~~
     * Customer reaches front of queue and their paperwork should be instantiated in
@@ -242,27 +243,31 @@ public class CombatManager : MonoBehaviour
     * Update performance meter after player action
     * Check for game over state
     */
-    public void UpdatePerformance(float diff) {
-        performanceLevel += (float) Math.Round(diff);
+    public void UpdatePerformance(float diff)
+    {
+        performanceLevel += (float)Math.Round(diff);
         performanceMeter.GetComponent<SliderCounter>().UpdateBar(performanceLevel);
         Debug.Log("Performance level updated to: " + performanceLevel);
-        if (performanceLevel <= 0) {
+        if (performanceLevel <= 0)
+        {
             gameManager.UpdateRunStatus(GameState.RunStatus.FIRED);
             GameOver(); // Fired
             Debug.Log("Game Over: Fired for bad performance!");
         }
-        if (performanceLevel >= MAX_PERFORMANCE) {
+        if (performanceLevel >= MAX_PERFORMANCE)
+        {
             gameManager.UpdateRunStatus(GameState.RunStatus.REINCARNATED);
             GameOver(); // Reincarnated
             Debug.Log("Game Over: Reincarnated for good performance!");
         }
     }
-    
+
     /* Update Will: 
     * ~~~~~~~~~~~~~
     * Update will meter after player action
     */
-    public void UpdateWill(float diff) {
+    public void UpdateWill(float diff)
+    {
         willLevel += diff;
         if (willLevel > gameManager.FetchMaxWill()) willLevel = gameManager.FetchMaxWill();
         if (willLevel < 0) willLevel = 0;
@@ -274,7 +279,8 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~
     * Update attention after player action
     */
-    public void UpdateAttention(float diff) {
+    public void UpdateAttention(float diff)
+    {
         attentionLevel += diff;
         if (attentionLevel < 0) attentionLevel = 0;
         if (attentionLevel > 100) attentionLevel = 100;
@@ -286,12 +292,13 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~
     * Update current customer frustration meter after player action
     */
-    public void UpdateFrustration(float diff) {
-      
-		if (playerCerts.Any(c => c.type == Certificate.CertificateType.ANGER_MANAGE))
-		{
-			diff *= .8f;
-		} 
+    public void UpdateFrustration(float diff)
+    {
+
+        if (playerCerts.Any(c => c.type == Certificate.CertificateType.ANGER_MANAGE))
+        {
+            diff *= .8f;
+        }
 
         Debug.Log("Change curr customer frustration by " + diff);
         currCustomer.UpdateFrustration(diff);
@@ -330,7 +337,7 @@ public class CombatManager : MonoBehaviour
         foreach (ActionEffectStacks effectStacks in action.effects)
         {
             // If marked as negative, remove those stacks
-            if (effectStacks.stacks < 0 && effectStacks.effect.type == EffectType.ADD_TURNS)  AddNewEffect(effectStacks.effect, effectStacks.stacks); // annoying special case where negative isn't removing
+            if (effectStacks.stacks < 0 && effectStacks.effect.type == EffectType.ADD_TURNS) AddNewEffect(effectStacks.effect, effectStacks.stacks); // annoying special case where negative isn't removing
             else if (effectStacks.stacks < 0)
             {
                 bool shouldCleanup = RemoveEffectStacks(-effectStacks.stacks, effectStacks.effect.type);
@@ -344,9 +351,9 @@ public class CombatManager : MonoBehaviour
         // Move current customer if needed:
         if (gameManager.ContainsItem("A_012"))
         {
-             if (action.actionName == "Reject") action.movement = Action.ActionMovement.FRONT;
+            if (action.actionName == "Reject") action.movement = Action.ActionMovement.FRONT;
         }
-        MoveCustomer(action.movement);
+        MoveCustomer(action.movement, action.actionName);
 
         IncrementTurns();
 
@@ -371,11 +378,11 @@ public class CombatManager : MonoBehaviour
         foreach (var (type, effectUI) in activeEffects)
         {
             ActionEffect effect = effectUI.GetComponent<UIEffectController>().effect;
-                if (effect.shouldDecay)
-                {
-                    bool shouldCleanup = RemoveEffectStacks(1, effect.type);
-                    if (shouldCleanup) cleanupEffects.Add(effect.type);
-                }
+            if (effect.shouldDecay)
+            {
+                bool shouldCleanup = RemoveEffectStacks(1, effect.type);
+                if (shouldCleanup) cleanupEffects.Add(effect.type);
+            }
         }
         foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
         currCustomer.IncrementActiveEffects();
@@ -412,7 +419,7 @@ public class CombatManager : MonoBehaviour
         if (effect.target == TargetType.ENEMY) currCustomer.AddNewEnemyEffect(effect, stacks);
         else AddNewPlayerEffect(effect, stacks);
     }
-    
+
     /* Add New Player Effect
     * ~~~~~~~~~~~~~~
     * Add new effect to player panel
@@ -456,32 +463,33 @@ public class CombatManager : MonoBehaviour
 
         // Check for correct paperwork choice if accept/reject
         if (action.INCORRECT_CHOICE_ATTENTION_MODIFIER != 0 &&
-            !MadeCorrectPaperworkChoice(action)){
+            !MadeCorrectPaperworkChoice(action))
+        {
             Debug.Log("Incorrect choice for paperwork, apply negative performance and attention");
             attentionModifier = action.INCORRECT_CHOICE_ATTENTION_MODIFIER;
-            performaceModifier = -action.PERFORMANCE_MODIFIER;                
+            performaceModifier = -action.PERFORMANCE_MODIFIER;
         }
-    
-        // Check player effects:
-            foreach (var (type, effectUI) in activeEffects)
-            {
-                EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>());
-                performaceModifier += effectResult.PerformanceModifier;
-                willModifier += effectResult.WillModifier;
-                frustrationModifier += effectResult.FrustrationModifier;
-                attentionModifier += effectResult.AttentionModifier;
 
-                if (type == EffectType.MADE_MISTAKE)
+        // Check player effects:
+        foreach (var (type, effectUI) in activeEffects)
+        {
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>());
+            performaceModifier += effectResult.PerformanceModifier;
+            willModifier += effectResult.WillModifier;
+            frustrationModifier += effectResult.FrustrationModifier;
+            attentionModifier += effectResult.AttentionModifier;
+
+            if (type == EffectType.MADE_MISTAKE)
+            {
+                // Check for additional attention penalty
+                if (action.actionName == "Make Mistake")
                 {
-                    // Check for additional attention penalty
-                    if (action.actionName == "Make Mistake")
-                    {
-                        
-                        if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY))  attentionModifier -= 5;
-                        
-                    }
+
+                    if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY)) attentionModifier -= 5;
+
                 }
             }
+        }
         // Check curr customer effects:
         foreach (var (type, effectUI) in currCustomer.GetActiveEffects())
         {
@@ -491,7 +499,7 @@ public class CombatManager : MonoBehaviour
             frustrationModifier += effectResult.FrustrationModifier;
             attentionModifier += effectResult.AttentionModifier;
 
-           
+
             // Temp: Annoying special case
             if (type == EffectType.INCOHERENT)
             {
@@ -502,14 +510,14 @@ public class CombatManager : MonoBehaviour
             // Temp: Annoying special case
             else if (type == EffectType.SHORTFUSE)
             {
-                
-                if (action.actionName == "Escalate" || action.actionName == "Reject" )
+
+                if (action.actionName == "Escalate" || action.actionName == "Reject")
                     attentionModifier += 20;
             }
-               // Temp: Annoying special case
-             else if (type == EffectType.MELLOW)
+            // Temp: Annoying special case
+            else if (type == EffectType.MELLOW)
             {
-                if (action.actionName == "Hustle"  ) frustrationModifier += 30;
+                if (action.actionName == "Hustle") frustrationModifier += 30;
                 else frustrationModifier -= 5;
             }
         }
@@ -525,43 +533,47 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
     * For each individual effect, update modifiers
     */
-    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController) {
+    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController)
+    {
 
         ActionEffect effect = effectController.effect;
 
         // General modifiers:
-          float frustrationModifier = effect.FRUSTRATION_MODIFIER;
-          float  performaceModifier = effect.PERFORMANCE_MODIFIER;
-          float  willModifier = effect.WILL_MODIFIER;  
-          float  attentionModifier = effect.ATTENTION_MODIFIER;                
+        float frustrationModifier = effect.FRUSTRATION_MODIFIER;
+        float performaceModifier = effect.PERFORMANCE_MODIFIER;
+        float willModifier = effect.WILL_MODIFIER;
+        float attentionModifier = effect.ATTENTION_MODIFIER;
 
         // Any special cases that need to be hard coded for now:
-        switch (effectType) {
+        switch (effectType)
+        {
             case EffectType.IRATE:
                 UpdateAttention(10);
                 break;
-           /* Commenting out due to Attention re-work 
-            case EffectType.ATTENTION:
-                Debug.Log("Multiplying performance change due to attention");
-                for (int i = 0; i < effectController.FetchTurns(); i++) {
-                    performaceModifier *= effect.PERFORMANCE_MODIFIER;
-                }
-                break; */
+            /* Commenting out due to Attention re-work 
+             case EffectType.ATTENTION:
+                 Debug.Log("Multiplying performance change due to attention");
+                 for (int i = 0; i < effectController.FetchTurns(); i++) {
+                     performaceModifier *= effect.PERFORMANCE_MODIFIER;
+                 }
+                 break; */
             case EffectType.HUSTLING:
                 // performance gains remove attention
-                if (performaceModifier > 0) {
+                if (performaceModifier > 0)
+                {
                     Debug.Log("Positive performance modifier while hustling effect active");
-                      UpdateAttention(-10);
+                    UpdateAttention(-10);
                 }
                 break;
             case EffectType.CAFFIENATED:
                 // Check if player has thermos artifact which doubles caffienated modifier
-                if (gameManager.ContainsItem("A_006"))    willModifier += effect.WILL_MODIFIER;
+                if (gameManager.ContainsItem("A_006")) willModifier += effect.WILL_MODIFIER;
                 break;
         }
-        EffectResult effectResult = new EffectResult { 
-            FrustrationModifier = frustrationModifier, 
-            PerformanceModifier = performaceModifier, 
+        EffectResult effectResult = new EffectResult
+        {
+            FrustrationModifier = frustrationModifier,
+            PerformanceModifier = performaceModifier,
             WillModifier = willModifier,
             AttentionModifier = attentionModifier
         };
@@ -572,9 +584,11 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~
     * Update location of customer sprite
     */
-    private void MoveCustomer(Action.ActionMovement movement) {
+    private void MoveCustomer(Action.ActionMovement movement, string actionName)
+    {
 
-        switch (movement) {
+        switch (movement)
+        {
             case Action.ActionMovement.FRONT:
                 Debug.Log("Customer remains in front");
                 // Disable actions while customer takes their turn
@@ -583,13 +597,11 @@ public class CombatManager : MonoBehaviour
                 break;
             case Action.ActionMovement.AWAY:
                 Debug.Log("Customer is removed from queue");
-                currCustomer.SendAway(true, offScreenPoint); // TODO: remove green accepted true thing
-                // Disable actions while customer transitions
                 DisableActions();
-                NextCustomer();
+                StartCoroutine(CustomerLeavingVisuals(actionName));
                 break;
-            case Action.ActionMovement.BACK:     
-                Debug.Log("Customer is moved to back of line"); 
+            case Action.ActionMovement.BACK:
+                Debug.Log("Customer is moved to back of line");
                 currCustomer.SendToBack(spawnPoint);
                 // Disable actions while customer transitions
                 DisableActions();
@@ -597,7 +609,7 @@ public class CombatManager : MonoBehaviour
                 customerIconQueue.Enqueue(Instantiate(customerIconPrefab, customerQueuePanel)); // temp, this only works while there are less customers than the size of the panel
                 NextCustomer();
                 break;
-        } 
+        }
     }
 
     /* Remove Effect Stacks:
@@ -605,7 +617,8 @@ public class CombatManager : MonoBehaviour
     * Remove stacks from effect if active
     * Return if effect type should be removed from list, separated to avoid collection errors
     */
-    public bool RemoveEffectStacks(int amount, EffectType effectType) {
+    public bool RemoveEffectStacks(int amount, EffectType effectType)
+    {
         if (activeEffects.ContainsKey(effectType))
         {
             Debug.Log("Decreasing effectType: " + effectType + " by " + amount);
@@ -614,7 +627,8 @@ public class CombatManager : MonoBehaviour
             // activeEffects[effectType].GetComponent<MouseOverDescription>().UpdateDescription(effectUI.effect.effectDescription + "\nTurns: " + effectUI.FetchTurns(), effectUI.effect.effectName);
             if (effectUI.FetchTurns() == 0) return true;
             else return false;
-        } return false;
+        }
+        return false;
     }
 
     /* Delete Effect:
@@ -639,34 +653,68 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     * Clear all active player conditions
     */
-    public void ClearPlayerConditions() {
-        foreach (var (type, effect) in activeEffects) {
+    public void ClearPlayerConditions()
+    {
+        foreach (var (type, effect) in activeEffects)
+        {
             Destroy(effect);
         }
         activeEffects = new Dictionary<EffectType, GameObject>();
     }
 
-    public void DisableActions() {
+    public void DisableActions()
+    {
         actionsDisabled = true;
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
-        foreach (Button button in buttons) {
+        foreach (Button button in buttons)
+        {
             button.interactable = false;
         }
     }
 
-    public void EnableActions() {
+    public void EnableActions()
+    {
         actionsDisabled = false;
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
-        foreach (Button button in buttons) {
+        foreach (Button button in buttons)
+        {
             button.interactable = true;
         }
     }
 
-    private void PlayActionSound(Action action) {
-        if (audioManager != null) {
+    private void PlayActionSound(Action action)
+    {
+        if (audioManager != null)
+        {
             if (action.actionName == "Accept") audioManager.PlaySFX(audioManager.acceptButton);
             else if (action.actionName == "Reject") audioManager.PlaySFX(audioManager.rejectButton);
             else audioManager.PlaySFX(audioManager.specialActionButton);
         }
+    }
+
+    // Collect all relevant info for UI visible changes
+    // Run through them all in coroutine
+    // Only re-enable actions once completed
+    private IEnumerator CustomerLeavingVisuals(string actionName)
+    {
+
+        // Info needed:
+
+        // if accept or reject shake paperwork and play corresponding sound
+            // give time for enemy to say relevant line before enemy leaves
+
+        // Add UI shake to paperwork:
+        paperwork.GetComponent<UIShake>().StartShake();
+        yield return new WaitForSeconds(1f); // shake duration
+
+        // Customer dialogue
+        if (actionName == "Accept") currCustomer.SayDialogueLine(EnemyData.LineType.POSITIVE);
+        else currCustomer.SayDialogueLine(EnemyData.LineType.NEGATIVE);
+        yield return new WaitForSeconds(1f); // dialogue duration
+
+        currCustomer.SendAway(actionName == "Accept", offScreenPoint);
+        // toogle paperwork visibility for next customer:
+        paperwork.SetActive(false);
+        NextCustomer();
     }
 }

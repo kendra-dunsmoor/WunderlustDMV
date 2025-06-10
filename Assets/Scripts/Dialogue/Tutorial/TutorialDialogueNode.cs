@@ -13,7 +13,9 @@ public class TutorialDialogueNode
         PERFORMANCE,
         WILL,
         CUSTOMER,
-        PAPERWORK
+        PAPERWORK,
+        ATTENTION,
+        TURN_COUNTER
     }
     public TutorialBox targetBox;
 }

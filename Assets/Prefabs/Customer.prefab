@@ -613,8 +613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.744, y: -6.947}
-  m_SizeDelta: {x: 15.419, y: 8.894}
+  m_AnchoredPosition: {x: 23.982, y: -6.85}
+  m_SizeDelta: {x: 19.895, y: 8.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7662837598821490490
 CanvasRenderer:
@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 6676493426381722317}
   - component: {fileID: 3221950982630940633}
   - component: {fileID: 7128828275703771370}
+  - component: {fileID: 4538917744805580095}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -804,6 +805,7 @@ MonoBehaviour:
   currentEffectPrefab: {fileID: 8950778992821901451, guid: 9f54dd8e490f741179ee7762ca57ab24, type: 3}
   currentEffectsPanel: {fileID: 5473944893170378270}
   irateEffect: {fileID: 11400000, guid: f6b2ed17092f945f4afb433046985da7, type: 2}
+  elatedEffect: {fileID: 11400000, guid: 7d83930bb58e14f43b5abe53f5c7b16d, type: 2}
 --- !u!50 &7128828275703771370
 Rigidbody2D:
   serializedVersion: 5
@@ -831,6 +833,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &4538917744805580095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122412275413886723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e5a0ed31650459a9724569d9c1dd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.2
+  shakeAmount: 1
 --- !u!1 &6118199464392711314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,8 +1017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.094, y: -0.084}
-  m_SizeDelta: {x: 12.542, y: 6.917}
+  m_AnchoredPosition: {x: -0.062, y: 0.048}
+  m_SizeDelta: {x: 17.018, y: 6.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3611804924894963051
 CanvasRenderer:
@@ -1115,6 +1131,7 @@ GameObject:
   - component: {fileID: 4551443187886077153}
   - component: {fileID: 681334109888987165}
   - component: {fileID: 7226497156945004914}
+  - component: {fileID: 3833858872419144667}
   m_Layer: 5
   m_Name: ActionTelegraph
   m_TagString: Untagged
@@ -1193,6 +1210,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
   description: 
+--- !u!114 &3833858872419144667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403576458326407937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e5a0ed31650459a9724569d9c1dd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.3
+  shakeAmount: 2
 --- !u!1 &8967223203237926736
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     tag: Start
-    dialogueText: "Ah, the initiate. I\u2019ve been waiting for you.\n\nWhat brings
-      you to delay your daily deliverances? Do you really need a respite before the
-      obligations have begun?"
+    dialogueText: 'Ah, the initiate. We meet again.
+
+
+      What brings you to delay
+      your daily deliverances? Do you really need a respite before the obligations
+      have begun?'
     responses:
     - responseText: The days tend to be hard, so I like the time to myself.
       nextNodeIndex: 0

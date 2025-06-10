@@ -31,19 +31,26 @@ public class EnemyAction : ScriptableObject
     
     public string GetDescription()
     {
-        string description = generalDescription;
-        if (WILL_MODIFIER > 0) description += "Gain " + WILL_MODIFIER + "Will";
-        if (WILL_MODIFIER < 0) description += "Lose " + WILL_MODIFIER + "Will";
-        if (FRUSTRATION_MODIFIER > 0) description += "Gain " + FRUSTRATION_MODIFIER + "Frustration";
-        if (FRUSTRATION_MODIFIER < 0) description += "Lose " + FRUSTRATION_MODIFIER + "Frustration";
-        if (PERFORMANCE_MODIFIER > 0) description += "Gain " + PERFORMANCE_MODIFIER + "Performance";
-        if (PERFORMANCE_MODIFIER < 0) description += "Lose " + PERFORMANCE_MODIFIER + "Performance";
-        if (ATTENTION_MODIFIER > 0) description += "Gain " + ATTENTION_MODIFIER + "% Attention";
-        if (ATTENTION_MODIFIER < 0) description += "Lose " + ATTENTION_MODIFIER + "% Attention";
-        // foreach (ActionEffectStacks effectStacks in effects)
-        // {
-        //     if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
-        // }
+        string description = "Enemy used " + enemyActionName;
+        if (generalDescription != "" || generalDescription != null) description += "\n" + generalDescription;
+        if (WILL_MODIFIER > 0) description += "\nGained " + WILL_MODIFIER + "Will";
+        if (WILL_MODIFIER < 0) description += "\nLost " + -WILL_MODIFIER + "Will";
+        if (FRUSTRATION_MODIFIER > 0) description += "\nGained " + FRUSTRATION_MODIFIER + "Frustration";
+        if (FRUSTRATION_MODIFIER < 0) description += "\nLost " + -FRUSTRATION_MODIFIER + "Frustration";
+        if (PERFORMANCE_MODIFIER > 0) description += "\nGained " + PERFORMANCE_MODIFIER + "Performance";
+        if (PERFORMANCE_MODIFIER < 0) description += "\nLost " + -PERFORMANCE_MODIFIER + "Performance";
+        if (ATTENTION_MODIFIER > 0) description += "\nGained " + ATTENTION_MODIFIER + "% Attention";
+        if (ATTENTION_MODIFIER < 0) description += "\nLost " + -ATTENTION_MODIFIER + "% Attention";
+        foreach (ActionEffectStacks effectStacks in effects)
+        {
+            // TODO: Clearer descriptions for particular actions
+            if (effectStacks != null)
+            {
+                if (effectStacks.effect.type == ActionEffect.EffectType.ADD_TURNS) description += "\nSkips a turn.";
+                else if (effectStacks.effect.type == ActionEffect.EffectType.MADE_MISTAKE) description += "\nEach Mistake draws more Attention.";
+                else description += "\nAdded effect \"" + effectStacks.effect.effectName + "\" for " + effectStacks.stacks + " turns.";
+            }
+        }
         return description;
     }
 }

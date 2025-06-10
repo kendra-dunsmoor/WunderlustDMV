@@ -16,13 +16,25 @@ MonoBehaviour:
   - dialogueText: Special actions let you slow down the line, impress your boss,
       or cause some chaos.
     targetBox: 2
-  - dialogueText: 'Use Hustle when you are close to being fired to show your work
-      ethic. '
+  - dialogueText: "These actions get you further through your shift without strongly
+      affecting your performance, but the customer won\u2019t usually like it."
     targetBox: 2
-  - dialogueText: "Your other actions get you further through your shift without
-      strongly affecting your performance, but the customer won\u2019t usually like
-      it. "
+  - dialogueText: You have limited willpower for special actions.
     targetBox: 2
-  - dialogueText: Be careful though, you have limited willpower for special actions,
-      and it only recharges on the weekend, so spend it wisely!
+  - dialogueText: "A portion of your spent willpower recharges each day, but you
+      don\u2019t refill it entirely until the weekend."
     targetBox: 4
+  - dialogueText: Your turns will affect your performance too.
+    targetBox: 8
+  - dialogueText: Finishing with turns remaining gets you sent home early with half
+      your pay, but if you are low on Will you can get a second wind.
+    targetBox: 8
+  - dialogueText: 'Each early finish will also make your Performance Review much
+      more difficult, so be careful! '
+    targetBox: 8
+  - dialogueText: Finally, the attention on you impacts how much your performance
+      changes each turn.
+    targetBox: 7
+  - dialogueText: "You can either work to keep it low, or Hustle in a pinch to get
+      management\u2019s attention off of you. "
+    targetBox: 7

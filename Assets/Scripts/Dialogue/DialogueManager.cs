@@ -33,6 +33,12 @@ public class DialogueManager : MonoBehaviour
  	[SerializeField] private Image characterImage;
     [SerializeField] private GameObject RewardScreen;
 
+    [Header("------------- Reward Images -------------")]
+ 	[SerializeField] private Sprite chaosImage;
+ 	[SerializeField] private Sprite soulCreditsImage;
+ 	[SerializeField] private Sprite officeBucksImage;
+
+
     private bool isTyping;
     private bool isObjectCharacter;
     private AudioClip[] typingSounds;
@@ -192,7 +198,7 @@ public class DialogueManager : MonoBehaviour
         if (currNode.officeBucks != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(officeBucksImage, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");
             gameManager.UpdateOfficeBucks(currNode.officeBucks);
             GameObject.FindGameObjectWithTag("Counter_OfficeBucks")
                 .GetComponent<CurrencyCounter>()
@@ -201,7 +207,7 @@ public class DialogueManager : MonoBehaviour
         if (currNode.soulCredits != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.soulCredits + " soulCredits", "Use to pay rent & purchase apartment upgrades!");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(soulCreditsImage, currNode.soulCredits + " soulCredits", "Use to pay rent & purchase apartment upgrades!");
             gameManager.UpdateSoulCredits(currNode.soulCredits);
             GameObject.FindGameObjectWithTag("Counter_SoulCredits")
                 .GetComponent<CurrencyCounter>()
@@ -210,7 +216,7 @@ public class DialogueManager : MonoBehaviour
         if (currNode.performanceBoost != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.performanceBoost + " performance", "");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(chaosImage, currNode.performanceBoost + " performance", "");
             float newPerformance = gameManager.FetchPerformance() + currNode.performanceBoost;
             gameManager.UpdatePerformance(newPerformance);
             GameObject.FindGameObjectWithTag("PerformanceMeter")
@@ -220,7 +226,7 @@ public class DialogueManager : MonoBehaviour
         if (currNode.willBoost != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.willBoost + " will", "");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(chaosImage, currNode.willBoost + " will", "");
             float newWill = gameManager.FetchWill() + currNode.willBoost;
             gameManager.UpdateWill(newWill);
             GameObject.FindGameObjectWithTag("WillMeter")
@@ -230,12 +236,12 @@ public class DialogueManager : MonoBehaviour
         if (currNode.chaos != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.chaos + " chaos", "");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(chaosImage, currNode.chaos + " chaos", "");
         }
         if (currNode.specialRewardMessage != null && currNode.specialRewardMessage != "")
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(null, currNode.specialRewardMessage, "");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(chaosImage, currNode.specialRewardMessage, "");
         }
         // TODO: add effects and special cases
     }

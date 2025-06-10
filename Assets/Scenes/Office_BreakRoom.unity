@@ -682,7 +682,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 192014692862685145, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -145.5733
+      value: -138.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090363600701209737, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7195100723526208071, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
       propertyPath: m_Name
@@ -768,6 +772,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7330576512353760621, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
+      propertyPath: chaosImage
+      value: 
+      objectReference: {fileID: 6452804954347539812, guid: 3cd8274bd2169488ca71c41f0472a764, type: 3}
+    - target: {fileID: 7330576512353760621, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
+      propertyPath: officeBucksImage
+      value: 
+      objectReference: {fileID: -2322180950842035098, guid: 14b057891367543cdbc006dea8a89a26, type: 3}
+    - target: {fileID: 7330576512353760621, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
+      propertyPath: soulCreditsImage
+      value: 
+      objectReference: {fileID: -5899927303015767666, guid: b0150588db47e47e5bf1ed3a67570c17, type: 3}
     - target: {fileID: 7348220568199380279, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

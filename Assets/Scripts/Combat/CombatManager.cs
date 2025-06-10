@@ -312,7 +312,8 @@ public class CombatManager : MonoBehaviour
         foreach (ActionEffectStacks effectStacks in action.effects)
         {
             // If marked as negative, remove those stacks
-            if (effectStacks.stacks < 0)
+            if (effectStacks.stacks < 0 && effectStacks.effect.type == EffectType.ADD_TURNS)  AddNewEffect(effectStacks.effect, effectStacks.stacks); // annoying special case where negative isn't removing
+            else if (effectStacks.stacks < 0)
             {
                 bool shouldCleanup = RemoveEffectStacks(-effectStacks.stacks, effectStacks.effect.type);
                 if (shouldCleanup) cleanupEffects.Add(effectStacks.effect.type);
@@ -381,6 +382,8 @@ public class CombatManager : MonoBehaviour
         if (effect.type == EffectType.ADD_TURNS)
         {
             remainingTurns += stacks;
+            remainingTurnsText.text = remainingTurns.ToString();
+            Debug.Log("Skipping turns: " + stacks);
             return;
         }
         // Check if should apply to customer or player

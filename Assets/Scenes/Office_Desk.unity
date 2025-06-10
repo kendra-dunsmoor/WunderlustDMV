@@ -646,7 +646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
-  description: <u>Attention</u> \n Modifies performance changes
+  description: <u>Attention</u> \nThe boss is watching \nMultiplies performance changes
+    by X%
 --- !u!1 &75736065
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,8 +858,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -64.47}
-  m_SizeDelta: {x: 176.96, y: 22.97461}
+  m_AnchoredPosition: {x: 0, y: -71.065}
+  m_SizeDelta: {x: 176.96, y: 27.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &243656030
 GameObject:
@@ -3791,7 +3792,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0.08000183, y: -11.487306}
-  m_SizeDelta: {x: 142.89, y: 22}
+  m_SizeDelta: {x: 142.89, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &981732147
 PrefabInstance:
@@ -4722,7 +4723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 192014692862685145, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -145.5733
+      value: -138.83
       objectReference: {fileID: 0}
     - target: {fileID: 5573425339600068239, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
       propertyPath: m_IsActive
@@ -5024,7 +5025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
-  description: Turns Remaining in Shift
+  description: Turns Remaining
 --- !u!114 &1288678897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7712,7 +7713,7 @@ PrefabInstance:
     - target: {fileID: 7102923819463136269, guid: 9a9d70c603ae34686b848f22f9bdfca2, type: 3}
       propertyPath: acceptImage
       value: 
-      objectReference: {fileID: 6438236423764433849, guid: 8d84a34417d1746efb57996be3251c35, type: 3}
+      objectReference: {fileID: 21300000, guid: 8d84a34417d1746efb57996be3251c35, type: 3}
     - target: {fileID: 7102923819463136269, guid: 9a9d70c603ae34686b848f22f9bdfca2, type: 3}
       propertyPath: rejectImage
       value: 

@@ -19,10 +19,10 @@ MonoBehaviour:
   itemRarity: 1
   flavorText: Legally we have to inform you that Blue Bovine does not actually provide
     wings.
-  description: Restore 10 Will & Gain 3 "Caffienated"
+  description: Restore 10 Will & Gain 5 "Caffienated"
   effects:
   - effect: {fileID: 11400000, guid: 356d5becc06ea4fcea00faf40db0397a, type: 2}
-    stacks: 3
+    stacks: 5
   willModifier: 10
   performanceModifier: 0
   frustrationModifier: 0

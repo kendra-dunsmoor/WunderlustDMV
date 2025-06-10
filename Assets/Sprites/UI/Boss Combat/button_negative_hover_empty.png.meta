@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_negative_hover_empty_0: 5113206775629382426
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

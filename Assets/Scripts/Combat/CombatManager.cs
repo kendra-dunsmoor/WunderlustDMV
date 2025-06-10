@@ -323,6 +323,10 @@ public class CombatManager : MonoBehaviour
         foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
 
         // Move current customer if needed:
+        if (gameManager.ContainsItem("A_012"))
+        {
+             if (action.actionName == "Reject") action.movement = Action.ActionMovement.FRONT;
+        }
         MoveCustomer(action.movement);
 
         IncrementTurns();
@@ -437,16 +441,11 @@ public class CombatManager : MonoBehaviour
             attentionModifier = action.INCORRECT_CHOICE_ATTENTION_MODIFIER;
             performaceModifier = -action.PERFORMANCE_MODIFIER;                
         }
-        //TODO: This is not working
-        if (gameManager.ContainsItem("A_012"))
-        {
-             if (action.actionName == "Reject") willModifier += 1;
-        }
-
+    
         // Check player effects:
             foreach (var (type, effectUI) in activeEffects)
             {
-                EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier, attentionModifier);
+                EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>());
                 performaceModifier += effectResult.PerformanceModifier;
                 willModifier += effectResult.WillModifier;
                 frustrationModifier += effectResult.FrustrationModifier;
@@ -466,7 +465,7 @@ public class CombatManager : MonoBehaviour
         // Check curr customer effects:
         foreach (var (type, effectUI) in currCustomer.GetActiveEffects())
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, frustrationModifier, attentionModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>());
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
             frustrationModifier += effectResult.FrustrationModifier;
@@ -491,28 +490,20 @@ public class CombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
     * For each individual effect, update modifiers
     */
-    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController,
-        float performaceModifier, float willModifier, float frustrationModifier, float attentionModifier) {
+    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController) {
 
         ActionEffect effect = effectController.effect;
 
         // General modifiers:
-        if (effect.isPercent) {
-            frustrationModifier *= effect.FRUSTRATION_MODIFIER;
-            performaceModifier *= effect.PERFORMANCE_MODIFIER;
-            willModifier *= effect.WILL_MODIFIER;
-            attentionModifier *= effect.ATTENTION_MODIFIER;
-        } else {
-            frustrationModifier += effect.FRUSTRATION_MODIFIER;
-            performaceModifier += effect.PERFORMANCE_MODIFIER;
-            willModifier += effect.WILL_MODIFIER;  
-            attentionModifier += effect.ATTENTION_MODIFIER;                
-        }
+           float frustrationModifier = effect.FRUSTRATION_MODIFIER;
+          float  performaceModifier = effect.PERFORMANCE_MODIFIER;
+          float  willModifier = effect.WILL_MODIFIER;  
+          float  attentionModifier = effect.ATTENTION_MODIFIER;                
 
         // Any special cases that need to be hard coded for now:
         switch (effectType) {
             case EffectType.IRATE:
-                UpdateAttention(20);
+                UpdateAttention(10);
                 break;
            /* Commenting out due to Attention re-work 
             case EffectType.ATTENTION:
@@ -530,8 +521,7 @@ public class CombatManager : MonoBehaviour
                 break;
             case EffectType.CAFFIENATED:
                 // Check if player has thermos artifact which doubles caffienated modifier
-                if (gameManager.ContainsItem("A_006"))
-                    willModifier += effect.WILL_MODIFIER;
+                if (gameManager.ContainsItem("A_006"))    willModifier += effect.WILL_MODIFIER;
                 break;
         }
         EffectResult effectResult = new EffectResult { 
@@ -548,6 +538,7 @@ public class CombatManager : MonoBehaviour
     * Update location of customer sprite
     */
     private void MoveCustomer(Action.ActionMovement movement) {
+
         switch (movement) {
             case Action.ActionMovement.FRONT:
                 Debug.Log("Customer remains in front");

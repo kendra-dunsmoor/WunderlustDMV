@@ -18,8 +18,8 @@ MonoBehaviour:
   price: 50
   itemRarity: 2
   flavorText: No actual tea was used in the creation of this product
-  description: Restore 10 Will & remove all conditions on player
+  description: Restore 20 Will & remove all conditions on player
   effects: []
-  willModifier: 10
+  willModifier: 20
   performanceModifier: 0
   frustrationModifier: 0

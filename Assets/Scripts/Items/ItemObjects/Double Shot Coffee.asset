@@ -18,10 +18,10 @@ MonoBehaviour:
   price: 0
   itemRarity: 0
   flavorText: Tastes like sadness in a cup.
-  description: Restore 10 Will & Gain 2 "Caffienated"
+  description: Restore 10 Will & Gain 5 "Caffienated"
   effects:
   - effect: {fileID: 11400000, guid: 356d5becc06ea4fcea00faf40db0397a, type: 2}
-    stacks: 3
+    stacks: 5
   willModifier: 5
   performanceModifier: 0
   frustrationModifier: 0

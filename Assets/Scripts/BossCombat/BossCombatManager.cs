@@ -582,7 +582,7 @@ public class BossCombatManager : MonoBehaviour
         // Check player effects:
         foreach (var (type, effectUI) in activeEffects)
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, bossWillModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>());
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
             bossWillModifier += effectResult.BossWillModifier;
@@ -590,7 +590,7 @@ public class BossCombatManager : MonoBehaviour
         // Check boss effects:
         foreach (var (type, effectUI) in boss.GetActiveEffects())
         {
-            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>(), performaceModifier, willModifier, bossWillModifier);
+            EffectResult effectResult = ApplyEffectModifiers(type, effectUI.GetComponent<UIEffectController>());
             performaceModifier += effectResult.PerformanceModifier;
             willModifier += effectResult.WillModifier;
             bossWillModifier += effectResult.BossWillModifier;
@@ -606,25 +606,15 @@ public class BossCombatManager : MonoBehaviour
     * ~~~~~~~~~~~~~~~~~~~~~~~~~
     * For each individual effect, update modifiers
     */
-    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController,
-        float performaceModifier, float willModifier, float bossWillModifier)
+    private EffectResult ApplyEffectModifiers(EffectType effectType, UIEffectController effectController)
     {
 
         ActionEffect effect = effectController.effect;
 
-        // General modifiers:
-        if (effect.isPercent)
-        {
-            performaceModifier *= effect.PERFORMANCE_MODIFIER;
-            willModifier *= effect.WILL_MODIFIER;
-            bossWillModifier *= effect.BOSS_WILL_MODIFIER;
-        }
-        else
-        {
-            performaceModifier += effect.PERFORMANCE_MODIFIER;
-            willModifier += effect.WILL_MODIFIER;
-            bossWillModifier += effect.BOSS_WILL_MODIFIER;
-        }
+        float performaceModifier = effect.PERFORMANCE_MODIFIER;
+        float bossWillModifier = effect.BOSS_WILL_MODIFIER;
+        float willModifier = effect.WILL_MODIFIER;
+
 
         // Any special cases that need to be hard coded for now:
         switch (effectType)

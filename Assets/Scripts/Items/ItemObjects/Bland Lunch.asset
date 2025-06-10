@@ -18,11 +18,11 @@ MonoBehaviour:
   price: 0
   itemRarity: 0
   flavorText: '"Eh, good enough"'
-  description: Every 5 turns gain 3 will
+  description: Every 10 turns gain 5 will
   effects: []
-  willModifier: 3
+  willModifier: 5
   performanceModifier: 0
   frustrationModifier: 0
-  turnClock: 5
+  turnClock: 10
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

@@ -18,8 +18,8 @@ MonoBehaviour:
   price: 20
   itemRarity: 1
   flavorText: Definitly no relation to a drug whatsoever...
-  description: Restores 10 will
+  description: Restores 15 will
   effects: []
-  willModifier: 10
+  willModifier: 15
   performanceModifier: 0
   frustrationModifier: 0

@@ -15,6 +15,7 @@ public class CombatRewardsController : MonoBehaviour
     [SerializeField] private ActionUpgradeDB actionUpgradeDB;
     private AudioManager audioManager;
     private GameManager gameManager;
+    private bool sentHome;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +31,8 @@ public class CombatRewardsController : MonoBehaviour
         int metaCurrency = GetMetaRewards();
         rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Credits";
         gameManager.UpdateSoulCredits(metaCurrency);
+
+
 
         if(GetVRepRewards() == 1)
         {
@@ -65,6 +68,7 @@ public class CombatRewardsController : MonoBehaviour
 
     public void markEarlyFinish(bool finishedEarly)
     {
+        sentHome = finishedEarly;
         earlyFinishText.SetActive(finishedEarly);
     }
 
@@ -85,9 +89,14 @@ public class CombatRewardsController : MonoBehaviour
 
     private int GetCurrencyRewards()
     {
+        int officeCoins = 0;
         float performance = gameManager.FetchPerformance();
-        if (performance > 100) return (int) Math.Round((200 - performance) / 2);
-        else return (int) Math.Round(performance / 2);
+        if (performance > 100) officeCoins = (int) Math.Round((200 - performance) / 2);
+        else  officeCoins = (int) Math.Round(performance / 2);
+
+        if (sentHome) officeCoins = officeCoins / 2;
+
+        return officeCoins;
     }
 
     private int GetMetaRewards()
@@ -95,7 +104,7 @@ public class CombatRewardsController : MonoBehaviour
         int metaCoins = 5;
         List<Certificate> playerCerts = gameManager.FetchCertificates();
 
-        // TODO:Check if finished early, if true set to 2
+        if (sentHome) metaCoins = 2;
 
        
 		if (playerCerts.Any(c => c.type == Certificate.CertificateType.SIDE_GIG))
@@ -118,5 +127,15 @@ public class CombatRewardsController : MonoBehaviour
         float performance = gameManager.FetchPerformance();
         if (performance < 70) return 1;
         else return 0;
+    }
+
+    private int GetRecharge()
+    {
+        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/5);
+
+
+        if (sentHome) willRecharge += 5;
+
+        return willRecharge;
     }
 }

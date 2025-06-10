@@ -19,7 +19,7 @@ MonoBehaviour:
   itemRarity: 0
   flavorText: '"This is my eviction pen. Rent''s been light, so this should fix it,
     or else you''ll be seeing its ink on your bills." - Mr. Dreggs '
-  description: Rejections cost 1 less Will
+  description: Rejections keep the customer in line
   effects: []
   willModifier: 0
   performanceModifier: 0

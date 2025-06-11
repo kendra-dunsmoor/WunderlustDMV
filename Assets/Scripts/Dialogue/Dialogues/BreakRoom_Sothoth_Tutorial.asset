@@ -16,7 +16,7 @@ MonoBehaviour:
     tag: Start
     dialogueText: "Ah, the initiate. I\u2019ve been waiting for you."
     responses:
-    - responseText: ...
+    - responseText: What?
       nextNodeIndex: 0
       containsReward: 0
       officeBucks: 0
@@ -26,12 +26,13 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - Start Continued
     dialogueText: "Look at the weight of your quotidian tasks and the slight alteration
       your tawdry trinkets bring to the banality of it all. Don\u2019t you want more?"
     responses:
-    - responseText: What?
+    - responseText: I don't think I speak that language.
       nextNodeIndex: 1
       containsReward: 0
       officeBucks: 0
@@ -41,6 +42,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: Who are you?
       nextNodeIndex: 1
       containsReward: 0
@@ -51,11 +53,12 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 1- Branch A
-    dialogueText: 'In concord, for it to have its name, there must too be discord
-      among the masses. Silence must have its cacophony, consonance its dissonance.
-      Balance requires two halves, and the answer to the order our DMV so seeks is
-      disorder. '
+    dialogueText: You know me as well as you know my words. In concord, for it to
+      have its name, there must too be discord among the masses. Silence must have
+      its cacophony, consonance its dissonance. I am the answer to order, which our
+      DMV so seeks.
     responses:
     - responseText: So what?
       nextNodeIndex: 2
@@ -67,6 +70,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: Could you speak normally?
       nextNodeIndex: 3
       containsReward: 0
@@ -77,6 +81,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 2 - Branch A1
     dialogueText: We have our castes; our burdens are our own. But consider the possibilities,
       should they merge and make something greater than their sum!
@@ -91,6 +96,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 3 - Branch A2
     dialogueText: 'The bounds of normality are beyond me like the sea of chaos is
       beyond you. We have our castes; our burdens are our own. But consider the possibilities,
@@ -106,6 +112,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 4 - Branch A Conclusion
     dialogueText: 'Consider chaos, little initiate: whether to dally or maliciously
       make mistakes, the manifold possibilities of death are open to you. '
@@ -120,6 +127,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 5 - Continued
     dialogueText: "Maintain your mundane un-existence. Or, embrace the vacillating
       uncertainty available to you. \n\nI\u2019ll find you when you\u2019ve made
@@ -135,6 +143,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 6 - End
     dialogueText: 
     responses: []

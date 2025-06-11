@@ -16,7 +16,7 @@ MonoBehaviour:
     tag: Start
     dialogueText: Hey kiddo!
     responses:
-    - responseText: ...
+    - responseText: Are you talking to me?
       nextNodeIndex: 0
       containsReward: 0
       officeBucks: 0
@@ -62,9 +62,9 @@ MonoBehaviour:
   - tag: 2 - Branch A1
     dialogueText: "The Department of Metaphysical Verification is always looking
       for lost-err.. new souls to fill up space. Head down there. I\u2019m sure they\u2019ll
-      have something for you. "
+      have something for you."
     responses:
-    - responseText: ...
+    - responseText: 'But where is that? '
       nextNodeIndex: 3
       containsReward: 0
       officeBucks: 0
@@ -76,8 +76,9 @@ MonoBehaviour:
       willBoost: 0
       specialRewardMessage: 
   - tag: 3 - no branch
-    dialogueText: "Just don\u2019t get fired, yeah? Because then we\u2019ll have
-      to start his whole thing over again, and neither of us wants that."
+    dialogueText: "You\u2019ll find it, follow the long line of the dead. Just don\u2019t
+      get fired, because then we\u2019ll have to start this whole thing over again,
+      and neither of us wants that."
     responses:
     - responseText: Uh... Okay.
       nextNodeIndex: 4

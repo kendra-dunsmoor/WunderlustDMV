@@ -24,17 +24,13 @@ MonoBehaviour:
   - dialogueText: "A portion of your spent willpower recharges each day, but you
       don\u2019t refill it entirely until the weekend."
     targetBox: 4
-  - dialogueText: Your turns will affect your performance too.
-    targetBox: 8
-  - dialogueText: Finishing with turns remaining gets you sent home early with half
-      your pay, but if you are low on Will you can get a second wind.
-    targetBox: 8
-  - dialogueText: 'Each early finish will also make your Performance Review much
-      more difficult, so be careful! '
-    targetBox: 8
-  - dialogueText: Finally, the attention on you impacts how much your performance
-      changes each turn.
-    targetBox: 7
-  - dialogueText: "You can either work to keep it low, or Hustle in a pinch to get
-      management\u2019s attention off of you. "
-    targetBox: 7
+  - dialogueText: The best way to get through the afterlife in the DMV is to try
+      and stay as mediocre as possible.
+    targetBox: 0
+  - dialogueText: Balancing willpower and attention while maintaining a mediocre
+      performance is a difficult task that some of your coworkers have learned to
+      manage well.
+    targetBox: 0
+  - dialogueText: "In a pinch, go to the break room and ask them for help before
+      your shift. You never know what they may give you\u2026"
+    targetBox: 0

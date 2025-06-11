@@ -21,7 +21,10 @@ MonoBehaviour:
   - dialogueText: "You can see the customer\u2019s documents on the right side of
       the tool bar. "
     targetBox: 6
-  - dialogueText: Choose the option which best corresponds to get through your shift.
-    targetBox: 0
-  - dialogueText: "Or don\u2019t, and see how long you\u2019ll last in your new job\u2026"
-    targetBox: 0
+  - dialogueText: Choose the action which best corresponds to get through your shift.
+    targetBox: 1
+  - dialogueText: But be careful to watch your attention meter!
+    targetBox: 7
+  - dialogueText: Attention will impact how much your performance changes from your
+      actions.
+    targetBox: 7

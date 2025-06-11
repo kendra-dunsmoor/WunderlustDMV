@@ -61,10 +61,20 @@ MonoBehaviour:
       specialRewardMessage: 
   - tag: 2 - Branch A
     dialogueText: "Well, don\u2019t do that! Just be mediocre. Everyone does it,
-      and it\u2019s not so bad when you really settle into all, you know? \n\nStick
-      with mediocrity and mediocrity will stick with you. "
+      and it\u2019s not so bad when you really settle into all, you know? "
     responses:
-    - responseText: If you say so...
+    - responseText: What if I want to be better than that?
+      nextNodeIndex: 3
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+      specialRewardMessage: 
+    - responseText: "What if I don\u2019t want this job at all?"
       nextNodeIndex: 3
       containsReward: 0
       officeBucks: 0
@@ -76,6 +86,21 @@ MonoBehaviour:
       willBoost: 0
       specialRewardMessage: 
   - tag: 3 - Branch A
+    dialogueText: "Stick with mediocrity and mediocrity will stick with you. Don\u2019t
+      think about it too much."
+    responses:
+    - responseText: 4
+      nextNodeIndex: 0
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+      specialRewardMessage: 
+  - tag: 4 - End
     dialogueText: 
     responses: []
   character: {fileID: 11400000, guid: 702073cb1a38a455d88e55ffdb2c6127, type: 2}

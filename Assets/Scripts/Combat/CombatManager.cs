@@ -369,7 +369,7 @@ public class CombatManager : MonoBehaviour
         IncrementTurns();
 
         //Had to make last customer condition, was ending shift if you delayed last customer
-        if (remainingTurns == 0 || (customersInLine.Count == 0 && action.movement != Action.ActionMovement.FRONT)) EndShift();
+        if (remainingTurns <= 0 || (customersInLine.Count <= 0 && action.movement != Action.ActionMovement.FRONT)) EndShift();
     }
 
     /* Increment Turns
@@ -475,7 +475,7 @@ public class CombatManager : MonoBehaviour
 
         // Check for correct paperwork choice if accept/reject
         if (action.INCORRECT_CHOICE_ATTENTION_MODIFIER != 0 &&
-            !MadeCorrectPaperworkChoice(action))
+            !MadeCorrectPaperworkChoice(action.actionName))
         {
             Debug.Log("Incorrect choice for paperwork, apply negative performance and attention");
             attentionModifier = action.INCORRECT_CHOICE_ATTENTION_MODIFIER;
@@ -647,10 +647,10 @@ public class CombatManager : MonoBehaviour
         activeEffects.Remove(effectType);
     }
 
-    private bool MadeCorrectPaperworkChoice(Action action)
+    private bool MadeCorrectPaperworkChoice(string actionName)
     {
         bool wasAcceptable = paperwork.GetComponent<Paperwork>().isAcceptable;
-        if (action.actionName == "Accept") return wasAcceptable;
+        if (actionName == "Accept") return wasAcceptable;
         else return !wasAcceptable;
     }
 
@@ -706,11 +706,14 @@ public class CombatManager : MonoBehaviour
         // Info needed:
 
         // if accept or reject shake paperwork and play corresponding sound
-            // give time for enemy to say relevant line before enemy leaves
+        // give time for enemy to say relevant line before enemy leaves
 
         // Add UI shake to paperwork:
+        yield return new WaitForSeconds(0.25f);
         paperwork.GetComponent<UIShake>().StartShake();
-        yield return new WaitForSeconds(1f); // shake duration
+        yield return new WaitForSeconds(0.4f); // shake duration
+        if (MadeCorrectPaperworkChoice(actionName)) audioManager.PlaySFX(audioManager.correct);
+        else audioManager.PlaySFX(audioManager.incorrect);
 
         // Customer dialogue
         if (actionName == "Accept") currCustomer.SayDialogueLine(EnemyData.LineType.POSITIVE);

@@ -45,7 +45,6 @@ MonoBehaviour:
       willBoost: 0
       specialRewardMessage: 
     - responseText: Take everything from Lost and Found and sell it all to Sothoth.
-        No one can blame you if you don't have anything on you.
       nextNodeIndex: 0
       containsReward: 1
       officeBucks: 20

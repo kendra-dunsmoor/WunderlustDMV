@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip paperRustle;
     public AudioClip drink;
     public AudioClip openDoor;
+    public AudioClip correct;
+    public AudioClip incorrect;
 
     public static AudioManager instance;
     [SerializeField] private AudioMixer mixer;

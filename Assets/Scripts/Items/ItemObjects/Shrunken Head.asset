@@ -18,12 +18,13 @@ MonoBehaviour:
   price: 50
   itemRarity: 1
   flavorText: 
-  description: The current Customer becomes "Confused"
+  description: Every 3 turns, Confuse the customer
   effects:
   - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
-    stacks: 1
+    stacks: 3
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 3
   currentTurnCounter: 0
+  isEndOfShiftEffect: 0

@@ -29,6 +29,7 @@ public class CombatRewardsController : MonoBehaviour
         int metaCurrency = GetMetaRewards();
         rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Credits";
         gameManager.UpdateSoulCredits(metaCurrency);
+        GetRecharge();
 
         if(GetVRepRewards() == 1)
         {
@@ -127,7 +128,7 @@ public class CombatRewardsController : MonoBehaviour
 
     private int GetRecharge()
     {
-        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/5);
+        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/4);
 
 
         if (sentHome) willRecharge += 5;

@@ -19,11 +19,12 @@ MonoBehaviour:
   itemRarity: 1
   flavorText: '"The boss mandated fun to keep morale high, and I figured some flair
     might help, too!" - Verrine'
-  description: Lose 1 "Attention" every 3 turns
+  description: Lose 5 "Attention" every 3 turns
   effects: []
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: -5
   turnClock: 3
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

@@ -19,11 +19,12 @@ MonoBehaviour:
   itemRarity: 0
   flavorText: '"I thought I understood eternity until I saw how this place handles
     paperwork." - Employee 394'
-  description: Lose 1 "Attention" and lose 2 Will
+  description: Every 3 turns, -5% Attention and -1 Will
   effects: []
-  willModifier: -2
+  willModifier: -1
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: -5
   turnClock: 3
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

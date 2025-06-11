@@ -20,7 +20,7 @@ MonoBehaviour:
   flavorText: '"I adore this film; it''s the height of cinema! There''s no objective
     merit to its structure, yet in its incoherence it finds a unique coherence, indepedent
     of form or precedent." - Sothoth'
-  description: The current Customer becomes "Incoherant"
+  description: Every 3 turns the Customer becomes "Incoherant"
   effects:
   - effect: {fileID: 11400000, guid: 9e239537503434dfcb8aaea6e26fecbc, type: 2}
     stacks: 1

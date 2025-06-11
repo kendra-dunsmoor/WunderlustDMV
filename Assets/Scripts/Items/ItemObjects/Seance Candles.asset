@@ -20,11 +20,12 @@ MonoBehaviour:
   flavorText: '"Once every thousand years or so, I actually grant a mortal their
     wish to see the dead, and I get one of the spirits out of line. But neither quite
     gets what they''re looking for." - Sothoth'
-  description: Lose 1 "Attention" and lose 2 Will
+  description: Every 5 turns, -5% Attention and -1 Will
   effects: []
-  willModifier: 2
+  willModifier: -1
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: -5
   turnClock: 5
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

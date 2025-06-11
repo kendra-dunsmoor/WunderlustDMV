@@ -356,15 +356,11 @@ public class CombatManager : MonoBehaviour
         foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
 
         // Move current customer if needed:
-       /* if (gameManager.ContainsItem("A_012"))
+        if (gameManager.ContainsItem("A_012"))
         {
             if (action.actionName == "Reject") MoveCustomer(Action.ActionMovement.FRONT, action.actionName);
         }
-        else if (currCustomer.GetActiveEffects().ContainsKey(EffectType.SHORTFUSE))
-        {
-           if (action.actionName == "Reject") MoveCustomer(Action.ActionMovement.FRONT, action.actionName);
-        }
-        else*/ MoveCustomer(action.movement, action.actionName);
+        else MoveCustomer(action.movement, action.actionName);
 
         IncrementTurns();
 

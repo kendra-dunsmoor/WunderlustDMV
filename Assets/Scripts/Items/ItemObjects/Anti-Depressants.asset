@@ -19,7 +19,7 @@ MonoBehaviour:
   itemRarity: 0
   flavorText: '"You gotta calm down, dude. I found these under the couch. How about
     you try a couple?" - Astaroth'
-  description: Gain 1 "Hustling" and 1 "Drained"
+  description: Every 3 turns, gain 1 "Hustling" and 1 "Drained"
   effects:
   - effect: {fileID: 11400000, guid: 4460588d827a64ea8be435880ec67bf2, type: 2}
     stacks: 1

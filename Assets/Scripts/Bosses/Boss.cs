@@ -35,12 +35,17 @@ public class Boss : MonoBehaviour
     public void TakeTurn(BossState state)
     {
         Debug.Log("Boss Turn Starting");
-        // Take prepped action
-        if (preppedAction != null) TakeBossAction(preppedAction);
+        int loops = bossCombatManager.earlyShiftPenalty()+1;
 
-        // Telegraph next action
-        SetNewPreppedAction(state);
+        for (int i = 0; i < loops; i++)
+        {
+            Debug.Log("Loop" + i);
+            // Take prepped action
+            if (preppedAction != null) TakeBossAction(preppedAction);
 
+            // Telegraph next action
+            SetNewPreppedAction(state);
+        }
         Debug.Log("Boss Turn Completed");
     }
 

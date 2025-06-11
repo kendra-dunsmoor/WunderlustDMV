@@ -112,6 +112,11 @@ public class GameManager : MonoBehaviour
         gameStatus.EarlyShift();
     }
 
+    public int FetchEarlyShift()
+    {
+       return gameStatus.GetEarlyShifts();
+    }
+
     public void RunWon()
     {
         gameStatus.UpdateRunStatus(GameState.RunStatus.WON);

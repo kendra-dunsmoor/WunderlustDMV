@@ -50,6 +50,8 @@ public class MouseOverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void UpdateDescription(string description, string title = "")
     {
+         //Debug.Log("In Update Desctiption");
+
         if (title != "") this.description = "<u>" + title + "</u>\n" + description;
         else this.description = description;
     }

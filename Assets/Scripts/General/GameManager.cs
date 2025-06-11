@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
     public void UpdateSoulCredits(int change) {
         playerStatus.UpdateSoulCredits(change);
         GameObject counter = GameObject.FindGameObjectWithTag("Counter_SoulCredits");
-        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetOfficeBucks().ToString();
+        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetSoulCredits().ToString();
     }
 
     public int FetchVRep()

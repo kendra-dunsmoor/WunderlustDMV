@@ -19,10 +19,11 @@ MonoBehaviour:
   itemRarity: 0
   flavorText: '"YEAH! HITS EVERY TIME! THERE''S BARELY ANY LIQUID LEFT IN THERE.
     DRINK THE GROUNDS! THE SEDIMENT''S THE BEST PART!" - Verrine'
-  description: '"Caffinated" restores twice as much Will'
+  description: '"Caffinated" restores three times as much Will'
   effects: []
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0
   turnClock: 1
   currentTurnCounter: 0
+  isEndOfShiftEffect: 0

@@ -79,6 +79,7 @@ public class CombatManager : MonoBehaviour
     }
 
     private float MAX_PERFORMANCE;
+    public bool takenAction;
     public bool actionsDisabled;
     [SerializeField] private GameObject buttonsParent;
 
@@ -97,7 +98,7 @@ public class CombatManager : MonoBehaviour
         {
             if (gameManager.InTutorial()) remainingTurns = 5;
             else remainingTurns = 20;
-            if (gameManager.InTutorial()) CUSTOMER_GOAL = 6;
+            if (gameManager.InTutorial()) CUSTOMER_GOAL = 5;
             else CUSTOMER_GOAL = 10;
             performanceLevel = gameManager.FetchPerformance();
             attentionLevel = gameManager.FetchAttention();
@@ -119,11 +120,14 @@ public class CombatManager : MonoBehaviour
             gameManager.UpdateTutorialStatus(false);
         }
 
+        takenAction = false;
+
         MAX_PERFORMANCE = performanceMeter.maxValue;
         performanceMeter.value = performanceLevel;
         willMeter.value = willLevel;
         willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
         performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
+
         remainingTurnsText.text = remainingTurns.ToString();
         attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
@@ -202,7 +206,7 @@ public class CombatManager : MonoBehaviour
     */
     private void NextCustomer()
     {
-        customerGoalText.text = CUSTOMER_GOAL - customersInLine.Count + "/" + CUSTOMER_GOAL;
+        customerGoalText.text = CUSTOMER_GOAL - (customersInLine.Count-1) + "/" + CUSTOMER_GOAL;
         if (customersInLine.Count > 0)
         {
             currCustomer = customersInLine.Dequeue();
@@ -210,6 +214,8 @@ public class CombatManager : MonoBehaviour
             currCustomer.SendToFront(frontOfLinePoint);
             Destroy(customerIconQueue.Dequeue());
         }
+
+
     }
 
     /* Spawn Paperwork: 
@@ -283,7 +289,7 @@ public class CombatManager : MonoBehaviour
     {
         attentionLevel += diff;
         if (attentionLevel < 0) attentionLevel = 0;
-        if (attentionLevel > 100) attentionLevel = 100;
+        if (attentionLevel > 200) attentionLevel = 200;  //Testing 200% cap, 100% makes sense but was kinda boring
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
     }
@@ -314,6 +320,7 @@ public class CombatManager : MonoBehaviour
     public void TakeAction(Action action)
     {
         PlayActionSound(action);
+        takenAction = true;
 
         // Check if sufficient will available for action:
         if (willLevel - action.WILL_MODIFIER < 0)
@@ -327,10 +334,10 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Taking action: " + action.actionName);
         UpdateMetersWithEffects(action);
 
-        // Messy hardcode of Objection
-        // TODO: update to not call this for all customer types
-        if (action.actionName == "Reject")
-            currCustomer.Interupt("Objection!");
+    
+        // Objection Not Working as an interupt, changed ability to be easier to code
+       /* if (action.actionName == "Reject")
+            currCustomer.Interupt("Objection!");*/
 
         // Apply new effects for next turn
         List<EffectType> cleanupEffects = new List<EffectType>();
@@ -349,15 +356,20 @@ public class CombatManager : MonoBehaviour
         foreach (EffectType effect in cleanupEffects) DeleteEffect(effect);
 
         // Move current customer if needed:
-        if (gameManager.ContainsItem("A_012"))
+       /* if (gameManager.ContainsItem("A_012"))
         {
-            if (action.actionName == "Reject") action.movement = Action.ActionMovement.FRONT;
+            if (action.actionName == "Reject") MoveCustomer(Action.ActionMovement.FRONT, action.actionName);
         }
-        MoveCustomer(action.movement, action.actionName);
+        else if (currCustomer.GetActiveEffects().ContainsKey(EffectType.SHORTFUSE))
+        {
+           if (action.actionName == "Reject") MoveCustomer(Action.ActionMovement.FRONT, action.actionName);
+        }
+        else*/ MoveCustomer(action.movement, action.actionName);
 
         IncrementTurns();
 
-        if (customersInLine.Count == 0 || remainingTurns == 0) EndShift();
+        //Had to make last customer condition, was ending shift if you delayed last customer
+        if (remainingTurns == 0 || (customersInLine.Count == 0 && action.movement != Action.ActionMovement.FRONT)) EndShift();
     }
 
     /* Increment Turns
@@ -484,9 +496,17 @@ public class CombatManager : MonoBehaviour
                 // Check for additional attention penalty
                 if (action.actionName == "Make Mistake")
                 {
-
-                    if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY)) attentionModifier -= 5;
-
+                    if (playerCerts.Any(c => c.type == Certificate.CertificateType.DATA_ENTRY)) attentionModifier += 10;
+                    else  attentionModifier += 15;
+                }
+            }
+            if (type == EffectType.HUSTLING)
+            {
+                // performance gains remove attention
+                if (performaceModifier > 0)
+                {
+                    Debug.Log("Positive performance modifier while hustling effect active");
+                    UpdateAttention(-10);
                 }
             }
         }
@@ -548,26 +568,11 @@ public class CombatManager : MonoBehaviour
         switch (effectType)
         {
             case EffectType.IRATE:
-                UpdateAttention(10);
-                break;
-            /* Commenting out due to Attention re-work 
-             case EffectType.ATTENTION:
-                 Debug.Log("Multiplying performance change due to attention");
-                 for (int i = 0; i < effectController.FetchTurns(); i++) {
-                     performaceModifier *= effect.PERFORMANCE_MODIFIER;
-                 }
-                 break; */
-            case EffectType.HUSTLING:
-                // performance gains remove attention
-                if (performaceModifier > 0)
-                {
-                    Debug.Log("Positive performance modifier while hustling effect active");
-                    UpdateAttention(-10);
-                }
+                UpdateAttention(20);
                 break;
             case EffectType.CAFFIENATED:
                 // Check if player has thermos artifact which doubles caffienated modifier
-                if (gameManager.ContainsItem("A_006")) willModifier += effect.WILL_MODIFIER;
+                if (gameManager.ContainsItem("A_006")) willModifier += effect.WILL_MODIFIER*2;
                 break;
         }
         EffectResult effectResult = new EffectResult

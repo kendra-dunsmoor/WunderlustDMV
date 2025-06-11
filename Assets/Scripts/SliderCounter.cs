@@ -9,6 +9,7 @@ public class SliderCounter : MonoBehaviour
     [SerializeField] private float targetValue = 100f;
     private float currentValue;
     private float elapsedTime;
+    private  MouseOverDescription description ;
 
     void Awake()
     {
@@ -35,13 +36,13 @@ public class SliderCounter : MonoBehaviour
     
     public void UpdateBar(float newVal)
     {
-        Debug.Log("Set slider to: " + newVal);
+        Debug.Log("Set slider to: " + newVal + "/" + slider.maxValue);
         targetValue = newVal;
         currentValue = slider.value;
         elapsedTime = 0f;
 
-        MouseOverDescription description = gameObject.GetComponent<MouseOverDescription>();
-        if (description != null) description.UpdateDescription(newVal + "/" + slider.maxValue);
+        description = gameObject.GetComponent<MouseOverDescription>();
+        description.UpdateDescription(newVal + "/" + slider.maxValue);
     }
 
     private float FetchUpdatedCount()

@@ -32,7 +32,8 @@ public class Customer : MonoBehaviour
     private float frustrationLevel;
 
     private float SHAKE_DURATION = 1f;
-    private float DIALOGUE_DURATION = 2f;
+    private float DIALOGUE_DURATION = 1.5f;
+    private bool openingLine = true;
 
     // temp:
     private bool movingToFront;
@@ -65,14 +66,18 @@ public class Customer : MonoBehaviour
             if (transform.position.x >= goalPoint.position.x)
             {
                 // Customer hits front of line
-                // TODO: Passive action check here in future
                 if (enemyData.passiveAction != null) TakeEnemyAction(enemyData.passiveAction);
                 movingToFront = false;
                 SayDialogueLine(LineType.OPENING);
                 audioManager.PlayDialogue(openingSound);
                 SetNewPreppedAction();
+                // Take turn before Player, not after
+                if(combatManager.takenAction)
+                {
+                    combatManager.DisableActions();
+                    TakeTurn();
+                }
                 combatManager.SpawnPaperwork();
-                combatManager.EnableActions();
             }
         }
         if (movingAway)
@@ -106,7 +111,7 @@ public class Customer : MonoBehaviour
     }
     public void Interupt(string action)
     {
-        if (enemyData.passiveAction != null && enemyData.passiveAction.enemyActionName == action)
+        if (enemyData.passiveAction.enemyActionName == action)
             TakeEnemyAction(enemyData.passiveAction);
     }
 
@@ -204,7 +209,14 @@ public class Customer : MonoBehaviour
         // Add dialogue
         actionTelegraph.SetActive(false);
         dialogueBox.SetActive(true);
-        SayDialogueLine(LineType.NEUTRAL); // TODO: type this out and check if it should be angry or happy instead
+        // TODO: type this out and check if it should be angry or happy instead
+        if(openingLine)  
+        {
+            SayDialogueLine(LineType.OPENING); 
+            openingLine = false;
+        }
+        else SayDialogueLine(LineType.NEUTRAL);
+
         // TODO: add action result text
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
@@ -320,7 +332,7 @@ public class Customer : MonoBehaviour
     {
         // Set new action based on enemy state
         if (frustrationLevel < 10) preppedAction = enemyData.positiveAction;
-        else if (activeEffects.ContainsKey(irateEffect.type)) preppedAction = enemyData.negativeAction;
+        else if (frustrationLevel > 90) preppedAction = enemyData.negativeAction;
         else preppedAction = enemyData.neutralAction;
         if (preppedAction != null)
         {

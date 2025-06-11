@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Blue Bovine
   Icon: {fileID: -1212620033428731605, guid: 74dc041dfc53c4f02b5d14b7bc84c8ad, type: 3}
   ID: C_002
-  price: 40
+  price: 500
   itemRarity: 1
   flavorText: Legally we have to inform you that Blue Bovine does not actually provide
     wings.
@@ -26,3 +26,4 @@ MonoBehaviour:
   willModifier: 10
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0

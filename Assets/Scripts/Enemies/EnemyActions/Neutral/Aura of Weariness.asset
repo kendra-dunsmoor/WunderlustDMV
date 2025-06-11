@@ -15,7 +15,8 @@ MonoBehaviour:
   enemyActionName: Aura of Weariness
   generalDescription: 
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: -2
+  WILL_MODIFIER: -1
   PERFORMANCE_MODIFIER: 0
   ATTENTION_MODIFIER: 0
   ACTION_CHANCE: 1
+  effects: []

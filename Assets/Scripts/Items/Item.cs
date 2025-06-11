@@ -23,6 +23,7 @@ public class Item : ScriptableObject
     public int willModifier;
     public int performanceModifier;
     public int frustrationModifier;
+    public int attentionModifier;
     public virtual Item GetCopy()
 	{
 		return this;

@@ -51,14 +51,28 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(SHAKE_DURATION); // wait for player action results and SFX
 
         Debug.Log("Boss Turn Starting");
+        // int loops = bossCombatManager.earlyShiftPenalty()+1;
+
         // Take prepped action
         if (preppedAction != null) StartCoroutine(TakeBossActionWithUI(preppedAction));
         yield return new WaitForSeconds(SHAKE_DURATION); // Shake duration
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
         yield return new WaitForSeconds(DIALOGUE_DURATION); // action text duration
 
+        // //
+        // for (int i = 0; i < loops; i++)
+        // {
+        //     Debug.Log("Loop" + i);
+        //     // Take prepped action
+        //     if (preppedAction != null) TakeBossAction(preppedAction);
+        //       SetNewPreppedAction(state); 
+
+        // }
+
+        if (preppedAction != null) TakeBossAction(preppedAction);
+
         // Telegraph next action
-        SetNewPreppedAction(state);
+        SetNewPreppedAction(state); 
 
         Debug.Log("Boss Turn Completed");
     }

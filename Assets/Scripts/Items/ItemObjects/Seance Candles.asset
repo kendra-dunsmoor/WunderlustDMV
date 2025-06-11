@@ -15,15 +15,16 @@ MonoBehaviour:
   itemName: Seance Candles
   Icon: {fileID: 4461878550755545997, guid: 0d5da4a9677bc4ccaab551313116205b, type: 3}
   ID: A_007
-  price: 100
+  price: 750
   itemRarity: 2
   flavorText: '"I love telling the new hires that we use these as telephones." -
     Astaroth'
-  description: Lose 1 "Attention" and lose 2 Will
+  description: Every 5 turns, -5% Attention and -1 Will
   effects: []
-  willModifier: 2
+  willModifier: -1
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: -5
   turnClock: 5
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

@@ -15,18 +15,19 @@ MonoBehaviour:
   itemName: TPS Report
   Icon: {fileID: -857263419218602598, guid: 0c86372b81d7648d78a60ac647056df6, type: 3}
   ID: A_005
-  price: 50
+  price: 500
   itemRarity: 1
   flavorText: '"Daddy said you''re gonna have to work like Hell to keep Hell working.
     So I expect everybody to be working 80 to 100 hours every week to keep this beaurocracy
     going." - Nepo Baby'
-  description: Gain 3 "Drained"
+  description: Every 5 turns, gain +10 Performance and 2 "Drained"
   effects:
   - effect: {fileID: 11400000, guid: dc93f4b07e5054ce28535c5b0e4da1e6, type: 2}
-    stacks: 3
+    stacks: 2
   willModifier: 0
-  performanceModifier: 0
+  performanceModifier: 10
   frustrationModifier: 0
+  attentionModifier: 0
   turnClock: 5
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

@@ -61,7 +61,7 @@ public class GameState
     }
     
         
-    public float GetEarlyShifts() {
+    public int GetEarlyShifts() {
         return earlyShifts;
     }
 

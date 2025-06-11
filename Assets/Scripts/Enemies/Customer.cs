@@ -32,7 +32,7 @@ public class Customer : MonoBehaviour
     private float frustrationLevel;
 
     private float SHAKE_DURATION = 1f;
-    private float DIALOGUE_DURATION = 2f;
+    private float DIALOGUE_DURATION = 1.5f;
 
     // temp:
     private bool movingToFront;
@@ -65,7 +65,6 @@ public class Customer : MonoBehaviour
             if (transform.position.x >= goalPoint.position.x)
             {
                 // Customer hits front of line
-                // TODO: Passive action check here in future
                 if (enemyData.passiveAction != null) TakeEnemyAction(enemyData.passiveAction);
                 movingToFront = false;
                 SayDialogueLine(LineType.OPENING);
@@ -208,11 +207,11 @@ public class Customer : MonoBehaviour
         // Add dialogue
         actionTelegraph.SetActive(false);
         dialogueBox.SetActive(true);
-        SayDialogueLine(LineType.NEUTRAL); // TODO: type this out and check if it should be angry or happy instead
+
+        SayDialogueLine(LineType.NEUTRAL);
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
         // Add action result text
-        dialogueBox.SetActive(true);
         StartCoroutine(TypeLine(preppedAction.GetDescription()));
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
@@ -322,7 +321,7 @@ public class Customer : MonoBehaviour
     {
         // Set new action based on enemy state
         if (frustrationLevel < 10) preppedAction = enemyData.positiveAction;
-        else if (activeEffects.ContainsKey(irateEffect.type)) preppedAction = enemyData.negativeAction;
+        else if (frustrationLevel > 90) preppedAction = enemyData.negativeAction;
         else preppedAction = enemyData.neutralAction;
         if (preppedAction != null)
         {

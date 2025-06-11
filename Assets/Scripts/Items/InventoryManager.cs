@@ -132,6 +132,8 @@ public class InventoryManager : MonoBehaviour
             combatManager.UpdatePerformance(item.performanceModifier);
         if (item.frustrationModifier != 0 && !isPerformanceReview)
             combatManager.UpdateFrustration(item.frustrationModifier);
+        if (item.attentionModifier != 0 && !isPerformanceReview)
+            combatManager.UpdateAttention(item.attentionModifier);
 
         if (item.willModifier != 0 && isPerformanceReview)
             bossCombatManager.UpdateWill(item.willModifier);

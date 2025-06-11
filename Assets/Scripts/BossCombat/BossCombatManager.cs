@@ -716,4 +716,9 @@ public class BossCombatManager : MonoBehaviour
             else audioManager.PlaySFX(audioManager.specialActionButton);
         }
     }
+
+    public int earlyShiftPenalty()
+    {
+        return gameManager.FetchEarlyShift();
+    }
 }

@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
         gameStatus.EarlyShift();
     }
 
+    public int FetchEarlyShift()
+    {
+       return gameStatus.GetEarlyShifts();
+    }
+
     public void RunWon()
     {
         gameStatus.UpdateRunStatus(GameState.RunStatus.WON);
@@ -235,7 +240,7 @@ public class GameManager : MonoBehaviour
     {
         playerStatus.UpdateSoulCredits(change);
         GameObject counter = GameObject.FindGameObjectWithTag("Counter_SoulCredits");
-        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetOfficeBucks().ToString();
+        if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetSoulCredits().ToString();
     }
 
     public int FetchVRep()

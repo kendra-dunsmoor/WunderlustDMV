@@ -323,7 +323,7 @@ public class CombatManager : MonoBehaviour
         takenAction = true;
 
         // Check if sufficient will available for action:
-        if (willLevel - action.WILL_MODIFIER < 0)
+        if ((willLevel + action.WILL_MODIFIER) < 0)
         {
             Debug.Log("Insufficient will left for action: " + action.actionName);
             if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);

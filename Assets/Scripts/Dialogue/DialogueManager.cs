@@ -198,8 +198,8 @@ public class DialogueManager : MonoBehaviour
         if (currNode.officeBucks != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(officeBucksImage, currNode.officeBucks + " Office Obols", "Use to purchase items from the vending machine!");
-            gameManager.UpdateOfficeBucks(currNode.officeBucks);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(officeBucksImage, (currNode.officeBucks * 10) + " Office Obols", "Use to purchase items from the vending machine!");
+            gameManager.UpdateOfficeBucks(currNode.officeBucks*10);
             GameObject.FindGameObjectWithTag("Counter_OfficeBucks")
                 .GetComponent<CurrencyCounter>()
                 .RefreshCounter();

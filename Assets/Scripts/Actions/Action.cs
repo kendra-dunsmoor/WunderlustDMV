@@ -37,7 +37,7 @@ public class Action : ScriptableObject
         if (type == ActionType.BOSS) return generalDescription;
         string description = generalDescription;
         if (generalDescription != "" && WILL_MODIFIER != 0) description += "\n";
-        if (WILL_MODIFIER < 0 ) description += "Costs " + -WILL_MODIFIER + " Will";
+        if (WILL_MODIFIER <= 0 ) description += "Costs " + -WILL_MODIFIER + " Will";
         if (WILL_MODIFIER > 0 ) description += "Replenish " + WILL_MODIFIER + " Will";
 
         if (FRUSTRATION_MODIFIER > 0 && !inPerformanceReview) description += "\nAdds " + FRUSTRATION_MODIFIER + " Frustration";
@@ -51,6 +51,9 @@ public class Action : ScriptableObject
 
         if (BOSS_WILL_MODIFIER > 0 && inPerformanceReview) description += "\nIncreases Boss Will by " + BOSS_WILL_MODIFIER;
         if (BOSS_WILL_MODIFIER < 0 && inPerformanceReview) description += "\nReduces Boss Will by " + -BOSS_WILL_MODIFIER;
+
+        if (movement == ActionMovement.BACK) description += "\nBack of the Line.";
+
         foreach (ActionEffectStacks effectStacks in effects)
         {
             // TODO: Clearer descriptions for particular actions
@@ -61,6 +64,7 @@ public class Action : ScriptableObject
                 else description += "\nAdds effect \"" + effectStacks.effect.effectName + "\" for " + effectStacks.stacks + " turns.";
             }
         }
+        
         return description;
     }
 

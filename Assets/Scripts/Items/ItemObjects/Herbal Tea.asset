@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Herbal Tea
   Icon: {fileID: -3070273842284801829, guid: 75c2798e8fbb64056bc7c294ef799d93, type: 3}
   ID: C_004
-  price: 50
+  price: 400
   itemRarity: 2
   flavorText: No actual tea was used in the creation of this product
   description: Restore 20 Will & remove all conditions on player
@@ -23,3 +23,4 @@ MonoBehaviour:
   willModifier: 20
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Flair Buttons
   Icon: {fileID: -7583246083636116873, guid: 647dc5aa309b44beca97c1da5412a901, type: 3}
   ID: A_002
-  price: 50
+  price: 500
   itemRarity: 1
   flavorText: '"The boss mandated fun to keep morale high, and I figured some flair
     might help, too!" - Verrine'

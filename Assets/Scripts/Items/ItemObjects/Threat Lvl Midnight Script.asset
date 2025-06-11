@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Threat Lvl Midnight Script
   Icon: {fileID: 7316835574637898454, guid: b7bff215d023f453bab7cedccd1f6035, type: 3}
   ID: A_004
-  price: 150
+  price: 950
   itemRarity: 3
   flavorText: '"I adore this film; it''s the height of cinema! There''s no objective
     merit to its structure, yet in its incoherence it finds a unique coherence, indepedent
@@ -27,6 +27,7 @@ MonoBehaviour:
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0
   turnClock: 3
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

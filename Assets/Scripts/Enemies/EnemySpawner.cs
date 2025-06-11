@@ -70,8 +70,7 @@ public class EnemySpawner : MonoBehaviour
         return enemyType switch
         {
             EnemyData.EnemyType.BASIC => 0.5f,
-            EnemyData.EnemyType.SPECIAL1 => 0.2f,            
-            EnemyData.EnemyType.MSPECIAL => 0.1f,
+            EnemyData.EnemyType.SPECIAL => 0.3f,   
             EnemyData.EnemyType.ELITE => 0.2f,
             _ => 1f
         };

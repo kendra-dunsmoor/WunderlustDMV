@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Carca-Cola
   Icon: {fileID: 2532602662005551238, guid: a5775e0c9fdff4ebfb0e4ce54e7ada99, type: 3}
   ID: C_003
-  price: 20
+  price: 200
   itemRarity: 1
   flavorText: Definitly no relation to a drug whatsoever...
   description: Restores 15 will
@@ -23,3 +23,4 @@ MonoBehaviour:
   willModifier: 15
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0

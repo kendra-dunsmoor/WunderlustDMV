@@ -21,4 +21,4 @@ MonoBehaviour:
   ACTION_CHANCE: 1
   effects:
   - effect: {fileID: 11400000, guid: dc93f4b07e5054ce28535c5b0e4da1e6, type: 2}
-    stacks: 3
+    stacks: 2

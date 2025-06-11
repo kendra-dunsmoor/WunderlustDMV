@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Fuzzy Dice
   Icon: {fileID: -2205863333093305225, guid: 68fa903ffaeda43fa9f9b8b99ffa7b02, type: 3}
   ID: A_001
-  price: 50
+  price: 500
   itemRarity: 1
   flavorText: '"I''ve always thought these would bring me luck, so I kept them in
     my car...bringing me to work. Clearly they''re not working." - Astaroth'
@@ -24,6 +24,7 @@ MonoBehaviour:
   willModifier: 5
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0
   turnClock: 0
   currentTurnCounter: 0
   isEndOfShiftEffect: 1

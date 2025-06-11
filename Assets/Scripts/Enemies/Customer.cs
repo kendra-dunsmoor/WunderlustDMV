@@ -33,7 +33,6 @@ public class Customer : MonoBehaviour
 
     private float SHAKE_DURATION = 1f;
     private float DIALOGUE_DURATION = 1.5f;
-    private bool openingLine = true;
 
     // temp:
     private bool movingToFront;
@@ -214,12 +213,7 @@ public class Customer : MonoBehaviour
         actionTelegraph.SetActive(false);
         dialogueBox.SetActive(true);
         // TODO: type this out and check if it should be angry or happy instead
-        if(openingLine)  
-        {
-            SayDialogueLine(LineType.OPENING); 
-            openingLine = false;
-        }
-        else SayDialogueLine(LineType.NEUTRAL);
+        SayDialogueLine(LineType.NEUTRAL);
 
         // TODO: add action result text
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration

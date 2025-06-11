@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Shrunken Head
   Icon: {fileID: -6977415271290434584, guid: ff1812a273dce4d689bf639c84d3e128, type: 3}
   ID: A_003
-  price: 50
+  price: 500
   itemRarity: 1
   flavorText: 
   description: Every 3 turns, Confuse the customer
@@ -25,6 +25,7 @@ MonoBehaviour:
   willModifier: 0
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0
   turnClock: 3
   currentTurnCounter: 0
   isEndOfShiftEffect: 0

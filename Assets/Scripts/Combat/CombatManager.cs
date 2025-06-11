@@ -100,9 +100,12 @@ public class CombatManager : MonoBehaviour
         if (gameManager != null)
         {
             if (gameManager.InTutorial()) remainingTurns = 5;
-            else remainingTurns = 20;
+            else remainingTurns = 15;
             if (gameManager.InTutorial()) CUSTOMER_GOAL = 5;
             else CUSTOMER_GOAL = 10;
+            // Regular week difficulty curve
+            if (gameManager.FetchCurrentCalendarDay() > 1) remainingTurns = 20; 
+
             MAX_PERFORMANCE = performanceMeter.maxValue;
             UpdatePerformance(gameManager.FetchPerformance());
             UpdateAttention(gameManager.FetchAttention());
@@ -119,7 +122,7 @@ public class CombatManager : MonoBehaviour
         // Hard code for 2nd day tutorial:
         if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 1)
         {
-            remainingTurns = 20;
+            remainingTurns = 15; //Curve up in difficulty
             CUSTOMER_GOAL = 10;
             tutorialManager.StartTutorial(secondCombatTutorial);
             gameManager.UpdateTutorialStatus(false);
@@ -335,11 +338,6 @@ public class CombatManager : MonoBehaviour
         // Update meters:
         Debug.Log("Taking action: " + action.actionName);
         UpdateMetersWithEffects(action);
-
-    
-        // Objection Not Working as an interupt, changed ability to be easier to code
-       /* if (action.actionName == "Reject")
-            currCustomer.Interupt("Objection!");*/
 
         // Apply new effects for next turn
         List<EffectType> cleanupEffects = new List<EffectType>();

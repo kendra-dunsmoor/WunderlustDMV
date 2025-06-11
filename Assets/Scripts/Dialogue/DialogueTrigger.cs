@@ -7,12 +7,18 @@ using UnityEngine;
 */
 public class DialogueTrigger : MonoBehaviour
 {
-	private EventSelector eventSelector;
+    private EventSelector eventSelector;
+    [SerializeField] private DialogueManager dialogueManager;
 
-    void Start()
+
+    void Awake()
     {
         eventSelector = FindFirstObjectByType<EventSelector>();
+    }
+
+    public void TriggerDialogue()
+    {
         Dialogue dialogue = eventSelector.FetchRandomEvent();
-		FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue);
+        dialogueManager.StartDialogue(dialogue);
     }
 }

@@ -7,6 +7,7 @@ public class ApartmentManager : MonoBehaviour
 
     [SerializeField] GameObject computerScreenPanel;
     [SerializeField] SceneFader sceneFader;
+    [SerializeField] DialogueTrigger dialogueTrigger;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class ApartmentManager : MonoBehaviour
         // Don't restart music if it is already playing from main menu:
         if (audioManager != null && !audioManager.isMusicClipPlaying(audioManager.apartmentMusic))
             audioManager.PlayMusic(audioManager.apartmentMusic);
+        dialogueTrigger.TriggerDialogue();
     }
 
     public void StartRun() {

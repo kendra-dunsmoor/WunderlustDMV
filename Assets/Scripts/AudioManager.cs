@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip openDoor;
     public AudioClip correct;
     public AudioClip incorrect;
+    public AudioClip coffeePour;
 
     public static AudioManager instance;
     [SerializeField] private AudioMixer mixer;

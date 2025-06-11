@@ -975,19 +975,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1218,6 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2434d7d17ea4dc1926ac6242c2538f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 2028853911}
 --- !u!114 &1757550778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,6 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 1559877402}
+  dialogueTrigger: {fileID: 1757550777}
 --- !u!4 &1757550779
 Transform:
   m_ObjectHideFlags: 0
@@ -1634,6 +1636,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7219258271251546907, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
   m_PrefabInstance: {fileID: 2028853909}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2028853911 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7330576512353760621, guid: e09f4f640bc614120ad15f237ebab4ea, type: 3}
+  m_PrefabInstance: {fileID: 2028853909}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da6998a34a7f424f99d8fb4c2636609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2059830176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,8 +1683,8 @@ Camera:
   m_GameObject: {fileID: 2059830176}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

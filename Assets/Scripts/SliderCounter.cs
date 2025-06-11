@@ -39,9 +39,10 @@ public class SliderCounter : MonoBehaviour
         targetValue = newVal;
         currentValue = slider.value;
         elapsedTime = 0f;
-
+        
+        string title = gameObject.tag == "PerformanceMeter" ? "Performance" : "Will";
         MouseOverDescription description = gameObject.GetComponent<MouseOverDescription>();
-        if (description != null) description.UpdateDescription(newVal + "/" + slider.maxValue);
+        if (description != null) description.UpdateDescription(newVal + "/" + slider.maxValue, title);
     }
 
     private float FetchUpdatedCount()

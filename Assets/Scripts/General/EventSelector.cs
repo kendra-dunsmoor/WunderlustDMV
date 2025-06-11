@@ -20,7 +20,6 @@ public class EventSelector : MonoBehaviour
     void Awake()
     {
         randomGen = new System.Random();
-
     }
 
     public Dialogue FetchRandomEvent()

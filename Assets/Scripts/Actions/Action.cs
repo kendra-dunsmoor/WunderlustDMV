@@ -38,19 +38,19 @@ public class Action : ScriptableObject
         string description = generalDescription;
         if (generalDescription != "" && WILL_MODIFIER != 0) description += "\n";
         if (WILL_MODIFIER < 0 ) description += "Costs " + -WILL_MODIFIER + " Will";
-        if (WILL_MODIFIER > 0 ) description += "Replenish " + WILL_MODIFIER + " Will";
+        if (WILL_MODIFIER > 0 ) description += "Gain " + WILL_MODIFIER + " Will";
 
-        if (FRUSTRATION_MODIFIER > 0 && !inPerformanceReview) description += "\nAdds " + FRUSTRATION_MODIFIER + " Frustration";
-        if (FRUSTRATION_MODIFIER < 0 && !inPerformanceReview) description += "\nRemoves " + -FRUSTRATION_MODIFIER + " Frustration";
+        if (FRUSTRATION_MODIFIER > 0 && !inPerformanceReview) description += "\nCustomer gains " + FRUSTRATION_MODIFIER + " Frustration";
+        if (FRUSTRATION_MODIFIER < 0 && !inPerformanceReview) description += "\nCustomer loses " + -FRUSTRATION_MODIFIER + " Frustration";
 
-        if (PERFORMANCE_MODIFIER > 0) description += "\nImproves Performance by " + PERFORMANCE_MODIFIER;
-        if (PERFORMANCE_MODIFIER < 0) description += "\nReduces Performance by " + -PERFORMANCE_MODIFIER;
+        if (PERFORMANCE_MODIFIER > 0) description += "\nGain " + PERFORMANCE_MODIFIER + " Performance";
+        if (PERFORMANCE_MODIFIER < 0) description += "\nLose " + -PERFORMANCE_MODIFIER + " Performance";
 
-        if (ATTENTION_MODIFIER > 0) description += "\nAdds " + ATTENTION_MODIFIER + "% Attention";
-        if (ATTENTION_MODIFIER < 0) description += "\nReduces Attention by " + -ATTENTION_MODIFIER + "%";
+        if (ATTENTION_MODIFIER > 0) description += "\nGain " + ATTENTION_MODIFIER + "% Attention";
+        if (ATTENTION_MODIFIER < 0) description += "\nLose " + -ATTENTION_MODIFIER + "% Attention";
 
-        if (BOSS_WILL_MODIFIER > 0 && inPerformanceReview) description += "\nIncreases Boss Will by " + BOSS_WILL_MODIFIER;
-        if (BOSS_WILL_MODIFIER < 0 && inPerformanceReview) description += "\nReduces Boss Will by " + -BOSS_WILL_MODIFIER;
+        if (BOSS_WILL_MODIFIER > 0 && inPerformanceReview) description += "\nBoss gains " + BOSS_WILL_MODIFIER + " Will";
+        if (BOSS_WILL_MODIFIER < 0 && inPerformanceReview) description += "\nBoss loses " + -BOSS_WILL_MODIFIER + " Will";
         foreach (ActionEffectStacks effectStacks in effects)
         {
             // TODO: Clearer descriptions for particular actions

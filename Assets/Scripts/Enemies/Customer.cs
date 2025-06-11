@@ -209,13 +209,11 @@ public class Customer : MonoBehaviour
         actionTelegraph.SetActive(false);
         dialogueBox.SetActive(true);
         SayDialogueLine(LineType.NEUTRAL); // TODO: type this out and check if it should be angry or happy instead
-        // TODO: add action result text
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
         // Add action result text
         dialogueBox.SetActive(true);
-        StartCoroutine(TypeLine(preppedAction.GetDescription())); // TODO: type this out and check if it should be angry or happy instead
-        // TODO: add action result text
+        StartCoroutine(TypeLine(preppedAction.GetDescription()));
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
         // Apply effect results

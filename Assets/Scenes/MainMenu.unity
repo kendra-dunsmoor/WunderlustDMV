@@ -773,6 +773,7 @@ MonoBehaviour:
   openDoor: {fileID: 8300000, guid: e621f4ee0bb734659bf2f88197936e47, type: 3}
   correct: {fileID: 8300000, guid: 745551891c78d4bb688878f403a4935c, type: 3}
   incorrect: {fileID: 8300000, guid: 68ea8b876b2c6482c9925220f4eeebf0, type: 3}
+  coffeePour: {fileID: 8300000, guid: 1970c4ee67d754367b9613941bab227d, type: 3}
   mixer: {fileID: 24100000, guid: 9683fc10df16640ad8a3fbb85353dc45, type: 2}
 --- !u!1 &1279189369
 GameObject:
@@ -1247,8 +1248,8 @@ Camera:
   m_GameObject: {fileID: 1989457356}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

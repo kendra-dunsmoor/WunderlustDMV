@@ -18,14 +18,33 @@ public class ActionUpgrade : ScriptableObject
 
      public string GetDescription() {
         string description = "";
-        if (WILL_MODIFIER != 0) description += "Reduced will cost: " + WILL_MODIFIER;
-        if (FRUSTRATION_MODIFIER != 0) description += " Frustration modifier: " + FRUSTRATION_MODIFIER;
-        if (PERFORMANCE_MODIFIER != 0) description += " Performance modifier: " + PERFORMANCE_MODIFIER;
-        if (ATTENTION_MODIFIER != 0) description += " Attention modifier: " + ATTENTION_MODIFIER;
-        foreach (ActionEffectStacks effectStacks in effects ) {
-            if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
+        if (WILL_MODIFIER < 0 ) description += "Costs " + -WILL_MODIFIER + " less Will";
+        if (WILL_MODIFIER > 0 ) description += "Adds " + WILL_MODIFIER + " Will cost";
+        if (FRUSTRATION_MODIFIER > 0) description += "\nAdds " + FRUSTRATION_MODIFIER + " Frustration";
+        if (FRUSTRATION_MODIFIER < 0) description += "\nRemoves " + -FRUSTRATION_MODIFIER + " Frustration";
+
+        if (PERFORMANCE_MODIFIER > 0) description += "\nGain " + PERFORMANCE_MODIFIER + " Performance";
+        if (PERFORMANCE_MODIFIER < 0) description += "\nLose " + -PERFORMANCE_MODIFIER + " Performance";
+        
+        if (ATTENTION_MODIFIER > 0) description += "\nGain " + ATTENTION_MODIFIER + "% Attention";
+        if (ATTENTION_MODIFIER < 0) description += "\nLose " + -ATTENTION_MODIFIER + "% Attention";
+
+        foreach (ActionEffectStacks effectStacks in effects)
+        {
+            // TODO: Clearer descriptions for particular actions
+            if (effectStacks != null)
+            {
+                if (effectStacks.effect.type == ActionEffect.EffectType.ADD_TURNS) description += "\nSkips a turn.";
+                else if (effectStacks.effect.type == ActionEffect.EffectType.MADE_MISTAKE) description += "\nEach Mistake draws more Attention.";
+                else description += "\nAdds effect \"" + effectStacks.effect.effectName + "\" for " + effectStacks.stacks + " turns.";
+            }
         }
-        if (updateMovement) description += " Updates customer movement to " + movement;
+
+        if (updateMovement)
+        {
+            if (movement == Action.ActionMovement.FRONT) description += "\nCustomer stays in line";
+            if (movement == Action.ActionMovement.AWAY) description += "\nCustomer is removed";
+        }
         return description;
     }
 }

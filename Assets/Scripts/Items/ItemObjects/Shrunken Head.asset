@@ -17,7 +17,9 @@ MonoBehaviour:
   ID: A_003
   price: 50
   itemRarity: 1
-  flavorText: 
+  flavorText: '"Bob was veritable boon to the company; his consistent source of ignominity
+    was his inability to keep his head--a mistake none of use shall make again I''m
+    sure." -Sothoth'
   description: The current Customer becomes "Confused"
   effects:
   - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
@@ -27,3 +29,4 @@ MonoBehaviour:
   frustrationModifier: 0
   turnClock: 3
   currentTurnCounter: 0
+  isEndOfShiftEffect: 0

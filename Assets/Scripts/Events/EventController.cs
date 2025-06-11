@@ -3,6 +3,7 @@ using UnityEngine;
 public class EventController : MonoBehaviour
 {
     [SerializeField] SceneFader sceneFader;
+    [SerializeField] DialogueTrigger dialogueTrigger;
 
     private AudioManager audioManager;
     void Awake()
@@ -12,8 +13,9 @@ public class EventController : MonoBehaviour
 
     void Start()
     {
-        if (audioManager!= null) audioManager.PlayMusic(audioManager.breakRoomMusic);
+        if (audioManager != null) audioManager.PlayMusic(audioManager.breakRoomMusic);
         sceneFader.gameObject.SetActive(true);
+        dialogueTrigger.TriggerDialogue();
     }
 
     public void NextShift() {

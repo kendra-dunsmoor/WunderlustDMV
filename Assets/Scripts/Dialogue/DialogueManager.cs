@@ -55,15 +55,11 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
- 
-        // Initially hide the dialogue UI
-        HideDialogue();
-    }
-
-    private void Start()
-    {
+        
         audioManager = 	FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
+        // Initially hide the dialogue UI
+        HideDialogue();
     }
 
     // Starts the dialogue with given title and dialogue node
@@ -77,8 +73,11 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Setting Character: " + dialogue.character.characterName);
         DialogueTitleText.text = dialogue.character.characterName;
         characterImage.sprite = dialogue.character.characterImage;
+        Debug.Log("Setting Image: " + dialogue.character.characterName != null);
         typingSounds = dialogue.character.sounds;
-        
+        Debug.Log("Setting Sounds: " + dialogue.character.sounds != null);
+        Debug.Log("Setting Sounds: " + dialogue.character.sounds[0] != null);
+
         // Temp logic, I want to cut off the sound for these early if needed:
         if (dialogue.character.characterName == "Printer" ||
         dialogue.character.characterName == "Coffee Machine" ||
@@ -88,6 +87,8 @@ public class DialogueManager : MonoBehaviour
         }
         
         currDialogue = dialogue;
+        Debug.Log("Root Node: " + dialogue.RootNode != null);
+        Debug.Log("Root Node: " + dialogue.RootNode.dialogueText);
         StartLine(dialogue.RootNode);
     }
 

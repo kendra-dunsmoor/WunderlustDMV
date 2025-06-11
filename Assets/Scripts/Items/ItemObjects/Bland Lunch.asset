@@ -17,7 +17,8 @@ MonoBehaviour:
   ID: A_013
   price: 0
   itemRarity: 0
-  flavorText: '"Eh, good enough"'
+  flavorText: '"I can barely be bothered to get into work on time, and you think
+    I can cook?" - Astaroth'
   description: Every 10 turns gain 5 will
   effects: []
   willModifier: 5

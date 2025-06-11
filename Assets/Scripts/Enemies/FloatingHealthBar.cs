@@ -32,6 +32,6 @@ public class FloatingHealthBar : MonoBehaviour
         elapsedTime = 0f;
 
         MouseOverDescription description = gameObject.GetComponent<MouseOverDescription>();
-        if (description != null) description.UpdateDescription(newVal + "/" + maxVal);
+        if (description != null) description.UpdateDescription(newVal + "/" + maxVal, "Customer Frustration");
     }
 }

@@ -21,10 +21,15 @@ public class BossData : ScriptableObject
 
     [Header("------------- Dialogue -------------")]
     public string[] openingDialogueLines;
+    public string[] actionDialogueLines;
     public string[] neutralDialogueLines;
     public string[] positiveDialogueLines;
     public string[] negativeDialogueLines;
+    public string[] transitionDialogueLines;
 
     [Header("------------- UI -------------")]
-    public Sprite[] bossSprites; // some bosses will use more than one sprite
+    public Sprite neutralSprite;
+    public Sprite angrySprite;
+    public Sprite happySprite;
+
 }

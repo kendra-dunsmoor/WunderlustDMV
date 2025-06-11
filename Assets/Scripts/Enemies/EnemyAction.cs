@@ -33,12 +33,12 @@ public class EnemyAction : ScriptableObject
     {
         string description = "Enemy used " + enemyActionName;
         if (generalDescription != "" || generalDescription != null) description += "\n" + generalDescription;
-        if (WILL_MODIFIER > 0) description += "\nGained " + WILL_MODIFIER + "Will";
-        if (WILL_MODIFIER < 0) description += "\nLost " + -WILL_MODIFIER + "Will";
-        if (FRUSTRATION_MODIFIER > 0) description += "\nGained " + FRUSTRATION_MODIFIER + "Frustration";
-        if (FRUSTRATION_MODIFIER < 0) description += "\nLost " + -FRUSTRATION_MODIFIER + "Frustration";
-        if (PERFORMANCE_MODIFIER > 0) description += "\nGained " + PERFORMANCE_MODIFIER + "Performance";
-        if (PERFORMANCE_MODIFIER < 0) description += "\nLost " + -PERFORMANCE_MODIFIER + "Performance";
+        if (WILL_MODIFIER > 0) description += "\nGained " + WILL_MODIFIER + " Will";
+        if (WILL_MODIFIER < 0) description += "\nLost " + -WILL_MODIFIER + " Will";
+        if (FRUSTRATION_MODIFIER > 0) description += "\nGained " + FRUSTRATION_MODIFIER + " Frustration";
+        if (FRUSTRATION_MODIFIER < 0) description += "\nLost " + -FRUSTRATION_MODIFIER + " Frustration";
+        if (PERFORMANCE_MODIFIER > 0) description += "\nGained " + PERFORMANCE_MODIFIER + " Performance";
+        if (PERFORMANCE_MODIFIER < 0) description += "\nLost " + -PERFORMANCE_MODIFIER + " Performance";
         if (ATTENTION_MODIFIER > 0) description += "\nGained " + ATTENTION_MODIFIER + "% Attention";
         if (ATTENTION_MODIFIER < 0) description += "\nLost " + -ATTENTION_MODIFIER + "% Attention";
         foreach (ActionEffectStacks effectStacks in effects)

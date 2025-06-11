@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObject: {fileID: 8152813444472151016}
-  text: Furniture
 --- !u!114 &6872632465283855590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,7 +1438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1/3
+  m_text: 3/3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
   m_sharedMaterial: {fileID: -1424845941875636925, guid: 22b61049ca120466ab0320f269957ab3, type: 2}
@@ -2112,7 +2111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObject: {fileID: 8919261134395254202}
-  text: Certifications
 --- !u!1 &7919296354822377487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,7 +2192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObject: {fileID: 4650169415174668081}
-  text: Classes
 --- !u!114 &2905134971902319737
 MonoBehaviour:
   m_ObjectHideFlags: 0

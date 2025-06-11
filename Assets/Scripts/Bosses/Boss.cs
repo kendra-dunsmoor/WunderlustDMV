@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
+using TMPro;
 using static ActionEffect;
 using static EnemyData;
-using TMPro;
 using static BossCombatManager;
+using System;
 
 // Manage Frustration Bar, effects, and movement/reactions
 public class Boss : MonoBehaviour
@@ -12,6 +15,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private BossCombatManager bossCombatManager;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private GameObject specialButtonsParent;
+
     [Header("------------- Enemy Actions -------------")]
     [SerializeField] private GameObject actionTelegraph;
     private BossAction preppedAction;
@@ -20,6 +25,9 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject currentEffectPrefab;
     [SerializeField] private Transform currentEffectsPanel;
     [SerializeField] private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
+
+    private float SHAKE_DURATION = 1f;
+    private float DIALOGUE_DURATION = 3f;
 
     void Start()
     {
@@ -34,9 +42,20 @@ public class Boss : MonoBehaviour
 
     public void TakeTurn(BossState state)
     {
+        StartCoroutine(TakeTurnWithUI(state));
+    }
+
+    // take prepped action, wait, update new prepped action
+    private IEnumerator TakeTurnWithUI(BossState state)
+    {
+        yield return new WaitForSeconds(SHAKE_DURATION); // wait for player action results and SFX
+
         Debug.Log("Boss Turn Starting");
         // Take prepped action
-        if (preppedAction != null) TakeBossAction(preppedAction);
+        if (preppedAction != null) StartCoroutine(TakeBossActionWithUI(preppedAction));
+        yield return new WaitForSeconds(SHAKE_DURATION); // Shake duration
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // action text duration
 
         // Telegraph next action
         SetNewPreppedAction(state);
@@ -44,22 +63,75 @@ public class Boss : MonoBehaviour
         Debug.Log("Boss Turn Completed");
     }
 
-    public void SayDialogueLine(LineType lineType)
+    // shake enemy, wait, show dialogue, wait, apply action effects
+    private IEnumerator TakeBossActionWithUI(BossAction preppedAction)
     {
+        // Enemy taking action shake
+        dialogueBox.SetActive(false);
+        actionTelegraph.GetComponent<UIShake>().StartShake();
+        yield return new WaitForSeconds(SHAKE_DURATION); // Shake duration
+
+        // Add dialogue
+        actionTelegraph.SetActive(false);
+        dialogueBox.SetActive(true);
+        SayDialogueLine(SelectDialogueChoice(LineType.ACTION));
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
+
+        // Apply effect results
+        TakeBossAction(preppedAction);
+
+        // Add action result text
+        dialogueBox.SetActive(true);
+        StartCoroutine(TypeLine(preppedAction.GetDescription()));
+        yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
+        bossCombatManager.EnableActions(specialButtonsParent);
+    }
+
+    IEnumerator TypeLine(string text)
+    {
+        dialogueText.text = "";
+        foreach (char letter in text)
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public string SelectDialogueChoice(LineType lineType)
+    {
+        Debug.Log("Selecting dialogue line");
         var dialogueChoices = lineType switch
         {
             LineType.OPENING => bossData.openingDialogueLines,
-            LineType.NEUTRAL => bossData.neutralDialogueLines,
-            LineType.NEGATIVE => bossData.negativeDialogueLines,
-            LineType.POSITIVE => bossData.positiveDialogueLines,
-            _ => bossData.neutralDialogueLines
+            LineType.TRANSITION => bossData.transitionDialogueLines,
+            LineType.ACTION => bossData.actionDialogueLines,
+            _ => bossData.actionDialogueLines
         };
         if (dialogueChoices.Length > 0)
         {
-            dialogueBox.SetActive(true);
-            dialogueText.text = dialogueChoices[Random.Range(0, dialogueChoices.Length)];
-            // TODO: Make this type out like normal dialogue
+            return dialogueChoices[UnityEngine.Random.Range(0, dialogueChoices.Length)];
         }
+        return "";     
+    }
+
+    public string SelectStateDialogue(BossState state, bool isExiting)
+    {
+        Debug.Log("Selecting state transition dialogue line");
+        var dialogueChoices = state switch
+        {
+            BossState.Neutral => bossData.neutralDialogueLines,
+            BossState.Angry => bossData.negativeDialogueLines,
+            BossState.Pacified => bossData.positiveDialogueLines,
+            _ => bossData.neutralDialogueLines
+        };
+        if (isExiting) return dialogueChoices[1];
+        else return dialogueChoices[0];
+    }
+
+    public void SayDialogueLine(string line)
+    {
+        dialogueBox.SetActive(true); 
+        StartCoroutine(TypeLine(line));
     }
 
     public void AddEnemyData(BossData data)
@@ -147,15 +219,11 @@ public class Boss : MonoBehaviour
 
     private void TakeBossAction(BossAction action)
     {
+        Debug.Log("Taking Enemy Action: " + action.BossActionName);
         // Apply will cost for boss
         bossCombatManager.UpdateBossWill(action.BOSS_WILL_MODIFIER);
-
-        Debug.Log("Taking Enemy Action: " + action.BossActionName);
         bossCombatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
         bossCombatManager.UpdateWill(action.WILL_MODIFIER);
-
-        // TODO: show somehow in dialogue box action was taken?
-        actionTelegraph.SetActive(false);
     }
 
     public float GetStartingWill()
@@ -166,5 +234,15 @@ public class Boss : MonoBehaviour
     public float GetMaxWill()
     {
         return bossData.maxWill;
+    }
+
+    public void UpdateImage(BossState state)
+    {
+        gameObject.GetComponent<Image>().sprite = state switch
+        {
+            BossState.Angry => bossData.angrySprite,
+            BossState.Pacified => bossData.happySprite,
+            _ => bossData.neutralSprite
+        };
     }
 }

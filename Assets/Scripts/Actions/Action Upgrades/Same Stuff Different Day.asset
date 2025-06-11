@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Same S*** Different Day
   FRUSTRATION_MODIFIER: 0
-  WILL_MODIFIER: 3
+  WILL_MODIFIER: -3
   PERFORMANCE_MODIFIER: 0
   ATTENTION_MODIFIER: 0
   updateMovement: 0

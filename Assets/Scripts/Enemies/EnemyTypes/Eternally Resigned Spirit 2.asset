@@ -33,6 +33,6 @@ MonoBehaviour:
   neutralAction: {fileID: 11400000, guid: a22e74aeee81840219aab33dfe3fe94d, type: 2}
   negativeAction: {fileID: 11400000, guid: ab5696ca0eef249e7b5941b3e381edfd, type: 2}
   passiveAction: {fileID: 11400000, guid: 564449f53679c7542afd5af9f5c83ba0, type: 2}
-  acceptedSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}
-  rejectedSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}
-  iconSprite: {fileID: 21300000, guid: faa4f8aff0c424ac888bd687e3711740, type: 3}
+  acceptedSprite: {fileID: 21300000, guid: 4eadbfd5f0f944c0ca08ed741f681322, type: 3}
+  rejectedSprite: {fileID: 21300000, guid: 4eadbfd5f0f944c0ca08ed741f681322, type: 3}
+  iconSprite: {fileID: 21300000, guid: 4eadbfd5f0f944c0ca08ed741f681322, type: 3}

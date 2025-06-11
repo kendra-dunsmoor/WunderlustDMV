@@ -17,24 +17,28 @@ MonoBehaviour:
     dialogueText: "Hiya boss! I see you\u2019ve been getting through those lines
       pretty quickly lately. How\u2019s the shift been going? "
     responses:
-    - responseText: "\u201CThings are rough out there! Can you help me out?\u201D"
+    - responseText: Things are rough out there! Can you help me out?
       nextNodeIndex: 0
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
-    - responseText: "\u201CIt\u2019s been an easy day! Are they always this smooth?\u201D"
+      specialRewardMessage: 
+    - responseText: "It\u2019s been an easy day! Are they always this smooth?"
       nextNodeIndex: 1
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - Branch A
     dialogueText: Well, you know what they say! When the dead get low, you gotta
@@ -46,20 +50,24 @@ MonoBehaviour:
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 10
       willBoost: 0
+      specialRewardMessage: 
     - responseText: "A break sounds nice. Let\u2019s hope things are a bit easier
         next time."
       nextNodeIndex: 3
       containsReward: 1
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 5
+      specialRewardMessage: 
   - tag: 1 - Branch B
     dialogueText: "That\u2019s a rare one. Usually the hordes of recently deceased
       are pretty upset. You know\u2026being lost and dead and all that. But your
@@ -72,21 +80,25 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: -50
       soulCredits: 10
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
     - responseText: The worst part of my day is running out of energy. How do you
         get coffee to work so well for you?
       nextNodeIndex: 5
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards:
       - {fileID: 11400000, guid: d8d792df3ab094c84bfae66b72159a97, type: 2}
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 2 - Branch A1
     dialogueText: "That\u2019s what I love to hear! Quitters never get far in life
       or death. Now get back out there, boss!"
@@ -96,10 +108,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 3 - Branch A2
     dialogueText: "Great! I\u2019m sure you\u2019ll work twice as hard after a little
       rest."
@@ -109,10 +123,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 4 - Branch B1
     dialogueText: "Well why didn\u2019t you say so? If you fill out a DED132 form
       for transitions and acquisitions, all your money can be converted from hypothetical
@@ -125,10 +141,12 @@ MonoBehaviour:
       containsReward: 1
       officeBucks: 0
       soulCredits: 50
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 5 - Branch B2
     dialogueText: "Well that\u2019s my secret. I don\u2019t! I\u2019m working on
       a solid stream of coffee ground mush mixed with a little dirt to keep me awake.
@@ -140,10 +158,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 6 - Branch B1 Continues
     dialogueText: "You look lost. You know what, I\u2019ll do it for you today!"
     responses:
@@ -152,10 +172,12 @@ MonoBehaviour:
       containsReward: 0
       officeBucks: 0
       soulCredits: 0
+      chaos: 0
       itemsRewards: []
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 7 - End Convo
     dialogueText: 
     responses: []

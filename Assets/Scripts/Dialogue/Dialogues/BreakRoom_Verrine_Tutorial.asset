@@ -27,6 +27,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   nodes:
   - tag: 0 - No branching
     dialogueText: "Oh! Then you\u2019ve come to the right place. The DMV is always
@@ -44,12 +45,13 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 1 - No branching
     dialogueText: "Sounds good. Oh! Before we get you started, you should have this.
       There\u2019s usually one of these lying around the breakroom, so you should
       always check here before you start your shift."
     responses:
-    - responseText: Okay, thanks
+    - responseText: Why does this smell so bad?
       nextNodeIndex: 2
       containsReward: 0
       officeBucks: 0
@@ -59,10 +61,22 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
+    - responseText: "I don\u2019t even know how to do my job!"
+      nextNodeIndex: 2
+      containsReward: 0
+      officeBucks: 0
+      soulCredits: 0
+      chaos: 0
+      itemsRewards: []
+      effectRewards: []
+      performanceBoost: 0
+      willBoost: 0
+      specialRewardMessage: 
   - tag: 2 - No branching
-    dialogueText: "I can\u2019t wait for productivity to shoot right up! But hey,
-      when you\u2019re screening hoards of the damned, don\u2019t forget to have
-      a little fun with it!"
+    dialogueText: "Oh, none of that matters. I\u2019m sure productivity\u2019s going
+      to shoot right up! When you\u2019re screening hoards of the damned, don\u2019t
+      forget to have a little fun with it!"
     responses:
     - responseText: Leave
       nextNodeIndex: 3
@@ -74,6 +88,7 @@ MonoBehaviour:
       effectRewards: []
       performanceBoost: 0
       willBoost: 0
+      specialRewardMessage: 
   - tag: 3 - End
     dialogueText: 
     responses: []

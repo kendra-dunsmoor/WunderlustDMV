@@ -16,14 +16,17 @@ MonoBehaviour:
   - dialogueText: "The DMV thrives on efficiency, but your place in the afterlife
       doesn\u2019t."
     targetBox: 0
-  - dialogueText: "Your Performance Meter tells you how well you\u2019re doing"
+  - dialogueText: "Your Performance Meter tells you how well you\u2019re doing."
     targetBox: 3
   - dialogueText: "Get fired and you can\u2019t pay rent, but get reincarnated and
       you\u2019ll have to go through the whole process of joining the DMV again."
-    targetBox: 0
-  - dialogueText: 'The best way to get through the afterlife in the DMV is to try
-      and stay as mediocre as possible. '
-    targetBox: 0
-  - dialogueText: 'As more customers come through the gates of the afterlife, they
-      may start to throw a wrench in your plans. '
-    targetBox: 0
+    targetBox: 3
+  - dialogueText: Your turns will affect your performance in addition to accepting
+      and rejecting applicants.
+    targetBox: 8
+  - dialogueText: Finishing with turns remaining gets you sent home early with half
+      your pay, but you do get a small amount of extra willpower.
+    targetBox: 8
+  - dialogueText: However, each early finish will also make your final Performance
+      Review much more difficult, so be careful!
+    targetBox: 8

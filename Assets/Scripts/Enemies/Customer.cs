@@ -71,6 +71,7 @@ public class Customer : MonoBehaviour
                 audioManager.PlayDialogue(openingSound);
                 SetNewPreppedAction();
                 combatManager.SpawnPaperwork();
+                combatManager.EnableActions();
             }
         }
         if (movingAway)
@@ -104,7 +105,7 @@ public class Customer : MonoBehaviour
     }
     public void Interupt(string action)
     {
-        if (enemyData.passiveAction.enemyActionName == action)
+        if (enemyData.passiveAction != null && enemyData.passiveAction.enemyActionName == action)
             TakeEnemyAction(enemyData.passiveAction);
     }
 
@@ -207,11 +208,10 @@ public class Customer : MonoBehaviour
         actionTelegraph.SetActive(false);
         dialogueBox.SetActive(true);
 
-        SayDialogueLine(LineType.NEUTRAL); // TODO: type this out and check if it should be angry or happy instead
+        SayDialogueLine(LineType.NEUTRAL);
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
         // Add action result text
-        dialogueBox.SetActive(true);
         StartCoroutine(TypeLine(preppedAction.GetDescription()));
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 

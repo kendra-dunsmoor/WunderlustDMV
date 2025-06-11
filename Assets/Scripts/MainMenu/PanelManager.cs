@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 */
 public class PanelManager : MonoBehaviour
 {
+    SceneFader sceneFader;
     private AudioManager audioManager;
 
     void Awake()
@@ -20,7 +21,8 @@ public class PanelManager : MonoBehaviour
     {
         Debug.Log("New game");
         audioManager.PlaySFX(audioManager.buttonClick);
-        SceneManager.LoadSceneAsync(7);
+        MenuManager manager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<MenuManager>();
+        manager.LoadScene(7);
     }
     public void CreditsButton()
     {

@@ -34,12 +34,13 @@ public class EnemySpawner : MonoBehaviour
         {
             EnemyData spawnedEnemy = GetRandomEnemy();
             Customer customer = Instantiate(customerPrefab, spawnPoint).GetComponent<Customer>();
-            if (gameManager.InTutorial()) customer.AddEnemyData(enemyTypes[0]); // just base one for testing rn
+            if (gameManager.InTutorial()) customer.AddEnemyData(enemyTypes[0]); // just base one for testing
             else customer.AddEnemyData(spawnedEnemy);
             customersInLine.Enqueue(customer);
             GameObject customerIcon = Instantiate(customerIconPrefab, customerQueuePanel);
-                    // Get all components of type T in children
-            customerIcon.GetComponentInChildren<Image>().sprite = spawnedEnemy.iconSprite;
+            // Get all components of type T in children
+            if (gameManager.InTutorial()) customerIcon.GetComponentInChildren<Image>().sprite = enemyTypes[0].iconSprite;
+            else customerIcon.GetComponentInChildren<Image>().sprite = spawnedEnemy.iconSprite;
             customerIconQueue.Enqueue(customerIcon); // temp, this only works while there are less customers than the size of the panel
         }
     }

@@ -89,8 +89,8 @@ MonoBehaviour:
     dialogueText: "Stick with mediocrity and mediocrity will stick with you. Don\u2019t
       think about it too much."
     responses:
-    - responseText: 4
-      nextNodeIndex: 0
+    - responseText: Okay then...
+      nextNodeIndex: 4
       containsReward: 0
       officeBucks: 0
       soulCredits: 0

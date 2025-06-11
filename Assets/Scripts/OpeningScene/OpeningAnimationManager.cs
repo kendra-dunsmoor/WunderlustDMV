@@ -7,40 +7,69 @@ using UnityEngine.SceneManagement;
 public class OpeningAnimationManager : MonoBehaviour
 {
     AudioManager audioManager;
+    [SerializeField] SceneFader sceneFader;
     [SerializeField] GameObject textBox;
     [SerializeField] TextMeshProUGUI openingText;
     [SerializeField] GameObject continueButton;
+    [SerializeField] GameObject tombstone;
     [SerializeField] string[] dialogueLines;
     [SerializeField] AudioClip textSound;
-
-    private bool isTyping;
+    [SerializeField] AudioClip bellSound;
+    private float fadeDuration = 1.5f;
 
     void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sceneFader.gameObject.SetActive(true);
         textBox.SetActive(false);
         continueButton.SetActive(false);
 
         // Trigger opening text for now
-        StartCoroutine(Delay(1));
+        StartCoroutine(DelayedAnimation());
         // Can expand on this scene later
     }
 
-    IEnumerator Delay(int seconds)
+    private void FadeIn(Image image)
     {
-        yield return new WaitForSeconds(seconds);
+        StartCoroutine(Fade(1, 0, image));
+    }
+
+    private void FadeOut(Image image)
+    {
+        StartCoroutine(Fade(0, 1, image));
+    }
+
+    IEnumerator Fade(float startAlpha, float endAlpha, Image fadeImage)
+    {
+        float time = 0;
+        Color color = fadeImage.color;
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, time / fadeDuration);
+            color.a = alpha;
+            fadeImage.color = color;
+            yield return null;
+        }
+    }
+
+    IEnumerator DelayedAnimation()
+    {
+        audioManager.PlayClipTwice(bellSound);
+        yield return new WaitForSeconds(1.5f);
+        Image image = tombstone.GetComponent<Image>();
+        yield return StartCoroutine(Fade(1, 0, image));
+        yield return new WaitForSeconds(1f);
         textBox.SetActive(true);
         StartCoroutine(TypeLine(dialogueLines[0]));
     }
 
     IEnumerator TypeLine(string text)
     {
-        isTyping = true;
         audioManager.PlayDialogue(textSound);
         openingText.text = "";
         foreach (char letter in text)
@@ -48,7 +77,6 @@ public class OpeningAnimationManager : MonoBehaviour
             openingText.text += letter;
             yield return new WaitForSeconds(0.01f);
         }
-        isTyping = false;
         audioManager.StopDialogue();
         yield return new WaitForSeconds(0.75f);
         continueButton.SetActive(true);
@@ -57,6 +85,6 @@ public class OpeningAnimationManager : MonoBehaviour
     public void GoToApartment()
     {
         audioManager.PlayDialogue(audioManager.buttonClick);
-        SceneManager.LoadSceneAsync(1);
+        sceneFader.LoadScene(1);
     }
 }

@@ -78,8 +78,7 @@ public class CalendarController : MonoBehaviour
             }
             else
             {
-                optionA.text = gameManager.FetchNextShiftChoice();
-                optionB.text = gameManager.FetchNextShiftChoice();   
+                (optionA.text, optionB.text) = gameManager.FetchShiftChoices();
             }
         }
 
@@ -117,7 +116,7 @@ public class CalendarController : MonoBehaviour
             case "<u>Break Room</u>":
                 BreakRoom();
                 break;
-            case "<u>Office Event</u>":
+            case "<u>Explore Office</u>":
                 TriggerEvent();
                 break;
             case "<u>Vending Machine</u>":

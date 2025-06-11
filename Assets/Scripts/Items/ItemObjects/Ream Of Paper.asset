@@ -17,8 +17,8 @@ MonoBehaviour:
   ID: A_010
   price: 0
   itemRarity: 0
-  flavorText: '"I thought I understood eternity until I saw how this place handles
-    paperwork." - Employee 394'
+  flavorText: '"Did you know Astaroth just wastes these for lude pictures? These
+    are the heart of the bureaucracy!" - Verrine'
   description: Every 3 turns, -5% Attention and -1 Will
   effects: []
   willModifier: -1

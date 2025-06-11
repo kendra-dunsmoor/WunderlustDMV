@@ -34,7 +34,9 @@ public class EnemyData : ScriptableObject
         OPENING,
         NEUTRAL,
         POSITIVE,
-        NEGATIVE
+        NEGATIVE,
+        TRANSITION,
+        ACTION
     }
 
     [Header("------------- Actions -------------")]

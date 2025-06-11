@@ -11,18 +11,26 @@ public class BossAction : ScriptableObject
     public float PERFORMANCE_MODIFIER;
     public float BOSS_WILL_MODIFIER;
     public float ACTION_CHANCE = 1.0f; // The chance of the action happening, 1.0f = 100%
+
     public string GetDescription()
     {
-        string description = generalDescription;
-        if (WILL_MODIFIER > 0) description += "Gain " + WILL_MODIFIER + "Will";
-        if (WILL_MODIFIER < 0) description += "Lose " + WILL_MODIFIER + "Will";
-        if (PERFORMANCE_MODIFIER > 0) description += "Gain " + PERFORMANCE_MODIFIER + "Performance";
-        if (PERFORMANCE_MODIFIER < 0) description += "Lose " + PERFORMANCE_MODIFIER + "Performance";
-        if (BOSS_WILL_MODIFIER > 0) description += "Gain " + BOSS_WILL_MODIFIER + "% Boss Will";
-        if (BOSS_WILL_MODIFIER < 0) description += "Lose " + BOSS_WILL_MODIFIER + "% Boss Will";
+        string description = "Nepo-Baby used " + BossActionName;
+        if (generalDescription != "" || generalDescription != null) description += "\n" + generalDescription;
+        if (WILL_MODIFIER > 0) description += "\nGained " + WILL_MODIFIER + " Will";
+        if (WILL_MODIFIER < 0) description += "\nLost " + -WILL_MODIFIER + " Will";
+        if (WILL_MODIFIER > 0) description += "\nGained " + WILL_MODIFIER + " Boss Will";
+        if (WILL_MODIFIER < 0) description += "\nLost " + -WILL_MODIFIER + " Boss Will";
+        if (PERFORMANCE_MODIFIER > 0) description += "\nGained " + PERFORMANCE_MODIFIER + " Performance";
+        if (PERFORMANCE_MODIFIER < 0) description += "\nLost " + -PERFORMANCE_MODIFIER + " Performance";
         // foreach (ActionEffectStacks effectStacks in effects)
         // {
-        //     if (effectStacks != null) description += " Adds effect " + effectStacks.effect.type + " for " + effectStacks.stacks + " turns.";
+        //     // TODO: Clearer descriptions for particular actions
+        //     if (effectStacks != null)
+        //     {
+        //         if (effectStacks.effect.type == ActionEffect.EffectType.ADD_TURNS) description += "\nSkips a turn.";
+        //         else if (effectStacks.effect.type == ActionEffect.EffectType.MADE_MISTAKE) description += "\nEach Mistake draws more Attention.";
+        //         else description += "\nAdded effect \"" + effectStacks.effect.effectName + "\" for " + effectStacks.stacks + " turns.";
+        //     }
         // }
         return description;
     }

@@ -500,6 +500,9 @@ MonoBehaviour:
   responseButtonContainer: {fileID: 4541646443996229694}
   characterImage: {fileID: 8539653579745344756}
   RewardScreen: {fileID: 553031448974983727, guid: 5e219b19ae4bd4206a7437f5f1877dda, type: 3}
+  chaosImage: {fileID: 0}
+  soulCreditsImage: {fileID: 0}
+  officeBucksImage: {fileID: 0}
 --- !u!1 &7450290912596905925
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +649,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 6
-  m_Spacing: 2
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

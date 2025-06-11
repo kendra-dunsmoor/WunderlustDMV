@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static ActionEffect;
 
@@ -22,6 +24,7 @@ public class CombatManager : MonoBehaviour
     List<Certificate> playerCerts;
 
     [Header("------------- Tutorials -------------")]
+    [SerializeField] DialogueManager dialogueManager;
     [SerializeField] TutorialManager tutorialManager;
     [SerializeField] Dialogue combatTutorialDialogue;
     [SerializeField] TutorialDialogue openingTutorial;
@@ -63,9 +66,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField, Tooltip("Remove this much attention at end of shift")] private int END_SHIFT_ATTENTION_MODIFIER = -30;
     [SerializeField, Tooltip("Modifier for going through all customers before shift end")] private int EARLY_FINISH_PENALTY;
     [SerializeField, Tooltip("Customer goal set at beginning of combat scene")] private int CUSTOMER_GOAL;
-    [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel; // temp range 0 to 50
-    [SerializeField, Tooltip("Current attention level, UI might not update if this is changed until action taken")] private float attentionLevel; // temp range 0 to 100
-    [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel; // temp value
+    [SerializeField, Tooltip("Current performance level, UI might not update if this is changed until action taken")] private float performanceLevel = 0;
+    [SerializeField, Tooltip("Current attention level, UI might not update if this is changed until action taken")] private float attentionLevel = 0;
+    [SerializeField, Tooltip("Current will level, UI might not update if this is changed until action taken")] private float willLevel = 0;
     [SerializeField, Tooltip("Remaining turns in combat, UI might not update if this is changed until action taken")] private int remainingTurns; // temp value
     private Dictionary<EffectType, GameObject> activeEffects = new Dictionary<EffectType, GameObject>();
     private List<Action> actionLoadout;
@@ -100,9 +103,10 @@ public class CombatManager : MonoBehaviour
             else remainingTurns = 20;
             if (gameManager.InTutorial()) CUSTOMER_GOAL = 5;
             else CUSTOMER_GOAL = 10;
-            performanceLevel = gameManager.FetchPerformance();
-            attentionLevel = gameManager.FetchAttention();
-            willLevel = gameManager.FetchWill();
+            MAX_PERFORMANCE = performanceMeter.maxValue;
+            UpdatePerformance(gameManager.FetchPerformance());
+            UpdateAttention(gameManager.FetchAttention());
+            UpdateWill(gameManager.FetchWill());
             playerCerts = gameManager.FetchCertificates();
         }
 
@@ -112,6 +116,7 @@ public class CombatManager : MonoBehaviour
             tutorialManager.StartTutorial(openingTutorial);
             GameObject.FindGameObjectWithTag("ClassPanel").SetActive(false);
         }
+        // Hard code for 2nd day tutorial:
         if (gameManager.InTutorial() && gameManager.FetchCurrentCalendarDay() == 1)
         {
             remainingTurns = 20;
@@ -122,14 +127,7 @@ public class CombatManager : MonoBehaviour
 
         takenAction = false;
 
-        MAX_PERFORMANCE = performanceMeter.maxValue;
-        performanceMeter.value = performanceLevel;
-        willMeter.value = willLevel;
-        willMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(willLevel + "/" + willMeter.maxValue, "FreeWill");
-        performanceMeter.GetComponentInParent<MouseOverDescription>().UpdateDescription(performanceLevel + "/" + performanceMeter.maxValue, "Performance");
-
         remainingTurnsText.text = remainingTurns.ToString();
-        attentionTracker.text = attentionLevel + "%";
         AddActionLoadout();
         InitializeCustomerQueue();
     }
@@ -251,7 +249,9 @@ public class CombatManager : MonoBehaviour
     */
     public void UpdatePerformance(float diff)
     {
+        Debug.Log("Performance: " + performanceLevel);
         performanceLevel += (float)Math.Round(diff);
+        Debug.Log("Performance: " + performanceLevel);
         performanceMeter.GetComponent<SliderCounter>().UpdateBar(performanceLevel);
         Debug.Log("Performance level updated to: " + performanceLevel);
         if (performanceLevel <= 0)
@@ -292,6 +292,8 @@ public class CombatManager : MonoBehaviour
         if (attentionLevel > 200) attentionLevel = 200;  //Testing 200% cap, 100% makes sense but was kinda boring
         attentionTracker.text = attentionLevel + "%";
         Debug.Log("Attention updated to: " + attentionLevel);
+        attentionTracker.transform.parent.gameObject.GetComponent<MouseOverDescription>()
+            .UpdateDescription("Increasing performance changes by " + attentionLevel + "%", "Attention");
     }
 
     /* Update Frustration: 
@@ -319,16 +321,16 @@ public class CombatManager : MonoBehaviour
     */
     public void TakeAction(Action action)
     {
-        PlayActionSound(action);
-        takenAction = true;
-
         // Check if sufficient will available for action:
-        if ((willLevel + action.WILL_MODIFIER) < 0)
+        if (willLevel + action.WILL_MODIFIER < 0)
         {
             Debug.Log("Insufficient will left for action: " + action.actionName);
             if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
             return;
         }
+        
+        takenAction = true;
+        PlayActionSound(action);
 
         // Update meters:
         Debug.Log("Taking action: " + action.actionName);
@@ -397,7 +399,7 @@ public class CombatManager : MonoBehaviour
 
         // Check to trigger astaroth tutorial
         if (gameManager.InTutorial() && remainingTurns == 3)
-            FindFirstObjectByType<DialogueManager>().StartDialogue(combatTutorialDialogue);
+            dialogueManager.StartDialogue(combatTutorialDialogue);
     }
 
 

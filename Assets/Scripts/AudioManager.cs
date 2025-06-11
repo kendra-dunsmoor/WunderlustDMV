@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.Audio;
+using System.Collections;
 
 /*
 * Audio Manager
@@ -13,8 +14,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource dialogueSource;
-    
-    
+
+
     [Header("-------------Music Audio Clips-------------")]
     public AudioClip breakRoomMusic;
     public AudioClip combatMusic;
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip openDoor;
     public AudioClip correct;
     public AudioClip incorrect;
+    public AudioClip coffeePour;
 
     public static AudioManager instance;
     [SerializeField] private AudioMixer mixer;
@@ -53,10 +55,11 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     void Start()
     {
-        if (apartmentMusic != null) {
+        if (apartmentMusic != null)
+        {
             musicSource.clip = apartmentMusic;
             musicSource.Play();
         }
@@ -66,7 +69,7 @@ public class AudioManager : MonoBehaviour
     {
         return musicSource.clip == clip;
     }
-    
+
     public void PlaySFX(AudioClip clip)
     {
         if (clip != null)
@@ -74,17 +77,19 @@ public class AudioManager : MonoBehaviour
             SFXSource.PlayOneShot(clip);
         }
     }
-    
+
     public void PlayMusic(AudioClip clip)
     {
-        if (clip != null) {
+        if (clip != null)
+        {
             musicSource.clip = clip;
             musicSource.Play();
         }
     }
     public void PlayDialogue(AudioClip clip)
     {
-        if (clip != null) {
+        if (clip != null)
+        {
             dialogueSource.clip = clip;
             dialogueSource.Play();
         }
@@ -103,5 +108,25 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         musicSource.Stop();
+    }
+
+    public void PlayClipTwice(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            StartCoroutine(playClipSoundDelayed(clip));
+        }
+        else
+        {
+            Debug.LogError("Audio clip is not assigned.");
+        }
+    }
+            
+
+    IEnumerator playClipSoundDelayed(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length);
+        SFXSource.PlayOneShot(clip);
     }
 }

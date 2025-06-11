@@ -18,7 +18,7 @@ MonoBehaviour:
   price: 500
   itemRarity: 1
   flavorText: '"I''ve always thought these would bring me luck, so I kept them in
-    my car...bringing me to work. Clearly they''re not working." - Astaroth'
+    my car...that was bringing me to work. Clearly they''re not working." - Astaroth'
   description: Gain 5 will at the end of each shift
   effects: []
   willModifier: 5

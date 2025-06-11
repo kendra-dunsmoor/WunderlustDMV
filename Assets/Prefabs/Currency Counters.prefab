@@ -32,8 +32,8 @@ RectTransform:
   - {fileID: 4562338858668412327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -55,19 +55,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -107,11 +107,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 190.00002
+      value: -170
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 151.49826
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -133,6 +133,12 @@ PrefabInstance:
       propertyPath: popUpBox
       value: 
       objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
+    - target: {fileID: 6128540964117907155, guid: a16575989d543429f96cd0733d3653e2, type: 3}
+      propertyPath: description
+      value: '<u>Office Obols</u>
+
+        Buy Vending Machine items during work'
+      objectReference: {fileID: 0}
     - target: {fileID: 8820527771495448290, guid: a16575989d543429f96cd0733d3653e2, type: 3}
       propertyPath: m_fontSize
       value: 18
@@ -197,19 +203,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -249,11 +255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 294.19998
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 151.49826
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 2319653384983079033, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -279,6 +285,12 @@ PrefabInstance:
       propertyPath: popUpBox
       value: 
       objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
+    - target: {fileID: 6128540964117907155, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
+      propertyPath: description
+      value: '<u>Soul Credits</u>
+
+        Pay Rent & Apartment Upgrades'
+      objectReference: {fileID: 0}
     - target: {fileID: 8820527771495448290, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: m_fontSize
       value: 18

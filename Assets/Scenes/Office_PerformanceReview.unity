@@ -817,7 +817,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 14, y: 35.027}
-  m_SizeDelta: {x: 190, y: 210}
+  m_SizeDelta: {x: 210, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &516843208
 MonoBehaviour:
@@ -873,6 +873,7 @@ MonoBehaviour:
   bossCombatManager: {fileID: 1958720742}
   dialogueBox: {fileID: 235503612}
   dialogueText: {fileID: 1436481000}
+  specialButtonsParent: {fileID: 1164805940}
   actionTelegraph: {fileID: 1845037099}
   currentEffectPrefab: {fileID: 8950778992821901451, guid: c8e27bef23a2a4a80a5b0aba48a3dfab, type: 3}
   currentEffectsPanel: {fileID: 1091639899}
@@ -957,7 +958,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1799,8 +1800,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 208.96, y: 44.09}
-  m_SizeDelta: {x: 3.28, y: 1.71}
+  m_AnchoredPosition: {x: 219.25, y: 44.09}
+  m_SizeDelta: {x: 3.49, y: 1.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924115496
 MonoBehaviour:
@@ -2719,19 +2720,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4768632458590434969, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2915,8 +2916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0012, y: -0.0078}
-  m_SizeDelta: {x: 198.1467, y: 79.6041}
+  m_AnchoredPosition: {x: 0.0165, y: -0.0297}
+  m_SizeDelta: {x: 205.3954, y: 82.8258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436481000
 MonoBehaviour:
@@ -4945,6 +4946,7 @@ GameObject:
   - component: {fileID: 1845037102}
   - component: {fileID: 1845037101}
   - component: {fileID: 1845037103}
+  - component: {fileID: 1845037104}
   m_Layer: 5
   m_Name: ActionTelegraph
   m_TagString: Untagged
@@ -4968,8 +4970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62, y: 44.02}
-  m_SizeDelta: {x: 151.49, y: 58.92}
+  m_AnchoredPosition: {x: -75, y: 65.8}
+  m_SizeDelta: {x: 40, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845037101
 MonoBehaviour:
@@ -4991,7 +4993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7ac61b29eeb3436188600e397666984, type: 3}
+  m_Sprite: {fileID: -8849761272369606009, guid: 9b63c6e4e12004561b4c2d22f58d456e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5023,6 +5025,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpBox: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
   description: 
+--- !u!114 &1845037104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845037099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e5a0ed31650459a9724569d9c1dd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.25
+  shakeAmount: 5
 --- !u!1 &1862687205
 GameObject:
   m_ObjectHideFlags: 0

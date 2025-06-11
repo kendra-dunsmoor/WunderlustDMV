@@ -20,10 +20,11 @@ public class GameManager : MonoBehaviour
     private bool inTutorial;
 
     // temporary for events:
-    private List<string> eventChoices = new List<string> {"Vending Machine", "Break Room", "Office Event"};
+    private List<string> eventChoices = new List<string> { "Vending Machine", "Break Room", "Explore Office" };
 
     // temporary until can configure loadout in apartment
     [SerializeField, Tooltip("If loadout not customized from apartment use base")] private Class STARTER_CLASS;
+    private System.Random randomGen = new System.Random();
 
     // ~~~~~~ Functions ~~~~~~
     private void Awake()
@@ -55,16 +56,16 @@ public class GameManager : MonoBehaviour
 
         // Landlord takes rest of soul credits
         int rent = FetchSoulCredits();
-         if (playerCerts.Any(c => c.type == Certificate.CertificateType.FINANCIAL_LITERACY))
-		{
-            if (rent>10) rent -= 10;
+        if (playerCerts.Any(c => c.type == Certificate.CertificateType.FINANCIAL_LITERACY))
+        {
+            if (rent > 10) rent -= 10;
             else rent = 0;
-		}
+        }
         UpdateSoulCredits(-rent);
 
         // Clear last run outcome status
         gameStatus.UpdateRunStatus(GameState.RunStatus.ACTIVE);
-        
+
         // Setup class from computer selection or default if no choice made
         if (playerStatus.GetClass() == null)
         {
@@ -82,22 +83,29 @@ public class GameManager : MonoBehaviour
         // temp just return current day for calendar
         return gameStatus.GetDay();
     }
-    
-    public bool InTutorial() {
+
+    public bool InTutorial()
+    {
         return inTutorial;
     }
 
-    public void UpdateTutorialStatus(bool status) {
+    public void UpdateTutorialStatus(bool status)
+    {
         inTutorial = status;
     }
 
-    public string FetchNextShiftChoice()
+    public (string, string) FetchShiftChoices()
     {
-        // Tutorial force break room for Sothoth event
-        if (inTutorial) return eventChoices[1];
-        // TODO: improve this for select shift choice for run
-        int choice = Random.Range(0, 3);
-        return eventChoices[choice];
+        List<string> remainingChoices = new List<string>(eventChoices);
+
+        int choiceA = Random.Range(0, 3);
+        string choiceNameA = remainingChoices[choiceA];
+        remainingChoices.Remove(choiceNameA);
+
+        int choiceB = Random.Range(0, 2);
+        string choiceNameB = remainingChoices[choiceB];
+
+        return (choiceNameA, choiceNameB);    
     }
 
     public void ShiftCompleted(float performance, float will, float attention)
@@ -121,7 +129,8 @@ public class GameManager : MonoBehaviour
     {
         gameStatus.UpdateRunStatus(GameState.RunStatus.WON);
         playerStatus.ResetRun();
-        foreach ( Action action in playerStatus.GetClass().actionLoadout) {
+        foreach (Action action in playerStatus.GetClass().actionLoadout)
+        {
             playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
         }
         gameStatus.ResetRun();
@@ -131,27 +140,33 @@ public class GameManager : MonoBehaviour
     {
         gameStatus.AddRunChoice(choice);
     }
-    public List<string> FetchRunPath() {
+    public List<string> FetchRunPath()
+    {
         return gameStatus.FetchRunPath();
     }
 
-    public void RestartRun() {
+    public void RestartRun()
+    {
         // Back to apartment, reset certain run only trackers
         playerStatus.ResetRun();
-        foreach ( Action action in playerStatus.GetClass().actionLoadout) {
+        foreach (Action action in playerStatus.GetClass().actionLoadout)
+        {
             playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
         }
         gameStatus.ResetRun();
     }
 
-    public GameState.RunStatus FetchRunState() {
+    public GameState.RunStatus FetchRunState()
+    {
         return gameStatus.GetRunStatus();
     }
 
-    public void UpdateRunStatus(GameState.RunStatus state) {
+    public void UpdateRunStatus(GameState.RunStatus state)
+    {
         gameStatus.UpdateRunStatus(state);
     }
-    public Class FetchPlayerClass() {
+    public Class FetchPlayerClass()
+    {
         return playerStatus.GetClass();
     }
 
@@ -159,7 +174,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Updating class to + " + playerClass.className);
         playerStatus.UpdateClass(playerClass);
-        foreach ( Action action in playerStatus.GetClass().actionLoadout) {
+        foreach (Action action in playerStatus.GetClass().actionLoadout)
+        {
             playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
         }
     }
@@ -168,7 +184,7 @@ public class GameManager : MonoBehaviour
     {
         return playerStatus.GetOfficeBucks();
     }
-    
+
     public void UpdateOfficeBucks(int amount)
     {
         Debug.Log("Adding office bucks + " + amount);
@@ -177,7 +193,8 @@ public class GameManager : MonoBehaviour
         if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetOfficeBucks().ToString();
     }
 
-    public float FetchWill() {
+    public float FetchWill()
+    {
         return gameStatus.GetWill();
     }
     public void UpdateWill(float will)
@@ -185,8 +202,9 @@ public class GameManager : MonoBehaviour
         gameStatus.UpdateWill(will);
     }
 
-    public float FetchMaxWill() {
-           return gameStatus.GetMaxWill();
+    public float FetchMaxWill()
+    {
+        return gameStatus.GetMaxWill();
     }
 
     public void UpdateMaxWill(float maxWill)
@@ -218,7 +236,8 @@ public class GameManager : MonoBehaviour
         return playerStatus.GetSoulCredits();
     }
 
-    public void UpdateSoulCredits(int change) {
+    public void UpdateSoulCredits(int change)
+    {
         playerStatus.UpdateSoulCredits(change);
         GameObject counter = GameObject.FindGameObjectWithTag("Counter_SoulCredits");
         if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetSoulCredits().ToString();
@@ -229,79 +248,96 @@ public class GameManager : MonoBehaviour
         return playerStatus.GetVRep();
     }
 
-    public void UpdateVRep(int change) {
+    public void UpdateVRep(int change)
+    {
         playerStatus.UpdateVRep(change);
         // GameObject counter = GameObject.FindGameObjectWithTag("Counter_VRep");
         // if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetVRep().ToString();
     }
 
-     public int FetchARep()
+    public int FetchARep()
     {
         return playerStatus.GetARep();
     }
 
-    public void UpdateARep(int change) {
+    public void UpdateARep(int change)
+    {
         playerStatus.UpdateARep(change);
         // GameObject counter = GameObject.FindGameObjectWithTag("Counter_ARep");
         // if (counter != null) counter.GetComponentInChildren<TextMeshProUGUI>().text = playerStatus.GetARep().ToString();
     }
 
 
-    public List<Certificate> FetchCertificates() {
+    public List<Certificate> FetchCertificates()
+    {
         return playerStatus.GetCertificates();
     }
 
-    public void AddCertificate(Certificate cert) {
+    public void AddCertificate(Certificate cert)
+    {
         playerStatus.AddCertificate(cert);
     }
 
-    public List<Furniture> FetchFurniture() {
+    public List<Furniture> FetchFurniture()
+    {
         return playerStatus.GetFurniture();
     }
 
-    public void AddFurniture(Furniture furn) {
+    public void AddFurniture(Furniture furn)
+    {
         playerStatus.AddFurniture(furn);
     }
 
-    public List<string> FetchInventory() {
+    public List<string> FetchInventory()
+    {
         return playerStatus.GetInventory();
     }
 
-    public void AddToInventory(string id) {
+    public void AddToInventory(string id)
+    {
         Debug.Log("Adding item with id: " + id + " to player inventory");
         playerStatus.AddItem(id);
     }
 
-    public void RemoveFromInventory(string id) {
+    public void RemoveFromInventory(string id)
+    {
         Debug.Log("Removing item with id: " + id + " from player inventory");
         playerStatus.RemoveItem(id);
     }
 
-    public List<string> FetchArtifacts() {
+    public List<string> FetchArtifacts()
+    {
         return playerStatus.GetArtifacts();
     }
 
-    public void AddArtifact(string id) {
+    public void AddArtifact(string id)
+    {
         playerStatus.AddArtifact(id);
     }
 
-    public Item GetItemFromDB(string id) {
+    public Item GetItemFromDB(string id)
+    {
         return Instantiate(itemDatabase.GetItemCopy(id));
     }
 
-    public List<Item> FetchRandomItems(int numItems, bool shouldBeArtifact) {
+    public List<Item> FetchRandomItems(int numItems, bool shouldBeArtifact)
+    {
         return itemDatabase.GetRandomItems(numItems, shouldBeArtifact);
     }
 
-    public bool ContainsItem(string itemId) {
+    public bool ContainsItem(string itemId)
+    {
         return playerStatus.ContainsItem(itemId);
     }
 
-    public List<Action> FetchActions() {
+    public List<Action> FetchActions()
+    {
         return playerStatus.GetActionLoadout();
     }
 
-    public void ApplyActionUpgrade(ActionUpgrade upgrade, int actionAppliedTo) {
+    public void ApplyActionUpgrade(ActionUpgrade upgrade, int actionAppliedTo)
+    {
+        Debug.Log("Applying upgrade: " + upgrade.upgradeName + " to action " + actionAppliedTo);
         playerStatus.ApplyActionUpgrade(upgrade, actionAppliedTo);
     }
 }

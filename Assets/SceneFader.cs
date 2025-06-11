@@ -83,7 +83,7 @@ public class SceneFader : MonoBehaviour
         textBox.text = "";
         foreach (char letter in text) {
             textBox.text += letter;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.12f);
         }
         // Cut off long looping sound:
         // audioManager.StopDialogue();

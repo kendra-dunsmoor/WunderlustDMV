@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: 4eadbfd5f0f944c0ca08ed741f681322
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5702473038978752442
+    second: Special-Enemy Updated _0
+  - first:
+      213: -7268612368993460661
+    second: Special-Enemy Updated _1
+  - first:
+      213: 6204588994820336664
+    second: Special-Enemy Updated _2
+  - first:
+      213: -6397647215321211566
+    second: Special-Enemy Updated _3
+  - first:
+      213: 5254092699523260511
+    second: Special-Enemy Updated _4
+  - first:
+      213: 2639733080552967953
+    second: Special-Enemy Updated _5
+  - first:
+      213: -4729827628641342747
+    second: Special-Enemy Updated _6
+  - first:
+      213: 3351856009936868893
+    second: Special-Enemy Updated _7
+  - first:
+      213: 5001832922351447328
+    second: Special-Enemy Updated _8
+  - first:
+      213: 8851372654764185207
+    second: Special-Enemy Updated _9
+  - first:
+      213: 1151054193464464791
+    second: Special-Enemy Updated _10
+  - first:
+      213: -6970965381496897846
+    second: Special-Enemy Updated _11
+  - first:
+      213: -6727255492066567424
+    second: Special-Enemy Updated _12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Special-Enemy Updated _0
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 1878
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 640ed6aebfebcd0b0800000000000000
+      internalID: -5702473038978752442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _1
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 1882
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e5228af83b02b90800000000000000
+      internalID: -7268612368993460661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _2
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 0
+        width: 3525
+        height: 5346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81c609541d02b1650800000000000000
+      internalID: 6204588994820336664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _3
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 1885
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d138cf0cdf637a0800000000000000
+      internalID: -6397647215321211566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _4
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 1848
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f50ae0c09794ae840800000000000000
+      internalID: 5254092699523260511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _5
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1768
+        width: 52
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f0538304732a420800000000000000
+      internalID: 2639733080552967953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _6
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 1390
+        width: 17
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea210ad4d64c5eb0800000000000000
+      internalID: -4729827628641342747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _7
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1428
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d169b8a384f248e20800000000000000
+      internalID: 3351856009936868893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _8
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 1372
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02dac92ca841a6540800000000000000
+      internalID: 5001832922351447328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _9
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 1344
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77653dd688466da70800000000000000
+      internalID: 8851372654764185207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _10
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 1321
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7955caeb0bd59ff00800000000000000
+      internalID: 1151054193464464791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _11
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1291
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acef4565be7224f90800000000000000
+      internalID: -6970965381496897846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special-Enemy Updated _12
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 1259
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00b9312c5ccf3a2a0800000000000000
+      internalID: -6727255492066567424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Special-Enemy Updated _0: -5702473038978752442
+      Special-Enemy Updated _1: -7268612368993460661
+      Special-Enemy Updated _10: 1151054193464464791
+      Special-Enemy Updated _11: -6970965381496897846
+      Special-Enemy Updated _12: -6727255492066567424
+      Special-Enemy Updated _2: 6204588994820336664
+      Special-Enemy Updated _3: -6397647215321211566
+      Special-Enemy Updated _4: 5254092699523260511
+      Special-Enemy Updated _5: 2639733080552967953
+      Special-Enemy Updated _6: -4729827628641342747
+      Special-Enemy Updated _7: 3351856009936868893
+      Special-Enemy Updated _8: 5001832922351447328
+      Special-Enemy Updated _9: 8851372654764185207
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

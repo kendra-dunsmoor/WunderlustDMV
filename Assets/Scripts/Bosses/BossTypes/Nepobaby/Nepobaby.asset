@@ -29,21 +29,35 @@ MonoBehaviour:
   openingDialogueLines:
   - "Are you the newbie? I thought we\u2019d fired you already. Whatever, we can
     get that done now."
-  neutralDialogueLines:
+  actionDialogueLines:
+  - "There\u2019s a misconception that I need you to keep the bureaucracy stable,
+    but I\u2019m sure you\u2019ll see that you actually need me more to keep your
+    livelihood! "
+  - "Daddy said I\u2019d have difficult employees, but you don\u2019t have to be
+    so horrible!"
+  - "Leave pity city and just do your job! No one\u2019s asking you to have feelings
+    about it."
   - "Stop thinking about losing the bonuses I haven\u2019t offered you, and start
-    thinking about your skills at the desk!"
-  - "People think I need them to do my work for me, but I\u2019m going to show you
-    that you need me to keep your livelihood!"
-  - "People think I need them to do my work for me, but I\u2019m going to show you
-    that you need me to keep your livelihood!"
-  positiveDialogueLines:
-  - "See? Daddy always said I was the best at my job. I\u2019m sure you can tell
-    that now! "
-  negativeDialogueLines:
-  - "Leave pity city and just clear up my line! I don\u2019t want anyone left at
-    the end of the century. "
-  - "I don\u2019t think this line is a productivity problem, I think it\u2019s a
-    morality problem when you really think about it. "
+    thinking about your lack of skills in your position! "
   - "I destroyed the DMV union! What makes you think I can\u2019t do the same to
     you?"
-  bossSprites: []
+  neutralDialogueLines:
+  - 'Your horrible performance is why you haven''t earned any cookies; those are
+    for closers. '
+  - "You\u2019re right. Astaroth has been pretty slow. I\u2019ll have to ask her
+    about that next time. I could do better with half her hours on the floor!"
+  positiveDialogueLines:
+  - "I am the best, you\u2019re right. Daddy always told me that\u2019s why I got
+    this job."
+  - "I\u2019m sure that you can now see that your work would have been much worse
+    without my oversight and that daddy was right about how amazing I am."
+  negativeDialogueLines:
+  - "Your queue was twice as long as Verrine\u2019s last week. Were you spending
+    too long in the break room instead of cleaning up the afterlife?"
+  - "Maybe your issues aren\u2019t rooted in your work ethic, and are instead a morality
+    problem; you\u2019re letting too many people into  the afterlife!"
+  transitionDialogueLines:
+  - So, what do you have to say for yourself?
+  neutralSprite: {fileID: 21300000, guid: f80fe9b1d424a40d991e4085470b9970, type: 3}
+  angrySprite: {fileID: 21300000, guid: 97690408990e5417aabbc0dc2b7cc870, type: 3}
+  happySprite: {fileID: 21300000, guid: 2c5cb816c75624e3080289ca409006d6, type: 3}

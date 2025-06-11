@@ -70,12 +70,6 @@ public class Customer : MonoBehaviour
                 SayDialogueLine(LineType.OPENING);
                 audioManager.PlayDialogue(openingSound);
                 SetNewPreppedAction();
-                // Take turn before Player, not after
-                if(combatManager.takenAction)
-                {
-                    combatManager.DisableActions();
-                    TakeTurn();
-                }
                 combatManager.SpawnPaperwork();
             }
         }
@@ -212,16 +206,13 @@ public class Customer : MonoBehaviour
         // Add dialogue
         actionTelegraph.SetActive(false);
         dialogueBox.SetActive(true);
-        // TODO: type this out and check if it should be angry or happy instead
-        SayDialogueLine(LineType.NEUTRAL);
 
-        // TODO: add action result text
+        SayDialogueLine(LineType.NEUTRAL); // TODO: type this out and check if it should be angry or happy instead
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
         // Add action result text
         dialogueBox.SetActive(true);
-        StartCoroutine(TypeLine(preppedAction.GetDescription())); // TODO: type this out and check if it should be angry or happy instead
-        // TODO: add action result text
+        StartCoroutine(TypeLine(preppedAction.GetDescription()));
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
 
         // Apply effect results

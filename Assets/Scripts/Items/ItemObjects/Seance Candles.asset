@@ -17,9 +17,8 @@ MonoBehaviour:
   ID: A_007
   price: 750
   itemRarity: 2
-  flavorText: '"Once every thousand years or so, I actually grant a mortal their
-    wish to see the dead, and I get one of the spirits out of line. But neither quite
-    gets what they''re looking for." - Sothoth'
+  flavorText: '"I love telling the new hires that we use these as telephones." -
+    Astaroth'
   description: Every 5 turns, -5% Attention and -1 Will
   effects: []
   willModifier: -1

@@ -17,12 +17,13 @@ MonoBehaviour:
   ID: A_009
   price: 0
   itemRarity: 0
-  flavorText: '"There''s No Place like Home" - Unknown Soul'
+  flavorText: '"These slipped through another yarn I spun. How strange." - Sothoth'
   description: Gain 10 will at end of shift
   effects: []
   willModifier: 10
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0
   turnClock: 0
   currentTurnCounter: 0
   isEndOfShiftEffect: 1

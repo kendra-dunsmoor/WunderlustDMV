@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Patient Query
   m_EditorClassIdentifier: 
   enemyActionName: Patient Query
-  generalDescription: They're just starng at you...
+  generalDescription: They're just starng at you... luckily.
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0

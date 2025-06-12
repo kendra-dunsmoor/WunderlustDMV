@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Wave of Despondency
   m_EditorClassIdentifier: 
   enemyActionName: Wave of Despondency
+  generalDescription: -3 Will
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: -3
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0
+  ACTION_CHANCE: 1
+  effects: []

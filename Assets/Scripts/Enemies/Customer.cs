@@ -226,9 +226,11 @@ public class Customer : MonoBehaviour
         TakeEnemyAction(preppedAction);
     }
 
-    IEnumerator TypeLine(string text) {
+    IEnumerator TypeLine(string text)
+    {
         dialogueText.text = "";
-        foreach (char letter in text) {
+        foreach (char letter in text)
+        {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.01f);
         }
@@ -334,7 +336,7 @@ public class Customer : MonoBehaviour
         {
             actionTelegraph.SetActive(true);
             // TODO: should it be different sprite for diff action type?
-            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.enemyActionName);
+            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.enemyActionName + "\n \n" +  preppedAction.generalDescription);
         }
     }
 
@@ -356,7 +358,7 @@ public class Customer : MonoBehaviour
                 if (shouldCleanup) cleanupEffects.Add(effectStacks.effect.type);
             }
             // Else add new stacks
-            else 
+            else
             {
                 combatManager.AddNewEffect(effectStacks.effect, effectStacks.stacks);
             }

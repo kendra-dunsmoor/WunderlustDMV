@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gentle Gratitude
   m_EditorClassIdentifier: 
   enemyActionName: Gentle Gratitude
-  generalDescription: 
+  generalDescription: +1 Will
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 2
   PERFORMANCE_MODIFIER: 0

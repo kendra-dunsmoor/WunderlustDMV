@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gloat
   m_EditorClassIdentifier: 
   BossActionName: Hyper-Crit
-  generalDescription: 
+  generalDescription: 'Hustling (1) +8 BossWill '
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
   BOSS_WILL_MODIFIER: 8

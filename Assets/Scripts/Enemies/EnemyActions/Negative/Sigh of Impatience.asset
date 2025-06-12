@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Sigh of Impatience
   m_EditorClassIdentifier: 
   enemyActionName: Sigh of Impatience
+  generalDescription: -2 Performance
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 2
+  ATTENTION_MODIFIER: 0
+  ACTION_CHANCE: 1
+  effects: []

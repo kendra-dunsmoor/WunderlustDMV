@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hostile Verdict
   m_EditorClassIdentifier: 
   enemyActionName: Hostile Verdict
-  generalDescription: 
+  generalDescription: Confusion (3) -5 Will +3 Attention -5 Performance
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: -5
   PERFORMANCE_MODIFIER: -5

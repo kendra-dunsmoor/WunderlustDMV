@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Amicable Resolution
   m_EditorClassIdentifier: 
   enemyActionName: Amicable Resolution
+  generalDescription: Special Action Cost (-1) Calmed (3) +7 Will
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 7
   PERFORMANCE_MODIFIER: 0
   ATTENTION_MODIFIER: 0
-  PASSIVE: 0
   ACTION_CHANCE: 1
-  BOSS_WILL_MODIFIER: 0
+  effects: []

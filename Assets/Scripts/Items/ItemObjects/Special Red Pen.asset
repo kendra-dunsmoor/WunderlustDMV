@@ -17,8 +17,9 @@ MonoBehaviour:
   ID: A_012
   price: 0
   itemRarity: 0
-  flavorText: '"These slipped through another yarn I spun. How strange." - Sothoth'
-  description: Rejections keep the customer in line
+  flavorText: '"This is my eviction pen. Rent''s been light, so this should fix it,
+    or else you''ll be seeing its ink on your bills." - Mr. Dreggs '
+  description: Customers stay in line when Rejected
   effects: []
   willModifier: 0
   performanceModifier: 0

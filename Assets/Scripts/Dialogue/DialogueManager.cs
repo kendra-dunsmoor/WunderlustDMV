@@ -199,8 +199,8 @@ public class DialogueManager : MonoBehaviour
         if (currNode.officeBucks != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(officeBucksImage, currNode.officeBucks + " officeBucks", "Use to purchase items from the vending machine!");
-            gameManager.UpdateOfficeBucks(currNode.officeBucks);
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(officeBucksImage, (currNode.officeBucks * 10) + " Office Obols", "Use to purchase items from the vending machine!");
+            gameManager.UpdateOfficeBucks(currNode.officeBucks*10);
             GameObject.FindGameObjectWithTag("Counter_OfficeBucks")
                 .GetComponent<CurrencyCounter>()
                 .RefreshCounter();
@@ -208,7 +208,7 @@ public class DialogueManager : MonoBehaviour
         if (currNode.soulCredits != 0)
         {
             GameObject screen = Instantiate(RewardScreen, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
-            screen.GetComponent<PopUpRewardController>().AddRewardInfo(soulCreditsImage, currNode.soulCredits + " soulCredits", "Use to pay rent & purchase apartment upgrades!");
+            screen.GetComponent<PopUpRewardController>().AddRewardInfo(soulCreditsImage, currNode.soulCredits + " Chthonic Credits", "Use to pay rent & purchase apartment upgrades!");
             gameManager.UpdateSoulCredits(currNode.soulCredits);
             GameObject.FindGameObjectWithTag("Counter_SoulCredits")
                 .GetComponent<CurrencyCounter>()

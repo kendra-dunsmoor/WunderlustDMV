@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Eternally Resigned Spirit B
   enemyDescription: 
-  enemyType: 3
+  enemyType: 2
   moveSpeed: 5
   correctPaperworkOdds: 1
-  startingFrustration: 30
+  startingFrustration: 25
   frustrationIncreasePerTurn: 5
   maxFrustration: 100
   openingDialogueLines:

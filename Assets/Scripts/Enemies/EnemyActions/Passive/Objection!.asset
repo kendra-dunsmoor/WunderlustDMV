@@ -20,5 +20,5 @@ MonoBehaviour:
   ATTENTION_MODIFIER: 0
   ACTION_CHANCE: 1
   effects:
-  - effect: {fileID: 11400000, guid: dc93f4b07e5054ce28535c5b0e4da1e6, type: 2}
-    stacks: 3
+  - effect: {fileID: 11400000, guid: b08f1c33560294562898c93ce221d6d5, type: 2}
+    stacks: 1

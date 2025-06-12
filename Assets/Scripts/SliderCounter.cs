@@ -35,11 +35,11 @@ public class SliderCounter : MonoBehaviour
     
     public void UpdateBar(float newVal)
     {
-        Debug.Log("Set slider to: " + newVal);
+        Debug.Log("Set slider to: " + newVal + "/" + slider.maxValue);
         targetValue = newVal;
         currentValue = slider.value;
         elapsedTime = 0f;
-        
+
         string title = gameObject.tag == "PerformanceMeter" ? "Performance" : "Will";
         MouseOverDescription description = gameObject.GetComponent<MouseOverDescription>();
         if (description != null) description.UpdateDescription(newVal + "/" + slider.maxValue, title);

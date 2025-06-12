@@ -9,9 +9,8 @@ public class EnemyData : ScriptableObject
     public enum EnemyType
     {
         BASIC,
-        SPECIAL1,
-        SPECIAL2,
-        SPECIAL3,
+        SPECIAL,
+        MSPECIAL,
         ELITE,
         BOSS
     }

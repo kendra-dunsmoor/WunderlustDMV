@@ -16,7 +16,8 @@ MonoBehaviour:
   FRUSTRATION_MODIFIER: 5
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0
+  ATTENTION_MODIFIER: 0
   updateMovement: 1
   movement: 1
   effects: []
-  rarity: 2
+  rarity: 3

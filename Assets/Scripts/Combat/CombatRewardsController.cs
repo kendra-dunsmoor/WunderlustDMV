@@ -22,6 +22,8 @@ public class CombatRewardsController : MonoBehaviour
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
 
+        gameManager.UpdateWill(GetRecharge());
+
         int currency = GetCurrencyRewards();
         rewardsDescription.text ="Performance Incentive: " + currency + " Office Obols";
         gameManager.UpdateOfficeBucks(currency);
@@ -29,6 +31,7 @@ public class CombatRewardsController : MonoBehaviour
         int metaCurrency = GetMetaRewards();
         rewardsDescription.text +="\nTake Home Pay: " + metaCurrency + " Chthonic Credits";
         gameManager.UpdateSoulCredits(metaCurrency);
+        
 
         if(GetVRepRewards() == 1)
         {
@@ -87,8 +90,8 @@ public class CombatRewardsController : MonoBehaviour
     {
         int officeCoins = 0;
         float performance = gameManager.FetchPerformance();
-        if (performance > 100) officeCoins = (int) Math.Round((200 - performance) / 2);
-        else  officeCoins = (int) Math.Round(performance / 2);
+        if (performance > 100) officeCoins = (int) Math.Round((200 - performance) * 5);
+        else  officeCoins = (int) Math.Round(performance * 5);
 
         if (sentHome) officeCoins = officeCoins / 2;
 
@@ -97,10 +100,10 @@ public class CombatRewardsController : MonoBehaviour
 
     private int GetMetaRewards()
     {
-        int metaCoins = 5;
+        int metaCoins = 10;
         List<Certificate> playerCerts = gameManager.FetchCertificates();
 
-        if (sentHome) metaCoins = 2;
+        if (sentHome) metaCoins = 5;
 
        
 		if (playerCerts.Any(c => c.type == Certificate.CertificateType.SIDE_GIG))
@@ -127,11 +130,10 @@ public class CombatRewardsController : MonoBehaviour
 
     private int GetRecharge()
     {
-        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/5);
+        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/4);
+        int reWill = (int) gameManager.FetchWill() + willRecharge;
+        if (sentHome) reWill += 5;
 
-
-        if (sentHome) willRecharge += 5;
-
-        return willRecharge;
+        return reWill;
     }
 }

@@ -51,14 +51,27 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(SHAKE_DURATION); // wait for player action results and SFX
 
         Debug.Log("Boss Turn Starting");
+
         // Take prepped action
         if (preppedAction != null) StartCoroutine(TakeBossActionWithUI(preppedAction));
         yield return new WaitForSeconds(SHAKE_DURATION); // Shake duration
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
         yield return new WaitForSeconds(DIALOGUE_DURATION); // action text duration
 
+        // //
+        // for (int i = 0; i < loops; i++)
+        // {
+        //     Debug.Log("Loop" + i);
+        //     // Take prepped action
+        //     if (preppedAction != null) TakeBossAction(preppedAction);
+        //       SetNewPreppedAction(state); 
+
+        // }
+
+        if (preppedAction != null) TakeBossAction(preppedAction);
+
         // Telegraph next action
-        SetNewPreppedAction(state);
+        SetNewPreppedAction(state); 
 
         Debug.Log("Boss Turn Completed");
     }
@@ -82,7 +95,11 @@ public class Boss : MonoBehaviour
 
         // Add action result text
         dialogueBox.SetActive(true);
-        StartCoroutine(TypeLine(preppedAction.GetDescription()));
+        if (bossCombatManager.earlyShiftPenalty() > 0)
+        {
+            StartCoroutine(TypeLine(preppedAction.GetDescription() + "\nMultiplied by " + bossCombatManager.earlyShiftPenalty() + " early shift penalties"));
+        }
+        else StartCoroutine(TypeLine(preppedAction.GetDescription()));
         yield return new WaitForSeconds(DIALOGUE_DURATION); // dialogue duration
         bossCombatManager.EnableActions(specialButtonsParent);
     }
@@ -220,10 +237,11 @@ public class Boss : MonoBehaviour
     private void TakeBossAction(BossAction action)
     {
         Debug.Log("Taking Enemy Action: " + action.BossActionName);
+        int earlyShiftsPenalty = bossCombatManager.earlyShiftPenalty() + 1;
         // Apply will cost for boss
-        bossCombatManager.UpdateBossWill(action.BOSS_WILL_MODIFIER);
-        bossCombatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER);
-        bossCombatManager.UpdateWill(action.WILL_MODIFIER);
+        bossCombatManager.UpdateBossWill(action.BOSS_WILL_MODIFIER * earlyShiftsPenalty);
+        bossCombatManager.UpdatePerformance(action.PERFORMANCE_MODIFIER * earlyShiftsPenalty);
+        bossCombatManager.UpdateWill(action.WILL_MODIFIER * earlyShiftsPenalty);
     }
 
     public float GetStartingWill()

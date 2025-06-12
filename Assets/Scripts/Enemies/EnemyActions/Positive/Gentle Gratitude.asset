@@ -19,4 +19,6 @@ MonoBehaviour:
   PERFORMANCE_MODIFIER: 0
   ATTENTION_MODIFIER: 0
   ACTION_CHANCE: 1
-  effects: []
+  effects:
+  - effect: {fileID: 11400000, guid: 70c0a72e12eb9494ab04d843dcc2bb7b, type: 2}
+    stacks: 1

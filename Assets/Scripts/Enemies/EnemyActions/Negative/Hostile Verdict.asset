@@ -19,6 +19,4 @@ MonoBehaviour:
   PERFORMANCE_MODIFIER: -5
   ATTENTION_MODIFIER: 10
   ACTION_CHANCE: 1
-  effects:
-  - effect: {fileID: 11400000, guid: c4204da62ae1249189444a315f996cf0, type: 2}
-    stacks: 3
+  effects: []

@@ -207,9 +207,9 @@ public class CombatManager : MonoBehaviour
     */
     private void NextCustomer()
     {
-        customerGoalText.text = CUSTOMER_GOAL - (customersInLine.Count-1) + "/" + CUSTOMER_GOAL;
         if (customersInLine.Count > 0)
         {
+            customerGoalText.text = CUSTOMER_GOAL - (customersInLine.Count-1) + "/" + CUSTOMER_GOAL;
             currCustomer = customersInLine.Dequeue();
             Debug.Log("Customer dequeued");
             currCustomer.SendToFront(frontOfLinePoint);

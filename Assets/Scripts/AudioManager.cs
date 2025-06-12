@@ -10,6 +10,7 @@ using System.Collections;
 */
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] AudioMixer audioMixer;
     [Header("-------------Audio Source-------------")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
@@ -63,6 +64,9 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = apartmentMusic;
             musicSource.Play();
         }
+        // Check Player prefs for volume
+        audioMixer.SetFloat("musicVolume",  Mathf.Log10(PlayerPrefs.GetFloat("musicVolume", 1f) * 20));
+        audioMixer.SetFloat("sfxVolume",  Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume", 0.8f)) * 20);
     }
 
     public bool isMusicClipPlaying(AudioClip clip)

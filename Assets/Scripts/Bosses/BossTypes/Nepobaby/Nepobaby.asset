@@ -27,8 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40a6bb81d05daa84ab5c928afa390fe6, type: 2}
   passiveActions: []
   openingDialogueLines:
-  - "Are you the newbie? I thought we\u2019d fired you already. Whatever, we can
-    get that done now."
+  - "Are you the newbie? I thought we fired you already. Whatever, I doubt you can last even 14 minutes (turns) longer in the DMV."
   actionDialogueLines:
   - "There\u2019s a misconception that I need you to keep the bureaucracy stable,
     but I\u2019m sure you\u2019ll see that you actually need me more to keep your

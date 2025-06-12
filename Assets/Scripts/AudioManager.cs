@@ -65,8 +65,9 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
         // Check Player prefs for volume
-        audioMixer.SetFloat("musicVolume",  Mathf.Log10(PlayerPrefs.GetFloat("musicVolume", 1f) * 20));
-        audioMixer.SetFloat("sfxVolume",  Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume", 0.8f)) * 20);
+        audioMixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume", 0.8f)) * 20);
+        audioMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume", 0.6f)) * 20);
+        audioMixer.SetFloat("Dialogue", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume", 0.6f)) * 16);
     }
 
     public bool isMusicClipPlaying(AudioClip clip)

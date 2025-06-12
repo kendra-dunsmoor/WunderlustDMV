@@ -24,6 +24,7 @@ TagManager:
   - PerformanceMeter
   - WillMeter
   - SceneFader
+  - CustomerIcon
   - ClassPanel
   layers:
   - Default

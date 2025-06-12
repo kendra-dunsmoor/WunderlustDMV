@@ -34,13 +34,13 @@ public class VolumeSettings : MonoBehaviour
 
     private void LoadMusicVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1);
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.8f);
         SetMusicVolume();
     }
 
     private void LoadSFXVolume()
     {
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.8f);
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.6f);
         SetSFXVolume();
     }
 }

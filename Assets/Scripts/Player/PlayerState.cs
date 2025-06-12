@@ -54,7 +54,7 @@ public class PlayerState
         Action action = actionLoadout[actionAppliedTo];
         action.FRUSTRATION_MODIFIER += upgrade.FRUSTRATION_MODIFIER;
         action.PERFORMANCE_MODIFIER += upgrade.PERFORMANCE_MODIFIER;
-        action.WILL_MODIFIER += upgrade.WILL_MODIFIER;
+        action.WILL_MODIFIER -= upgrade.WILL_MODIFIER;
         foreach (ActionEffectStacks effectStack in upgrade.effects)
         {
             // TODO: fix this to actually check if there is already a stack of the same effect type

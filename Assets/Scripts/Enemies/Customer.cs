@@ -70,12 +70,14 @@ public class Customer : MonoBehaviour
                 SayDialogueLine(LineType.OPENING);
                 audioManager.PlayDialogue(openingSound);
                 SetNewPreppedAction();
-                // Take turn before Player, not after
+                /*   // Take turn before Player, not after
                 if(combatManager.takenAction)
                 {
                     combatManager.DisableActions();
                     TakeTurn();
-                }
+                } */
+                combatManager.EnableActions();
+
                 combatManager.SpawnPaperwork();
             }
         }

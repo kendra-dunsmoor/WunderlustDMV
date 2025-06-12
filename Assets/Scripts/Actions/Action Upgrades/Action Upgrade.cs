@@ -43,7 +43,7 @@ public class ActionUpgrade : ScriptableObject
         if (updateMovement)
         {
             if (movement == Action.ActionMovement.FRONT) description += "\nCustomer stays in line";
-            if (movement == Action.ActionMovement.AWAY) description += "\nCustomer is removed";
+            if (movement == Action.ActionMovement.BACK) description += "\nCustomer is sent to back";
         }
         return description;
     }

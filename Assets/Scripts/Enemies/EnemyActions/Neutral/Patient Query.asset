@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Patient Query
   m_EditorClassIdentifier: 
   enemyActionName: Patient Query
-  generalDescription: 
+  generalDescription: (Just a sigh.. luckily)
   FRUSTRATION_MODIFIER: 0
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: 0

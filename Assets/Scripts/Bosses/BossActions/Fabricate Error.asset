@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fabricate Error
   m_EditorClassIdentifier: 
   BossActionName: Fabricate Error
-  generalDescription: 
+  generalDescription: -10 BossWill -7 Performance
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: -7
   BOSS_WILL_MODIFIER: -10

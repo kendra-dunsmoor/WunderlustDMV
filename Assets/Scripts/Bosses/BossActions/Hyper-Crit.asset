@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hyper-Crit
   m_EditorClassIdentifier: 
   BossActionName: Hyper-Crit
-  generalDescription: 
+  generalDescription: -5 Performance
   WILL_MODIFIER: 0
   PERFORMANCE_MODIFIER: -5
   BOSS_WILL_MODIFIER: 0

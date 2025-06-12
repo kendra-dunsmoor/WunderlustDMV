@@ -31,7 +31,7 @@ public class Customer : MonoBehaviour
     [SerializeField] private ActionEffect elatedEffect;
     private float frustrationLevel;
 
-    private float SHAKE_DURATION = 1f;
+    private float SHAKE_DURATION = .75f;
     private float DIALOGUE_DURATION = 1.5f;
 
     // temp:
@@ -70,8 +70,15 @@ public class Customer : MonoBehaviour
                 SayDialogueLine(LineType.OPENING);
                 audioManager.PlayDialogue(openingSound);
                 SetNewPreppedAction();
-                combatManager.SpawnPaperwork();
+                /*   // Take turn before Player, not after
+                if(combatManager.takenAction)
+                {
+                    combatManager.DisableActions();
+                    TakeTurn();
+                } */
                 combatManager.EnableActions();
+
+                combatManager.SpawnPaperwork();
             }
         }
         if (movingAway)

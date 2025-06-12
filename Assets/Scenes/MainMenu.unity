@@ -751,6 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6cd108d9cf14ee28344731672f4fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 9683fc10df16640ad8a3fbb85353dc45, type: 2}
   musicSource: {fileID: 1051730671}
   SFXSource: {fileID: 2079865526}
   dialogueSource: {fileID: 545893423}

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5269216535766844546}
   - component: {fileID: 6458220795154278828}
   m_Layer: 5
-  m_Name: Panel_OptionsMenu
+  m_Name: Panel_PauseMenu
   m_TagString: Panel_OptionsMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

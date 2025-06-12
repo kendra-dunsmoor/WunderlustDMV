@@ -22,7 +22,7 @@ public class PlayerState
 	Spent in Apartment
 	Small amount is lost when Fired or Reincarnated.
     */
-    private int soulCredits = 0;
+    private int soulCredits = 0; // remove after testing
 
     /* Reputation:
     Reputation tracking for Astaroth, Verinne, and Sothoth. 

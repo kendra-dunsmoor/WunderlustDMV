@@ -15,10 +15,11 @@ public class CertificationsPageController : MonoBehaviour
     [SerializeField] private GameObject opaqueScreen;
     [SerializeField] private GameObject purchasePopUp;
     [SerializeField] private TextMeshProUGUI purchaseDescription;
+    private int activeIndex;
 
     void Awake()
     {
-        audioManager = 	FindFirstObjectByType<AudioManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
@@ -31,10 +32,13 @@ public class CertificationsPageController : MonoBehaviour
         // check if player has cert and mark as purchased
         List<Certificate> playerCerts = gameManager.FetchCertificates();
         // Instantiate all available certs for sale. For now just going to serialize a field for this
-        foreach (Certificate cert in certificatesAvailable) {
+        int i = 0;
+        foreach (Certificate cert in certificatesAvailable)
+        {
             GameObject certUI = Instantiate(certPrefab, certsParent);
-            certUI.GetComponent<CertificateUIController>().AddCertificate(cert);
+            certUI.GetComponent<CertificateUIController>().AddCertificate(cert, i);
             if (playerCerts != null && playerCerts.Contains(cert)) certUI.GetComponent<CertificateUIController>().MarkAsPurchased();
+            i++;
         }
     }
 
@@ -49,7 +53,8 @@ public class CertificationsPageController : MonoBehaviour
             GameObject.FindGameObjectWithTag("Counter_SoulCredits")
                 .GetComponent<CurrencyCounter>()
                 .RefreshCounter();
-            certUI.MarkAsPurchased();
+            MarkActiveItemAsPurchased();
+            Cancel();
         }
         else
         {
@@ -72,20 +77,28 @@ public class CertificationsPageController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void PurchasePopUp(Certificate cert)
+    public void PurchasePopUp(Certificate cert, int index)
     {
+        activeIndex = index;
         if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         // Add opaque background
         opaqueScreen.SetActive(true);
         // Add purchase popup
         purchasePopUp.SetActive(true);
-        purchasePopUp.GetComponentInChildren<CertificateUIController>().AddCertificate(cert);
+        purchasePopUp.GetComponentInChildren<CertificateUIController>().AddCertificate(cert, index);
         purchaseDescription.text = "Buy " + cert.title + " certification for " + cert.price + " Chthonic Credits?";
     }
 
-    public void Cancel() {
+    public void Cancel()
+    {
         if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
         purchasePopUp.SetActive(false);
         opaqueScreen.SetActive(false);
+    }
+    
+    private void MarkActiveItemAsPurchased()
+    {
+        CertificateUIController[] certs = certsParent.GetComponentsInChildren<CertificateUIController>();
+        certs[activeIndex].MarkAsPurchased();
     }
 }

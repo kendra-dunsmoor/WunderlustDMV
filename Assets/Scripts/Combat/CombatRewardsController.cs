@@ -130,7 +130,7 @@ public class CombatRewardsController : MonoBehaviour
 
     private int GetRecharge()
     {
-        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/4);
+        int willRecharge = (int) Math.Round((100-gameManager.FetchWill())/5);
         int reWill = (int) gameManager.FetchWill() + willRecharge;
         if (sentHome) reWill += 5;
 

@@ -213,7 +213,7 @@ public class Boss : MonoBehaviour
         {
             actionTelegraph.SetActive(true);
             // TODO: should it be different sprite for diff action type?
-            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.BossActionName + "\n" + preppedAction.BossActionName);
+            actionTelegraph.GetComponent<MouseOverDescription>().UpdateDescription("Next turn enemy will use " + preppedAction.BossActionName + "\n \n" + preppedAction.generalDescription);
         }
     }
 

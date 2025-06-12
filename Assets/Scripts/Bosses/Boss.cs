@@ -68,8 +68,6 @@ public class Boss : MonoBehaviour
 
         // }
 
-        if (preppedAction != null) TakeBossAction(preppedAction);
-
         // Telegraph next action
         SetNewPreppedAction(state); 
 

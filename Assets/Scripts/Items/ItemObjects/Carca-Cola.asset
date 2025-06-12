@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Carca-Cola
   m_EditorClassIdentifier: 
   itemName: Carca-Cola
-  Icon: {fileID: -1212620033428731605, guid: 74dc041dfc53c4f02b5d14b7bc84c8ad, type: 3}
+  Icon: {fileID: 21300000, guid: 74dc041dfc53c4f02b5d14b7bc84c8ad, type: 3}
   ID: C_003
   price: 200
   itemRarity: 1

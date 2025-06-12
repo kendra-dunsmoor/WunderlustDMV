@@ -15,6 +15,7 @@ public class ApartmentManager : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
         sceneFader.gameObject.SetActive(true);
     }
+    
     void Start()
     {
         // Don't restart music if it is already playing from main menu:

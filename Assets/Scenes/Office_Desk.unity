@@ -5214,7 +5214,7 @@ PrefabInstance:
       objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
     - target: {fileID: 3616757493364601216, guid: 20121e0548d774d7bb13e151db6a8e1e, type: 3}
       propertyPath: description
-      value: '<u>Soul Credits</u>
+      value: '<u>Chthonic Credits</u>
 
         Pay Rent & Apartment Upgrades'
       objectReference: {fileID: 0}

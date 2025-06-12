@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Herbal Tea
   m_EditorClassIdentifier: 
   itemName: Herbal Tea
-  Icon: {fileID: -3070273842284801829, guid: 75c2798e8fbb64056bc7c294ef799d93, type: 3}
+  Icon: {fileID: 21300000, guid: 75c2798e8fbb64056bc7c294ef799d93, type: 3}
   ID: C_004
   price: 400
   itemRarity: 2

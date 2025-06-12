@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class VendingMachineController : MonoBehaviour
 {
@@ -28,6 +27,7 @@ public class VendingMachineController : MonoBehaviour
 
     void Start()
     {
+        if (audioManager != null) audioManager.PlayMusic(audioManager.breakRoomMusic);
         sceneFader.gameObject.SetActive(true);
         // These should probably get moved to prefab script but leaving all pop up logic in here for now:
         opaqueScreen.SetActive(false);

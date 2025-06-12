@@ -18,10 +18,11 @@ MonoBehaviour:
   price: 0
   itemRarity: 0
   flavorText: The worst part of waking up...
-  description: Restore 5 Will & Gain 3 "Caffienated"
+  description: Restore 5 Will & Gain 3 "Caffeinated"
   effects:
   - effect: {fileID: 11400000, guid: 356d5becc06ea4fcea00faf40db0397a, type: 2}
     stacks: 3
   willModifier: 5
   performanceModifier: 0
   frustrationModifier: 0
+  attentionModifier: 0

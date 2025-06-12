@@ -1838,7 +1838,11 @@ PrefabInstance:
     - target: {fileID: 6128540964117907155, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
       propertyPath: popUpBox
       value: 
-      objectReference: {fileID: 553031448974983727, guid: 6e25aabde35d24c53baf998ce8010f48, type: 3}
+      objectReference: {fileID: 5602104396718545289, guid: 07cef9cd6ca1e4b9f8920e2534f5594f, type: 3}
+    - target: {fileID: 6128540964117907155, guid: 0fabfce2d6341423ab178087c73a1baf, type: 3}
+      propertyPath: description
+      value: Chthonic Credits - Pay Rent & Apartment Upgrades
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

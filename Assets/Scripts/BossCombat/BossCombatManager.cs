@@ -335,14 +335,15 @@ public class BossCombatManager : MonoBehaviour
     * Player reincarnated or fired due to performance
     * Instantiates game over screen
     */
-    private void GameOver()
+    private void GameOver(string reason)
     {
         if (audioManager != null) audioManager.PlayDialogue(gameOverSound);
         DisableActions(specialButtonsParent);
         DisableActions(baseButtonsParent);
         // Pop up end screen
         // TODO update description for boss
-        Instantiate(gameOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        GameObject menu = Instantiate(gameOverMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+        menu.GetComponent<GameOverController>().UpdateResultText(reason);
     }
 
     /* Update Performance: 
@@ -358,13 +359,13 @@ public class BossCombatManager : MonoBehaviour
         if (performanceLevel <= 0)
         {
             gameManager.UpdateRunStatus(GameState.RunStatus.FIRED);
-            GameOver(); // Fired
+            GameOver("Fired for bad performance"); // Fired
             Debug.Log("Game Over: Fired for bad performance!");
         }
         if (performanceLevel >= MAX_PERFORMANCE)
         {
             gameManager.UpdateRunStatus(GameState.RunStatus.REINCARNATED);
-            GameOver(); // Reincarnated
+            GameOver("Reincarnated for good performance"); // Reincarnated
             Debug.Log("Game Over: Reincarnated for good performance!");
         }
     }
@@ -425,10 +426,11 @@ public class BossCombatManager : MonoBehaviour
         else // Else modify for special actions
         {
             // Check if sufficient will available for action:
-            if (willLevel - action.WILL_MODIFIER < 0)
+            if (willLevel + action.WILL_MODIFIER < 0)
             {
                 Debug.Log("Insufficient will left for action: " + action.actionName);
                 if (audioManager != null) audioManager.PlaySFX(audioManager.noEnergy);
+                GameOver("Ran out of will");
                 return;
             }
 

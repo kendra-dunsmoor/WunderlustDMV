@@ -84,9 +84,11 @@ public class CalendarController : MonoBehaviour
 
         // Fetch past run choices and fill calendar
         List<string> runPath = gameManager.FetchRunPath();
+        Debug.Log("Calendary day: " + currDay);
         if (runPath == null) return;
         for (int i = 0; i < runPath.Count; i++)
         {
+            Debug.Log("Run path day: " + i);
             calendarDays[i].shiftCompleteMarker.SetActive(true);
             calendarDays[i].choiceMarker.SetActive(true);
             SetSlotToChoiceMade(calendarDays[i].choiceMarker, runPath[i]);

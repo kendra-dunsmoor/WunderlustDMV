@@ -23,6 +23,11 @@ public class GameOverController : MonoBehaviour
         }
     }
 
+    public void UpdateResultText(string text)
+    {
+        resultText.text = "";
+    }
+
     public void Restart()
     {
         if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);

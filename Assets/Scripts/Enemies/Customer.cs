@@ -32,7 +32,7 @@ public class Customer : MonoBehaviour
     private float frustrationLevel;
 
     private float SHAKE_DURATION = .75f;
-    private float DIALOGUE_DURATION = 1.5f;
+    private float DIALOGUE_DURATION = 2f;
 
     // temp:
     private bool movingToFront;

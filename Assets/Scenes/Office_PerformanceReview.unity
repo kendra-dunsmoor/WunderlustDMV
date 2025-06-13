@@ -4325,7 +4325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 2.589096, y: -24.125607}
+  m_AnchoredPosition: {x: 2.589096, y: -24.12561}
   m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1749440093
@@ -5354,6 +5354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1942487790}
+  - component: {fileID: 1942487791}
   m_Layer: 5
   m_Name: Inventories
   m_TagString: Untagged
@@ -5382,6 +5383,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 225}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1942487791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942487789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fabe2cf10477e4baba756bca98318c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 1049413749}
+  artifacts: {fileID: 1749440093}
+  combatManager: {fileID: 0}
+  bossCombatManager: {fileID: 1958720742}
 --- !u!1 &1958720739
 GameObject:
   m_ObjectHideFlags: 0

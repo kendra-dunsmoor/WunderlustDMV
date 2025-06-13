@@ -27,7 +27,7 @@ public class VolumeSettings : MonoBehaviour
     {
         float volume = sfxSlider.value;
         audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
-        audioMixer.SetFloat("Dialogue", Mathf.Log10(volume) * 16);
+        audioMixer.SetFloat("Dialogue", Mathf.Log10(volume) * 15);
         PlayerPrefs.SetFloat("sfxVolume", volume);
         PlayerPrefs.Save();
     }

@@ -22,8 +22,7 @@ public class PauseManager : MonoBehaviour
     {
         audioManager.PlaySFX(audioManager.buttonClick);
         gameManager.RestartGame();
-        if (sceneFader != null) sceneFader.LoadScene(0);
-        else SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void ResumeGame()

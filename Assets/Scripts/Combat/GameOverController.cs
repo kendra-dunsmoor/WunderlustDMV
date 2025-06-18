@@ -25,7 +25,7 @@ public class GameOverController : MonoBehaviour
 
     public void UpdateResultText(string text)
     {
-        resultText.text = "";
+        resultText.text = text;
     }
 
     public void Restart()
@@ -38,6 +38,7 @@ public class GameOverController : MonoBehaviour
     public void ExitToMenu()
     {
         if (audioManager != null) audioManager.PlaySFX(audioManager.buttonClick);
-        SceneManager.LoadSceneAsync(0); // TODO: just go to main menu, need to add some reset logic later
+        gameManager.RestartGame();
+        SceneManager.LoadSceneAsync(0);
     }
 }

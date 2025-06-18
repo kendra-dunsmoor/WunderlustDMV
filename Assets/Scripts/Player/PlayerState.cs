@@ -40,7 +40,8 @@ public class PlayerState
     private List<string> itemInventory = new List<string>();
     private List<string> artifacts = new List<string>();
 
-    public List<Action> GetActionLoadout() {
+    public List<Action> GetActionLoadout()
+    {
         return actionLoadout;
     }
 
@@ -63,90 +64,112 @@ public class PlayerState
         if (upgrade.updateMovement) action.movement = upgrade.movement;
     }
 
-    public void AddActionToLoadout(Action action) {
+    public void AddActionToLoadout(Action action)
+    {
         actionLoadout.Add(action);
     }
 
-    public void UpdateOfficeBucks(int amount) {
+    public void UpdateOfficeBucks(int amount)
+    {
         officeBucks += amount;
     }
 
-    public int GetOfficeBucks() {
+    public int GetOfficeBucks()
+    {
         return officeBucks;
     }
 
-    public void UpdateSoulCredits(int amount) {
+    public void UpdateSoulCredits(int amount)
+    {
         soulCredits += amount;
     }
 
-    public int GetSoulCredits() {
+    public int GetSoulCredits()
+    {
         return soulCredits;
     }
 
-    public void UpdateVRep(int amount) {
+    public void UpdateVRep(int amount)
+    {
         vRep += amount;
     }
 
-    public int GetVRep() {
+    public int GetVRep()
+    {
         return vRep;
     }
 
-    public void UpdateARep(int amount) {
+    public void UpdateARep(int amount)
+    {
         aRep += amount;
     }
 
-    public int GetARep() {
+    public int GetARep()
+    {
         return aRep;
     }
 
-    public void UpdateSRep(int amount) {
+    public void UpdateSRep(int amount)
+    {
         sRep += amount;
     }
 
-    public int GetSRep() {
+    public int GetSRep()
+    {
         return sRep;
     }
 
-    public void AddCertificate(Certificate cert) {
+    public void AddCertificate(Certificate cert)
+    {
         activeCertificates.Add(cert);
     }
 
-    public List<Certificate> GetCertificates() {
-            return activeCertificates;
+    public List<Certificate> GetCertificates()
+    {
+        return activeCertificates;
     }
 
-    public void AddFurniture(Furniture furn) {
+    public void AddFurniture(Furniture furn)
+    {
         activeFurniture.Add(furn);
     }
 
-    public List<Furniture> GetFurniture() {
-            return activeFurniture;
+    public List<Furniture> GetFurniture()
+    {
+        return activeFurniture;
     }
 
-    public void AddItem(string itemId) {
+    public void AddItem(string itemId)
+    {
         itemInventory.Add(itemId);
     }
-    public void RemoveItem(string itemId) {
+    public void RemoveItem(string itemId)
+    {
         itemInventory.Remove(itemId);
     }
 
-    public List<string> GetInventory() {
-            return itemInventory;
+    public List<string> GetInventory()
+    {
+        return itemInventory;
     }
 
-    public List<string> GetArtifacts() {
-            return artifacts;
+    public List<string> GetArtifacts()
+    {
+        return artifacts;
     }
 
-    public void AddArtifact(string itemId) {
+    public void AddArtifact(string itemId)
+    {
         artifacts.Add(itemId);
     }
 
-    public bool ContainsItem(string itemId) {
+    public bool ContainsItem(string itemId)
+    {
         return artifacts.Contains(itemId) || itemInventory.Contains(itemId);
     }
-    
-    public Class GetClass() {
+
+    public Class GetClass()
+    {
         return playerClass;
     }
 
@@ -161,5 +184,19 @@ public class PlayerState
         artifacts = new List<string>();
         itemInventory = new List<string>();
         officeBucks = 0;
+    }
+    
+    public void RestartGame()
+    {
+        // Reset game stats:
+        activeCertificates = new List<Certificate>();
+        activeFurniture = new List<Furniture>();
+        aRep = 0;
+        vRep = 0;
+        sRep = 0;
+        soulCredits = 0;
+
+        // Reset run stats:
+        ResetRun();
     }
 }

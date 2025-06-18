@@ -58,7 +58,7 @@ MonoBehaviour:
       chaos: 2
       itemsRewards: []
       effectRewards: []
-      performanceBoost: 10
+      performanceBoost: 0
       willBoost: 0
       specialRewardMessage: 
     - responseText: I need the souls to cut me a little slack today.
@@ -92,7 +92,7 @@ MonoBehaviour:
     - responseText: "You\u2019ve helped me out a lot in the lost and found. Any chance
         we could make a deal to I could keep a bigger cut."
       nextNodeIndex: 5
-      containsReward: 0
+      containsReward: 1
       officeBucks: 20
       soulCredits: -5
       chaos: 0

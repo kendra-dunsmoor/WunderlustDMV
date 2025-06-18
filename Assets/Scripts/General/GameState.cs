@@ -17,7 +17,8 @@ public class GameState
     private int earlyShifts = 0;
     private List<string> runPath = new List<string>();
 
-    public enum RunStatus {
+    public enum RunStatus
+    {
         ACTIVE,
         FIRED,
         REINCARNATED,
@@ -25,50 +26,60 @@ public class GameState
     }
 
     private RunStatus runStatus = RunStatus.ACTIVE;
-    
-    public int GetDay() {
+
+    public int GetDay()
+    {
         return currentWeekday;
     }
 
     // Called when combat for day is completed
-    public void CompleteDay() {
+    public void CompleteDay()
+    {
         currentWeekday++;
     }
 
-    public RunStatus GetRunStatus() {
+    public RunStatus GetRunStatus()
+    {
         return runStatus;
     }
 
     // Called when combat for day is completed
-    public void UpdateRunStatus(RunStatus result) {
+    public void UpdateRunStatus(RunStatus result)
+    {
         runStatus = result;
     }
 
-    public void AddRunChoice(string choice) {
+    public void AddRunChoice(string choice)
+    {
         Debug.Log("Adding");
         runPath.Add(choice);
     }
-    public List<string> FetchRunPath() {
+    public List<string> FetchRunPath()
+    {
         return runPath;
     }
 
-    public float GetPerformance() {
+    public float GetPerformance()
+    {
         return performance;
     }
 
-    public float GetAttention() {
+    public float GetAttention()
+    {
         return attention;
     }
-    
-        
-    public int GetEarlyShifts() {
+
+
+    public int GetEarlyShifts()
+    {
         return earlyShifts;
     }
 
-    public float GetWill() {
+    public float GetWill()
+    {
         return will;
     }
-    
+
     public float GetMaxWill()
     {
         return maxWill;
@@ -79,7 +90,7 @@ public class GameState
         this.performance = performance;
     }
 
-     public void UpdateAttention(float attention)
+    public void UpdateAttention(float attention)
     {
         this.attention = attention;
     }
@@ -93,19 +104,28 @@ public class GameState
     {
         earlyShifts++;
     }
-    
-     public void UpdateMaxWill(float maxWill)
+
+    public void UpdateMaxWill(float maxWill)
     {
         this.maxWill = maxWill;
     }
 
     public void ResetRun()
     {
-        will = 100f;
+        will = maxWill;
         performance = 100f;
         attention = 20f;
         runPath = new List<string>();
         currentWeekday = 0;
         earlyShifts = 0;
+    }
+
+    public void RestartGame()
+    {        
+        // Reset game stats:
+        maxWill = 100f;
+
+        // Reset run stats:
+        ResetRun();
     }
 }

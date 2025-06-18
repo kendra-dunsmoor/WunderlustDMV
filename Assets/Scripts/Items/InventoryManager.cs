@@ -85,7 +85,7 @@ public class InventoryManager : MonoBehaviour
             {
                 artifacts.UpdateDescription(
                     i,
-                    item.description + "\n Turn Counter: " + item.currentTurnCounter + "/" +item.turnClock,
+                    item.description + "\n Turn Counter: " + item.currentTurnCounter + "/" + item.turnClock,
                     item.itemName
                 );   
             }

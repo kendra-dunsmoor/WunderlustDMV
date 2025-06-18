@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 */
 public class PanelManager : MonoBehaviour
 {
-    SceneFader sceneFader;
     private AudioManager audioManager;
 
     void Awake()

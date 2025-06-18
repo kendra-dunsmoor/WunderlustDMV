@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 /*
 * Game Manager
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     private GameState gameStatus;
     private PlayerState playerStatus;
     [SerializeField] private ItemDB itemDatabase;
+    [SerializeField] private GameObject pauseMenu;
 
     // temp solution until events are expanded:
     private bool inTutorial;
@@ -47,6 +50,19 @@ public class GameManager : MonoBehaviour
 
         // temp:
         inTutorial = true;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                Instantiate(pauseMenu, GameObject.FindGameObjectWithTag("Canvas").transform.position, GameObject.FindGameObjectWithTag("Canvas").transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
+                // Pause Game
+                // TODO: add logic for pausing any in game functions
+            }
+        }
     }
 
     public void StartRun()
@@ -154,6 +170,21 @@ public class GameManager : MonoBehaviour
             playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
         }
         gameStatus.ResetRun();
+    }
+
+    public void RestartGame()
+    {
+        // Back to main menu, reset all trackers (including tutorial?)
+        inTutorial = true;
+        playerStatus.RestartGame();
+        if (playerStatus.GetClass() != null)
+        {
+            foreach (Action action in playerStatus.GetClass().actionLoadout)
+            {
+                playerStatus.AddActionToLoadout(Instantiate(action.GetCopy()));
+            }            
+        }
+        gameStatus.RestartGame();
     }
 
     public GameState.RunStatus FetchRunState()
